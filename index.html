@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Northzero Productions | Cinematic Video & Branding</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
             --bg-color: #0a0a0a;
@@ -259,18 +260,6 @@
         .cta-btn { border: 1px solid var(--accent-color); padding: 10px 25px; color: var(--accent-color); text-decoration: none; text-transform: uppercase; transition: all 0.3s; }
         .cta-btn:hover { background: var(--accent-color); color: var(--bg-color); }
 
-
-
-
-
-        /* Animated Compass Logo */
-        .logo-link { display: flex; align-items: center; text-decoration: none; cursor: pointer; }
-        .compass-box { width: 50px; height: 50px; border: 2px solid #333; border-radius: 50%; margin-right: 20px; display: flex; align-items: center; justify-content: center; position: relative; transition: 0.4s; transition: 0.4s ease;}
-        .needle { width: 3px; height: 30px; transform: rotate(-45deg); transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; }
-        .needle::before { content: ''; position: absolute; top: 0; left: -2.5px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 15px solid var(--nz-blue); }
-        .needle::after { content: ''; position: absolute; bottom: 0; left: -2.5px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 15px solid var(--nz-gold); }
-        .logo-link:hover .needle { transform: rotate(0deg); }
-        .logo-text { color: white; text-transform: uppercase; font-weight: 900; letter-spacing: 2px; }
         
 
         /* Desktop Nav - Hidden on Mobile */
@@ -299,6 +288,18 @@
         .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; z-index: 5; }
         .gallery-item:hover .gallery-overlay { opacity: 1; background: rgba(0,0,0,0.6); }
         .gallery-item:hover img { transform: scale(1.05); opacity: 0.3; }
+
+        /* Section Global Styles */
+        .section { padding: 100px 50px; }
+        .bg-dark { background-color: var(--secondary-bg); }
+        .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 60px; text-align: center; color: var(--accent-color); }
+
+        /* Expertise Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .service-card { background: #1a1a1a; padding: 40px; border: 1px solid #333; transition: 0.3s; text-decoration: none; }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--accent-color); }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
+        .service-card p { color: #aaa; font-size: 0.95rem; }
 
         /* --- RESPONSIVENESS --- */
         @media (max-width: 1024px) {
@@ -487,6 +488,17 @@
             text-transform: uppercase;
         }
 
+        /* FIXED PRESENTATION SLIDER SECTION */
+        .slider-wrapper { max-width: 1283px; margin: 0 auto; position: relative; overflow: hidden; border: 1px solid #222; }
+        .slider-container { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        .slide-frame { min-width: 100%; aspect-ratio: 16 / 9; background: #000; }
+        .slide-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+        .slider-controls { display: flex; justify-content: center; align-items: center; margin-top: 30px; gap: 20px; padding-bottom: 40px; }
+        .slide-nav { background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); width: 45px; height: 45px; border-radius: 50%; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
+        .slide-nav:hover { background: var(--accent-color); color: #000; }
+        .dot { width: 8px; height: 8px; background: #444; border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .dot.active { background: var(--accent-color); width: 20px; border-radius: 4px; }
+
         /* Contact & Footer */
         .contact-section {
             text-align: center;
@@ -597,12 +609,10 @@
 <body>
 
     <nav>
-        <a href="#" class="logo-link">
-        <div class="compass-box">
-               <div class="needle"></div>
-           </div>
+        <a href="index.html" class="logo-link" id="mainLogo">
+           <div class="compass-box"><div class="needle"></div></div>
            <div class="logo-text">
-               <div class="main-title">North<span class="blue-zero">Zero</span></div>
+               <div class="main-title">North<span style="color:var(--nz-blue)">Zero</span></div>
                <div class="sub-title">Productions</div>
            </div>
         </a>
@@ -614,22 +624,9 @@
             <a href="policies.html">Policies</a>
             <a href="contact.html" class="cta-btn">Contact Us</a>
         </div>
-
-        <div class="hamburger-icon" id="burgerBtn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
         </div>
-
-        <div class="mobile-dropdown" id="mobileMenu">
-            <a href="index.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Home</a>
-            <a href="about.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">About</a>
-            <a href="all-services.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Services</a>
-            <a href="work.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Work</a>
-            <a href="policies.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Policies</a>
-            <a href="contact.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Contact</a>
-        </div> 
-
     </nav>
 
     <section class="hero">
@@ -675,7 +672,7 @@
         </div>
     </section>
 
-    <section id="work">
+     <section id="work">
         <div class="portfolio-grid">
             <div class="portfolio-item">
                 <img src="https://images.unsplash.com/photo-1769142144950-52b0e5734f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 1">
@@ -707,6 +704,18 @@
         </div>
     </section>
 
+    <section id="presentation" class="section bg-dark">
+        <h2 class="section-title">The Northzero Vision</h2>
+        <div class="slider-wrapper">
+            <div class="slider-container" id="mainSlider"></div>
+        </div>
+        <div class="slider-controls">
+            <button class="slide-nav" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="slide-indicators" id="slideDots"></div>
+            <button class="slide-nav" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
     <section id="contact" class="section">
         <h2>Ready to Elevate Your Brand?</h2>
         <p>Let Northzero Productions bring your vision to life.</p>
@@ -727,8 +736,7 @@
     </footer>
 
     <script>
-
-        // Function to play video inside the box (No black screen)
+         // Function to play video inside the box (No black screen)
         function playNow(element, url) {
             element.innerHTML = `<iframe src="${url}" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>`;
             element.onclick = null; // Disable additional clicks
@@ -774,8 +782,61 @@
         logo.addEventListener('mouseup', () => {
             logo.style.transform = 'scale(1)';
         });
+        
+        // Cinematic Slide Configuration - Reordered for Narrative Flow
+        const slideFiles = [
+            'slide7.html', // Impactful Intro
+            'slide6.html', // Who We Are
+            'slide5.html', // Services Overview
+            'slide4.html', // Our Process
+            'slide3.html', // Impact Stats
+            'slide2.html', // Portfolio Highlights
+            'slide1.html'  // Final CTA
+        ];
 
+        let currentIdx = 0;
+        const slider = document.getElementById('mainSlider');
+        const dots = document.getElementById('slideDots');
+
+        function initSlider() {
+            // Clean injection to ensure external slide styles stay isolated in their iframes
+            slideFiles.forEach((file, i) => {
+                const div = document.createElement('div');
+                div.className = 'slide-frame';
+                div.innerHTML = `<iframe src="${file}" loading="lazy"></iframe>`;
+                slider.appendChild(div);
+
+                const dot = document.createElement('div');
+                dot.className = i === 0 ? 'dot active' : 'dot';
+                dot.onclick = () => goToSlide(i);
+                dots.appendChild(dot);
+            });
+        }
+
+        function moveSlide(direction) {
+            currentIdx = (currentIdx + direction + slideFiles.length) % slideFiles.length;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentIdx = index;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIdx * 100}%)`;
+            document.querySelectorAll('.dot').forEach((d, i) => {
+                d.classList.toggle('active', i === currentIdx);
+            });
+        }
+
+        function toggleMenu() {
+            alert("Mobile menu clicked. Please ensure your mobile-dropdown elements exist in HTML.");
+        }
+
+        // Initialize on load
+        window.onload = initSlider;
     </script>
-
 </body>
 </html>
+
