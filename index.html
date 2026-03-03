@@ -494,24 +494,22 @@
             position: relative;
             z-index: 5; /* Ensures it stays above background elements but below the Nav */
         }
-        .slider-wrapper { 
-            max-width: 1283px; 
-            margin: 0 auto; 
-            position: relative; 
-            overflow: hidden; 
-            border: 1px solid #222;
-            background: #000; /* Prevents white flash during loads */
+        /* Ensure the wrapper hides the 'inactive' slides */
+        .slider-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
         }
-
+        /* Ensure the container can grow wide enough for all slides */
         .slider-container { 
             display: flex; 
-            width: 100%; /* Ensures container starts at full width */
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); 
+            width: 100%; 
+            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1); /* Smoother movement */
         }
 
         .slide-frame { 
-            min-width: 100%; /* Crucial: Forces each slide to take up exactly one wrapper width */
-            flex-shrink: 0;  /* Prevents slides from squeezing together */
+            min-width: 100%; /* Each slide takes full width */
+            flex-shrink: 0;  /* PREVENTS slides from squishing together */
             aspect-ratio: 16 / 9; 
             background: #000; 
         }
@@ -533,6 +531,35 @@
             padding-bottom: 40px; 
         }
 
+        .slide-nav {
+            background: transparent; 
+            border: 1px solid var(--accent-color); 
+            color: var(--accent-color); 
+            width: 45px; height: 45px; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .slide-nav:hover { 
+            background: var(--accent-color); 
+            color: #000; 
+        }
+        .dot { 
+            width: 8px; 
+            height: 8px; 
+            background: #444; 
+            border-radius: 50%; 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        .dot.active { 
+            background: var(--accent-color); 
+            width: 20px; 
+            border-radius: 4px; 
+        }
         
 
         /* Contact & Footer */
@@ -847,48 +874,49 @@
     </footer>
 
     <script>
-        // --- CONFIGURATION ---
-        const slideFiles = [
-            'slide7.html', // Impactful Intro
-            'slide6.html', // Who We Are
-            'slide5.html', // Services Overview
-            'slide4.html', // Our Process
-            'slide3.html', // Impact Stats
-            'slide2.html', // Portfolio Highlights
-            'slide1.html'  // Final CTA
-        ];
-
+        // Configuration
+        const slideFiles = ['slide7.html', 'slide6.html', 'slide5.html', 'slide4.html', 'slide3.html', 'slide2.html', 'slide1.html'];
         let currentIdx = 0;
+        let slideInterval; // Variable for the timer
+
         const slider = document.getElementById('mainSlider');
         const dotsContainer = document.getElementById('slideDots');
 
-        // --- SLIDER FUNCTIONS ---
         function initSlider() {
-            // Clear existing content to prevent duplicates
             slider.innerHTML = '';
             dotsContainer.innerHTML = '';
 
             slideFiles.forEach((file, i) => {
-                // Create Slide Frame
                 const div = document.createElement('div');
                 div.className = 'slide-frame';
-                // Using iframes as per your original structure
                 div.innerHTML = `<iframe src="${file}" loading="lazy"></iframe>`;
                 slider.appendChild(div);
 
-                // Create Navigation Dot
                 const dot = document.createElement('div');
                 dot.className = i === 0 ? 'dot active' : 'dot';
-                dot.onclick = () => goToSlide(i);
+                dot.onclick = () => {
+                    goToSlide(i);
+                    resetTimer(); // Stop auto-play when user clicks
+                };
                 dotsContainer.appendChild(dot);
             });
+
+            startAutoPlay(); // Start movement immediately on load
+        }
+
+        function startAutoPlay() {
+            slideInterval = setInterval(() => {
+                moveSlide(1);
+            }, 5000); // Change slide every 5 seconds
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startAutoPlay(); // Restart the timer after interaction
         }
 
         function moveSlide(direction) {
-            currentIdx += direction;
-            // Loop back to start or end
-            if (currentIdx >= slideFiles.length) currentIdx = 0;
-            if (currentIdx < 0) currentIdx = slideFiles.length - 1;
+            currentIdx = (currentIdx + direction + slideFiles.length) % slideFiles.length;
             updateSlider();
         }
 
@@ -898,15 +926,18 @@
         }
 
         function updateSlider() {
-            // Move the container
+            // This creates the movement by sliding the entire container to the left
             slider.style.transform = `translateX(-${currentIdx * 100}%)`;
             
-            // Update dots
+            // Update Dot Classes
             const allDots = dotsContainer.querySelectorAll('.dot');
             allDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIdx);
             });
         }
+
+        // Initializing when the DOM is ready
+        document.addEventListener('DOMContentLoaded', initSlider);
 
         // --- MOBILE MENU LOGIC ---
         function toggleMenu() {
@@ -937,5 +968,4 @@
     </script>
 </body>
 </html>
-
 
