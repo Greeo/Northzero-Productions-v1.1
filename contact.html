@@ -95,6 +95,10 @@
         .page-header h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; }
         .page-header p { color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
 
+        .style { width: 100%; margin-top: 30px; display: flex; justify-content: center; padding: 15px; background: rgba(212, 175, 55, 0.1); border: 1.5px solid var(--nz-gold); display: inline-block; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .style h3 { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 2px; font-size: 1.5rem; }
+        .style p { color: #d0d0d0; font-size: 1.2rem; text-transform: none; letter-spacing: normal; }
+
         /* Form Content */
         .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
         .form-wrapper {
@@ -172,7 +176,15 @@
     <header class="page-header">
         <h1>Start The Conversation</h1>
         <p>Tell us about your project</p>
+
+        <div class="style">
+        <h3>Building Together Project</h3>
+        <p>
+           If You Launching a new brand or product? <strong>Get your first **</strong>promotional branding package on us for <strong>free.**</strong> Select "Other" in the service interest below and mention "First Free" in your project details.
+        </p>
+    </div>
     </header>
+
 
     <div class="container">
         <div class="form-wrapper">
@@ -193,6 +205,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label>City / Town / Westchester (Optional)</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="Ossining, Westchester">
+                </div>
+
+                <div class="form-group">
                     <label>Phone Number (Optional)</label>
                     <input type="tel" name="phone" class="form-control" placeholder="(555) 555-5555">
                 </div>
@@ -207,6 +224,7 @@
                         <option value="corporate">Corporate & Training</option>
                         <option value="aerial">Aerial / Drone</option>
                         <option value="web">Web Design</option>
+                        <option value="social">Branding</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
@@ -277,6 +295,11 @@
     </script>
 </body>
 </html>
+
+
+
+
+
 
 
 
