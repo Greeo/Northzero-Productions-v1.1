@@ -2,13 +2,16 @@
    NORTHZERO PRODUCTIONS - MASTER GLOBAL BRAND STYLES
    ============================================================ */
 
+/* PAGE-SPECIFIC HERO STYLES (Keep these here) */
 :root {
-    --nz-blue: #0047ab;
-    --nz-gold: #d4af37;
-    --nz-black: #0a0a0a;
-    --nz-white: #ffffff;
-    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   --bg-color: #0a0a0a;
+   --text-color: #f0f0f0;
+   --nz-white: #ffffff;
+   --nz-gold: #d4af37;
+   --font-main: 'Helvetica Neue', sans-serif;
+   --secondary-bg: #141414;
 }
+
 
 /* --- 1. GLOBAL NAVIGATION BAR --- */
 nav {
