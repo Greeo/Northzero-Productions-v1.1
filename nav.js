@@ -1,6 +1,12 @@
+/**
+ * Northzero Productions - Master Navigation Injector
+ */
 const injectNav = () => {
     const nav = document.querySelector('nav');
-    if (!nav) return;
+    if (!nav) {
+        console.error("Northzero: <nav> tag not found on this page.");
+        return;
+    }
 
     nav.innerHTML = `
         <a href="index.html" class="logo-link">
@@ -23,9 +29,14 @@ const injectNav = () => {
                 </div>
             </div>
             <a href="about.html">The Lens</a>
-            <a href="contact.html" class="cta-btn">Start a Project</a>
+            <a href="contact.html" style="border: 1px solid var(--nz-gold); padding: 8px 15px; color: var(--nz-gold); text-decoration: none;">Start a Project</a>
         </div>
     `;
 };
 
-document.addEventListener('DOMContentLoaded', injectNav);
+// Ensures the script fires even if the browser is slow
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectNav);
+} else {
+    injectNav();
+}
