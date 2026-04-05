@@ -87,38 +87,9 @@
         .cta-btn { border: 1px solid var(--accent-color); padding: 10px 25px; color: var(--accent-color); transition: all 0.3s; }
         .cta-btn:hover { background: var(--accent-color); color: var(--bg-color); }
 
-        /* Header */
-        .page-header {
-            height: 75vh; background: linear-gradient(to bottom, rgba(0,0,0,0.8), var(--bg-color)), url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
-        }
-        .page-header h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; }
-        .page-header p { font-size: 1.1rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
-
-        /* Hero Section */
-        .hero-section { position: relative; width: 100%; height: 10vh; display: flex; align-items: center; justify-content: center; background: #090909; margin-bottom: 12%; }
-        .hero-content { position: relative; z-index: 2; text-align: center; margin-bottom: 9%; }
-        
-        .title-box {
-            padding: 30px 60px; border: 2px solid var(--nz-gold); display: inline-block;
-            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); animation: fadeInBox 1.5s ease-out forwards;
-        }
-        .title-box h1 {
-            color: var(--nz-white); font-size: 4rem; text-transform: uppercase; letter-spacing: 15px; font-weight: 900; margin: 0;
-            background: linear-gradient(120deg, #fff 40%, var(--nz-gold) 50%, #fff 60%);
-            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: shimmer 6s linear infinite;
-        }
-
-        /* Header & Mastery Block */
-        .portfolio-header { padding: 160px 50px 60px; text-align: center; }
+        /* Header Section */
+        .portfolio-header { padding: 160px 50px 40px; text-align: center; }
         .portfolio-header h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 15px; margin-bottom: 20px; }
-        
-        .mastery-block {
-            max-width: 800px; margin: 0 auto 80px; text-align: center; border-top: 1px solid #222; padding-top: 40px;
-        }
-        .mastery-block p { font-size: 1.1rem; color: #888; font-weight: 300; line-height: 2; }
-        .mastery-block span { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; display: block; margin-bottom: 15px; }
 
         /* Filter System */
         .filter-container { text-align: center; margin-bottom: 60px; }
@@ -128,14 +99,13 @@
         }
         .filter-btn.active, .filter-btn:hover { color: var(--nz-gold); }
 
-        /* The Grid */
-       /* The Luxury Bento Grid */
+        /* --- THE BENTO GRID --- */
         .work-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr); /* 6 small columns for maximum flexibility */
-            grid-auto-rows: 25vw; /* Keeps the aspect ratios elegant */
-            gap: 15px; /* Slightly more gap for "breathing room" */
-            padding: 15px;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 20vw;
+            gap: 15px;
+            padding: 0 15px 80px;
             max-width: 1600px;
             margin: 0 auto;
         }
@@ -147,28 +117,14 @@
             cursor: pointer;
         }
 
-        /* Featured Large Item (The Architectural Hero) */
-        .work-item.featured {
-            grid-column: span 4;
-            grid-row: span 2;
-        }
-
-        /* Tall Item (Vertical or Portrait Narrative) */
-        .work-item.tall {
-            grid-column: span 2;
-            grid-row: span 2;
-        }
-
-        /* Standard Wide Item */
-        .work-item.wide {
-            grid-column: span 3;
-            grid-row: span 1;
-        }
+        /* Layout Variances for Luxury Feel */
+        .work-item.featured { grid-column: span 4; grid-row: span 2; }
+        .work-item.tall { grid-column: span 2; grid-row: span 2; }
+        .work-item.wide { grid-column: span 3; grid-row: span 1; }
+        .work-item.standard { grid-column: span 2; grid-row: span 1; }
 
         .work-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            width: 100%; height: 100%; object-fit: cover;
             filter: grayscale(0.5) brightness(0.6);
             transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
         }
@@ -178,24 +134,48 @@
             transform: scale(1.02);
         }
 
-        /* Modal Player */
-        .modal {
-            display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.98); align-items: center; justify-content: center;
+        .work-info {
+            position: absolute; bottom: 30px; left: 30px;
+            opacity: 0; transform: translateY(20px);
+            transition: 0.4s ease;
         }
-        .modal-content { width: 90%; aspect-ratio: 16 / 9; max-width: 1100px; border: 1px solid #333; }
 
-        footer { padding: 80px; text-align: center; color: #333; letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; }
+        .work-item:hover .work-info { opacity: 1; transform: translateY(0); }
+        .work-info h3 { text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
+        .work-info p { font-size: 0.65rem; color: var(--nz-gold); text-transform: uppercase; letter-spacing: 2px; }
 
+        /* --- THE LIGHTBOX (MODAL) --- */
+        .lightbox {
+            display: none; position: fixed; z-index: 2000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.98); align-items: center; justify-content: center;
+        }
+        .lightbox-content {
+            position: relative; width: 90%; max-width: 1200px;
+            aspect-ratio: 16 / 9; border: 1px solid #222;
+        }
+        .close-lightbox {
+            position: absolute; top: -50px; right: 0;
+            color: var(--nz-gold); font-size: 2.5rem; cursor: pointer;
+            transition: 0.3s; line-height: 1;
+        }
+        .close-lightbox:hover { color: #fff; transform: rotate(90deg); }
+
+        footer { padding: 100px 50px; text-align: center; color: #333; letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; border-top: 1px solid #111; }
+
+        @media (max-width: 1024px) {
+            .work-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 30vw; }
+        }
         @media (max-width: 768px) {
-            .work-grid { grid-template-columns: 1fr; }
+            .work-grid { grid-template-columns: 1fr; grid-auto-rows: 56.25vw; }
+            .work-item.featured, .work-item.tall, .work-item.wide { grid-column: span 1; grid-row: span 1; }
             .portfolio-header h1 { font-size: 2rem; letter-spacing: 8px; }
         }
     </style>
 </head>
 <body>
 
-     <nav>
+    <nav>
         <a href="#" class="logo-link" id="mainLogo">
         <div class="compass-box">
                <div class="needle"></div>
@@ -229,30 +209,26 @@
             <a href="contact.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Contact</a>
         </div> 
     </nav>
-    
+
     <section class="portfolio-header">
         <h1 data-text="Selected Works">Selected Works</h1>
     </section>
 
-    <div class="mastery-block">
-        <span>The Electrician’s Precision</span>
-        <p>
-            With a background in cinematic lighting for major network productions, we approach every frame with a technical understanding of light and shadow. We don't just film spaces; we illuminate the architectural intent.
-        </p>
-    </div>
-
     <div class="filter-container">
-        <button class="filter-btn active" onclick="filterWork('all')">All Works</button>
-        <button class="filter-btn" onclick="filterWork('estate')">The Estate Collection</button>
-        <button class="filter-btn" onclick="filterWork('tactile')">The Tactile Series</button>
-        <button class="filter-btn" onclick="filterWork('institutional')">Institutional</button>
+        <button class="filter-btn active" onclick="filterGallery('all')">All</button>
+        <button class="filter-btn" onclick="filterGallery('estate')">Estate</button>
+        <button class="filter-btn" onclick="filterGallery('tactile')">Tactile</button>
+        <button class="filter-btn" onclick="filterGallery('institutional')">Institutional</button>
     </div>
 
-    <div class="work-grid" id="portfolioGrid">
+    <div class="work-grid" id="workGrid">
         </div>
 
-    <div class="modal" id="videoModal" onclick="closeVideo()">
-        <div class="modal-content" id="modalPlayer"></div>
+    <div id="videoLightbox" class="lightbox" onclick="closeVideo(event)">
+        <div class="lightbox-content">
+            <span class="close-lightbox">&times;</span>
+            <div id="videoPlayerFrame" style="width:100%; height:100%;"></div>
+        </div>
     </div>
 
     <footer>
@@ -260,81 +236,72 @@
     </footer>
 
     <script src="nav.js"></script>
+
     <script>
-        const works = [
-            { id: 'AVN2N2hopGk', title: 'The Modern Estate', category: 'estate', type: 'Architectural Cinema' },
-            { id: 'FEfAZ5CTP84', title: 'Artificially Yours', category: 'tactile', type: 'Tactile Narrative' },
-            { id: 'ONyk8VokO2k', title: 'Croc Fashion', category: 'tactile', type: 'Texture & Rhythm' },
-            { id: 'UV3Lvew15fs', title: 'Braising', category: 'tactile', type: 'Sensory Study' },
-            { id: 'U_s0PDP123c', title: 'Global Tech', category: 'institutional', type: 'Corporate Vision' }
+        // Your Curated Video Data
+        const projects = [
+            { id: 'AVN2N2hopGk', title: 'The Modern Estate', category: 'estate', type: 'Architectural Cinema', layout: 'featured' },
+            { id: 'FEfAZ5CTP84', title: 'Artificially Yours', category: 'tactile', type: 'Tactile Narrative', layout: 'tall' },
+            { id: 'ONyk8VokO2k', title: 'Croc Fashion', category: 'tactile', type: 'Design & Texture', layout: 'standard' },
+            { id: 'UV3Lvew15fs', title: 'Braising', category: 'tactile', type: 'Visual Rhythm', layout: 'standard' },
+            { id: 'U_s0PDP123c', title: 'Global Tech', category: 'institutional', type: 'Institutional Strategy', layout: 'wide' }
         ];
 
-        function renderWorks(filter = 'all') {
-            const grid = document.getElementById('portfolioGrid');
+        function renderGallery(filter = 'all') {
+            const grid = document.getElementById('workGrid');
             grid.innerHTML = '';
             
-            const filtered = filter === 'all' ? works : works.filter(w => w.category === filter);
+            const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
             
-            filtered.forEach(work => {
+            filtered.forEach(p => {
                 grid.innerHTML += `
-                    <div class="work-item" onclick="openVideo('${work.id}')">
-                        <img src="https://img.youtube.com/vi/${work.id}/maxresdefault.jpg" alt="${work.title}">
+                    <div class="work-item ${p.layout}" onclick="openVideo('${p.id}')">
+                        <img src="https://img.youtube.com/vi/${p.id}/maxresdefault.jpg" alt="${p.title}">
                         <div class="work-info">
-                            <h3>${work.title}</h3>
-                            <p>${work.type}</p>
+                            <h3>${p.title}</h3>
+                            <p>${p.type}</p>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function filterWork(cat) {
+        function filterGallery(cat) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.innerText.toLowerCase().includes(cat) || (cat === 'all' && btn.innerText.includes('All')));
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(cat)) btn.classList.add('active');
+                if(cat === 'all' && btn.innerText === 'ALL') btn.classList.add('active');
             });
-            renderWorks(cat);
+            renderGallery(cat);
         }
 
-        function openVideo(id) {
-            const modal = document.getElementById('videoModal');
-            const player = document.getElementById('modalPlayer');
-            player.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
-            modal.style.display = 'flex';
+        // Lightbox Functions
+        function openVideo(videoID) {
+            const lightbox = document.getElementById('videoLightbox');
+            const player = document.getElementById('videoPlayerFrame');
+            
+            player.innerHTML = `
+                <iframe 
+                    width="100%" height="100%" 
+                    src="https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1" 
+                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+                </iframe>`;
+            
+            lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeVideo() {
-            const modal = document.getElementById('videoModal');
-            document.getElementById('modalPlayer').innerHTML = '';
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+        function closeVideo(e) {
+            if (e.target.id === 'videoLightbox' || e.target.className === 'close-lightbox') {
+                const lightbox = document.getElementById('videoLightbox');
+                document.getElementById('videoPlayerFrame').innerHTML = '';
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         }
 
-        renderWorks();
-
-        function renderWorks(filter = 'all') {
-        const grid = document.getElementById('portfolioGrid');
-        grid.innerHTML = '';
-        
-        const filtered = filter === 'all' ? works : works.filter(w => w.category === filter);
-        
-        filtered.forEach((work, index) => {
-            // We assign 'featured' to the first item to give it prominence
-            let layoutClass = 'wide'; 
-            if (index === 0) layoutClass = 'featured';
-            if (index === 1) layoutClass = 'tall';
-
-            grid.innerHTML += `
-                <div class="work-item ${layoutClass}" onclick="openVideo('${work.id}')">
-                    <img src="https://img.youtube.com/vi/${work.id}/maxresdefault.jpg" alt="${work.title}">
-                    <div class="work-info">
-                        <h3>${work.title}</h3>
-                        <p>${work.type}</p>
-                    </div>
-                </div>
-            `;
-        });
-    }
+        // Initialize
+        renderGallery();
     </script>
 </body>
 </html>
