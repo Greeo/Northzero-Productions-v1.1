@@ -72,16 +72,14 @@
         }
         
         /* Links inside the dropdown */
-        .dropdown-content a {
-            color: #888 !important;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 0.65rem !important;
-            letter-spacing: 2px !important;
-            margin: 0 !important;
-            border-bottom: 1px solid #111;
-            transition: 0.3s;
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #0a0a0a;
+            min-width: 220px;
+            z-index: 9999 !important; /* Forces it to the very front */
+            border: 1px solid #222;
+            margin-top: 0; 
         }
         
         .dropdown-content a:hover {
