@@ -841,6 +841,34 @@
             }
         }
 
+        /* Responsive Typography Fix for Mobile */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.2rem !important; /* Shrinks the main title */
+                letter-spacing: 6px !important; /* Tightens the spacing so it fits */
+                line-height: 1.2;
+                padding: 0 20px; /* Prevents text from touching the screen edges */
+            }
+        
+            .hero-content p {
+                font-size: 0.7rem !important;
+                letter-spacing: 3px !important;
+            }
+        
+            .shutter-text {
+                font-size: 2.2rem !important; /* Syncs the glitch text size */
+                letter-spacing: 6px !important;
+            }
+        }
+        
+        /* Extra small screens (iPhone SE, etc.) */
+        @media (max-width: 480px) {
+            .hero-content h1, .shutter-text {
+                font-size: 1.8rem !important;
+                letter-spacing: 4px !important;
+            }
+        }
+
         footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
     </style>
 </head>
