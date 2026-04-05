@@ -282,7 +282,68 @@ nav {
         .hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; border: 2px solid var(--nz-gold); padding: 30px 60px; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); }
         .hero-overlay h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 12px; font-weight: 800; color: white; }
 
+ @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 20px; }
+            .nav-links { display: none; } /* Hidden for mobile simplicity */
+        }
 
+                /* --- MOBILE NAVIGATION LOGIC --- */
+
+        /* 1. Default Desktop View (Hiding the Burger) */
+        .menu-toggle, .hamburger-icon {
+            display: none;
+        }
+
+        /* 2. Mobile & Tablet View (Below 1024px) */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 15px 5%;
+                justify-content: space-between; /* Pins Logo left, Burger right */
+            }
+
+            /* Hide the standard text links */
+            .nav-links {
+                display: none;
+            }
+
+            /* Show the Hamburger Widget */
+            .hamburger-icon {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 21px;
+                cursor: pointer;
+                z-index: 1001;
+            }
+
+            /* The Three Lines (Gold to match your brand) */
+            .hamburger-icon span {
+                display: block;
+                width: 100%;
+                height: 3px;
+                background-color: var(--nz-gold);
+                border-radius: 3px;
+                transition: all 0.3s ease;
+            }
+
+            /* Mobile Menu Drawer (Hidden by default) */
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Off-screen */
+                width: 250px;
+                height: 100vh;
+                background: var(--nz-black);
+                border-left: 1px solid #222;
+                padding: 80px 40px;
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+                transition: right 0.4s ease;
+                z-index: 1000;
+            }
 
 
 
