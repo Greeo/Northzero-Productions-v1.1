@@ -5,14 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Lens | Northzero Productions</title>
     <style>
-        :root {
+         :root {
             --bg-color: #0a0a0a;
             --text-color: #f0f0f0;
-            --accent-color: #d4af37; /* NZ Gold */
+            --text-muted: #aaaaaa;
+            --accent-color: #d4af37; /* Gold/Cinematic accent */
+            --secondary-bg: #141414;
+            --card-bg: #111;
+            --font-main: 'Helvetica Neue', sans-serif;
             --nz-blue: #0047ab;
             --nz-gold: #d4af37;
+            --nz-black: #0a0a0a;
             --nz-white: #ffffff;
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,21 +25,90 @@
         /* Navigation */
         nav {
             display: flex; justify-content: space-between; align-items: center; padding: 20px 50px;
-            background: rgba(10, 10, 10, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #222;
+        }
+         
+        .nav-links { display: flex; gap: 30px; }
+        .hamburger-icon, .mobile-dropdown { display: none; }
+
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .hamburger-icon {
+                display: flex; flex-direction: column; justify-content: space-between;
+                width: 30px; height: 20px; cursor: pointer; z-index: 2000;
+            }
+            .hamburger-icon span { display: block; width: 100%; height: 2px; background-color: #ffffff; transition: 0.4s ease; }
+            
+            .mobile-dropdown {
+                display: flex; position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+                background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(10px);
+                flex-direction: column; justify-content: center; align-items: center; gap: 35px;
+                transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0); z-index: 1500;
+            }
+            .mobile-dropdown.active { right: 0; }
         }
 
-        .logo-link { display: flex; align-items: center; text-decoration: none; }
-        .compass-box { width: 38px; height: 38px; border: 1.5px solid var(--nz-gold); border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; }
-        .needle { width: 2px; height: 24px; transform: rotate(-45deg); position: relative; }
-        .needle::before { content: ''; position: absolute; top: 0; border-left: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 12px solid var(--nz-blue); transform: translateX(-1.5px); }
-        .needle::after { content: ''; position: absolute; bottom: 0; border-left: 3px solid transparent; border-right: 3px solid transparent; border-top: 12px solid var(--nz-gold); transform: translateX(-1.5px); }
+        /* Logo & Compass Styles */
+        .logo-link { display: inline-flex; align-items: center; background: var(--nz-black); padding: 15px 25px; text-decoration: none; }
+        .compass-box {
+            position: relative; width: 50px; height: 50px; border: 2px solid #333; border-radius: 50%;
+            margin-right: 20px; display: flex; align-items: center; justify-content: center; transition: 0.4s ease;
+        }
+        .needle {
+            position: relative; width: 4px; height: 36px; transform: rotate(-45deg);
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .needle::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0;
+            border-left: 4px solid transparent; border-right: 4px solid transparent;
+            border-bottom: 18px solid var(--nz-blue); transform: translateX(-2px);
+        }
+        .needle::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 0;
+            border-left: 4px solid transparent; border-right: 4px solid transparent;
+            border-top: 18px solid var(--nz-gold); transform: translateX(-2px);
+        }
 
-        .logo-text { display: flex; flex-direction: column; text-transform: uppercase; line-height: 1; }
-        .main-title { font-size: 1.2rem; font-weight: 900; color: #fff; letter-spacing: 2px; }
-        .sub-title { font-size: 0.55rem; color: var(--nz-gold); letter-spacing: 4px; }
+        .logo-text { display: flex; flex-direction: column; text-transform: uppercase; }
+        .main-title {
+            font-size: 1.8rem; font-weight: 900; color: var(--nz-white); letter-spacing: 3px; line-height: 1;
+            background: linear-gradient(120deg, rgba(255,255,255,1) 40%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,1) 60%);
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+        }
+        .main-title span.blue-zero { color: var(--nz-blue); -webkit-text-fill-color: var(--nz-blue); }
+        .sub-title { font-size: 0.75rem; font-weight: 300; color: var(--nz-gold); letter-spacing: 6.5px; margin-top: 4px; }
+        
+        .logo-link:hover .needle { transform: rotate(0deg); }
+        .logo-link:hover .compass-box { border-color: var(--nz-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
 
-        .nav-links a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; }
+        .nav-links a { color: var(--text-color); text-decoration: none; margin-left: 25px; font-size: 0.9rem; text-transform: uppercase; transition: color 0.3s; -webkit-align-content: center; }
+        .nav-links a:hover { color: var(--accent-color); }
+        .cta-btn { border: 1px solid var(--accent-color); padding: 10px 25px; color: var(--accent-color); transition: all 0.3s; }
+        .cta-btn:hover { background: var(--accent-color); color: var(--bg-color); }
+
+        /* Header */
+        .page-header {
+            height: 75vh; background: linear-gradient(to bottom, rgba(0,0,0,0.8), var(--bg-color)), url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
+        }
+        .page-header h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; }
+        .page-header p { font-size: 1.1rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Hero Section */
+        .hero-section { position: relative; width: 100%; height: 10vh; display: flex; align-items: center; justify-content: center; background: #090909; margin-bottom: 12%; }
+        .hero-content { position: relative; z-index: 2; text-align: center; margin-bottom: 9%; }
+        
+        .title-box {
+            padding: 30px 60px; border: 2px solid var(--nz-gold); display: inline-block;
+            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); animation: fadeInBox 1.5s ease-out forwards;
+        }
+        .title-box h1 {
+            color: var(--nz-white); font-size: 4rem; text-transform: uppercase; letter-spacing: 15px; font-weight: 900; margin: 0;
+            background: linear-gradient(120deg, #fff 40%, var(--nz-gold) 50%, #fff 60%);
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: shimmer 6s linear infinite;
+        }
 
         /* Hero YouTube Background */
         .hero {
@@ -51,7 +124,7 @@
             position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw;
             min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%);
         }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.5); z-index: -1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.55); z-index: -1; }
 
         /* Sophisticated Shutter Glitch */
         .hero-content h1 {
@@ -69,38 +142,60 @@
 
         .hero-content p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 5px; color: var(--nz-gold); margin-top: 10px; }
 
-        /* Philosophy & Content */
-        .content-section { padding: 100px 50px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .content-section h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 40px; color: var(--nz-gold); }
-        .content-section p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; font-weight: 300; line-height: 2; }
+        /* Philosophy & Content Sections */
+        .manifesto { padding: 120px 50px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .manifesto h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 40px; color: var(--nz-gold); font-weight: 400; }
+        .manifesto p { font-size: 1.3rem; color: #ddd; margin-bottom: 40px; font-weight: 300; line-height: 2; }
 
-        .pillar-block { 
-            background: #111; padding: 100px 50px; border-top: 1px solid #222; border-bottom: 1px solid #222;
-            display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap;
+        .pillar-row { 
+            background: #0d0d0d; padding: 100px 50px; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a;
+            display: flex; align-items: center; justify-content: center; gap: 80px; flex-wrap: wrap;
         }
-        .pillar-text { max-width: 500px; text-align: left; }
-        .pillar-text h3 { color: var(--nz-white); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 25px; }
-        .pillar-text p { font-size: 1rem; color: #aaa; line-height: 2.2; }
-        .pillar-image { width: 320px; height: 420px; border: 1px solid var(--nz-gold); overflow: hidden; }
+        .pillar-text { max-width: 550px; text-align: left; }
+        .pillar-text h3 { color: var(--nz-white); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 25px; font-size: 1.4rem; }
+        .pillar-text p { font-size: 1rem; color: #999; line-height: 2.2; margin-bottom: 20px; }
+        
+        .pillar-img-wrapper { width: 350px; height: 480px; border: 1px solid var(--nz-gold); overflow: hidden; padding: 10px; }
+        .pillar-img-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.2); }
 
-        footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
+        footer { padding: 80px 50px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 3px; text-transform: uppercase; font-size: 0.65rem; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo-link">
-           <div class="compass-box"><div class="needle"></div></div>
+     <nav>
+        <a href="#" class="logo-link" id="mainLogo">
+        <div class="compass-box">
+               <div class="needle"></div>
+           </div>
            <div class="logo-text">
-               <div class="main-title">NorthZero</div>
+               <div class="main-title"><span>NorthZero</span></div>
                <div class="sub-title">Productions</div>
            </div>
         </a>
         <div class="nav-links">
-            <a href="work.html">Portfolio</a>
-            <a href="index.html">Agency</a>
-            <a href="contact.html">Inquiry</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="all-services.html">Services</a>
+            <a href="work.html" style="color: var(--accent-color);">Work</a>
+            <a href="policies.html">Policies</a>
+            <a href="contact.html" class="cta-btn">Contact Us</a>
         </div>
+
+        <div class="hamburger-icon" id="burgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+        </div>
+
+        <div class="mobile-dropdown" id="mobileMenu">
+            <a href="index.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Home</a>
+            <a href="about.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">About</a>
+            <a href="all-services.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Services</a>
+            <a href="work.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Work</a>
+            <a href="policies.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Policies</a>
+            <a href="contact.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Contact</a>
+        </div> 
     </nav>
 
     <section class="hero">
@@ -114,44 +209,25 @@
         </div>
     </section>
 
-    <section class="content-section">
+    <section class="manifesto">
         <h2>Our Philosophy</h2>
         <p>
-            At Northzero Productions, we believe that every structure has a heartbeat and every product has a tactile soul. 
-            We don't just capture images; we archive the structural integrity and emotional resonance of a space.
+            At Northzero Productions, we believe that every structure has a heartbeat. We reveal the structural narrative, translating architectural intent into cinematic permanence.
         </p>
     </section>
 
-    <section class="pillar-block">
-        <div class="pillar-image">
-            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=320&h=420&q=80" alt="Architecture" style="width:100%; height:100%; object-fit:cover; opacity:0.6;">
+    <section class="pillar-row">
+        <div class="pillar-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Architectural Detail">
         </div>
         <div class="pillar-text">
-            <h3>The Preservationist's Perspective</h3>
+            <h3>The Preservationist's Lens</h3>
             <p>
-                Founded by Omar A. Greene, a member of the <strong>Village of Ossining Historic Preservation Commission</strong>, 
-                Northzero is built on a foundation of architectural respect. Our background in preservation means we approach 
-                Real Estate and Design films with a unique understanding of "The Bones"—the historical and structural elements 
-                that make a property truly valuable.
+                Founded by Omar A. Greene—an alternate member of the <strong>Village of Ossining Historic Preservation Commission</strong>—Northzero is grounded in a deep respect for structural history. 
             </p>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <h2>The Methodology</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 60px;">
-            <div>
-                <h4 style="color:var(--nz-gold); text-transform:uppercase; margin-bottom:15px; letter-spacing:2px;">01. Discovery</h4>
-                <p style="font-size:0.85rem; color:#777;">Identifying the structural narrative and design goals.</p>
-            </div>
-            <div>
-                <h4 style="color:var(--nz-gold); text-transform:uppercase; margin-bottom:15px; letter-spacing:2px;">02. Capture</h4>
-                <p style="font-size:0.85rem; color:#777;">Cinematography focused on light, texture, and architectural flow.</p>
-            </div>
-            <div>
-                <h4 style="color:var(--nz-gold); text-transform:uppercase; margin-bottom:15px; letter-spacing:2px;">03. Archive</h4>
-                <p style="font-size:0.85rem; color:#777;">Elevating raw footage into a timeless brand asset.</p>
-            </div>
+            <p>
+                We approach luxury real estate with a unique understanding of "The Bones"—the craftsmanship and historical context that define true market value.
+            </p>
         </div>
     </section>
 
@@ -162,7 +238,7 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         let player;
-        const videoID = 'Cb5zhr23b4s'; // Corrected ID from your link
+        const videoID = 'AVN2N2hopGk'; // New Video ID implemented
 
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('yt-player', {
@@ -173,11 +249,12 @@
                     'showinfo': 0,
                     'rel': 0,
                     'loop': 1,
-                    'playlist': videoID, // Needed for looping
+                    'playlist': videoID,
                     'mute': 1,
                     'modestbranding': 1,
                     'iv_load_policy': 3,
-                    'disablekb': 1
+                    'disablekb': 1,
+                    'start': 5 // Optional: Start 5 seconds in to skip any intro
                 },
                 events: {
                     'onReady': (event) => event.target.playVideo()
