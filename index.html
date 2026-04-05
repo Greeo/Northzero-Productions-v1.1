@@ -6,83 +6,53 @@
     <title>Northzero Productions | Cinematic Design & Narrative</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    
     <style>
-         :root {
+        /* PAGE-SPECIFIC HERO STYLES (Keep these here) */
+        :root {
             --bg-color: #0a0a0a;
             --text-color: #f0f0f0;
-            --text-muted: #aaaaaa;
-            --accent-color: #d4af37;
-            --secondary-bg: #141414;
-            --input-bg: #1a1a1a;
+            --nz-white: #ffffff;
+            --nz-gold: #d4af37;
             --font-main: 'Helvetica Neue', sans-serif;
-            --nz-blue: #0047ab;
-            --nz-gold: #d4af37;
-            --nz-black: #0a0a0a;
-            --nz-white: #ffffff;
+            --secondary-bg: #141414;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-main);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-    
-       :root {
-            --nz-blue: #0047ab;
-            --nz-gold: #d4af37;
-            --nz-black: #0a0a0a;
-            --nz-white: #ffffff;
-        }
-        
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); line-height: 1.8; overflow-x: hidden; }
 
         /* Sophisticated Shutter Glitch */
         .slide-content h1 {
             font-size: 3.5rem;
             text-transform: uppercase;
-            letter-spacing: 12px; /* Increased for a more premium look */
+            letter-spacing: 12px;
             margin-bottom: 20px;
             color: var(--nz-white);
             position: relative;
             display: inline-block;
         }
 
-        /* Base style for the ghost layers */
         .slide-content h1::before,
         .slide-content h1::after {
             content: attr(data-text);
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-color); /* Matches background to "cut" the text */
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color);
             clip: rect(0, 0, 0, 0); 
         }
 
-        /* Subtle Magenta/Blue Split */
         .slide-content h1::after {
             left: 2px;
-            text-shadow: -1px 0 rgba(0, 71, 171, 0.7); /* NZ Blue tint */
+            text-shadow: -1px 0 rgba(0, 71, 171, 0.7);
             animation: shutter-glitch-1 10s infinite linear alternate-reverse;
         }
 
         .slide-content h1::before {
             left: -2px;
-            text-shadow: 2px 0 rgba(212, 175, 55, 0.7); /* NZ Gold tint */
+            text-shadow: 2px 0 rgba(212, 175, 55, 0.7);
             animation: shutter-glitch-2 10s infinite linear alternate-reverse;
         }
 
-        /* Rare, sharp horizontal slices */
         @keyframes shutter-glitch-1 {
             0%, 18%, 22%, 100% { clip: rect(0, 0, 0, 0); opacity: 0; }
             20% { clip: rect(15px, 9999px, 16px, 0); opacity: 1; transform: scaleX(1.1); }
@@ -95,328 +65,47 @@
             20.5% { clip: rect(80px, 9999px, 82px, 0); opacity: 1; transform: translateX(-5px); }
         }
 
-            
-        .slider-container { position: relative; height: 90vh; width: 100%; overflow: hidden; }
+        /* Slider */
+        .slider-container { position: relative; height: 90vh; width: 100%; overflow: hidden; margin-top: 80px; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; display: flex; align-items: center; justify-content: center; text-align: center; }
         .slide.active { opacity: 1; }
         
-        /* Slide Backgrounds - Replace these placeholders with your actual reel footage or stills */
         .slide-1 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover; }
         .slide-2 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1920&q=80') center/cover; }
         .slide-3 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80') center/cover; }
         .slide-4 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1950&q=80') center/cover; }
 
-
         .slide-content { padding: 0 20px; max-width: 1000px; }
-        .slide-content h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 20px; color: var(--nz-white); }
         .slide-content p { font-size: 1.1rem; color: #ddd; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
 
-        /* Preservationist Block */
+        /* Sections */
         .authority-section { padding: 100px 50px; background: #000; text-align: center; border-bottom: 1px solid #222; }
-        .authority-content { max-width: 800px; margin: 0 auto; }
         .authority-content h2 { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 30px; font-size: 1.8rem; }
-        .authority-content p { font-size: 1.1rem; line-height: 2; color: #aaa; font-weight: 300; }
+        .authority-content p { font-size: 1.1rem; line-height: 2; color: #aaa; font-weight: 300; max-width: 800px; margin: 0 auto; }
 
-        /* Grid */
-        .grid-section { padding: 100px 50px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .service-card { border: 1px solid #222; padding: 50px; transition: 0.4s; text-decoration: none; background: #0c0c0c; }
-        .service-card:hover { border-color: var(--nz-gold); }
-        .service-card h3 { color: var(--nz-white); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; font-size: 1rem; }
-        .service-card p { color: #777; font-size: 0.85rem; line-height: 1.8; }
-
-        footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
-
-        /* --- GALLERY GRID (3x2) --- */
-        .gallery-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .gallery-item { position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden; border: 1px solid #222; cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
-        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; z-index: 5; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; background: rgba(0,0,0,0.6); }
-        .gallery-item:hover img { transform: scale(1.05); opacity: 0.3; }
-
-        /* Section Global Styles */
         .section { padding: 100px 50px; }
         .bg-dark { background-color: var(--secondary-bg); }
-        .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 60px; text-align: center; color: var(--accent-color); }
+        .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 60px; text-align: center; color: var(--nz-gold); }
 
-        /* Expertise Grid */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .service-card { background: #1a1a1a; padding: 40px; border: 1px solid #333; transition: 0.3s; text-decoration: none; }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--accent-color); }
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
-        .service-card p { color: #aaa; font-size: 0.95rem; }
-
-       
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
-            max-width: 900px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 40px;
-            color: #ccc;
-        }
-
-        /* Services Section */
-        .section {
-            padding: 100px 50px;
-        }
-
-        .bg-dark {
-            background-color: var(--secondary-bg);
-        }
-
-        .section-title {
-            font-size: 2rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 60px;
-            text-align: center;
-            color: var(--accent-color);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: #1a1a1a;
-            padding: 40px;
-            border: 1px solid #333;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            text-decoration: none;
-            display: block;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .service-card p {
-            color: #aaa;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Portfolio / Work */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 10px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-            background: #222;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: all 0.5s ease;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-            opacity: 1;
-        }
-
-        .overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(0,0,0,0.7);
-            padding: 10px 20px;
-            border-left: 3px solid var(--accent-color);
-        }
-        
-        .overlay h4 {
-            color: #fff;
-            text-transform: uppercase;
-        }
-
-        /* FIXED PRESENTATION SLIDER SECTION */
-
-        #presentation {
-            width: 100%;
-            min-height: 983px;
-            position: relative;
-            z-index: 5; /* Ensures it stays above background elements but below the Nav */
-        }
-        /* Ensure the wrapper hides the 'inactive' slides */
-        .slider-wrapper {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-        /* Ensure the container can grow wide enough for all slides */
-        .slider-container { 
-            display: flex; 
-            width: 100%; 
-            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1); /* Smoother movement */
-        }
-
-       /* Update this in your index.html <style> section */
-        .slide-frame { 
-            min-width: 100%; 
-            flex-shrink: 0; 
-            aspect-ratio: 16 / 9; 
-            background: #000;
-            display: flex; /* Key fix: enables flex alignment */
-            justify-content: center; /* Centers horizontally */
-            align-items: center; /* Centers vertically */
-            overflow: hidden;
-        }
-        
-        .slide-frame iframe { 
-            width: 100%; 
-            height: 100%; 
-            border: none; 
-            display: block;
-        }
-
-        div.content-area {
-            flex-grow: 1;
-            width: 100%;
-            max-height: 983px;
-            padding: 40px 80px 24px;
-            display: flex;
-            
-        }
-
-        /* Ensure controls are visible and clickable */
-        .slider-controls { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            margin-top: 30px; 
-            gap: 20px; 
-            padding-bottom: 40px; 
-        }
-
-        .slide-nav {
-            background: transparent; 
-            border: 1px solid var(--accent-color); 
-            color: var(--accent-color); 
-            width: 45px; height: 45px; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-        }
-        .slide-nav:hover { 
-            background: var(--accent-color); 
-            color: #000; 
-        }
-        .slide-indicators {
-            display: inline;
-        }
-        .dot { 
-            width: 8px; 
-            height: 8px; 
-            background: #444; 
-            border-radius: 50%; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            display: inline-block;
-        }
-        .dot.active { 
-            background: var(--accent-color); 
-            width: 20px; 
-            border-radius: 4px; 
-        }
-        
-
-        /* Contact & Footer */
-        .contact-section {
-            text-align: center;
-            padding: 100px 20px;
-        }
-
-        .contact-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            font-size: 1.1rem;
-            color: #ccc;
-        }
-
-        footer {
-            background: #000;
-            padding: 20px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #666;
-            border-top: 1px solid #222;
-        }
-
-       
-
-            /* Logic to show menu when the hidden checkbox is checked */
-            #menu-checkbox:checked ~ .mobile-menu {
-                right: 0;
-            }
-
-            /* Animate Hamburger into an 'X' when open */
-            #menu-checkbox:checked ~ .hamburger-icon span:nth-child(1) {
-                transform: translateY(9px) rotate(45deg);
-            }
-            #menu-checkbox:checked ~ .hamburger-icon span:nth-child(2) {
-                opacity: 0;
-            }
-            #menu-checkbox:checked ~ .hamburger-icon span:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg);
-            }
-
-        
+        .service-card { background: #1a1a1a; padding: 40px; border: 1px solid #333; transition: 0.3s; text-decoration: none; border: 1px solid #222; }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--nz-gold); }
+        .service-card h3 { font-size: 1.2rem; margin-bottom: 15px; color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+        .service-card p { color: #aaa; font-size: 0.9rem; }
 
         footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
+
+        /* Mobile Typography Fix */
+        @media (max-width: 768px) {
+            .slide-content h1 { font-size: clamp(1.8rem, 10vw, 3rem) !important; letter-spacing: 2px !important; }
+        }
     </style>
 </head>
 <body>
 
-     <nav></nav>
-    
-     <div class="slider-container">
+    <nav></nav>
+
+    <div class="slider-container">
         <div class="slide slide-1 active">
             <div class="slide-content">
                 <h1 data-text="Architectural Cinema">Architectural Cinema</h1>
@@ -452,107 +141,34 @@
             <h2>Historic Preservation Roots</h2>
             <p>
                 At Northzero, we bridge the gap between structural design and cinematic narrative. From historic Westchester estates to modern luxury builds, we produce films that define prestige.
-                As an alternate member of the <strong>Village of Ossining Historic Preservation Commission</strong>founder, Omar A. Greene, brings a deep respect for architectural integrity to every frame.
-                With roots in the Local 52 Film & Television industry, our work is grounded in a deep respect for the design history of New York. We bridge the gap 
-                between historic craftsmanship and modern cinematic storytelling.
+                As an alternate member of the Village of Ossining Historic Preservation Commission, Omar A. Greene brings a deep respect for architectural integrity to every frame.
             </p>
         </div>
     </section>
 
-   
     <section id="services" class="section bg-dark">
         <h2 class="section-title">Our Expertise</h2>
         <div class="services-grid">
-            
             <a href="all-services.html#pre-production" class="service-card">
                 <h3>Hero Listing Films</h3>
                 <p>Bespoke narratives for luxury real estate. We sell the dream of the design, not just the square footage.</p>
             </a>
-
             <a href="all-services.html#storytelling" class="service-card">
                 <h3>Exterior Design Spotlight</h3>
                 <p>High-altitude drone cinematography and ground-level texture for pool and landscape architecture.</p>
             </a>
-
             <a href="all-services.html#storytelling" class="service-card">
                 <h3>Brand Identity Spots</h3>
                 <p>Rhythmic, design-forward commercials that position your business at the top of its niche.</p>
             </a>
-
-            <a href="all-services.html#web-design" class="service-card">
-                <h3>Web Design & Dev</h3>
-                <p>Beyond video, we build digital homes. Modern, responsive websites that convert visitors into clients.</p>
-            </a>
-
-            <a href="all-services.html#post-production" class="service-card">
-                <h3>Post-Production</h3>
-                <p>Professional editing, color grading, and sound design to ensure your footage looks and sounds world-class.</p>
-            </a>
-
-            <a href="all-services.html#storytelling" class="service-card">
-                <h3>Social Media</h3>
-                <p>Authentic, high-quality social content and testimonials that build trust and drive engagement.</p>
-            </a>
-
         </div>
     </section>
-
-     <section id="work">
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1769142144950-52b0e5734f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 1">
-                <div class="overlay">
-                    <h4>Urban Fashion Campaign</h4>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 2">
-                <div class="overlay">
-                    <h4>Tech Product Launch</h4>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1769140771440-e691bc16bf8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 3">
-                <div class="overlay">
-                    <h4>Luxury Real Estate Tour</h4>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="https://images.unsplash.com/photo-1769141775486-4be69e095f75?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Project 4">
-                <div class="overlay">
-                    <h4>Corporate Documentary</h4>
-                </div>
-            </div>
-        </div>
-        <div style="text-align: center; background: #222; padding: 30px;">
-            <a href="work.html" class="cta-btn" style="border-color: #555; color: #fff;">View Full Portfolio</a>
-        </div>
-    </section>
-
-
-    <section id="contact" class="section">
-        <h2>Ready to Elevate Your Brand?</h2>
-        <p>Let Northzero Productions bring your vision to life.</p>
-        
-        <div class="contact-info">
-            <p><strong>Email:</strong> admin@northzeroproductions.com</p>
-            <p><strong>Phone:</strong> (914) 458-7355</p>
-            <p><strong>Location:</strong> Ossining, NY</p>
-        </div>
-        
-        <div style="margin-top: 50px;">
-            <a href="contact.html" class="cta-btn" style="font-size: 1rem; padding: 15px 40px;">Contact Us</a>
-        </div>
-    </section>
-
-
-
-   
 
     <footer>
         &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
+    <script src="nav.js"></script>
     <script>
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
@@ -563,101 +179,8 @@
             slides[currentSlide].classList.add('active');
         }
 
-        setInterval(nextSlide, 5000); // Transitions every 5 seconds
-
-         // Configuration
-        const slideFiles = ['slide7.html', 'slide6.html', 'slide5.html', 'slide4.html', 'slide3.html', 'slide2.html', 'slide1.html'];
-        let currentIdx = 0;
-        let slideInterval; // Variable for the timer
-
-        const slider = document.getElementById('mainSlider');
-        const dotsContainer = document.getElementById('slideDots');
-
-        function initSlider() {
-            slider.innerHTML = '';
-            dotsContainer.innerHTML = '';
-
-            slideFiles.forEach((file, i) => {
-                const div = document.createElement('div');
-                div.className = 'slide-frame';
-                div.innerHTML = `<iframe src="${file}" loading="lazy"></iframe>`;
-                slider.appendChild(div);
-
-                const dot = document.createElement('div');
-                dot.className = i === 0 ? 'dot active' : 'dot';
-                dot.onclick = () => {
-                    goToSlide(i);
-                    resetTimer(); // Stop auto-play when user clicks
-                };
-                dotsContainer.appendChild(dot);
-            });
-
-            startAutoPlay(); // Start movement immediately on load
-        }
-
-        function startAutoPlay() {
-            slideInterval = setInterval(() => {
-                moveSlide(1);
-            }, 5000); // Change slide every 5 seconds
-        }
-
-        function resetTimer() {
-            clearInterval(slideInterval);
-            startAutoPlay(); // Restart the timer after interaction
-        }
-
-        function moveSlide(direction) {
-            currentIdx = (currentIdx + direction + slideFiles.length) % slideFiles.length;
-            updateSlider();
-        }
-
-        function goToSlide(index) {
-            currentIdx = index;
-            updateSlider();
-        }
-
-        function updateSlider() {
-            // This moves the container by 100% of the wrapper's width per slide
-            slider.style.transform = `translateX(-${currentIdx * 100}%)`;
-            
-            // Updates dots active state
-            const allDots = dotsContainer.querySelectorAll('.dot');
-            allDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIdx);
-            });
-        }
-
-        // Initializing when the DOM is ready
-        document.addEventListener('DOMContentLoaded', initSlider);
-
-        // --- MOBILE MENU LOGIC ---
-        function toggleMenu() {
-            // Targeted the existing mobile-dropdown class in your CSS
-            const mobileNav = document.querySelector('.mobile-dropdown');
-            if (mobileNav) {
-                mobileNav.classList.toggle('active');
-                
-                // Toggle body scroll to prevent "scrolling behind" the menu
-                if (mobileNav.classList.contains('active')) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = 'auto';
-                }
-            }
-        }
-
-        // --- INITIALIZATION ---
-        window.addEventListener('DOMContentLoaded', () => {
-            initSlider();
-            
-            // Optional: Auto-play hero video if it exists
-            const heroVid = document.querySelector('.hero-video');
-            if (heroVid) {
-                heroVid.play().catch(() => console.log("Autoplay blocked."));
-            }
-        });
+        setInterval(nextSlide, 5000); 
     </script>
-    <script src="nav.js"></script>
 </body>
 </html>
 
