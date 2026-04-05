@@ -1,105 +1,25 @@
-/* ============================================================
-   NORTHZERO PRODUCTIONS - MASTER GLOBAL BRAND STYLES
-   ============================================================ */
-
-/* PAGE-SPECIFIC HERO STYLES (Keep these here) */
+/* --- NORTHZERO MASTER VARIABLES --- */
 :root {
-   --bg-color: #0a0a0a;
-   --text-color: #f0f0f0;
-   --nz-white: #ffffff;
-   --nz-gold: #d4af37;
-   --font-main: 'Helvetica Neue', sans-serif;
-   --secondary-bg: #141414;
+    --nz-blue: #0047ab;
+    --nz-gold: #d4af37;
+    --nz-black: #0a0a0a;
+    --nz-white: #ffffff;
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-/* ============================================================
-   RESTORED NORTHZERO LOGO & COMPASS (MASTER)
-   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-.logo-link {
-    display: inline-flex !important; /* Forces layout */
-    align-items: center;
-    text-decoration: none;
-    cursor: pointer;
-    z-index: 10001; /* Stays above the nav blur */
+body { 
+    background-color: var(--nz-black); 
+    color: var(--nz-white); 
+    font-family: var(--font-main); 
+    line-height: 1.6; 
+    overflow-x: hidden;
 }
 
-.compass-box {
-    position: relative;
-    width: 48px;
-    height: 48px;
-    border: 2px solid #333;
-    border-radius: 50%;
-    margin-right: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.needle {
-    position: relative;
-    width: 4px;
-    height: 34px;
-    transform: rotate(-45deg);
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Blue North Tip */
-.needle::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 50%;
-    width: 0; height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-bottom: 17px solid var(--nz-blue);
-    transform: translateX(-50%);
-}
-
-/* Gold South Tip */
-.needle::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 50%;
-    width: 0; height: 0;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
-    border-top: 17px solid var(--nz-gold);
-    transform: translateX(-50%);
-}
-
-/* Shimmering Text Logic */
-.main-title {
-    font-size: 1.7rem;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 3px;
-    line-height: 1;
-    background: linear-gradient(120deg, #fff 40%, rgba(255,255,255,0.4) 50%, #fff 60%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 5s linear infinite;
-}
-
-.sub-title {
-    font-size: 0.7rem;
-    color: var(--nz-gold);
-    letter-spacing: 6.5px;
-    margin-top: 4px;
-    text-transform: uppercase;
-}
-
-/* Interactive Hover */
-.logo-link:hover .needle { transform: rotate(0deg); }
-.logo-link:hover .compass-box { border-color: var(--nz-gold); box-shadow: 0 0 15px rgba(212,175,55,0.3); }
-
-@keyframes shimmer { to { background-position: 200% center; } }
-
-
-/* --- 1. GLOBAL NAVIGATION BAR --- */
+/* --- THE ANCHOR BEAM (Nav) --- */
 nav {
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,212 +27,108 @@ nav {
     background: rgba(10, 10, 10, 0.98);
     position: fixed;
     width: 100%;
-    height: 80px; /* Essential: Gives the dropdown a "starting line" */
+    height: 80px; /* Fixed height locks the dropdown anchor */
     top: 0;
     left: 0;
     z-index: 9999;
     border-bottom: 1px solid #222;
-    -webkit-backdrop-filter: blur(15px); /* Safari support */
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
 }
 
-/* --- 2. THE COMPASS LOGO (RESTORED VIGOR) --- */
+/* --- LOGO ARCHITECTURE --- */
 .logo-link {
+    display: -webkit-inline-flex;
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-    transition: 0.3s;
+    z-index: 10001;
 }
 
 .compass-box {
-    position: relative;
-    width: 48px;
-    height: 48px;
+    width: 42px; height: 42px;
     border: 2px solid #333;
     border-radius: 50%;
-    margin-right: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin-right: 15px;
+    display: flex; align-items: center; justify-content: center;
+    transition: 0.4s;
 }
 
 .needle {
-    position: relative;
-    width: 4px;
-    height: 34px;
+    width: 3px; height: 30px;
+    background: linear-gradient(var(--nz-blue) 50%, var(--nz-gold) 50%);
     transform: rotate(-45deg);
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.needle::before { /* Blue North Tip */
-    content: ''; position: absolute; top: 0; left: 50%;
-    border-left: 4px solid transparent; border-right: 4px solid transparent;
-    border-bottom: 17px solid var(--nz-blue); transform: translateX(-50%);
-}
-
-.needle::after { /* Gold South Tip */
-    content: ''; position: absolute; bottom: 0; left: 50%;
-    border-left: 4px solid transparent; border-right: 4px solid transparent;
-    border-top: 17px solid var(--nz-gold); transform: translateX(-50%);
-}
-
-.logo-text { display: flex; flex-direction: column; text-transform: uppercase; }
-
-.main-title {
-    font-size: 1.7rem;
-    font-weight: 900;
-    color: var(--nz-white);
-    letter-spacing: 3px;
-    line-height: 1;
-    position: relative;
-    /* Shimmer Effect */
-    background: linear-gradient(120deg, #fff 40%, rgba(255,255,255,0.4) 50%, #fff 60%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 5s linear infinite;
-}
-
-.sub-title {
-    font-size: 0.7rem;
-    color: var(--nz-gold);
-    letter-spacing: 6.5px;
-    margin-top: 4px;
-}
-
-@keyframes shimmer { to { background-position: 200% center; } }
-
-/* Logo Hover */
 .logo-link:hover .needle { transform: rotate(0deg); }
-.logo-link:hover .compass-box { border-color: var(--nz-gold); box-shadow: 0 0 15px rgba(212,175,55,0.3); }
+.logo-link:hover .compass-box { border-color: var(--nz-gold); }
 
-/* --- 3. DESKTOP NAVIGATION & DROPDOWN --- */
-.nav-links { display: flex; align-items: center; gap: 30px; overflow: visible !important; }
+.main-title { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; color: #fff; display: block; line-height: 1.1; }
+.sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; display: block; }
+
+/* --- NAVIGATION & DROPDOWN --- */
+.nav-links { display: flex; align-items: center; height: 100%; gap: 35px; }
 
 .nav-links a {
-    color: var(--nz-white) !important;
     text-decoration: none;
-    font-size: 0.75rem !important;
+    color: #eee;
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-size: 0.7rem;
     transition: 0.3s;
 }
 
-.nav-links a:hover { color: var(--nz-gold) !important; }
-
-* --- 2. THE CHASSIS (Links Container) --- */
-.nav-links {
-    display: flex;
-    align-items: center;
-    height: 100%; /* Spans the full 80px */
-    gap: 35px;
-}
-
-/* --- 3. THE ANCHOR (Dropdown Parent) --- */
 .dropdown {
-    position: relative; /* This is the "Anchor" */
-    height: 100%; 
-    display: flex;
-    align-items: center;
-}
-
-.dropbtn {
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.75rem;
+    position: relative;
     height: 100%;
     display: flex;
     align-items: center;
-    cursor: pointer;
 }
 
-/* --- 4. THE LENS (The Dropdown Menu) --- */
+.dropbtn { cursor: pointer; height: 100%; display: flex; align-items: center; }
+
 .dropdown-content {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
-    top: 80px; /* Snaps exactly to the bottom of the Nav */
+    top: 80px; /* Snaps to bottom of nav */
     left: 0;
     background: #0a0a0a;
-    min-width: 240px;
+    min-width: 220px;
     border: 1px solid #222;
-    border-top: none; /* Creates a seamless look */
+    border-top: none;
     z-index: 10000;
-    box-shadow: 0px 20px 40px rgba(0,0,0,0.9);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
-/* --- 5. THE TRIGGER (Safari & Chrome Sync) --- */
-.dropdown:hover .dropdown-content {
-    display: block !important; /* Forces Safari to render */
-    opacity: 1;
-    visibility: visible;
+.dropdown:hover .dropdown-content { display: block !important; }
+
+.dropdown-content a {
+    padding: 15px 20px !important;
+    display: block !important;
+    border-bottom: 1px solid #111;
+    color: #888 !important;
 }
 
-/* The Safari "Safety Bridge" */
+.dropdown-content a:hover { background: #111 !important; color: var(--nz-gold) !important; }
+
+/* The Safari Mouse Bridge */
 .dropdown::after {
     content: '';
     position: absolute;
-    bottom: -15px; 
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: transparent;
+    bottom: -10px; left: 0; width: 100%; height: 10px;
 }
 
-/* Dropdown Link Refinement */
-.dropdown-content a {
-    color: #888 !important;
-    padding: 18px 25px !important;
-    display: block !important;
-    border-bottom: 1px solid #111;
-    transition: 0.3s;
-}
-
-.dropdown-content a:hover {
-    background: #111 !important;
-    color: var(--nz-gold) !important;
-    padding-left: 30px !important;
-}
-
-@keyframes navFadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- 4. GLOBAL UI (BUTTONS/FOOTER) --- */
+/* Global Button Styles */
 .cta-btn {
     border: 1px solid var(--nz-gold);
-    padding: 10px 25px;
+    padding: 10px 20px;
     color: var(--nz-gold) !important;
     text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
     transition: 0.3s;
 }
 
-.cta-btn:hover { background: var(--nz-gold); color: var(--nz-black) !important; }
-
-/* --- 5. MOBILE NAVIGATION --- */
-.hamburger-icon { display: none; }
-
-.mobile-dropdown {
-    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-    background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px);
-    display: flex; flex-direction: column; justify-content: center;
-    align-items: center; gap: 40px; transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-    z-index: 1500;
-}
-
-.mobile-dropdown.active { right: 0; }
-
-@media (max-width: 1024px) {
-    .nav-links { display: none; }
-    .hamburger-icon { display: flex; flex-direction: column; gap: 6px; cursor: pointer; z-index: 2000; }
-    .hamburger-icon span { width: 30px; height: 2px; background-color: #fff; transition: 0.4s; }
-}
+.cta-btn:hover { background: var(--nz-gold); color: #000 !important; }
 
 
 
