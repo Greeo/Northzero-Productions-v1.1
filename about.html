@@ -11,7 +11,7 @@
         .hero {
             height: 75vh; position: relative; overflow: hidden;
             display: flex; align-items: center; justify-content: center; text-align: center;
-            margin-top: 80px; /* Space for the fixed Nav */
+            margin-top: 80px; 
         }
 
         .video-background {
@@ -29,7 +29,6 @@
             background: rgba(10, 10, 10, 0.6); z-index: -1; 
         }
 
-        /* Hero Text Styling (Local to this page) */
         .hero-content h1 {
             font-size: 4.5rem; text-transform: uppercase; letter-spacing: 15px; color: #fff;
             font-weight: 900; margin-bottom: 10px;
@@ -39,7 +38,6 @@
             color: var(--nz-gold); 
         }
 
-        /* Manifesto & Content */
         .manifesto { padding: 120px 50px; max-width: 1000px; margin: 0 auto; text-align: center; }
         .manifesto h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 40px; color: var(--nz-gold); font-weight: 400; }
         .manifesto p { font-size: 1.3rem; color: #ddd; margin-bottom: 40px; font-weight: 300; line-height: 2; }
@@ -87,6 +85,32 @@
         <div class="pillar-text">
             <h3>The Preservationist's Lens</h3>
             <p>
+                Founded by Omar A. Greene—an alternate member of the Village of Ossining Historic Preservation Commission—Northzero is grounded in a deep respect for structural history.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
+    </footer>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                videoId: 'AVN2N2hopGk', 
+                playerVars: {
+                    'autoplay': 1, 'controls': 0, 'showinfo': 0, 'rel': 0,
+                    'loop': 1, 'playlist': 'AVN2N2hopGk', 'mute': 1,
+                    'modestbranding': 1, 'iv_load_policy': 3, 'disablekb': 1
+                },
+                events: { 'onReady': (event) => event.target.playVideo() }
+            });
+        }
+    </script>
+    <script src="nav.js"></script> </body>
+</html>
 
 
 
