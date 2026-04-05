@@ -841,37 +841,40 @@
             }
         }
 
-       /* Bulletproof Mobile Typography Fix */
-        @media (max-width: 768px) {
+       @media (max-width: 768px) {
             .hero-content h1 {
-                /* This 'clamps' the font between a minimum, a scaling value, and a maximum */
-                font-size: clamp(1.5rem, 8vw, 2.5rem) !important; 
-                letter-spacing: 0.15em !important; /* Uses 'em' for better scaling than 'px' */
-                line-height: 1.1;
-                width: 100%;
-                max-width: 90vw; /* Keeps it within 90% of the screen width */
-                margin: 0 auto;
+                /* 1. Force the font to a size that fits a phone width */
+                font-size: 7vw !important; 
+                
+                /* 2. Dramatically reduce spacing so long words stay on one line */
+                letter-spacing: 2px !important; 
+                
+                /* 3. The Emergency Break: If the word is still too long, break it */
+                overflow-wrap: break-word;
                 word-wrap: break-word;
+                hyphens: auto;
+                
+                /* 4. Formatting */
                 display: block;
+                width: 100%;
+                max-width: 85vw; /* Leaves a 7.5% margin on both sides */
+                margin: 0 auto;
+                line-height: 1.1;
+                text-align: center;
             }
         
             .shutter-text {
-                font-size: clamp(1.5rem, 8vw, 2.5rem) !important;
-                letter-spacing: 0.15em !important;
-            }
-        
-            .hero-content p {
-                font-size: 0.7rem !important;
+                font-size: 7vw !important;
                 letter-spacing: 2px !important;
-                margin-top: 10px;
+                width: 100%;
             }
         }
         
-        /* Extra tight fix for very narrow phones (iPhone SE) */
-        @media (max-width: 380px) {
+        /* Specific fix for the smallest devices (iPhone SE) */
+        @media (max-width: 400px) {
             .hero-content h1, .shutter-text {
-                font-size: 6.5vw !important; /* Forces it to shrink even further */
-                letter-spacing: 0.1em !important;
+                font-size: 1.8rem !important;
+                letter-spacing: 1px !important; /* Minimum spacing to ensure fit */
             }
         }
 
