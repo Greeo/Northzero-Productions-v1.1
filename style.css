@@ -12,6 +12,91 @@
    --secondary-bg: #141414;
 }
 
+/* ============================================================
+   RESTORED NORTHZERO LOGO & COMPASS (MASTER)
+   ============================================================ */
+
+.logo-link {
+    display: inline-flex !important; /* Forces layout */
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 10001; /* Stays above the nav blur */
+}
+
+.compass-box {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    margin-right: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.needle {
+    position: relative;
+    width: 4px;
+    height: 34px;
+    transform: rotate(-45deg);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Blue North Tip */
+.needle::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 17px solid var(--nz-blue);
+    transform: translateX(-50%);
+}
+
+/* Gold South Tip */
+.needle::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 17px solid var(--nz-gold);
+    transform: translateX(-50%);
+}
+
+/* Shimmering Text Logic */
+.main-title {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 3px;
+    line-height: 1;
+    background: linear-gradient(120deg, #fff 40%, rgba(255,255,255,0.4) 50%, #fff 60%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+}
+
+.sub-title {
+    font-size: 0.7rem;
+    color: var(--nz-gold);
+    letter-spacing: 6.5px;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+/* Interactive Hover */
+.logo-link:hover .needle { transform: rotate(0deg); }
+.logo-link:hover .compass-box { border-color: var(--nz-gold); box-shadow: 0 0 15px rgba(212,175,55,0.3); }
+
+@keyframes shimmer { to { background-position: 200% center; } }
+
 
 /* --- 1. GLOBAL NAVIGATION BAR --- */
 nav {
