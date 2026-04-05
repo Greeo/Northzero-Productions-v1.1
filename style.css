@@ -1,0 +1,47 @@
+/* --- MASTER NAV STYLES --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center; 
+    padding: 20px 50px; background: rgba(10, 10, 10, 0.95); 
+    position: fixed; width: 100%; top: 0; z-index: 9999;
+    border-bottom: 1px solid #222; backdrop-filter: blur(10px);
+    height: 80px; overflow: visible !important; /* CRITICAL FOR DROPDOWN */
+}
+
+.nav-links { display: flex; align-items: center; overflow: visible !important; }
+
+/* THE DROPDOWN LOGIC */
+.dropdown { position: relative; display: inline-block; }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0a0a0a;
+    min-width: 200px;
+    top: 100%; /* Sits right below the nav */
+    left: 0;
+    border: 1px solid #222;
+    z-index: 10000;
+}
+
+.dropdown:hover .dropdown-content { display: block; }
+
+.dropdown-content a {
+    color: #888 !important;
+    padding: 12px 16px !important;
+    font-size: 0.7rem !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #111;
+    margin: 0 !important;
+}
+
+.dropdown-content a:hover { color: #d4af37 !important; background: #111; }
+
+/* Hide burger on desktop */
+.hamburger-icon { display: none; }
+
+@media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .hamburger-icon { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger-icon span { width: 25px; height: 2px; background: #fff; }
+}
