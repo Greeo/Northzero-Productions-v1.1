@@ -82,65 +82,68 @@
 <body>
 
     <nav></nav> 
-
-    <header class="page-header">
-        <h1>Start the Narrative</h1>
-        <p>Strategic Creative Inquiries</p>
-    </header>
-
-    <div class="promo-banner">
-        <h3>Building Together Initiative</h3>
-        <p>Launching a new brand or architectural product? We are offering a limited number of <strong>foundational branding packages</strong> on a complimentary basis to select partners. Select "Foundational Partnership" below to apply.</p>
-    </div>
-
-    <div class="container">
-        <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST">
-            <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Omar Greene" required>
-            </div>
-            <div class="form-group">
-                <label>Email Address</label>
-                <input type="email" name="email" class="form-control" placeholder="name@domain.com" required>
-            </div>
-            <div class="form-group">
-                <label>Primary Pillar</label>
-                <select name="service" class="form-control" style="background: #0a0a0a; cursor: pointer;">
-                    <option value="architectural">Architectural Cinema</option>
-                    <option value="tactile">Tactile Product Narrative</option>
-                    <option value="institutional">Institutional Strategy</option>
-                    <option value="partnership">Foundational Partnership (Complimentary)</option>
-                    <option value="other">Other Inquiry</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Project Vision</label>
-                <textarea name="message" class="form-control" rows="4" placeholder="Tell us about the project's 'bones'..." required></textarea>
-            </div>
-            <button type="submit" id="my-form-button" class="submit-btn">Initiate Inquiry</button>
-            <div id="my-form-status"></div>
-        </form>
-
-        <div class="consult-info">
-            <h2>Creative Consultation</h2>
-            <p>
-                For urgent production timelines, IATSE 52 electrical inquiries, or specialized architectural audits, we recommend scheduling a direct creative consultation.
-            </p>
-            <a href="https://calendly.com/greeo" class="calendly-btn">Book Appointment</a>
-            
-            <div class="hq-block">
-                <h4>Operations HQ</h4>
-                <p class="city">Ossining, New York</p>
-                <p class="region">Serving Hudson Valley & NYC Metro</p>
+    <main style="margin-top: 80px;">
+        <header class="page-header">
+            <h1>Start the Narrative</h1>
+            <p>Strategic Creative Inquiries</p>
+        </header>
+    
+        <div class="promo-banner">
+            <h3>Building Together Initiative</h3>
+            <p>Launching a new brand or architectural product? We are offering a limited number of <strong>foundational branding packages</strong> on a complimentary basis to select partners. Select "Foundational Partnership" below to apply.</p>
+        </div>
+    
+        <div class="container">
+            <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Omar Greene" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" class="form-control" placeholder="name@domain.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Primary Pillar</label>
+                    <select name="service" class="form-control" style="background: #0a0a0a; cursor: pointer;">
+                        <option value="architectural">Architectural Cinema</option>
+                        <option value="tactile">Tactile Product Narrative</option>
+                        <option value="institutional">Institutional Strategy</option>
+                        <option value="partnership">Foundational Partnership (Complimentary)</option>
+                        <option value="other">Other Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Project Vision</label>
+                    <textarea name="message" class="form-control" rows="4" placeholder="Tell us about the project's 'bones'..." required></textarea>
+                </div>
+                <button type="submit" id="my-form-button" class="submit-btn">Initiate Inquiry</button>
+                <div id="my-form-status"></div>
+            </form>
+    
+            <div class="consult-info">
+                <h2>Creative Consultation</h2>
+                <p>
+                    For urgent production timelines, IATSE 52 electrical inquiries, or specialized architectural audits, we recommend scheduling a direct creative consultation.
+                </p>
+                <a href="https://calendly.com/greeo" class="calendly-btn">Book Appointment</a>
+                
+                <div class="hq-block">
+                    <h4>Operations HQ</h4>
+                    <p class="city">Ossining, New York</p>
+                    <p class="region">Serving Hudson Valley & NYC Metro</p>
+                </div>
             </div>
         </div>
-    </div>
+    
+        <footer>
+            &copy; 2026 Northzero Productions LLC | New York
+        </footer>
+    </main>
 
-    <footer>
-        &copy; 2026 Northzero Productions LLC | New York
-    </footer>
-
+    
     <script src="nav.js"></script>
+    
     <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     
     <script>
