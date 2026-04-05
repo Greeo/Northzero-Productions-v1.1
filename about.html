@@ -3,919 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Northzero Productions</title>
+    <title>The Lens | Northzero Productions</title>
     <style>
         :root {
             --bg-color: #0a0a0a;
             --text-color: #f0f0f0;
-            --text-muted: #aaaaaa;
-            --accent-color: #d4af37; /* Gold/Cinematic accent */
-            --secondary-bg: #141414;
-            --font-main: 'Helvetica Neue', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: var(--font-main);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-         /* Navigation */
-        nav {
-            display: flex; justify-content: space-between; align-items: center; padding: 20px 50px;
-            background: rgba(10, 10, 10, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #222;
-        }
-         
-        /* Desktop Links (Visible by default) */
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        /* Hide Mobile Elements on Desktop by default */
-        .hamburger-icon, .mobile-dropdown {
-            display: none;
-        }
-
-        /* --- MOBILE & TABLET ADAPTATION --- */
-        @media (max-width: 1024px) {
-            /* Hide the horizontal desktop links */
-            .nav-links {
-                display: none;
-            }
-
-            /* Show the White Hamburger Widget */
-            .hamburger-icon {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 30px;
-                height: 20px;
-                cursor: pointer;
-                z-index: 2000;
-            }
-
-            .hamburger-icon span {
-                display: block;
-                width: 100%;
-                height: 2px;
-                background-color: #ffffff; /* White icon as requested */
-                transition: 0.4s ease;
-            }
-
-            /* Mobile Dropdown Styling */
-            .mobile-dropdown {
-                display: flex; /* Now part of the layout for JS to toggle */
-                position: fixed;
-                top: 0;
-                right: -100%; /* Hidden off-screen to the right */
-                width: 100%;
-                height: 100vh;
-                background: rgba(10, 10, 10, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 35px;
-                transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-                z-index: 1500;
-            }
-
-            /* State when active (triggered by JS) */
-            .mobile-dropdown.active {
-                right: 0;
-            }
-        }
-
-        /* Navigation Ends */
-
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center; padding: 20px 5%;
-            background: rgba(10, 10, 10, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid #222;
-        }
-
-        :root {
+            --accent-color: #d4af37; /* NZ Gold */
             --nz-blue: #0047ab;
             --nz-gold: #d4af37;
-            --nz-black: #0a0a0a;
             --nz-white: #ffffff;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-        .logo-link {
-            display: inline-flex;
-            align-items: center;
-            background: var(--nz-black);
-            padding: 15px 25px;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            text-decoration: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); line-height: 1.8; overflow-x: hidden; }
 
-        /* --- THE COMPASS --- */
-        .compass-box {
-            position: relative;
-            width: 50px;
-            height: 50px;
-            border: 2px solid #333;
-            border-radius: 50%;
-            margin-right: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.4s ease;
-        }
-
-        .needle {
-            position: relative;
-            width: 4px;
-            height: 36px;
-            transform: rotate(-45deg);
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* Blue North Tip */
-        .needle::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 0; height: 0;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-bottom: 18px solid var(--nz-blue);
-            transform: translateX(-2px);
-        }
-
-        /* Gold South Tip */
-        .needle::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 0; height: 0;
-            border-left: 4px solid transparent;
-            border-right: 4px solid transparent;
-            border-top: 18px solid var(--nz-gold);
-            transform: translateX(-2px);
-        }
-
-        /* --- THE ANIMATED NAME --- */
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            text-transform: uppercase;
-        }
-
-        .main-title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--nz-white);
-            letter-spacing: 3px;
-            line-height: 1;
-            position: relative;
-            
-            /* Text Shimmer Effect */
-            background: linear-gradient(120deg, 
-                rgba(255,255,255,1) 40%, 
-                rgba(255,255,255,0.4) 50%, 
-                rgba(255,255,255,1) 60%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 4s linear infinite;
-        }
-
-        @keyframes shimmer {
-            to { background-position: 200% center; }
-        }
-
-        .sub-title {
-            font-size: 0.75rem;
-            font-weight: 300;
-            color: var(--nz-gold);
-            letter-spacing: 6.5px;
-            margin-top: 4px;
-        }
-
-        /* --- HOVER INTERACTIONS --- */
-        .logo-link:hover .needle {
-            transform: rotate(0deg);
-        }
-
-        .logo-link:hover .compass-box {
-            border-color: var(--nz-blue);
-            box-shadow: 0 0 15px rgba(0, 71, 171, 0.3);
-        }
-
-        .logo-link:hover .main-title {
-            animation: shimmer 1.5s linear infinite; /* Speed up shimmer on hover */
-        }
-
-        /* --- TEXT STYLING --- */
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            text-transform: uppercase;
-        }
-
-        .main-title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: var(--nz-white);
-            letter-spacing: 3px;
-            line-height: 1;
-        }
-
-        .main-title span.blue-zero {
-            color: var(--nz-blue);
-            transition: color 0.3s;
-        }
-
-        .sub-title {
-            font-size: 0.75rem;
-            font-weight: 300;
-            color: var(--nz-gold);
-            letter-spacing: 6.5px;
-            margin-top: 4px;
-        }
-
-        /* --- ANIMATION --- */
-        .logo-link:hover .needle {
-            /* Points straight up towards "Zero" */
-            transform: rotate(0deg);
-        }
-
-        .logo-link:hover .compass-box {
-            border-color: var(--nz-gold);
-        }
-    
-
-
-
-        /* Animated Compass Logo */
-        .logo-link { display: flex; align-items: center; text-decoration: none; cursor: pointer; }
-        .compass-box { width: 50px; height: 50px; border: 2px solid #333; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; position: relative; transition: 0.4s; }
-        .needle { width: 3px; height: 30px; transform: rotate(-45deg); transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; }
-        .needle::before { content: ''; position: absolute; top: 0; left: -2.5px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 15px solid var(--nz-blue); }
-        .needle::after { content: ''; position: absolute; bottom: 0; left: -2.5px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 15px solid var(--nz-gold); }
-        .logo-link:hover .needle { transform: rotate(0deg); }
-        .logo-text { color: white; text-transform: uppercase; font-weight: 900; letter-spacing: 2px; }
-
-        /* Desktop Nav - Hidden on Mobile */
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
-
-        /* Mobile Burger - Hidden on Desktop */
-        .hamburger-icon { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 20px; cursor: pointer; z-index: 2000; }
-        .hamburger-icon span { display: block; width: 100%; height: 2px; background-color: #fff; transition: 0.4s; }
-
-        /* Mobile Dropdown Menu */
-        .mobile-dropdown { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px; transition: 0.5s; z-index: 1500; }
-        .mobile-dropdown.active { right: 0; }
-        .mobile-dropdown a { color: white; font-size: 1.8rem; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 4px; }
-
-        /* --- HERO SHOWREEL (MISTY DARK GREY) --- */
-        .hero-container { position: relative; height: 60vh; margin-top: 80px; overflow: hidden; background: var(--misty-grey); }
-        .hero-video { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        .hero-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; border: 2px solid var(--nz-gold); padding: 30px 60px; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); }
-        .hero-overlay h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 12px; font-weight: 800; color: white; }
-
-        /* --- GALLERY GRID (3x2) --- */
-        .gallery-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .gallery-item { position: relative; aspect-ratio: 16/9; background: #000; overflow: hidden; border: 1px solid #222; cursor: pointer; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
-        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: 0.3s; z-index: 5; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; background: rgba(0,0,0,0.6); }
-        .gallery-item:hover img { transform: scale(1.05); opacity: 0.3; }
-
-        /* --- RESPONSIVENESS --- */
-        @media (max-width: 1024px) {
-            .nav-links { display: none; }
-            .hamburger-icon { display: flex; }
-            .gallery-container { grid-template-columns: repeat(2, 1fr); }
-            .hero-overlay h1 { font-size: 2rem; letter-spacing: 6px; }
-        }
-        @media (max-width: 768px) {
-            .gallery-container { grid-template-columns: 1fr; }
-        }
-
-
-        /* Navigation (Consistent with Homepage) */
+        /* Navigation */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: rgba(10, 10, 10, 0.95);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #222;
+            display: flex; justify-content: space-between; align-items: center; padding: 20px 50px;
+            background: rgba(10, 10, 10, 0.9); position: fixed; width: 100%; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px);
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--text-color);
+        .logo-link { display: flex; align-items: center; text-decoration: none; }
+        .compass-box { width: 38px; height: 38px; border: 1.5px solid var(--nz-gold); border-radius: 50%; margin-right: 12px; display: flex; align-items: center; justify-content: center; }
+        .needle { width: 2px; height: 24px; transform: rotate(-45deg); position: relative; }
+        .needle::before { content: ''; position: absolute; top: 0; border-left: 3px solid transparent; border-right: 3px solid transparent; border-bottom: 12px solid var(--nz-blue); transform: translateX(-1.5px); }
+        .needle::after { content: ''; position: absolute; bottom: 0; border-left: 3px solid transparent; border-right: 3px solid transparent; border-top: 12px solid var(--nz-gold); transform: translateX(-1.5px); }
+
+        .logo-text { display: flex; flex-direction: column; text-transform: uppercase; line-height: 1; }
+        .main-title { font-size: 1.2rem; font-weight: 900; color: #fff; letter-spacing: 2px; }
+        .sub-title { font-size: 0.55rem; color: var(--nz-gold); letter-spacing: 4px; }
+
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 30px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; }
+
+        /* Hero YouTube Background */
+        .hero {
+            height: 75vh; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            margin-top: 80px;
         }
-
-        .logo span {
-            color: var(--accent-color);
+        .video-background {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+            pointer-events: none; overflow: hidden;
         }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
+        #yt-player {
+            position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw;
+            min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%);
         }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.5); z-index: -1; }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
+        /* Sophisticated Shutter Glitch */
+        .hero-content h1 {
+            font-size: 4rem; text-transform: uppercase; letter-spacing: 15px; color: #fff;
+            position: relative; display: inline-block;
         }
-
-        .cta-btn {
-            border: 1px solid var(--accent-color);
-            padding: 10px 25px;
-            color: var(--accent-color);
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+        .hero-content h1::before, .hero-content h1::after {
+            content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; 
         }
+        .hero-content h1::after { left: 2px; text-shadow: -1px 0 rgba(0, 71, 171, 0.7); animation: shutter-1 8s infinite; }
+        .hero-content h1::before { left: -2px; text-shadow: 1px 0 rgba(212, 175, 55, 0.7); animation: shutter-2 8s infinite; }
 
-        .cta-btn:hover {
-            background: var(--accent-color);
-            color: var(--bg-color);
+        @keyframes shutter-1 { 0%, 18%, 22%, 100% { clip: rect(0,0,0,0); opacity: 0; } 20% { clip: rect(15px, 9999px, 18px, 0); opacity: 1; } }
+        @keyframes shutter-2 { 0%, 18%, 22%, 100% { clip: rect(0,0,0,0); opacity: 0; } 19% { clip: rect(40px, 9999px, 44px, 0); opacity: 1; } }
+
+        .hero-content p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 5px; color: var(--nz-gold); margin-top: 10px; }
+
+        /* Philosophy & Content */
+        .content-section { padding: 100px 50px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .content-section h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 40px; color: var(--nz-gold); }
+        .content-section p { font-size: 1.2rem; color: #ccc; margin-bottom: 30px; font-weight: 300; line-height: 2; }
+
+        .pillar-block { 
+            background: #111; padding: 100px 50px; border-top: 1px solid #222; border-bottom: 1px solid #222;
+            display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap;
         }
+        .pillar-text { max-width: 500px; text-align: left; }
+        .pillar-text h3 { color: var(--nz-white); text-transform: uppercase; letter-spacing: 4px; margin-bottom: 25px; }
+        .pillar-text p { font-size: 1rem; color: #aaa; line-height: 2.2; }
+        .pillar-image { width: 320px; height: 420px; border: 1px solid var(--nz-gold); overflow: hidden; }
 
-        /* Page Header */
-        .page-header {
-            height: 60vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), var(--bg-color)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            padding-top: 80px; /* nav offset */
-        }
-
-        .page-header h1 {
-            font-size: 3.5rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Content Sections */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .split-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            margin-bottom: 100px;
-        }
-
-        .text-block h2 {
-            font-size: 2rem;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 20px;
-        }
-
-        .text-block p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 1.05rem;
-        }
-
-        /* Values / Goals Grid */
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-
-        .value-card {
-            background: var(--secondary-bg);
-            padding: 40px;
-            border-top: 2px solid var(--accent-color);
-        }
-
-        .value-card h3 {
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-        }
-
-        .value-card p {
-            color: var(--text-muted);
-        }
-
-        /* Process Section (Timeline Style) */
-        .process-section {
-            background: var(--secondary-bg);
-            padding: 100px 20px;
-        }
-
-        .process-title {
-            text-align: center;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            margin-bottom: 60px;
-            color: var(--text-color);
-        }
-
-        .process-step {
-            max-width: 800px;
-            margin: 0 auto 40px auto;
-            padding: 30px;
-            border-left: 1px solid #333;
-            position: relative;
-        }
-
-        .process-step::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 30px;
-            width: 11px;
-            height: 11px;
-            background: var(--accent-color);
-            border-radius: 50%;
-        }
-
-        .process-step h4 {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .process-step p {
-            color: var(--text-muted);
-        }
-
-        /* Clients */
-        .clients-section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .clients-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .client-tag {
-            background: #222;
-            color: #888;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Team Section */
-        .team-section {
-            margin-bottom: 100px;
-        }
-
-        .team-card {
-            display: flex;
-            flex-direction: row;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .team-img {
-            width: 40%;
-            background: url('https://images.unsplash.com/photo-1769138774223-1aa5f0301c8c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
-            min-height: 300px;
-            filter: grayscale(100%);
-        }
-
-        .team-info {
-            width: 60%;
-            padding: 40px;
-        }
-
-        .team-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        .team-info span {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        /* Footer */
-        footer {
-            background: #000;
-            padding: 20px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #666;
-            border-top: 1px solid #222;
-        }
-
-        @media (max-width: 768px) {
-            .split-section { grid-template-columns: 1fr; }
-            .team-card { flex-direction: column; }
-            .team-img { width: 100%; height: 300px; }
-            .team-info { width: 100%; }
-            .nav-links { display: none; }
-        }
-
-                /* --- MOBILE NAVIGATION LOGIC --- */
-
-        /* 1. Default Desktop View (Hiding the Burger) */
-        .menu-toggle, .hamburger-icon {
-            display: none;
-        }
-
-        /* 2. Mobile & Tablet View (Below 1024px) */
-        @media (max-width: 1024px) {
-            nav {
-                padding: 15px 5%;
-                justify-content: space-between; /* Pins Logo left, Burger right */
-            }
-
-            /* Hide the standard text links */
-            .nav-links {
-                display: none;
-            }
-
-            /* Show the Hamburger Widget */
-            .hamburger-icon {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 30px;
-                height: 21px;
-                cursor: pointer;
-                z-index: 1001;
-            }
-
-            /* The Three Lines (Gold to match your brand) */
-            .hamburger-icon span {
-                display: block;
-                width: 100%;
-                height: 3px;
-                background-color: var(--nz-gold);
-                border-radius: 3px;
-                transition: all 0.3s ease;
-            }
-
-            /* Mobile Menu Drawer (Hidden by default) */
-            .mobile-menu {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Off-screen */
-                width: 250px;
-                height: 100vh;
-                background: var(--nz-black);
-                border-left: 1px solid #222;
-                padding: 80px 40px;
-                display: flex;
-                flex-direction: column;
-                gap: 25px;
-                transition: right 0.4s ease;
-                z-index: 1000;
-            }
-
-            /* Logic to show menu when the hidden checkbox is checked */
-            #menu-checkbox:checked ~ .mobile-menu {
-                right: 0;
-            }
-
-            /* Animate Hamburger into an 'X' when open */
-            #menu-checkbox:checked ~ .hamburger-icon span:nth-child(1) {
-                transform: translateY(9px) rotate(45deg);
-            }
-            #menu-checkbox:checked ~ .hamburger-icon span:nth-child(2) {
-                opacity: 0;
-            }
-            #menu-checkbox:checked ~ .hamburger-icon span:nth-child(3) {
-                transform: translateY(-9px) rotate(-45deg);
-            }
-        }
-
-        /* --- RESPONSIVE HERO CONTENT --- */
-        
-        /* 1. Large Screens & Desktops (Default is already set, but we refine it) */
-        @media (min-width: 1200px) {
-            .hero-content {
-                margin-bottom: 5%; /* Tighten up the bottom margin */
-            }
-        }
-        
-        /* 2. Tablets & Small Laptops (769px to 1024px) */
-        @media (max-width: 1024px) {
-            .hero-section {
-                height: 25vh; /* Increase height slightly for better aspect ratio */
-                margin-bottom: 80px;
-            }
-            
-            .title-box {
-                padding: 20px 40px; /* Reduce padding */
-            }
-        
-            .title-box h1 {
-                font-size: 3rem; /* Scale down text */
-                letter-spacing: 10px; /* Tighten tracking */
-            }
-        }
-        
-        /* 3. Mobile Devices & Small Tablets (Up to 768px) */
-        @media (max-width: 768px) {
-            .hero-section {
-                height: 20vh; /* Adjust for mobile aspect ratio */
-                margin-bottom: 60px;
-            }
-        
-            .hero-content {
-                margin-bottom: 0; /* Reset margins for center alignment */
-                width: 90%; /* Ensure it doesn't hit screen edges */
-                margin: 0 auto 40px auto;
-            }
-        
-            .title-box {
-                padding: 15px 30px;
-                width: 100%; /* Make box more fluid */
-                border-width: 1px; /* Thinner gold line for mobile */
-            }
-        
-            .title-box h1 {
-                font-size: 2rem; 
-                letter-spacing: 5px;
-                line-height: 1.2;
-            }
-        
-            /* Adjust scroll indicator for mobile */
-            .scroll-indicator {
-                bottom: 15px;
-                font-size: 0.6rem;
-            }
-        }
-        
-        /* 4. Small Smartphones (Up to 480px) */
-        @media (max-width: 480px) {
-            .hero-section {
-                height: 18vh;
-                margin-bottom: 40px;
-            }
-        
-            .title-box {
-                padding: 10px 20px;
-            }
-        
-            .title-box h1 {
-                font-size: 1.5rem;
-                letter-spacing: 3px;
-            }
-        }
+        footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
     </style>
-     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZREPMHSWK">
-    </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-7ZREPMHSWK');
-    </script>
 </head>
 <body>
 
-     <nav>
-        <a href="#" class="logo-link">
-        <div class="compass-box">
-               <div class="needle"></div>
-           </div>
+    <nav>
+        <a href="index.html" class="logo-link">
+           <div class="compass-box"><div class="needle"></div></div>
            <div class="logo-text">
-               <div class="main-title">North<span class="blue-zero">Zero</span></div>
+               <div class="main-title">NorthZero</div>
                <div class="sub-title">Productions</div>
            </div>
         </a>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="all-services.html">Services</a>
-            <a href="work.html" style="color: var(--accent-color);">Work</a>
-            <a href="policies.html">Policies</a>
-            <a href="contact.html" class="cta-btn">Contact Us</a>
+            <a href="work.html">Portfolio</a>
+            <a href="index.html">Agency</a>
+            <a href="contact.html">Inquiry</a>
         </div>
+    </nav>
 
-        <div class="hamburger-icon" id="burgerBtn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+    <section class="hero">
+        <div class="video-background">
+            <div id="yt-player"></div>
         </div>
-
-        <div class="mobile-dropdown" id="mobileMenu">
-            <a href="index.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Home</a>
-            <a href="about.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">About</a>
-            <a href="all-services.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Services</a>
-            <a href="work.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Work</a>
-            <a href="policies.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Policies</a>
-            <a href="contact.html" onclick="toggleMenu()" style="color:white; text-decoration:none; font-size:1.5rem;">Contact</a>
-        </div> 
-
-    </nav> 
-
-    <header class="page-header">
-        <h1>Who We Are</h1>
-        <p>Decades of Experience. Limitless Creativity.</p>
-    </header>
-
-    <div class="container">
-        
-        <div class="split-section">
-            <div class="text-block">
-                <h2>Our Story</h2>
-                <p>Northzero Productions represents the culmination of over a decade of work experience in marketing, branding, and content management within the film and television industry.</p>
-                <p>Our seasoned team of creatives, writers, filmmakers, and editors has honed their skills through a diverse range of projects across various sectors. We understand the power of video to engage, inform, and inspire.</p>
-            </div>
-            <div class="text-block" style="background: #1a1a1a; padding: 40px; border: 1px solid #333;">
-                <h2>Our Mission</h2>
-                <p>To blend artistry with technology. We strive to craft unique and engaging content that leaves a lasting impression. By refining the essence of your brand into cinematic experiences, we ensure your narrative resonates with your audience.</p>
-            </div>
-        </div>
-
-        <div class="values-grid">
-            <div class="value-card">
-                <h3>Comprehensive Skill-Set</h3>
-                <p>From initial concept, script writing, and development to production and the final stages of post-production. We are well-versed in the latest techniques to ensure your videos are optimized for maximum impact.</p>
-            </div>
-            <div class="value-card">
-                <h3>Client-Centric Goals</h3>
-                <p>Our passion for visual storytelling drives us to deliver innovative solutions. We focus on highlighting the unique strengths of your brand, utilizing top-tier talent to capture attention and drive growth.</p>
-            </div>
-        </div>
-
-        <div class="team-section">
-            <div class="team-card">
-                <div class="team-img"></div> <div class="team-info">
-                    <h3>Omar Greene</h3>
-                    <span>Founder & CEO</span>
-                    <p>Omar is a visionary and leader with over 15 years of experience in the film and entertainment industry. As a filmmaker and editor, he has navigated challenges, showcasing his storytelling talent and innovative techniques.</p>
-                    <p style="margin-top: 15px;">His passion for cinema and dedication to fostering talent have made him a respected figure, inspiring those around him to create work that matters.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <section class="process-section">
-        <h2 class="process-title">Our Production Process</h2>
-
-        <div class="process-step">
-            <h4>A Consultation (If needed)</h4>
-            <p>We discuss the nation of your project and the stages of development, the services needed if a consultaion is need. If we need any matterials, scripts and any additional documents needed before moving forward with the nexts steps in the process.</p>
-        </div>
-
-         <div class="process-step">
-            <h4>Proposal Agreement</h4>
-            <p>We'll submit a detailed proposal agreement made with great detail, our promiss and your approval of a sucessful production campaign. This is a process we undergo with great care, as our word is our bond, and we make it official with a signature.</p>
-        </div>
-        
-        <div class="process-step">
-            <h4>Creative Development</h4>
-            <p>We connect you with our fininshing writers, who will take through our brainstorming process. Making sure all final ideas, scripts, storyboard visuals Matches your brands storytelling and message are clearly vocalized to your audience.</p>
-        </div>
-
-        <div class="process-step">
-            <h4>Pre - Production</h4>
-            <p>This is the ture blueprint phase of a production, and where the real magic happens with communities. We work with an already putogther production, but have the power to pull it all together if needed, handling Cast, Crews, Talent, Catering, location scouting, equipment rentals, permits and more.</p>
-        </div>
-
-        <div class="process-step">
-            <h4>Production</h4>
-            <p>Lights, Camera, Action! Our production heads works very closely with our project owners and stakeholders as the all department heads to see it through, giving the client a front seat directly where the act is, Where we will work together to bring your project to life.</p>
-        </div>
-
-        <div class="process-step">
-            <h4>Post - Production</h4>
-            <p>The magic of putting it all together in the end, editing, cutting and splicing, sound mixing and arrangement, color grading, visual effects, motion graphics, credits, title sequiences and final formatting for delivery and publishing or marketig.</p>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 data-text="The Lens">The Lens</h1>
+            <p>Architectural Integrity & Visual Narrative</p>
         </div>
     </section>
 
-    <div class="container clients-section">
-        <h2>Trusted Partners & Clients</h2>
-        <p style="color: #666; margin-top: 10px;">Companies we have had the pleasure of working with include:</p>
-        <div class="clients-list">
-            <div class="client-tag">NBC Universal Studios</div>
-            <div class="client-tag">AMC Networks</div>
-            <div class="client-tag">Apple TV+</div>
-            <div class="client-tag">Lionsgate Television</div>
-            <div class="client-tag">20th Century Television</div>
-            <div class="client-tag">HBO Max Production</div>
-            <div class="client-tag">IATSE 52</div>
-            <div class="client-tag">Rocket Ponda Post</div>
-            <div class="client-tag">Instinct Inc.</div>
+    <section class="content-section">
+        <h2>Our Philosophy</h2>
+        <p>
+            At Northzero Productions, we believe that every structure has a heartbeat and every product has a tactile soul. 
+            We don't just capture images; we archive the structural integrity and emotional resonance of a space.
+        </p>
+    </section>
+
+    <section class="pillar-block">
+        <div class="pillar-image">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=320&h=420&q=80" alt="Architecture" style="width:100%; height:100%; object-fit:cover; opacity:0.6;">
         </div>
-    </div>
+        <div class="pillar-text">
+            <h3>The Preservationist's Perspective</h3>
+            <p>
+                Founded by Omar A. Greene, a member of the <strong>Village of Ossining Historic Preservation Commission</strong>, 
+                Northzero is built on a foundation of architectural respect. Our background in preservation means we approach 
+                Real Estate and Design films with a unique understanding of "The Bones"—the historical and structural elements 
+                that make a property truly valuable.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <h2>The Methodology</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-top: 60px;">
+            <div>
+                <h4 style="color:var(--nz-gold); text-transform:uppercase; margin-bottom:15px; letter-spacing:2px;">01. Discovery</h4>
+                <p style="font-size:0.85rem; color:#777;">Identifying the structural narrative and design goals.</p>
+            </div>
+            <div>
+                <h4 style="color:var(--nz-gold); text-transform:uppercase; margin-bottom:15px; letter-spacing:2px;">02. Capture</h4>
+                <p style="font-size:0.85rem; color:#777;">Cinematography focused on light, texture, and architectural flow.</p>
+            </div>
+            <div>
+                <h4 style="color:var(--nz-gold); text-transform:uppercase; margin-bottom:15px; letter-spacing:2px;">03. Archive</h4>
+                <p style="font-size:0.85rem; color:#777;">Elevating raw footage into a timeless brand asset.</p>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>&copy; 2024 Northzero Productions. All Rights Reserved.</p>
+        &copy; 2026 Northzero Productions LLC | Ossining, New York
     </footer>
 
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+        let player;
+        const videoID = 'Cb5zhr23b4s'; // Corrected ID from your link
 
-        // Function to play video inside the box (No black screen)
-        function playNow(element, url) {
-            element.innerHTML = `<iframe src="${url}" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>`;
-            element.onclick = null; // Disable additional clicks
-        }
-
-
-        // Your provided function fixed for functionality
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const burger = document.getElementById('burgerBtn');
-            menu.classList.toggle('active');
-            
-            // Handle body scroll locking
-            if (menu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-
-        // Ensure video starts immediately on load
-        window.addEventListener('load', function() {
-            const video = document.getElementById('heroVideo');
-            video.play().catch(error => {
-                console.log("Autoplay was prevented by browser. User interaction required.");
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-player', {
+                videoId: videoID,
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'showinfo': 0,
+                    'rel': 0,
+                    'loop': 1,
+                    'playlist': videoID, // Needed for looping
+                    'mute': 1,
+                    'modestbranding': 1,
+                    'iv_load_policy': 3,
+                    'disablekb': 1
+                },
+                events: {
+                    'onReady': (event) => event.target.playVideo()
+                }
             });
-        });
-
-        // Add a parallax effect on scroll for the title
-        window.addEventListener('scroll', function() {
-            const scroll = window.pageYOffset;
-            const title = document.querySelector('.hero-content');
-            title.style.transform = 'translateY(' + scroll * 0.4 + 'px)';
-            title.style.opacity = 1 - (scroll / 600);
-        });
-
-        
-        // Adding a subtle click reaction
-        const logo = document.getElementById('mainLogo');
-        logo.addEventListener('mousedown', () => {
-            logo.style.transform = 'scale(0.96)';
-        });
-        logo.addEventListener('mouseup', () => {
-            logo.style.transform = 'scale(1)';
-        });
-
+        }
     </script>
-    <!-- Start of HubSpot Embed Code -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245486083.js"></script>
-    <!-- End of HubSpot Embed Code -->
 </body>
 </html>
 
