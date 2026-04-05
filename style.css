@@ -1,4 +1,4 @@
-/* --- NORTHZERO MASTER VARIABLES --- */
+/* --- MASTER BRAND VARIABLES --- */
 :root {
     --nz-blue: #0047ab;
     --nz-gold: #d4af37;
@@ -32,7 +32,7 @@ nav {
     left: 0;
     z-index: 9999;
     border-bottom: 1px solid #222;
-    -webkit-backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* Critical for Safari */
     backdrop-filter: blur(15px);
 }
 
@@ -62,7 +62,6 @@ nav {
 }
 
 .logo-link:hover .needle { transform: rotate(0deg); }
-.logo-link:hover .compass-box { border-color: var(--nz-gold); }
 
 .main-title { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; color: #fff; display: block; line-height: 1.1; }
 .sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; display: block; }
@@ -96,12 +95,15 @@ nav {
     background: #0a0a0a;
     min-width: 220px;
     border: 1px solid #222;
-    border-top: none;
     z-index: 10000;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
 
-.dropdown:hover .dropdown-content { display: block !important; }
+/* Hover Trigger - Forced for Safari */
+.dropdown:hover .dropdown-content { 
+    display: block !important; 
+    visibility: visible !important;
+    opacity: 1 !important;
+}
 
 .dropdown-content a {
     padding: 15px 20px !important;
@@ -116,19 +118,8 @@ nav {
 .dropdown::after {
     content: '';
     position: absolute;
-    bottom: -10px; left: 0; width: 100%; height: 10px;
+    bottom: -15px; left: 0; width: 100%; height: 20px;
 }
-
-/* Global Button Styles */
-.cta-btn {
-    border: 1px solid var(--nz-gold);
-    padding: 10px 20px;
-    color: var(--nz-gold) !important;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.cta-btn:hover { background: var(--nz-gold); color: #000 !important; }
 
 
 
