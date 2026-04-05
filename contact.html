@@ -3,183 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Initiate Inquiry | Northzero Productions</title>
+    <title>Start a Project | Northzero Productions</title>
     <link rel="stylesheet" href="style.css">
-    
     <style>
-        /* PAGE-SPECIFIC CONTACT STYLES */
-        .page-header {
-            padding: 180px 20px 60px; text-align: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), #0a0a0a);
+        /* CONTACT SPECIFIC STYLES */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            min-height: 100vh;
+            background: #050505;
+            padding-top: 80px; /* Space for Nav */
         }
-        .page-header h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 15px; color: #fff; }
-        .page-header p { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; }
 
-        /* The Promotional "Stamp" */
-        .promo-banner {
-            max-width: 700px; margin: 0 auto 60px; padding: 40px;
-            border: 1px solid var(--nz-gold); background: rgba(212, 175, 55, 0.03);
-            text-align: center; backdrop-filter: blur(5px);
+        /* Left Side: Brand Authority */
+        .contact-info {
+            padding: 100px 10%;
+            border-right: 1px solid #111;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .promo-banner h3 { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 15px; font-size: 1rem; }
-        .promo-banner p { font-size: 0.9rem; color: #aaa; font-weight: 300; line-height: 1.6; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 50px 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; }
-
-        /* Form Styling */
-        form { display: grid; gap: 35px; }
-        .form-group label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 12px; }
-        .form-control {
-            width: 100%; background: transparent; border: none; border-bottom: 1px solid #222;
-            padding: 15px 0; color: #fff; font-size: 1rem; transition: 0.4s; outline: none;
-            border-radius: 0;
+        .contact-info h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            margin-bottom: 40px;
+            line-height: 1.2;
         }
-        .form-control:focus { border-bottom-color: var(--nz-gold); }
-        
-        textarea.form-control { resize: none; }
+
+        .contact-info p {
+            color: #888;
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 60px;
+            max-width: 450px;
+        }
+
+        .location-tag {
+            color: var(--nz-gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.7rem;
+            margin-bottom: 10px;
+        }
+
+        /* Right Side: The Form */
+        .contact-form-container {
+            padding: 100px 10%;
+            background: #080808;
+            display: flex;
+            align-items: center;
+        }
+
+        form { width: 100%; max-width: 600px; }
+
+        .form-group { margin-bottom: 40px; position: relative; }
+
+        label {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.65rem;
+            color: var(--nz-gold);
+            margin-bottom: 15px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #222;
+            padding: 15px 0;
+            color: #fff;
+            font-size: 1.1rem;
+            font-family: var(--font-main);
+            transition: 0.4s;
+            outline: none;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-bottom-color: var(--nz-gold);
+        }
+
+        select { cursor: pointer; color: #888; }
+        select option { background: #0a0a0a; color: #fff; }
 
         .submit-btn {
-            background: transparent; border: 1px solid var(--nz-gold); color: var(--nz-gold);
-            padding: 18px 50px; text-transform: uppercase; letter-spacing: 4px; cursor: pointer;
-            transition: 0.3s; margin-top: 20px; width: fit-content; font-size: 0.8rem;
+            background: none;
+            border: 1px solid var(--nz-gold);
+            padding: 20px 50px;
+            color: var(--nz-gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 20px;
         }
-        .submit-btn:hover { background: var(--nz-gold); color: #000; }
 
-        /* Consultation Block */
-        .consult-info h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 25px; color: #fff; }
-        .consult-info p { color: #888; font-weight: 300; margin-bottom: 40px; line-height: 1.8; }
-        
-        .calendly-btn {
-            display: inline-block; padding: 15px 35px; border: 1px solid #fff;
-            color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
-            font-size: 0.75rem; transition: 0.3s;
+        .submit-btn:hover {
+            background: var(--nz-gold);
+            color: #000;
         }
-        .calendly-btn:hover { background: #fff; color: #000; }
 
-        .hq-block { margin-top: 80px; border-top: 1px solid #111; padding-top: 40px; }
-        .hq-block h4 { text-transform: uppercase; letter-spacing: 3px; color: var(--nz-gold); font-size: 0.7rem; margin-bottom: 15px; }
-        .hq-block p.city { color: #fff; font-size: 1.3rem; letter-spacing: 1px; margin-bottom: 5px; }
-        .hq-block p.region { color: #555; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; }
-
-        footer { padding: 80px; text-align: center; border-top: 1px solid #111; color: #333; letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; }
-
-        @media (max-width: 1024px) { 
-            .container { grid-template-columns: 1fr; gap: 80px; padding: 0 30px 100px; } 
-            .page-header h1 { font-size: 2.5rem; letter-spacing: 8px; }
+        @media (max-width: 1024px) {
+            .contact-wrapper { grid-template-columns: 1fr; }
+            .contact-info { border-right: none; border-bottom: 1px solid #111; padding: 80px 50px; }
         }
     </style>
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZREPMHSWK"></script>
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZREPMHSWK">
+    </script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+    
       gtag('config', 'G-7ZREPMHSWK');
     </script>
-    
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 </head>
 <body>
 
-    <nav></nav> 
-    <main style="margin-top: 80px;">
-        <header class="page-header">
-            <h1>Start the Narrative</h1>
-            <p>Strategic Creative Inquiries</p>
-        </header>
-    
-        <div class="promo-banner">
-            <h3>Building Together Initiative</h3>
-            <p>Launching a new brand or architectural product? We are offering a limited number of <strong>foundational branding packages</strong> on a complimentary basis to select partners. Select "Foundational Partnership" below to apply.</p>
-        </div>
-    
-        <div class="container">
+    <nav></nav>
+
+    <div class="contact-wrapper">
+        <section class="contact-info">
+            <p class="location-tag">New York / Hudson Valley</p>
+            <h1>Initiate<br>Narrative</h1>
+            <p>
+                We collaborate with a limited number of clients per year to ensure each project receives the Northzero standard of structural and tactile integrity.
+            </p>
+            <div style="margin-top: auto;">
+                <p style="font-size: 0.7rem; letter-spacing: 3px; color: #444;">&copy; 2026 Northzero Productions LLC</p>
+            </div>
+        </section>
+
+        <section class="contact-form-container">
             <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST">
                 <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="Omar Greene" required>
+                    <label>Principal Name</label>
+                    <input type="text" name="name" placeholder="E.g., Alexander Regan" required>
                 </div>
+
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" name="email" class="form-control" placeholder="name@domain.com" required>
+                    <label>Digital Contact</label>
+                    <input type="email" name="email" placeholder="email@address.com" required>
                 </div>
+
                 <div class="form-group">
-                    <label>Primary Pillar</label>
-                    <select name="service" class="form-control" style="background: #0a0a0a; cursor: pointer;">
+                    <label>Project Classification</label>
+                    <select name="service" required>
+                        <option value="" disabled selected>Select a Service</option>
                         <option value="architectural">Architectural Cinema</option>
-                        <option value="tactile">Tactile Product Narrative</option>
-                        <option value="institutional">Institutional Strategy</option>
-                        <option value="partnership">Foundational Partnership (Complimentary)</option>
-                        <option value="other">Other Inquiry</option>
+                        <option value="tactile">Tactile Narrative</option>
+                        <option value="authority">The Authority Suite</option>
+                        <option value="other">Bespoke Inquiry</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Project Vision</label>
-                    <textarea name="message" class="form-control" rows="4" placeholder="Tell us about the project's 'bones'..." required></textarea>
-                </div>
-                <button type="submit" id="my-form-button" class="submit-btn">Initiate Inquiry</button>
-                <div id="my-form-status"></div>
-            </form>
-    
-            <div class="consult-info">
-                <h2>Creative Consultation</h2>
-                <p>
-                    For urgent production timelines, IATSE 52 electrical inquiries, or specialized architectural audits, we recommend scheduling a direct creative consultation.
-                </p>
-                <a href="https://calendly.com/greeo" class="calendly-btn">Book Appointment</a>
-                
-                <div class="hq-block">
-                    <h4>Operations HQ</h4>
-                    <p class="city">Ossining, New York</p>
-                    <p class="region">Serving Hudson Valley & NYC Metro</p>
-                </div>
-            </div>
-        </div>
-    
-        <footer>
-            &copy; 2026 Northzero Productions LLC | New York
-        </footer>
-    </main>
 
-    
+                <div class="form-group">
+                    <label>The Objective</label>
+                    <textarea name="message" rows="4" placeholder="Briefly describe the structural or visual goal..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Transmit Inquiry</button>
+            </form>
+        </section>
+    </div>
+
     <script src="nav.js"></script>
-    
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-    
-    <script>
-        var form = document.getElementById("my-form");
-        async function handleSubmit(event) {
-            event.preventDefault();
-            var status = document.getElementById("my-form-status");
-            var data = new FormData(event.target);
-            status.innerHTML = "<p style='margin-top:20px; font-size:0.7rem; letter-spacing:2px; color:var(--nz-gold);'>TRANSMITTING...</p>";
-            
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "<p style='margin-top:20px; font-size:0.7rem; letter-spacing:2px; color:#fff;'>INQUIRY RECEIVED. WE WILL BE IN TOUCH.</p>";
-                    form.reset();
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "<p style='margin-top:20px; color:red;'>SYSTEM ERROR. PLEASE EMAIL DIRECTLY.</p>";
-                        }
-                    })
-                }
-            }).catch(error => {
-                status.innerHTML = "<p style='margin-top:20px; color:red;'>CONNECTION ERROR.</p>";
-            });
-        }
-        form.addEventListener("submit", handleSubmit);
-    </script>
 </body>
 </html>
-
 
 
 
