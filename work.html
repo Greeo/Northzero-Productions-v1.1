@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Work | Northzero Productions</title>
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-W2FJH6WC');</script>
-    <!-- End Google Tag Manager -->  
-    
+    <title>Selected Works | Northzero Productions</title>
     <style>
         :root {
             --bg-color: #0a0a0a;
@@ -119,131 +110,76 @@
             animation: shimmer 6s linear infinite;
         }
 
-        /* Hero Section Fixes */
-        .hero-content { 
-            position: relative; 
-            z-index: 2; 
-            text-align: center; 
-            margin-bottom: 5%; /* Reduced margin for better mobile spacing */
-            width: 100%;
-            padding: 0 20px; /* Prevents box from touching screen edges */
+        /* Portfolio Header */
+        .portfolio-header {
+            padding: 150px 50px 80px;
+            text-align: center;
+        }
+        .portfolio-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 20px; }
+        .portfolio-header p { font-size: 0.9rem; color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; }
+
+        /* Filter Tabs */
+        .filter-container { text-align: center; margin-bottom: 60px; }
+        .filter-btn { 
+            background: none; border: none; color: #555; text-transform: uppercase; 
+            letter-spacing: 2px; font-size: 0.7rem; margin: 0 15px; cursor: pointer; transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover { color: var(--nz-gold); }
+
+        /* The Grid */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 2px; /* Tight minimalist gap */
+            padding: 2px;
         }
 
-        .title-box {
-            padding: 20px 40px; /* Reduced from 30px 60px */
-            border: 2px solid var(--nz-gold); 
-            display: inline-block;
-            max-width: 100%; /* Ensures it never exceeds screen width */
-            background: rgba(0, 0, 0, 0.2); 
-            backdrop-filter: blur(5px); 
-            animation: fadeInBox 1.5s ease-out forwards;
+        .work-item {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: #111;
+            overflow: hidden;
+            cursor: pointer;
         }
 
-        .title-box h1 {
-            color: var(--nz-white); 
-            font-size: 4rem; 
-            text-transform: uppercase; 
-            letter-spacing: 15px; 
-            font-weight: 900; 
-            margin: 0;
-            background: linear-gradient(120deg, #fff 40%, var(--nz-gold) 50%, #fff 60%);
-            background-size: 200% auto; 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 6s linear infinite;
+        /* YouTube Thumbnail Styling */
+        .work-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(0.4) brightness(0.7);
+            transition: 0.6s ease;
         }
 
-        /* Mobile Specific Fixes */
-        @media (max-width: 768px) {
-            .title-box {
-                padding: 15px 20px;
-                border-width: 1px;
-            }
-            .title-box h1 {
-                font-size: 1.8rem; /* Significantly smaller for mobile */
-                letter-spacing: 5px; /* Tighter spacing so it fits one line */
-            }
-            .hero-section {
-                margin-bottom: 5%; /* Less gap on mobile */
-            }
-        }
-        
-        @keyframes fadeInBox {
-            0% { opacity: 0; transform: scale(0.9); border-color: transparent; }
-            100% { opacity: 1; transform: scale(1); border-color: var(--nz-gold); }
-        }
-        @keyframes shimmer { to { background-position: 200% center; } }
-
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10;
-            color: var(--nz-gold); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 3px;
-            animation: bounce 2s infinite; display: flex; flex-direction: column; align-items: center; gap: 10px;
-            transition: opacity 0.5s ease, visibility 0.5s;
-        }
-        .scroll-indicator::after {
-            content: ''; width: 10px; height: 10px; border-right: 2px solid var(--nz-gold); border-bottom: 2px solid var(--nz-gold); transform: rotate(45deg);
-        }
-        .scroll-indicator.fade-out { opacity: 0; visibility: hidden; }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0) translateX(-50%);}
-            40% {transform: translateY(-10px) translateX(-50%);}
-            60% {transform: translateY(-5px) translateX(-50%);}
+        .work-item:hover img {
+            filter: grayscale(0) brightness(1);
+            transform: scale(1.05);
         }
 
-        /* Filter Section */
-        .filter-container { padding: 50px 20px 20px; text-align: center; }
-        .filter-btn {
-            background: transparent; border: 1px solid #333; color: #888;
-            padding: 10px 25px; margin: 0 5px 10px; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; transition: all 0.3s;
+        .work-info {
+            position: absolute;
+            bottom: 30px; left: 30px;
+            opacity: 0; transform: translateY(10px);
+            transition: 0.4s ease;
         }
-        .filter-btn.active, .filter-btn:hover { border-color: var(--accent-color); color: var(--nz-black); background: var(--accent-color); }
 
-        /* Gallery Grid */
-        .gallery-container {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;
-            padding: 40px 20px; max-width: 1400px; margin: 0 auto; margin-bottom: 20%;
+        .work-item:hover .work-info {
+            opacity: 1; transform: translateY(0);
         }
-        .gallery-item {
-            position: relative; aspect-ratio: 16/9; background: #000;
-            overflow: hidden; border: 1px solid #222; animation: fadeIn 0.6s ease-out forwards; cursor: pointer;
-        }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
-        .gallery-item:hover img { transform: scale(1.05); opacity: 0.4; }
-        
-        .gallery-overlay {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            text-align: center; transition: 0.3s; width: 100%; z-index: 5; opacity: 0;
-        }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        
-        .play-icon {
-            display: inline-block; width: 60px; height: 60px; border: 2px solid var(--accent-color);
-            border-radius: 50%; position: relative; margin-bottom: 20px;
-        }
-        .play-icon::after {
-            content: ''; position: absolute; top: 50%; left: 55%; transform: translate(-50%, -50%);
-            border-left: 15px solid var(--accent-color); border-top: 10px solid transparent; border-bottom: 10px solid transparent;
-        }
-        .project-info h3 { font-size: 1.5rem; text-transform: uppercase; color: #fff; margin-bottom: 5px; }
-        .project-info p { font-size: 0.9rem; color: var(--nz-gold); letter-spacing: 1px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .work-info h3 { text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; color: #fff; }
+        .work-info p { font-size: 0.7rem; color: var(--nz-gold); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
 
-        @media (max-width: 1024px) { .gallery-container { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .gallery-container { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } }
+        /* Modal / Lightbox for YouTube */
+        .modal {
+            display: none; position: fixed; z-index: 2000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); align-items: center; justify-content: center;
+        }
+        .modal-content { width: 80%; aspect-ratio: 16 / 9; max-width: 1000px; }
 
-        footer { background: #000; padding: 20px; text-align: center; font-size: 0.8rem; color: #666; border-top: 1px solid #222; }
+        footer { padding: 60px; text-align: center; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
     </style>
 </head>
 <body>
-    
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2FJH6WC"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     
     <nav>
         <a href="#" class="logo-link" id="mainLogo">
@@ -280,175 +216,82 @@
         </div> 
     </nav>
 
-    <header class="page-header">
-        <h1>Selected Works</h1>
-        <p>Where Brand & Video Production Live</p>
-    </header>
-
-    <section class="hero-section">
-        <div class="scroll-indicator">Scroll to Explore</div>
+    <section class="portfolio-header">
+        <h1 data-text="Selected Works">Selected Works</h1>
+        <p>A Visual Record of Structural Integrity</p>
     </section>
+    <div class="work-grid-title">
+       <p>Cinematic lighting is the foundation of architectural integrity. With a decade of experience on major network sets, we bring an electrician's precision to every shadow and highlight.</p>
+    </div>
+        
 
-    <div class="hero-content">
-        <div class="title-box">
-            <h1>Showreels</h1>
-        </div>
+    <div class="filter-container">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Architectural</button>
+        <button class="filter-btn">Product</button>
+        <button class="filter-btn">Institutional</button>
     </div>
 
-    <div class="filter-container" id="filterContainer">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="narrative">Narrative</button>
-        <button class="filter-btn" data-filter="commercial">Commercial</button>
-        <button class="filter-btn" data-filter="documentary">Documentary</button>
-    </div>
-
-    <div class="gallery-container" id="videoGallery">
+    <div class="work-grid">
+        <div class="work-item" onclick="openVideo('AVN2N2hopGk')">
+            <img src="https://img.youtube.com/vi/AVN2N2hopGk/maxresdefault.jpg" alt="Luxury Real Estate">
+            <div class="work-info">
+                <h3>The Modern Estate</h3>
+                <p>Architectural Cinema</p>
+            </div>
         </div>
 
-    <footer><p>&copy; 2026 Northzero Productions. All Rights Reserved.</p></footer>
+        <div class="work-item" onclick="openVideo('Cb5zhr23b4s')">
+            <img src="https://img.youtube.com/vi/Cb5zhr23b4s/maxresdefault.jpg" alt="Interior Design">
+            <div class="work-info">
+                <h3>Tactile Spaces</h3>
+                <p>Interior Narrative</p>
+            </div>
+        </div>
 
+        </div>
+
+    <div class="modal" id="videoModal" onclick="closeVideo()">
+        <div class="modal-content" id="modalPlayer">
+            </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Northzero Productions LLC | Ossining, New York
+    </footer>
+
+    <script src="nav.js"></script>
     <script>
-        // Data Object - NOTE: I have added 'url' properties here. 
-        // You should replace these sample URLs with your actual video links.
+        function openVideo(id) {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('modalPlayer');
+            player.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+            modal.style.display = 'flex';
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('modalPlayer');
+            player.innerHTML = '';
+            modal.style.display = 'none';
+        }
+
         const videoData = {
-            narrative: [
-                { title: "How Are You?", thumb: "https://images.unsplash.com/photo-1508329398483-91fa0a805e3c?w=800", type: "Narrative / Sci-Fi", url: "https://www.youtube.com/embed/sIu9Igb4ePw?autoplay=1" },
-                { title: "Artificially Yours", thumb: "https://images.unsplash.com/photo-1580843411760-ea295173bfd0?w=800", type: "Short Film", url: "https://www.youtube.com/embed/FEfAZ5CTP84?autoplay=1" },
-                { title: "Time Keckening", thumb: "https://images.unsplash.com/photo-1675117317781-1d261bf06fad?w=800", type: "Narrative", url: "https://www.youtube.com/embed/tHDipOuQsjE?autoplay=1" },
-                { title: "Braising", thumb: "https://images.unsplash.com/photo-1597667756343-810c1d7069be?w=800", type: "Narrative", url: "https://www.youtube.com/embed/UV3Lvew15fs?autoplay=1" },
-                { title: "Love My Roomie", thumb: "https://images.unsplash.com/photo-1604537466158-719b1972feb8?w=800", type: "Narrative", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" },
-                { title: "Roam", thumb: "https://images.unsplash.com/photo-1698793916454-2f656c622087?w=800", type: "Narrative", url: "https://www.youtube.com/embed/MFaUO0SV8Kc?autoplay=1" }
+            estate: [ // Reframed Architectural/Documentary
+                { title: "The Modern Estate", thumb: "https://img.youtube.com/vi/AVN2N2hopGk/maxresdefault.jpg", type: "Architectural Cinema", url: "https://www.youtube.com/embed/AVN2N2hopGk?autoplay=1" },
+                { title: "Time Reckoning", thumb: "https://images.unsplash.com/photo-1769141775486-4be69e095f75?w=800", type: "Structural Documentary", url: "https://www.w3schools.com/html/mov_bbb.mp4", isDirectFile: true }
             ],
-            commercial: [
-                { title: "Global Tech", thumb: "https://images.unsplash.com/photo-1762791952347-a2297abf582f?w=800", type: "Tech", url: "https://www.youtube.com/embed/U_s0PDP123c?autoplay=1" },
-                { title: "Drexel University", thumb: "https://plus.unsplash.com/premium_photo-1682146717223-874ac7dcc607?w=800", type: "Education / Promo", url: "https://www.youtube.com/embed/HkLIjG5zG_Y?autoplay=1" },
-                { title: "Crocs Fashion", thumb: "https://images.unsplash.com/photo-1662380683558-8325ab2ca065?w=800", type: "Fashion", url: "https://www.youtube.com/embed/ONyk8VokO2k?autoplay=1" },
-                { title: "Lifestyle X", thumb: "https://images.unsplash.com/photo-1602303832953-05d841ee21f7?w=800", type: "Lifestyle", url: "https://www.youtube.com/embed/xOAFWcR3esw?autoplay=1" },
-                { title: "Brand Story", thumb: "https://images.unsplash.com/photo-1735779411146-a2a6ce587cbb?w=800", type: "Corporate", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" },
-                { title: "Commercial Reel", thumb: "https://images.unsplash.com/photo-1601506521937-0121a7fc2a6b?w=800", type: "Showcase", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" }
+            tactile: [ // Reframed Narrative/Fashion/Short Films
+                { title: "Artificially Yours", thumb: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800", type: "Tactile Narrative", url: "https://www.youtube.com/embed/FEfAZ5CTP84?autoplay=1" },
+                { title: "Croc Fashion", thumb: "https://images.unsplash.com/photo-1604088316303-425d5e181de4?w=800", type: "Design & Texture", url: "https://www.youtube.com/embed/ONyk8VokO2k?autoplay=1" },
+                { title: "Braising", thumb: "https://images.unsplash.com/photo-1597667756343-810c1d7069be?w=800", type: "Visual Rhythm", url: "https://www.youtube.com/embed/UV3Lvew15fs?autoplay=1" }
             ],
-            documentary: [
-                { title: "The Founder", thumb: "https://images.unsplash.com/photo-1769141775486-4be69e095f75?w=800", type: "Documentary", url: "https://www.youtube.com/embed/4c1LY4C5K-A?autoplay=1" },
-                { title: "Character - Driven", thumb: "https://images.unsplash.com/photo-1604088316303-425d5e181de4?w=800", type: "Documentary", url: " " },
-                { title: "Urban Pulse", thumb: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800", type: "Documentary", url: "https://www.youtube.com/embed/-nA5Vhsocpo?autoplay=1" },
-                { title: "Nature's Edge", thumb: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800", type: "Documentary", url: " " },
-                { title: "History Unfolded", thumb: "https://images.unsplash.com/photo-1604537466158-719b1972feb8?w=800", type: "Documentary", url: " " },
-                { title: "The Craftsman", thumb: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800", type: "Documentary", url: " " }
+            institutional: [ // Reframed Education/Corporate
+                { title: "Drexel University", thumb: "https://plus.unsplash.com/premium_photo-1682146717223-874ac7dcc607?w=800", type: "Institutional Strategy", url: "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" },
+                { title: "Global Tech", thumb: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800", type: "Corporate Vision", url: "https://www.youtube.com/embed/U_s0PDP123c?autoplay=1" }
             ]
         };
-
-        // Render Function
-        function renderGallery(filter) {
-            const display = document.getElementById('videoGallery');
-            display.innerHTML = ''; // Clear current videos
-            let itemsToDisplay = [];
-
-            if (filter === 'all') {
-                // Logic: Pick the first 2 items from each category to create a nice 6-item grid
-                Object.keys(videoData).forEach(cat => {
-                    // Take first 2 items from each category
-                    itemsToDisplay = itemsToDisplay.concat(videoData[cat].slice(0, 2));
-                });
-            } else {
-                // Display all items from the selected category
-                itemsToDisplay = videoData[filter];
-            }
-
-            // Append items to the grid
-            itemsToDisplay.forEach(item => {
-                const isDirect = item.isDirectFile ? 'true' : 'false';
-                
-                const itemHtml = `
-                    <div class="gallery-item" onclick="playInline(this, '${item.url}', ${isDirect})">
-                        <img src="${item.thumb}" alt="${item.title}">
-                        <div class="gallery-overlay">
-                            <div class="play-icon"></div>
-                            <div class="project-info">
-                                <h3>${item.title}</h3>
-                                <p>${item.type}</p>
-                            </div>
-                        </div>
-                    </div>`;
-                display.insertAdjacentHTML('beforeend', itemHtml);
-            });
-        }
-
-        // Play Video Function
-        function playInline(element, url, isDirectFile = false) {
-            // Replace image with video player
-            if (isDirectFile) {
-                element.innerHTML = `<video src="${url}" controls autoplay style="width:100%; height:100%; object-fit:cover;"></video>`;
-            } else {
-                element.innerHTML = `<iframe src="${url}" allow="autoplay; fullscreen" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>`;
-            }
-            element.style.cursor = 'default';
-            element.removeAttribute('onclick'); // Prevent re-clicking
-        }
-
-        // Event Listeners for Filter Buttons
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            
-            filterButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all
-                    filterButtons.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked
-                    this.classList.add('active');
-                    
-                    const filter = this.getAttribute('data-filter');
-                    renderGallery(filter);
-                });
-            });
-
-            // Initial Load
-            renderGallery('all');
-            
-            // Logo Click Logic
-            const logo = document.getElementById('mainLogo');
-            if(logo) {
-                logo.addEventListener('mousedown', () => logo.style.transform = 'scale(0.96)');
-                logo.addEventListener('mouseup', () => logo.style.transform = 'scale(1)');
-            }
-        });
-
-        // Toggle Menu for Mobile
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
-            
-            if (menu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Scroll Logic
-        window.addEventListener('scroll', function() {
-            const scroll = window.pageYOffset;
-            const title = document.querySelector('.hero-content');
-            const scrollIndicator = document.querySelector('.scroll-indicator');
-
-            // Parallax
-            if(title) {
-                title.style.transform = 'translateY(' + scroll * 0.4 + 'px)';
-                title.style.opacity = 1 - (scroll / 600);
-            }
-            
-            // Fade Indicator
-            if (scrollIndicator) {
-                if (window.scrollY > 50) {
-                    scrollIndicator.classList.add('fade-out');
-                } else {
-                    scrollIndicator.classList.remove('fade-out');
-                }
-            }
-        });
     </script>
-    <!-- Start of HubSpot Embed Code -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/245486083.js"></script>
-    <!-- End of HubSpot Embed Code -->
 </body>
 </html>
 
