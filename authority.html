@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Authority Suite | Northzero Productions</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* AUTHORITY SPECIFIC DESIGN */
+        .auth-hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .auth-hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 20px;
+            margin-bottom: 20px;
+        }
+
+        .auth-intro {
+            padding: 120px 10%;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .auth-intro h2 {
+            color: var(--nz-gold);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .auth-intro p {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        /* Technical Service Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-top: 1px solid #222;
+        }
+
+        .tech-cell {
+            padding: 80px;
+            border-bottom: 1px solid #222;
+            transition: 0.4s;
+        }
+
+        .tech-cell:nth-child(odd) { border-right: 1px solid #222; }
+        .tech-cell:hover { background: #080808; }
+
+        .tech-cell h3 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--nz-gold);
+            margin-bottom: 20px;
+        }
+
+        .tech-cell h4 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .tech-cell p {
+            color: #777;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* Blue-Check / Credentials Bar */
+        .credentials-bar {
+            background: #111;
+            padding: 60px 50px;
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            border-top: 1px solid var(--nz-blue);
+        }
+
+        .cred-item { text-align: center; }
+        .cred-item span { display: block; font-size: 1.5rem; letter-spacing: 2px; color: #fff; }
+        .cred-item label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 4px; color: var(--nz-blue); }
+
+        @media (max-width: 900px) {
+            .tech-grid { grid-template-columns: 1fr; }
+            .tech-cell:nth-child(odd) { border-right: none; }
+            .credentials-bar { flex-direction: column; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav></nav>
+
+    <header class="auth-hero">
+        <div class="hero-content">
+            <p style="letter-spacing: 8px; color: var(--nz-gold); margin-bottom: 15px;">STRATEGIC VISUAL ASSETS</p>
+            <h1>The Authority Suite</h1>
+        </div>
+    </header>
+
+    <section class="auth-intro">
+        <h2>Visual Compliance & Strategy</h2>
+        <p>
+            Northzero provides high-stakes visual documentation for the preservation, development, and municipal sectors. We bridge the gap between architectural intent and regulatory approval.
+        </p>
+    </section>
+
+    <section class="tech-grid">
+        <div class="tech-cell">
+            <h3>Pillar 01</h3>
+            <h4>Historic Documentation</h4>
+            <p>Comprehensive visual recording for Landmark and HPC-regulated properties. We provide the cinematic proof of restoration integrity required for historical tax credits and municipal compliance.</p>
+        </div>
+        <div class="tech-cell">
+            <h3>Pillar 02</h3>
+            <h4>Investor Briefings</h4>
+            <p>Translating complex development blueprints into high-fidelity cinematic walkthroughs. We convert "plans" into "vision," allowing stakeholders to experience the finished asset before ground is broken.</p>
+        </div>
+        <div class="tech-cell">
+            <h3>Pillar 03</h3>
+            <h4>Municipal Visuals</h4>
+            <p>Crafting high-authority visual narratives for public hearings and community board approvals. We specialize in presenting project scale and community impact with absolute clarity.</p>
+        </div>
+        <div class="tech-cell">
+            <h3>Pillar 04</h3>
+            <h4>Brand Permanence</h4>
+            <p>Strategic content creation for legacy firms. We document the evolution of your firm’s portfolio, ensuring your structural contributions are archived for future generations.</p>
+        </div>
+    </section>
+
+    <section class="credentials-bar">
+        <div class="cred-item">
+            <label>Liaison</label>
+            <span>Ossining HPC Member</span>
+        </div>
+        <div class="cred-item">
+            <label>Jurisdiction</label>
+            <span>NY / Tri-State Area</span>
+        </div>
+        <div class="cred-item">
+            <label>Standard</label>
+            <span>HABS/HAER Influence</span>
+        </div>
+    </section>
+
+    <footer style="padding: 100px 50px; text-align: center; border-top: 1px solid #111; color: #333; text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem;">
+        &copy; 2026 Northzero Productions LLC | Regulatory Excellence
+    </footer>
+
+    <script src="nav.js"></script>
+</body>
+</html>
