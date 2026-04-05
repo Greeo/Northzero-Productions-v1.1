@@ -22,6 +22,7 @@ const injectNavigation = () => {
             <a href="work.html">Selected Works</a>
             <a href="about.html">The Lens</a>
             <a href="services.html">Services</a>
+            <a href="policies.html">Policies</a>
             <a href="contact.html" class="cta-btn">Start a Project</a>
         </div>
 
@@ -36,6 +37,7 @@ const injectNavigation = () => {
             <a href="work.html" onclick="toggleMenu()">Selected Works</a>
             <a href="about.html" onclick="toggleMenu()">The Lens</a>
             <a href="services.html" onclick="toggleMenu()">Services</a>
+            <a href="policies.html" onclick="toggleMenu()">Policies</a>
             <a href="contact.html" class="cta-btn" onclick="toggleMenu()">Start a Project</a>
         </div>
     `;
