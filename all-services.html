@@ -3,111 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Capabilities | Northzero Productions</title>
+    <title>Our Services | Northzero Productions</title>
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #f0f0f0;
-            --text-muted: #aaaaaa;
-            --accent-color: #d4af37; /* Gold/Cinematic accent */
-            --secondary-bg: #141414;
-            --card-bg: #111;
-            --font-main: 'Helvetica Neue', sans-serif;
-            --nz-blue: #0047ab;
-            --nz-gold: #d4af37;
-            --nz-black: #0a0a0a;
-            --nz-white: #ffffff;
-        }
+        /* PAGE-SPECIFIC HUB STYLES */
+        html { scroll-behavior: smooth; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); line-height: 1.8; overflow-x: hidden; }
-
-     
-
-        /* Header */
         .page-header {
-            height: 75vh; background: linear-gradient(to bottom, rgba(0,0,0,0.8), var(--bg-color)), url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
-        }
-        .page-header h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; }
-        .page-header p { font-size: 1.1rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
-
-        /* Hero Section */
-        .hero-section { position: relative; width: 100%; height: 10vh; display: flex; align-items: center; justify-content: center; background: #090909; margin-bottom: 12%; }
-        .hero-content { position: relative; z-index: 2; text-align: center; margin-bottom: 9%; }
-        
-        .title-box {
-            padding: 30px 60px; border: 2px solid var(--nz-gold); display: inline-block;
-            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); animation: fadeInBox 1.5s ease-out forwards;
-        }
-        .title-box h1 {
-            color: var(--nz-white); font-size: 4rem; text-transform: uppercase; letter-spacing: 15px; font-weight: 900; margin: 0;
-            background: linear-gradient(120deg, #fff 40%, var(--nz-gold) 50%, #fff 60%);
-            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: shimmer 6s linear infinite;
-        }
-
-        /* Hero Header */
-        .page-header {
-            height: 40vh;
-            background: linear-gradient(rgba(0,0,0,0.8), var(--bg-color)), 
+            height: 45vh;
+            background: linear-gradient(rgba(0,0,0,0.8), #0a0a0a), 
                         url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1950&q=80') center/cover;
             display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
         }
-        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 10px; color: var(--nz-white); }
-        .page-header p { color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; }
 
-        /* Sticky Sub-Nav */
-        .sub-nav {
-            background: #111; padding: 15px 0; position: sticky; top: 85px; z-index: 900;
-            border-bottom: 1px solid #222; text-align: center;
+        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 10px; color: #fff; }
+        .page-header p { color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; margin-top: 10px; }
+
+        /* Sticky Filter Bar */
+        .service-nav {
+            background: #111; padding: 15px 0; position: sticky; top: 80px; z-index: 900;
+            border-bottom: 1px solid #222; text-align: center; backdrop-filter: blur(10px);
         }
-        .sub-nav a { color: #888; text-decoration: none; margin: 0 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
-        .sub-nav a:hover { color: var(--nz-gold); }
+        .service-nav a { color: #888; text-decoration: none; margin: 0 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .service-nav a:hover { color: var(--nz-gold); }
 
-        /* Section Styling */
-        .service-section { padding: 120px 50px; border-bottom: 1px solid #111; max-width: 1200px; margin: 0 auto; }
-        .section-intro { text-align: center; margin-bottom: 80px; }
-        .section-intro h2 { font-size: 2.2rem; text-transform: uppercase; letter-spacing: 6px; margin-bottom: 20px; }
-        .section-intro h2 span { color: var(--nz-gold); }
+        /* Section Layouts */
+        .service-block { padding: 120px 50px; border-bottom: 1px solid #111; max-width: 1200px; margin: 0 auto; scroll-margin-top: 140px; }
+        
+        .block-header { margin-bottom: 60px; }
+        .block-header span { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; display: block; margin-bottom: 15px; }
+        .block-header h2 { font-size: 2.2rem; text-transform: uppercase; letter-spacing: 5px; color: #fff; }
 
-        /* Detail Grids */
-        .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .detail-card { background: #0d0d0d; padding: 40px; border-left: 2px solid #222; transition: 0.3s; }
-        .detail-card:hover { border-left-color: var(--nz-gold); background: #111; }
-        .detail-card h3 { color: var(--nz-white); text-transform: uppercase; font-size: 1rem; margin-bottom: 20px; letter-spacing: 2px; }
-        .detail-card ul { list-style: none; color: #777; font-size: 0.9rem; }
-        .detail-card li { margin-bottom: 10px; position: relative; padding-left: 20px; }
-        .detail-card li::before { content: '→'; position: absolute; left: 0; color: var(--nz-gold); }
+        .capability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        
+        .cap-card { background: #0d0d0d; padding: 40px; border: 1px solid #1a1a1a; transition: 0.4s; }
+        .cap-card:hover { border-color: var(--nz-gold); transform: translateY(-5px); }
+        .cap-card h3 { color: #fff; text-transform: uppercase; font-size: 1rem; margin-bottom: 20px; letter-spacing: 2px; }
+        .cap-card ul { list-style: none; padding: 0; }
+        .cap-card li { color: #888; font-size: 0.9rem; margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .cap-card li::before { content: "—"; position: absolute; left: 0; color: var(--nz-gold); }
 
-        footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
+        /* Bottom CTA */
+        .service-footer { padding: 100px 50px; text-align: center; background: #080808; }
+        .service-footer h2 { font-size: 2rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 30px; }
+
+        footer { padding: 60px; text-align: center; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; border-top: 1px solid #111; }
+
+        @media (max-width: 768px) {
+            .service-nav { display: none; } /* Simpler for mobile */
+            .service-block { padding: 80px 20px; }
+        }
     </style>
 </head>
 <body>
 
     <nav></nav>
 
-     <header class="page-header">
-        <h1>Technical Suite</h1>
-        <p>Full-Spectrum Cinema Operations</p>
+    <header class="page-header">
+        <h1>Our Capabilities</h1>
+        <p>From Concept Architecture to Network Delivery</p>
     </header>
 
-    <div class="sub-nav">
-        <a href="#pre-production">Strategic Architecture</a>
-        <a href="#storytelling">Cinematography</a>
-        <a href="#post-production">Post-Suite</a>
-        <a href="#specialized">Specialized Ops</a>
+    <div class="service-nav">
+        <a href="#strategy">Strategy</a>
+        <a href="#production">Production</a>
+        <a href="#post">Post-Suite</a>
+        <a href="#specialized">Specialized</a>
     </div>
 
-    <section id="pre-production" class="service-section">
-        <div class="section-intro">
-            <h2>Strategic <span>Architecture</span></h2>
-            <p>The blueprint phase. We translate brand identity into a technical execution plan.</p>
+    <section id="strategy" class="service-block">
+        <div class="block-header">
+            <span>Phase 01</span>
+            <h2>Strategic Architecture</h2>
         </div>
-        <div class="detail-grid">
-            <div class="detail-card">
-                <h3>Narrative Development</h3>
+        <div class="capability-grid">
+            <div class="cap-card">
+                <h3>Pre-Visualization</h3>
                 <ul>
                     <li>Concept Engineering</li>
                     <li>Technical Scriptwriting</li>
@@ -115,65 +87,65 @@
                     <li>Structural Storyboarding</li>
                 </ul>
             </div>
-            <div class="detail-card">
-                <h3>Field Logistics</h3>
+            <div class="cap-card">
+                <h3>Logistics</h3>
                 <ul>
-                    <li>Precision Location Scouting</li>
+                    <li>Precision Scouting</li>
                     <li>Historic Landmark Permitting</li>
-                    <li>Talent & Crew Orchestration</li>
+                    <li>Talent Orchestration</li>
                     <li>Equipment Tier Selection</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="storytelling" class="service-section" style="background: #080808;">
-        <div class="section-intro">
-            <h2>Cinematic <span>Field Operations</span></h2>
-            <p>High-fidelity capture designed for architectural and brand prestige.</p>
+    <section id="production" class="service-block">
+        <div class="block-header">
+            <span>Phase 02</span>
+            <h2>Field Operations</h2>
         </div>
-        <div class="detail-grid">
-            <div class="detail-card">
-                <h3>Architectural Capture</h3>
+        <div class="capability-grid">
+            <div class="cap-card">
+                <h3>Cinematography</h3>
                 <ul>
+                    <li>IATSE 52 Lighting Standards</li>
                     <li>Natural Light Optimization</li>
-                    <li>Interior Structural Pacing</li>
-                    <li>Texture-First Detail Shots</li>
                     <li>Gimbal-Stabilized Flow</li>
+                    <li>Texture-First Detail Shots</li>
                 </ul>
             </div>
-            <div class="detail-card">
+            <div class="cap-card">
                 <h3>Aerial Intelligence</h3>
                 <ul>
                     <li>FAA Part 107 Operations</li>
                     <li>Landscape Geometry Mapping</li>
                     <li>High-Altitude Stills</li>
-                    <li>FPV Architectural Fly-throughs</li>
+                    <li>Architectural Fly-throughs</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="post-production" class="service-section">
-        <div class="section-intro">
-            <h2>The Post-Production <span>Gallery</span></h2>
-            <p>Where raw data is refined into high-end brand assets.</p>
+    <section id="post" class="service-block">
+        <div class="block-header">
+            <span>Phase 03</span>
+            <h2>The Post-Suite</h2>
         </div>
-        <div class="detail-grid">
-            <div class="detail-card">
-                <h3>Visual Grading</h3>
+        <div class="capability-grid">
+            <div class="cap-card">
+                <h3>Refinement</h3>
                 <ul>
                     <li>Cinematic Color Correction</li>
                     <li>Architectural Sky Replacement</li>
                     <li>Digital Noise Reduction</li>
-                    <li>4K Mastering & Export</li>
+                    <li>4K Network Mastering</li>
                 </ul>
             </div>
-            <div class="detail-card">
+            <div class="cap-card">
                 <h3>Aural Design</h3>
                 <ul>
                     <li>Bespoke Soundscapes</li>
-                    <li>Professional Voiceover Integration</li>
+                    <li>Professional Voiceover</li>
                     <li>Foley & Texture Audio</li>
                     <li>Licensed Elite Soundtracks</li>
                 </ul>
@@ -181,32 +153,9 @@
         </div>
     </section>
 
-    <section id="specialized" class="service-section" style="background: #080808; border-bottom: none;">
-        <div class="section-intro">
-            <h2>Architectural <span>Archiving</span></h2>
-            <p>Specialized services for historic properties and premium design houses.</p>
-        </div>
-        <div class="detail-grid">
-            <div class="detail-card" style="border-left-color: var(--nz-gold);">
-                <h3>Preservation Documentation</h3>
-                <p style="color:#777; font-size:0.9rem; margin-bottom:20px;">Leveraging our founder's role on the Ossining Historic Preservation Commission to document the "bones" of heritage estates.</p>
-                <ul>
-                    <li>Historic Landmark Archiving</li>
-                    <li>Structural Integrity Surveys</li>
-                    <li>Restoration Time-Lapses</li>
-                    <li>Heritage Storytelling</li>
-                </ul>
-            </div>
-            <div class="detail-card">
-                <h3>Enterprise Design Partners</h3>
-                <ul>
-                    <li>Interior Design Spotlights</li>
-                    <li>Luxury Landscape Showcases</li>
-                    <li>Portfolio Content Retainers</li>
-                    <li>Design Firm Identity Films</li>
-                </ul>
-            </div>
-        </div>
+    <section class="service-footer">
+        <h2>Built for Prestige.</h2>
+        <a href="contact.html" class="cta-btn">Initiate a Project</a>
     </section>
 
     <footer>
