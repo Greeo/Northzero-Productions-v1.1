@@ -1,3 +1,155 @@
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    background: var(--nz-black);
+    padding: 15px 25px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-decoration: none;
+}
+
+/* --- THE COMPASS --- */
+.compass-box {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+}
+
+.needle {
+    position: relative;
+    width: 4px;
+    height: 36px;
+    transform: rotate(-45deg);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Blue North Tip */
+.needle::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 18px solid var(--nz-blue);
+    transform: translateX(-2px);
+}
+
+/* Gold South Tip */
+.needle::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 18px solid var(--nz-gold);
+    transform: translateX(-2px);
+}
+
+/* --- THE ANIMATED NAME --- */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--nz-white);
+    letter-spacing: 3px;
+    line-height: 1;
+    position: relative;
+    
+    /* Text Shimmer Effect */
+    background: linear-gradient(120deg, 
+        rgba(255,255,255,1) 40%, 
+        rgba(255,255,255,0.4) 50%, 
+        rgba(255,255,255,1) 60%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+
+.sub-title {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--nz-gold);
+    letter-spacing: 6.5px;
+    margin-top: 4px;
+}
+
+/* --- HOVER INTERACTIONS --- */
+.logo-link:hover .needle {
+    transform: rotate(0deg);
+}
+
+.logo-link:hover .compass-box {
+    border-color: var(--nz-blue);
+    box-shadow: 0 0 15px rgba(0, 71, 171, 0.3);
+}
+
+.logo-link:hover .main-title {
+    animation: shimmer 1.5s linear infinite; /* Speed up shimmer on hover */
+}
+
+/* --- TEXT STYLING --- */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--nz-white);
+    letter-spacing: 3px;
+    line-height: 1;
+}
+
+.main-title span.blue-zero {
+    color: var(--nz-blue);
+    transition: color 0.3s;
+}
+
+.sub-title {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--nz-gold);
+    letter-spacing: 6.5px;
+    margin-top: 4px;
+}
+
+/* --- ANIMATION --- */
+.logo-link:hover .needle {
+    /* Points straight up towards "Zero" */
+    transform: rotate(0deg);
+}
+
+.logo-link:hover .compass-box {
+    border-color: var(--nz-gold);
+}
+
+.logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.logo span { color: var(--accent-color); }
+.cta-btn { border: 1px solid var(--accent-color); padding: 10px 25px; color: var(--accent-color); text-decoration: none; text-transform: uppercase; transition: all 0.3s; }
+.cta-btn:hover { background: var(--accent-color); color: var(--bg-color); }
+
+
+
 /* --- MASTER NAV STYLES --- */
 nav {
     display: flex; justify-content: space-between; align-items: center; 
