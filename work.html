@@ -5,27 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Works | Northzero Productions</title>
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #f0f0f0;
-            --text-muted: #aaaaaa;
-            --accent-color: #d4af37; /* Gold/Cinematic accent */
-            --secondary-bg: #141414;
-            --card-bg: #111;
-            --font-main: 'Helvetica Neue', sans-serif;
-            --nz-blue: #0047ab;
-            --nz-gold: #d4af37;
-            --nz-black: #0a0a0a;
-            --nz-white: #ffffff;
+        /* PAGE-SPECIFIC PORTFOLIO STYLES */
+        .portfolio-header { padding: 180px 50px 60px; text-align: center; }
+        .portfolio-header h1 { 
+            font-size: 3.5rem; text-transform: uppercase; letter-spacing: 15px; 
+            margin-bottom: 20px; color: #fff;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); line-height: 1.8; overflow-x: hidden; }
-
-        /* Header Section */
-        .portfolio-header { padding: 160px 50px 40px; text-align: center; }
-        .portfolio-header h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 15px; margin-bottom: 20px; }
 
         /* Filter System */
         .filter-container { text-align: center; margin-bottom: 60px; }
@@ -41,7 +28,7 @@
             grid-template-columns: repeat(6, 1fr);
             grid-auto-rows: 20vw;
             gap: 15px;
-            padding: 0 15px 80px;
+            padding: 0 30px 100px;
             max-width: 1600px;
             margin: 0 auto;
         }
@@ -82,7 +69,7 @@
 
         /* --- THE LIGHTBOX (MODAL) --- */
         .lightbox {
-            display: none; position: fixed; z-index: 2000;
+            display: none; position: fixed; z-index: 10000;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.98); align-items: center; justify-content: center;
         }
@@ -103,9 +90,9 @@
             .work-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 30vw; }
         }
         @media (max-width: 768px) {
-            .work-grid { grid-template-columns: 1fr; grid-auto-rows: 56.25vw; }
+            .work-grid { grid-template-columns: 1fr; grid-auto-rows: 56.25vw; padding: 0 15px 80px; }
             .work-item.featured, .work-item.tall, .work-item.wide { grid-column: span 1; grid-row: span 1; }
-            .portfolio-header h1 { font-size: 2rem; letter-spacing: 8px; }
+            .portfolio-header h1 { font-size: 2.2rem; letter-spacing: 8px; }
         }
     </style>
 </head>
@@ -114,14 +101,14 @@
     <nav></nav>
 
     <section class="portfolio-header">
-        <h1 data-text="Selected Works">Selected Works</h1>
+        <h1>Selected Works</h1>
     </section>
 
     <div class="filter-container">
-        <button class="filter-btn active" onclick="filterGallery('all')">All</button>
-        <button class="filter-btn" onclick="filterGallery('estate')">Estate</button>
-        <button class="filter-btn" onclick="filterGallery('tactile')">Tactile</button>
-        <button class="filter-btn" onclick="filterGallery('institutional')">Institutional</button>
+        <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+        <button class="filter-btn" onclick="filterGallery('estate', this)">Estate</button>
+        <button class="filter-btn" onclick="filterGallery('tactile', this)">Tactile</button>
+        <button class="filter-btn" onclick="filterGallery('institutional', this)">Institutional</button>
     </div>
 
     <div class="work-grid" id="workGrid">
@@ -141,12 +128,11 @@
     <script src="nav.js"></script>
 
     <script>
-        // Your Curated Video Data
         const projects = [
             { id: 'AVN2N2hopGk', title: 'The Modern Estate', category: 'estate', type: 'Architectural Cinema', layout: 'featured' },
             { id: 'FEfAZ5CTP84', title: 'Artificially Yours', category: 'tactile', type: 'Tactile Narrative', layout: 'tall' },
-            { id: 'ONyk8VokO2k', title: 'Croc Fashion', category: 'tactile', type: 'Design & Texture', layout: 'standard' },
-            { id: 'UV3Lvew15fs', title: 'Braising', category: 'tactile', type: 'Visual Rhythm', layout: 'standard' },
+            { id: 'ONyk8VokO2k', title: 'Design & Texture', category: 'tactile', type: 'Macro Study', layout: 'standard' },
+            { id: 'UV3Lvew15fs', title: 'Visual Rhythm', category: 'tactile', type: 'Production Design', layout: 'standard' },
             { id: 'U_s0PDP123c', title: 'Global Tech', category: 'institutional', type: 'Institutional Strategy', layout: 'wide' }
         ];
 
@@ -169,16 +155,12 @@
             });
         }
 
-        function filterGallery(cat) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.innerText.toLowerCase().includes(cat)) btn.classList.add('active');
-                if(cat === 'all' && btn.innerText === 'ALL') btn.classList.add('active');
-            });
+        function filterGallery(cat, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
             renderGallery(cat);
         }
 
-        // Lightbox Functions
         function openVideo(videoID) {
             const lightbox = document.getElementById('videoLightbox');
             const player = document.getElementById('videoPlayerFrame');
@@ -186,29 +168,7 @@
             player.innerHTML = `
                 <iframe 
                     width="100%" height="100%" 
-                    src="https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1" 
-                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
-                </iframe>`;
-            
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeVideo(e) {
-            if (e.target.id === 'videoLightbox' || e.target.className === 'close-lightbox') {
-                const lightbox = document.getElementById('videoLightbox');
-                document.getElementById('videoPlayerFrame').innerHTML = '';
-                lightbox.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Initialize
-        renderGallery();
-    </script>
-    <script src="nav.js"></script>
-</body>
-</html>
+                    src="https://www.youtube.com/embed/${video
 
 
 
