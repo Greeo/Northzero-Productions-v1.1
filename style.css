@@ -3,10 +3,10 @@
    ============================================================ */
 
 :root {
-    --nz-black: #0a0a0a;
-    --nz-white: #ffffff;
     --nz-blue: #0047ab;
     --nz-gold: #d4af37;
+    --nz-black: #0a0a0a;
+    --nz-white: #ffffff;
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
