@@ -3,65 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Core Services | Northzero Productions</title>
+    <title>Production Pillars | Northzero Productions</title>
     <link rel="stylesheet" href="style.css">
+    
     <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #f0f0f0;
-            --text-muted: #aaaaaa;
-            --accent-color: #d4af37; /* Gold/Cinematic accent */
-            --secondary-bg: #141414;
-            --card-bg: #111;
-            --font-main: 'Helvetica Neue', sans-serif;
-            --nz-blue: #0047ab;
-            --nz-gold: #d4af37;
-            --nz-black: #0a0a0a;
-            --nz-white: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-main); line-height: 1.8; overflow-x: hidden; }
-
-        /* Header */
-        .page-header {
-            height: 75vh; background: linear-gradient(to bottom, rgba(0,0,0,0.8), var(--bg-color)), url('https://images.unsplash.com/photo-1604537466158-719b1972feb8?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-            display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
-        }
-        .page-header h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; }
-        .page-header p { font-size: 1.1rem; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
-
-        /* Hero Section */
-        .hero-section { position: relative; width: 100%; height: 10vh; display: flex; align-items: center; justify-content: center; background: #090909; margin-bottom: 12%; }
-        .hero-content { position: relative; z-index: 2; text-align: center; margin-bottom: 9%; }
-        
-        .title-box {
-            padding: 30px 60px; border: 2px solid var(--nz-gold); display: inline-block;
-            background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(5px); animation: fadeInBox 1.5s ease-out forwards;
-        }
-        .title-box h1 {
-            color: var(--nz-white); font-size: 4rem; text-transform: uppercase; letter-spacing: 15px; font-weight: 900; margin: 0;
-            background: linear-gradient(120deg, #fff 40%, var(--nz-gold) 50%, #fff 60%);
-            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: shimmer 6s linear infinite;
-        }
-
-        /* Page Header */
+        /* PAGE-SPECIFIC PILLAR STYLES */
         .page-header {
             height: 50vh;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), var(--bg-color)), 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), #0a0a0a), 
                         url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
             display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
         }
 
-        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 10px; }
+        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 12px; margin-bottom: 10px; color: #fff; }
         .page-header p { font-size: 1rem; color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; }
 
         /* Service Categories */
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
         
         .category-header { display: flex; align-items: center; margin-bottom: 50px; }
-        .category-header h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 6px; margin-right: 20px; font-weight: 300; }
+        .category-header h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 6px; margin-right: 20px; font-weight: 300; color: #fff; }
         .line { flex-grow: 1; height: 1px; background: #222; }
 
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 100px; }
@@ -71,18 +32,18 @@
             transition: transform 0.3s ease, border-color 0.3s ease; 
         }
         .card:hover { transform: translateY(-5px); border-color: var(--nz-gold); }
-        .card h3 { color: var(--nz-white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; }
+        .card h3 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; }
         .card p { color: #888; font-size: 0.95rem; font-weight: 300; line-height: 1.8; }
 
         /* Call to Action */
-        .cta-section { text-align: center; padding: 100px 20px; background: #080808; border-top: 1px solid #111; }
-        .cta-btn { 
-            border: 1px solid var(--nz-gold); padding: 15px 45px; color: var(--nz-gold); 
-            text-decoration: none; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; transition: 0.3s; 
-        }
-        .cta-btn:hover { background: var(--nz-gold); color: #000; }
-
+        .cta-section { text-align: center; padding: 120px 20px; background: #080808; border-top: 1px solid #111; }
+        
         footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2rem; letter-spacing: 6px; }
+            .category-header h2 { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -162,12 +123,12 @@
     </div>
 
     <section class="cta-section">
-        <h2 style="margin-bottom: 40px; letter-spacing: 5px; font-weight: 300; text-transform: uppercase;">Ready to define your narrative?</h2>
+        <h2 style="margin-bottom: 40px; letter-spacing: 5px; font-weight: 300; text-transform: uppercase; color: #fff;">Ready to define your narrative?</h2>
         <a href="contact.html" class="cta-btn">Initiate Inquiry</a>
     </section>
 
     <footer>
-        &copy; 2026 Northzero Productions LLC | Ossining, New York
+        &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
     <script src="nav.js"></script>
