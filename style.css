@@ -7,8 +7,6 @@
     --nz-white: #ffffff;
     --nz-blue: #0047ab;
     --nz-gold: #d4af37;
-    --accent-color: #d4af37; /* Legacy support */
-    --text-color: #f0f0f0;
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -18,18 +16,18 @@ nav {
     justify-content: space-between; 
     align-items: center; 
     padding: 20px 50px; 
-    background: rgba(10, 10, 10, 0.95); 
+    background: rgba(10, 10, 10, 0.96); 
     position: fixed; 
     width: 100%; 
     top: 0; 
     z-index: 9999;
-    border-bottom: 1px solid #222; 
-    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    backdrop-filter: blur(15px);
     height: 80px; 
-    overflow: visible !important; /* Critical for dropdown visibility */
+    overflow: visible !important; /* Critical for dropdown */
 }
 
-/* --- 2. THE COMPASS LOGO --- */
+/* --- 2. THE COMPASS LOGO (RESTORED VIGOR) --- */
 .logo-link {
     display: inline-flex;
     align-items: center;
@@ -39,66 +37,68 @@ nav {
 
 .compass-box {
     position: relative;
-    width: 45px;
-    height: 45px;
-    border: 1.5px solid #333;
+    width: 48px;
+    height: 48px;
+    border: 2px solid #333;
     border-radius: 50%;
-    margin-right: 15px;
+    margin-right: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 0.4s ease;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .needle {
     position: relative;
-    width: 3px;
-    height: 30px;
+    width: 4px;
+    height: 34px;
     transform: rotate(-45deg);
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.needle::before { /* North Tip */
+.needle::before { /* Blue North Tip */
     content: ''; position: absolute; top: 0; left: 50%;
-    border-left: 3px solid transparent; border-right: 3px solid transparent;
-    border-bottom: 15px solid var(--nz-blue); transform: translateX(-50%);
+    border-left: 4px solid transparent; border-right: 4px solid transparent;
+    border-bottom: 17px solid var(--nz-blue); transform: translateX(-50%);
 }
 
-.needle::after { /* South Tip */
+.needle::after { /* Gold South Tip */
     content: ''; position: absolute; bottom: 0; left: 50%;
-    border-left: 3px solid transparent; border-right: 3px solid transparent;
-    border-top: 15px solid var(--nz-gold); transform: translateX(-50%);
+    border-left: 4px solid transparent; border-right: 4px solid transparent;
+    border-top: 17px solid var(--nz-gold); transform: translateX(-50%);
 }
 
 .logo-text { display: flex; flex-direction: column; text-transform: uppercase; }
 
 .main-title {
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     font-weight: 900;
     color: var(--nz-white);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     line-height: 1;
+    position: relative;
+    /* Shimmer Effect */
     background: linear-gradient(120deg, #fff 40%, rgba(255,255,255,0.4) 50%, #fff 60%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: shimmer 4s linear infinite;
+    animation: shimmer 5s linear infinite;
 }
 
 .sub-title {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: var(--nz-gold);
-    letter-spacing: 5px;
-    margin-top: 2px;
+    letter-spacing: 6.5px;
+    margin-top: 4px;
 }
 
 @keyframes shimmer { to { background-position: 200% center; } }
 
 /* Logo Hover */
 .logo-link:hover .needle { transform: rotate(0deg); }
-.logo-link:hover .compass-box { border-color: var(--nz-gold); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+.logo-link:hover .compass-box { border-color: var(--nz-gold); box-shadow: 0 0 15px rgba(212,175,55,0.3); }
 
-/* --- 3. DESKTOP LINKS & DROPDOWN --- */
+/* --- 3. DESKTOP NAVIGATION & DROPDOWN --- */
 .nav-links { display: flex; align-items: center; gap: 30px; overflow: visible !important; }
 
 .nav-links a {
@@ -123,10 +123,9 @@ nav {
     left: 0;
     border: 1px solid #222;
     z-index: 10000;
-    box-shadow: 0px 10px 20px rgba(0,0,0,0.5);
 }
 
-.dropdown:hover .dropdown-content { display: block; animation: fadeIn 0.3s ease; }
+.dropdown:hover .dropdown-content { display: block; animation: navFadeIn 0.3s ease; }
 
 .dropdown-content a {
     padding: 15px 20px !important;
@@ -134,11 +133,14 @@ nav {
     border-bottom: 1px solid #111;
     display: block !important;
     margin: 0 !important;
+    color: #888 !important;
 }
 
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.dropdown-content a:hover { background: #111 !important; color: var(--nz-gold) !important; }
 
-/* --- 4. GLOBAL UI ELEMENTS --- */
+@keyframes navFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- 4. GLOBAL UI (BUTTONS/FOOTER) --- */
 .cta-btn {
     border: 1px solid var(--nz-gold);
     padding: 10px 25px;
@@ -146,7 +148,7 @@ nav {
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.75rem;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     transition: 0.3s;
 }
 
@@ -156,48 +158,19 @@ nav {
 .hamburger-icon { display: none; }
 
 .mobile-dropdown {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    background: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(15px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-    z-index: 9000;
+    position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+    background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px);
+    display: flex; flex-direction: column; justify-content: center;
+    align-items: center; gap: 40px; transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1500;
 }
 
 .mobile-dropdown.active { right: 0; }
 
-.mobile-dropdown a {
-    color: white;
-    font-size: 1.8rem;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-}
-
 @media (max-width: 1024px) {
-    nav { padding: 20px 30px; }
     .nav-links { display: none; }
-    .hamburger-icon {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-        z-index: 10000;
-    }
-    .hamburger-icon span {
-        width: 28px;
-        height: 2px;
-        background-color: var(--nz-white);
-        transition: 0.4s;
-    }
+    .hamburger-icon { display: flex; flex-direction: column; gap: 6px; cursor: pointer; z-index: 2000; }
+    .hamburger-icon span { width: 30px; height: 2px; background-color: #fff; transition: 0.4s; }
 }
 
 
