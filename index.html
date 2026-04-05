@@ -790,8 +790,40 @@
                     margin-bottom: 40px;
                 }
             }
+            
+  
+             /* Mobile Devices (under 768px) */
+            @media (max-width: 768px) {
+                .slider-wrapper {
+                    max-width: 95%;
+                    border: none; /* Cleaner look on small screens */
+                }
 
-          
+                /* Adjust aspect ratio for mobile to allow more vertical content */
+                .slide-frame {
+                    aspect-ratio: 4 / 3; 
+                }
+
+                .slider-controls {
+                    gap: 15px;
+                    padding-bottom: 20px;
+                }
+
+                .slide-nav {
+                    width: 40px;
+                    height: 40px;
+                }
+
+                /* Make dots slightly larger for easier touch interaction */
+                .dot {
+                    width: 10px;
+                    height: 10px;
+                }
+                
+                .dot.active {
+                    width: 25px;
+                }
+            }
 
             /* Very Small Devices (under 480px) */
             @media (max-width: 480px) {
@@ -810,40 +842,42 @@
             }
         }
 
-       @media (max-width: 768px) {
-            .hero-content h1 {
-                /* 1. Force the font to a size that fits a phone width */
-                font-size: 7vw !important; 
-                
-                /* 2. Dramatically reduce spacing so long words stay on one line */
-                letter-spacing: 2px !important; 
-                
-                /* 3. The Emergency Break: If the word is still too long, break it */
-                overflow-wrap: break-word;
-                word-wrap: break-word;
-                hyphens: auto;
-                
-                /* 4. Formatting */
-                display: block;
-                width: 100%;
-                max-width: 85vw; /* Leaves a 7.5% margin on both sides */
-                margin: 0 auto;
-                line-height: 1.1;
-                text-align: center;
+       /* --- CRITICAL MOBILE TEXT LOCKDOWN --- */
+        @media (max-width: 768px) {
+            .slide-content {
+                padding: 0 10px; /* Gives a tiny bit more room on the sides */
             }
         
-            .shutter-text {
-                font-size: 7vw !important;
-                letter-spacing: 2px !important;
+            .slide-content h1 {
+                /* This scales the font perfectly between 1.8rem and 3rem based on screen width */
+                font-size: clamp(1.8rem, 10vw, 3rem) !important;
+                
+                /* Drastically reduced for mobile to keep words on one line */
+                letter-spacing: 2px !important; 
+                
+                /* Ensures the word 'ARCHITECTURAL' can't physically exit the screen */
+                word-break: break-word;
+                overflow-wrap: break-word;
+                
                 width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.2;
+                display: block;
+            }
+        
+            .slide-content p {
+                font-size: 0.8rem !important;
+                letter-spacing: 2px !important;
+                padding: 0 15px;
             }
         }
         
-        /* Specific fix for the smallest devices (iPhone SE) */
-        @media (max-width: 400px) {
-            .hero-content h1, .shutter-text {
-                font-size: 1.8rem !important;
-                letter-spacing: 1px !important; /* Minimum spacing to ensure fit */
+        /* Fix for extremely small devices (iPhone SE / Fold) */
+        @media (max-width: 380px) {
+            .slide-content h1 {
+                font-size: 1.6rem !important;
+                letter-spacing: 1px !important;
             }
         }
 
