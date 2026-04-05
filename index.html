@@ -48,6 +48,14 @@
         }
         .nav-links a:hover { color: var(--accent-color); }
 
+        /* Fix nav invisibility issues */
+        nav {
+            overflow: visible !important;
+        }
+        .nav-links {
+            overflow: visible !important;
+        }  /* Fix nav invisibility issues ends*/
+  
         /* Hide Mobile Elements on Desktop by default */
         .hamburger-icon, .mobile-dropdown {
             display: none;
