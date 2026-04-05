@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architectural Cinema | Northzero Productions</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* PAGE-SPECIFIC ARCHITECTURAL STYLES */
+        .arch-hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background: linear-gradient(to right, #0a0a0a 40%, transparent), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
 
+        .arch-hero-content { max-width: 600px; }
+        .arch-hero-content h1 { font-size: 4rem; text-transform: uppercase; letter-spacing: 15px; line-height: 1.1; margin-bottom: 20px; }
+        .arch-hero-content p { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; }
+
+        /* The Authority Hook Section */
+        .authority-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #111;
+            padding: 100px 0;
+            border-top: 1px solid #222;
+        }
+
+        .auth-text { padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+        .auth-text h2 { font-size: 1.8rem; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 30px; color: var(--nz-gold); }
+        .auth-text p { color: #888; font-size: 1.1rem; line-height: 2; margin-bottom: 20px; }
+
+        .auth-visual {
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            border-left: 1px solid var(--nz-gold);
+        }
+
+        /* Feature Grid */
+        .service-features {
+            padding: 100px 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 40px;
+            border: 1px solid #1a1a1a;
+            transition: 0.4s;
+        }
+
+        .feature-card:hover { border-color: var(--nz-gold); background: #0d0d0d; }
+        .feature-card h3 { color: #fff; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; font-size: 1rem; }
+        .feature-card p { color: #666; font-size: 0.9rem; line-height: 1.8; }
+
+        @media (max-width: 768px) {
+            .authority-block { grid-template-columns: 1fr; }
+            .arch-hero { padding: 0 5%; background: #0a0a0a; text-align: center; }
+            .arch-hero-content h1 { font-size: 2.5rem; letter-spacing: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav></nav>
+
+    <section class="arch-hero">
+        <div class="arch-hero-content">
+            <p>High-End Real Estate & Preservation</p>
+            <h1>Architectural Cinema</h1>
+        </div>
+    </section>
+
+    <section class="authority-block">
+        <div class="auth-text">
+            <h2>The Preservationist Perspective</h2>
+            <p>
+                As an alternate member of the Village of Ossining Historic Preservation Commission, Omar A. Greene views structures through a lens of permanence and historical value.
+            </p>
+            <p>
+                We don't just film properties; we document the structural narrative, the intent of the architect, and the soul of the estate.
+            </p>
+        </div>
+        <div class="auth-visual"></div>
+    </section>
+
+    <section class="service-features">
+        <div class="feature-card">
+            <h3>Estate Documentation</h3>
+            <p>Cinematic walkthroughs designed for ultra-luxury listings, focusing on flow, light, and materiality.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Historical Narratives</h3>
+            <p>Specialized storytelling for pre-war and historic estates, highlighting original details and restoration work.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Institutional Visuals</h3>
+            <p>Comprehensive visual strategy for developers and architectural firms looking to showcase project completion.</p>
+        </div>
+    </section>
+
+    <footer style="padding: 100px 50px; text-align: center; border-top: 1px solid #111; color: #333; text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem;">
+        &copy; 2026 Northzero Productions LLC | Architectural Excellence
+    </footer>
+
+    <script src="nav.js"></script>
+</body>
+</html>
