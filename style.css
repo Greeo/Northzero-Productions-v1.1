@@ -78,6 +78,46 @@ nav {
     transition: 0.3s;
 }
 
+
+/* --- THE NORTHZERO CTA BUTTON --- */
+.cta-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle Border */
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: transparent;
+    position: relative;
+    z-index: 20;
+}
+
+.cta-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Optional: Add a Gold variant for specific emphasis */
+.cta-btn.gold-btn {
+    border-color: var(--nz-gold);
+    color: var(--nz-gold);
+}
+
+.cta-btn.gold-btn:hover {
+    background: var(--nz-gold);
+    color: #000;
+}
+
+
+
 .dropdown {
     position: relative;
     height: 100%;
