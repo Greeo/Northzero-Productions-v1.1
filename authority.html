@@ -108,7 +108,34 @@
 </head>
 <body>
 
-    <nav></nav>
+   <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; background: #000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; box-sizing: border-box;">
+        <a href="index.html" class="logo-link">
+            <div class="compass-box"><div class="needle"></div></div>
+            <div class="logo-text">
+                <span class="main-title">NORTHZERO</span>
+                <span class="sub-title">PRODUCTIONS</span>
+            </div>
+        </a>
+    
+        <div class="hamburger" id="hamburger-menu">
+            <span></span><span></span><span></span>
+        </div>
+    
+        <div class="nav-links" id="nav-links-container">
+            <a href="index.html">Agency</a>
+            <a href="work.html">Selected Works</a>
+            <div class="dropdown">
+                <a href="all-services.html" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="authority.html">Authority Suite</a>
+                    <a href="architectural.html">Architectural Cinema</a>
+                    <a href="tactile.html">Tactile Narratives</a>
+                </div>
+            </div>
+            <a href="about.html">The Lens</a>
+            <a href="contact.html" style="border: 1px solid #d4af37; padding: 8px 15px; color: #d4af37; text-decoration: none; font-size: 0.7rem;">Start a Project</a>
+        </div>
+    </nav>
 
     <header class="auth-hero">
         <div class="hero-content">
