@@ -345,3 +345,19 @@ nav {
 }
 
 
+@media (max-width: 768px) {
+    /* 1. HIDE THE ROW OF LINKS */
+    .nav-links {
+        display: none; /* This stops 'Agency Selected Works' from bunching up */
+    }
+
+    /* 2. SHOW THE HAMBURGER */
+    .hamburger {
+        display: block !important;
+        cursor: pointer;
+    }
+
+    /* 3. LOGO SCALING */
+    .main-title { font-size: 1rem; }
+    .sub-title { font-size: 0.55rem; }
+}
