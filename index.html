@@ -4,194 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Northzero Productions | Cinematic Design & Narrative</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.6">
+    <link rel="stylesheet" href="style.css?v=1.7">
     
     <style>
-        /* 1. THE BLACKOUT LOCK (Stops the white leaks) */
+        /* --- 1. CORE BRAND VARIABLES --- */
         :root {
-            --bg-color: #000;
-            --secondary-bg: #050505;
-            --text-color: #fff;
+            --bg-black: #000;
+            --bg-soft: #050505;
             --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
             --nz-white: #ffffff;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         html, body { 
-            background-color: #000 !important; 
+            background-color: var(--bg-black) !important; 
             margin: 0; padding: 0; 
             box-sizing: border-box; 
             overflow-x: hidden;
-            color: var(--text-color);
-            font-family: sans-serif; /* Your style.css will override this */
+            color: var(--nz-white);
+            font-family: var(--font-main);
         }
 
-
-        /* --- 1. THE EMERGENCY RESET --- */
+        /* --- 2. NAVIGATION (STABILIZED) --- */
         nav.nz-nav {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 90px !important;
-            background: #000 !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            padding: 0 5% !important;
-            z-index: 10000 !important;
-            border-bottom: 1px solid #111 !important;
-            box-sizing: border-box !important;
+            position: fixed !important; top: 0; left: 0; width: 100%;
+            height: 80px; background: rgba(0,0,0,0.95);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; z-index: 10000;
+            border-bottom: 1px solid #111;
+            backdrop-filter: blur(10px);
         }
-    
-        /* --- 2. LOGO & COMPASS ALIGNMENT --- */
-        .nz-brand {
-            display: flex !important;
-            align-items: center !important;
-            text-decoration: none !important;
-            gap: 15px !important;
-        }
-    
-        .nz-compass {
-            width: 40px; height: 40px;
-            border: 1px solid #333;
-            border-radius: 50%;
+
+        .logo-link { display: flex; align-items: center; text-decoration: none; gap: 15px; }
+        .compass-box {
+            width: 40px; height: 40px; border: 1px solid #333; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
         }
-    
-        .nz-needle {
+        .needle {
             width: 2px; height: 28px;
-            background: linear-gradient(to bottom, #0047ab 50%, #d4af37 50%);
+            background: linear-gradient(to bottom, var(--nz-blue) 50%, var(--nz-gold) 50%);
+            transition: 0.6s ease;
         }
-    
-        .nz-logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .nz-main-title { color: #fff; font-size: 1.2rem; font-weight: 900; letter-spacing: 4px; }
-        .nz-sub-title { color: #d4af37; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; }
-    
-        /* --- 3. LINKS --- */
-        .nz-links { display: flex !important; align-items: center !important; gap: 30px !important; }
-        .nz-links a { 
-            color: #fff !important; 
-            text-decoration: none !important; 
-            text-transform: uppercase !important; 
-            letter-spacing: 2px !important; 
-            font-size: 0.7rem !important; 
-        }
-    
-        /* --- 4. MOBILE HAMBURGER LOGIC --- */
-        .nz-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-        .nz-hamburger span { width: 25px; height: 2px; background: #fff; }
-    
-        @media (max-width: 900px) {
-            .nz-links { display: none !important; } /* Hides links on mobile */
-            .nz-hamburger { display: flex !important; } /* Shows hamburger */
-            .nz-main-title { font-size: 1rem; }
-        }
+        .logo-link:hover .needle { transform: rotate(45deg); }
 
-        /* 2. SOPHISTICATED SHUTTER GLITCH */
-        .slide-content h1 {
-            font-size: clamp(2rem, 8vw, 3.5rem);
-            text-transform: uppercase;
-            letter-spacing: 12px;
-            margin-bottom: 20px;
-            color: var(--nz-white);
-            position: relative;
-            display: inline-block;
-        }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 4px; color: #fff; }
+        .sub-title { font-size: 0.65rem; color: var(--nz-gold); letter-spacing: 3px; text-transform: uppercase; }
 
-        .slide-content h1::before,
-        .slide-content h1::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: transparent;
-            clip: rect(0, 0, 0, 0); 
-        }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
 
-        .slide-content h1::after {
-            left: 2px;
-            text-shadow: -1px 0 rgba(0, 71, 171, 0.7);
-            animation: shutter-glitch-1 10s infinite linear alternate-reverse;
-        }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 25px; height: 2px; background: #fff; }
 
-        .slide-content h1::before {
-            left: -2px;
-            text-shadow: 2px 0 rgba(212, 175, 55, 0.7);
-            animation: shutter-glitch-2 10s infinite linear alternate-reverse;
-        }
-
-        @keyframes shutter-glitch-1 {
-            0%, 18%, 22%, 100% { clip: rect(0, 0, 0, 0); opacity: 0; }
-            20% { clip: rect(15px, 9999px, 16px, 0); opacity: 1; transform: scaleX(1.1); }
-            21% { clip: rect(60px, 9999px, 62px, 0); opacity: 1; transform: translateX(5px); }
-        }
-
-        @keyframes shutter-glitch-2 {
-            0%, 18%, 22%, 100% { clip: rect(0, 0, 0, 0); opacity: 0; }
-            19% { clip: rect(40px, 9999px, 42px, 0); opacity: 1; transform: scaleX(1.1); }
-            20.5% { clip: rect(80px, 9999px, 82px, 0); opacity: 1; transform: translateX(-5px); }
-        }
-
-        /* --- BENTO SHOWCASE: THE VALUE MULTIPLIER --- */
-        .bento-showcase {
-            padding: 120px 5%;
-            background: #000;
-            border-top: 1px solid #111;
-        }
-        
-        .bento-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .bento-header p {
-            color: var(--nz-gold);
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 0.7rem;
-        }
-        
-        .bento-grid-fixed {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr; /* The Power Split */
-            grid-template-rows: 350px 350px;
-            gap: 25px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .bento-item {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        .bento-item:hover {
-            border-color: var(--nz-gold);
-            transform: translateY(-5px);
-        }
-        
-        .bento-item.large { grid-row: span 2; }
-        
-        /* Overlay for text within bento */
-        .bento-text {
-            position: absolute;
-            bottom: 30px; left: 30px;
-            z-index: 5;
-        }
-        
-        .bento-text h3 { 
-            font-size: 0.8rem; 
-            letter-spacing: 3px; 
-            text-transform: uppercase; 
-            color: #fff; 
-        }
-
-        /* 3. SLIDER - FIXED POSITIONING */
+        /* --- 3. HERO SLIDER & GLITCH --- */
         .slider-container { position: relative; height: 100vh; width: 100%; overflow: hidden; background: #000; }
         .slide { 
             position: absolute; width: 100%; height: 100%; opacity: 0; 
@@ -200,34 +69,76 @@
         }
         .slide.active { opacity: 1; }
         
-        .slide-1 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80') center/cover; }
-        .slide-2 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1920&q=80') center/cover; }
-        .slide-3 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80') center/cover; }
-        .slide-4 { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1950&q=80') center/cover; }
+        .slide-content { padding: 0 20px; width: 100%; max-width: 1100px; z-index: 10; }
+        .slide-content h1 {
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: 12px;
+            margin-bottom: 20px;
+            color: var(--nz-white);
+            position: relative;
+        }
 
-        .slide-content { padding: 0 20px; max-width: 1000px; z-index: 10; }
-        .slide-content p { font-size: 1.1rem; color: #ddd; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 40px; }
+        /* Glitch Effect Settings */
+        .slide-content h1::before, .slide-content h1::after {
+            content: attr(data-text); position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; opacity: 0.7;
+        }
+        .slide-content h1::after { color: var(--nz-blue); left: 2px; animation: glitch 4s infinite linear alternate-reverse; }
+        .slide-content h1::before { color: var(--nz-gold); left: -2px; animation: glitch 6s infinite linear alternate-reverse; }
 
-        /* 4. SECTIONS & GRIDS */
-        .authority-section { padding: 120px 50px; background: #000; text-align: center; border-bottom: 1px solid #111; }
-        .authority-content h2 { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 5px; margin-bottom: 30px; font-size: 1.8rem; }
-        .authority-content p { font-size: 1.1rem; line-height: 2; color: #aaa; max-width: 800px; margin: 0 auto; }
+        @keyframes glitch {
+            0%, 20%, 40%, 60%, 70%, 90% { clip-path: inset(100% 0 0 0); }
+            10%, 30%, 50%, 80%, 100% { clip-path: inset(0 0 0 0); }
+        }
 
-        .section { padding: 120px 50px; background: #050505; }
-        .section-title { font-size: 2rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 60px; text-align: center; color: var(--nz-gold); }
+        .cta-btn {
+            display: inline-block; padding: 15px 30px; border: 1px solid var(--nz-gold);
+            color: var(--nz-gold); text-decoration: none; text-transform: uppercase;
+            letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s;
+        }
+        .cta-btn:hover { background: var(--nz-gold); color: #000; }
 
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto; }
-        .service-card { background: #0a0a0a; padding: 50px 40px; border: 1px solid #111; transition: 0.4s; text-decoration: none; display: block; }
-        .service-card:hover { transform: translateY(-10px); border-color: var(--nz-gold); background: #0d0d0d; }
-        .service-card h3 { font-size: 1.1rem; margin-bottom: 20px; color: #fff; text-transform: uppercase; letter-spacing: 3px; }
-        .service-card p { color: #666; font-size: 0.95rem; line-height: 1.8; }
+        /* --- 4. BENTO GRID --- */
+        .bento-showcase { padding: 100px 5%; background: var(--bg-black); }
+        .bento-grid-fixed {
+            display: grid; grid-template-columns: 1.6fr 1fr;
+            grid-template-rows: 350px 350px; gap: 20px;
+            max-width: 1400px; margin: 0 auto;
+        }
+        .bento-item {
+            background: #0a0a0a; border: 1px solid #1a1a1a;
+            position: relative; overflow: hidden;
+            background-size: cover; background-position: center;
+            transition: 0.5s;
+        }
+        .bento-item:hover { border-color: var(--nz-gold); transform: translateY(-5px); }
+        .bento-item.large { grid-row: span 2; }
+        .bento-text { position: absolute; bottom: 20px; left: 20px; }
+        .bento-text h3 { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-        footer { padding: 80px; text-align: center; border-top: 1px solid #111; color: #333; letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; background: #000; }
+        /* --- 5. MOBILE OVERRIDES (THE REPAIR) --- */
+        @media screen and (max-width: 900px) {
+            .nav-links { display: none !important; } /* Hidden until toggle */
+            .hamburger { display: flex !important; }
+            
+            .slide-content h1 { 
+                letter-spacing: 5px; 
+                line-height: 1.2;
+                white-space: normal; /* Forces text to wrap correctly */
+            }
+            .bento-grid-fixed { 
+                display: flex; 
+                flex-direction: column; 
+                height: auto; 
+            }
+            .bento-item { height: 300px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; background: #000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; box-sizing: border-box;">
+    <nav class="nz-nav">
         <a href="index.html" class="logo-link">
             <div class="compass-box"><div class="needle"></div></div>
             <div class="logo-text">
@@ -242,17 +153,10 @@
     
         <div class="nav-links" id="nav-links-container">
             <a href="index.html">Agency</a>
-            <a href="work.html">Selected Works</a>
-            <div class="dropdown">
-                <a href="all-services.html" class="dropbtn">Services</a>
-                <div class="dropdown-content">
-                    <a href="authority.html">Authority Suite</a>
-                    <a href="architectural.html">Architectural Cinema</a>
-                    <a href="tactile.html">Tactile Narratives</a>
-                </div>
-            </div>
-            <a href="about.html">The Lens</a>
-            <a href="contact.html" style="border: 1px solid #d4af37; padding: 8px 15px; color: #d4af37; text-decoration: none; font-size: 0.7rem;">Start a Project</a>
+            <a href="work.html">Works</a>
+            <a href="all-services.html">Services</a>
+            <a href="about.html">Lens</a>
+            <a href="contact.html" style="border: 1px solid var(--nz-gold); padding: 8px 15px; color: var(--nz-gold); margin-left: 10px;">Start a Project</a>
         </div>
     </nav>
 
@@ -279,81 +183,35 @@
                     <a href="work.html" class="cta-btn">Our Strategy</a>
                 </div>
             </div>
-            <div class="slide slide-4">
-                <div class="slide-content">
-                    <h1 data-text="Cinema. Story. Impact">Cinema. Story. Impact</h1>
-                    <p>We Refine the Essence of your Brand into Cinematic Experience</p>
-                    <a href="work.html" class="cta-btn">Our Strategy</a>
-                </div>
-            </div>
         </div>
 
-        <!--- /* The Bento boxies Design */ --->
         <section class="bento-showcase">
-            <div class="bento-header">
-                <p>Selected Portfolios</p>
+            <div style="text-align: center; margin-bottom: 50px;">
+                <p style="color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem;">Selected Portfolios</p>
             </div>
-        
             <div class="bento-grid-fixed">
-                <div class="bento-item large" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200');">
-                    <div class="bento-text">
-                        <h3>Architectural Cinema: Regan Estates</h3>
-                    </div>
+                <div class="bento-item large" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200');">
+                    <div class="bento-text"><h3>Regan Estates</h3></div>
                 </div>
-        
-                <div class="bento-item" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&w=800');">
-                    <div class="bento-text">
-                        <h3>Tactile Narrative: Croc</h3>
-                    </div>
+                <div class="bento-item" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1719368472026-dc26f70a9b76?q=80&w=800');">
+                    <div class="bento-text"><h3>Tactile: Croc</h3></div>
                 </div>
-        
-                <div class="bento-item" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=800');">
-                    <div class="bento-text">
-                        <h3>Archival Strategy</h3>
-                    </div>
+                <div class="bento-item" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=800');">
+                    <div class="bento-text"><h3>Archival Strategy</h3></div>
                 </div>
-            </div>
-        </section>
-
-        <section class="authority-section">
-            <div class="authority-content">
-                <h2>Historic Preservation Roots</h2>
-                <p>
-                    At Northzero, we bridge the gap between structural design and cinematic narrative. From historic Westchester estates to modern luxury builds, we produce films that define prestige.
-                    Omar A. Greene brings a deep respect for architectural integrity to every frame.
-                </p>
-            </div>
-        </section>
-
-        <section id="services" class="section">
-            <h2 class="section-title">Our Expertise</h2>
-            <div class="services-grid">
-                <a href="all-services.html" class="service-card">
-                    <h3>Hero Listing Films</h3>
-                    <p>Bespoke narratives for luxury real estate. We sell the dream of the design, not just the square footage.</p>
-                </a>
-                <a href="all-services.html" class="service-card">
-                    <h3>Exterior Design Spotlight</h3>
-                    <p>High-altitude drone cinematography and ground-level texture for pool and landscape architecture.</p>
-                </a>
-                <a href="all-services.html" class="service-card">
-                    <h3>Brand Identity Spots</h3>
-                    <p>Rhythmic, design-forward commercials that position your business at the top of its niche.</p>
-                </a>
             </div>
         </section>
 
         <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
-            <p style="color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">Ready to Document the Legacy?</p>
-            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Let's Discuss the Scope</h2>
-            <div style="display: flex; justify-content: center; gap: 20px;">
-                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Initiate an Audit</h2>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="contact.html" class="cta-btn">Start Project</a>
                 <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer style="padding: 60px; text-align: center; border-top: 1px solid #111; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: #444;">
         &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
@@ -372,8 +230,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
