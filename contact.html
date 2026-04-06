@@ -30,72 +30,7 @@
             font-weight: 400;
             margin-top: 2px;
         }
-
-        /* --- NAV BRAND STYLING --- */
-        .logo-link {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            gap: 15px;
-        }
-        
-        .compass-box {
-            position: relative;
-            width: 40px;
-            height: 40px;
-            border: 1px solid #333;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .needle {
-            width: 2px;
-            height: 28px;
-            background: linear-gradient(to bottom, #0047ab 50%, #d4af37 50%); /* Blue top, Gold bottom */
-            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-        }
-        
-        .logo-link:hover .needle {
-            transform: rotate(45deg);
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.1;
-        }
-        
-        .main-title {
-            color: #fff;
-            letter-spacing: 5px;
-            font-size: 1.2rem;
-            font-weight: 900;
-        }
-        
-        .sub-title {
-            color: #d4af37;
-            letter-spacing: 3px;
-            font-size: 0.65rem;
-            font-weight: 400;
-        }
-        
-        /* --- NAV LINK STYLING --- */
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.7rem;
-        }
-        
+    
         .cta-button {
             border: 1px solid #d4af37;
             padding: 8px 15px;
@@ -108,8 +43,6 @@
             width: 100%;
         }
     
-      
-
          .contact-container {
             background: #000;
             min-height: 100vh;
@@ -308,7 +241,7 @@
             <button type="submit" class="submit-btn" id="my-form-button">Submit for Audit</button>
         </form>
     </main>
-    
+    <script src="nav.js"></script>
     <script>
         var form = document.getElementById("my-form");
         
