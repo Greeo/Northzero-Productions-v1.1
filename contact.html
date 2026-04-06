@@ -2,231 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Initiate Inquiry | Northzero Productions</title>
-    <link rel="stylesheet" href="style.css?v=1.7">
-    <style>
-        /* 1. THE STACKED LOGO TEXT (Shared with Nav) */
-        .brand-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-            justify-content: center;
-        }
-        
-        .brand-northzero {
-            color: #fff;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            font-weight: 900;
-        }
-        
-        .brand-productions {
-            color: #d4af37;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            font-weight: 400;
-            margin-top: 2px;
-        }
-
-        /* 2. THE SPACER & CONTAINER */
-        .header-spacer {
-            height: 120px; /* Adjusted for cleaner look */
-            width: 100%;
-        }
     
+    <style>
+        :root { --nz-gold: #d4af37; --nz-blue: #0047ab; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; overflow-x: hidden; }
+
+        /* --- STABILIZED NAV --- */
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%; height: 80px;
+            z-index: 9999; background: #000; padding: 0 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #111;
+        }
+
+        .logo-link { display: flex; align-items: center; text-decoration: none; gap: 12px; }
+        
+        .compass-box {
+            width: 38px; height: 38px; border: 1px solid #333; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .needle {
+            width: 2px; height: 26px;
+            background: linear-gradient(to bottom, var(--nz-blue) 50%, var(--nz-gold) 50%);
+            transition: transform 0.6s ease;
+        }
+
+        .logo-link:hover .needle { transform: rotate(45deg); }
+
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .main-title { font-size: 1.1rem; font-weight: 900; letter-spacing: 3px; color: #fff; }
+        .sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
+        
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 22px; height: 2px; background: #fff; }
+
+        /* --- FORM CONTAINER --- */
         .contact-container {
-            background: #000;
+            padding: 140px 5% 100px;
+            display: flex; flex-direction: column; align-items: center;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 100px;
-            box-sizing: border-box;
         }
-            
+
+        .form-header { text-align: center; margin-bottom: 50px; }
+        .form-header h1 { font-size: 2.2rem; letter-spacing: 8px; text-transform: uppercase; margin-top: 10px; }
+        .form-header p { color: var(--nz-gold); letter-spacing: 3px; text-transform: uppercase; font-size: 0.7rem; }
+
         .nz-form {
-            width: 90%;
-            max-width: 800px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 0 auto;
+            width: 100%; max-width: 800px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 25px;
         }
 
-        .form-header { text-align: center; margin-bottom: 40px; }
-
-        .form-header h1 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            letter-spacing: 10px;
-            color: #fff;
-            margin-top: 10px;
-        }
-
-        .form-group { display: flex; flex-direction: column; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
         .full-width { grid-column: span 2; }
 
-        label {
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.65rem;
-            margin-bottom: 10px;
-        }
-
+        label { color: #666; text-transform: uppercase; letter-spacing: 2px; font-size: 0.6rem; }
         input, select, textarea {
-            background: #0a0a0a;
-            border: 1px solid #222;
-            padding: 15px;
-            color: #fff;
-            font-family: inherit;
-            transition: 0.3s;
-            width: 100%;
-            box-sizing: border-box;
+            background: #0a0a0a; border: 1px solid #222; padding: 15px;
+            color: #fff; font-size: 1rem; width: 100%;
         }
 
-        /* 3. MOBILE NUCLEAR FIX (Centering & Hamburger) */
-        @media screen and (max-width: 768px) {
-            .header-spacer { height: 100px; }
-            
-            .nz-form {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 20px;
-            }
+        .submit-btn {
+            grid-column: span 2; background: transparent; border: 1px solid var(--nz-gold);
+            color: var(--nz-gold); padding: 20px; text-transform: uppercase;
+            letter-spacing: 5px; cursor: pointer; transition: 0.4s;
+        }
 
-            .form-header h1 {
-                font-size: 1.6rem;
-                letter-spacing: 5px;
-            }
+        .submit-btn:hover { background: var(--nz-gold); color: #000; }
 
-            /* Force the nav links to hide so the hamburger can work */
-            .nav-links { display: none; } 
-            
-            .brand-northzero { font-size: 1rem; }
-            .brand-productions { font-size: 0.6rem; }
+        /* --- MOBILE REPAIRS --- */
+        @media (max-width: 850px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nz-form { display: flex; flex-direction: column; }
+            .form-header h1 { font-size: 1.5rem; letter-spacing: 4px; }
+            .main-title { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
-    
-    <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; background: #000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; box-sizing: border-box;">
-        
+
+    <nav>
         <a href="index.html" class="logo-link">
-            <div class="compass-box">
-                <div class="needle"></div>
-            </div>
+            <div class="compass-box"><div class="needle"></div></div>
             <div class="logo-text">
                 <span class="main-title">NORTHZERO</span>
                 <span class="sub-title">PRODUCTIONS</span>
             </div>
         </a>
-    
-        <div class="hamburger" id="hamburger-menu">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
         </div>
-    
-        <div class="nav-links" id="nav-links-container">
+        <div class="nav-links" id="mobileMenu">
             <a href="index.html">Agency</a>
-            <a href="work.html">Selected Works</a>
-            <div class="dropdown">
-                <a href="all-services.html" class="dropbtn">Services</a>
-                <div class="dropdown-content">
-                    <a href="authority.html">Authority Suite</a>
-                    <a href="architectural.html">Architectural Cinema</a>
-                    <a href="tactile.html">Tactile Narratives</a>
-                </div>
-            </div>
-            <a href="about.html">The Lens</a>
-            <a href="contact.html" class="cta-button" style="border: 1px solid #d4af37; padding: 8px 15px; color: #d4af37; text-decoration: none;">Start a Project</a>
+            <a href="work.html">Works</a>
+            <a href="all-services.html">Services</a>
+            <a href="about.html">Lens</a>
         </div>
     </nav>
-    
+
     <main class="contact-container">
-        <div class="header-spacer"></div>
-    
         <div class="form-header">
             <p>Project Intake</p>
             <h1>Initiate Inquiry</h1>
         </div>
 
-        <p id="my-form-status" style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 20px; min-height: 20px;"></p>
-    
         <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
             <div class="form-group">
-                <label>Legal Name / Principal</label>
+                <label>Principal Name</label>
                 <input type="text" name="name" placeholder="Omar Greene" required>
             </div>
-        
             <div class="form-group">
-                <label>Professional Email</label>
+                <label>Email</label>
                 <input type="email" name="email" placeholder="name@agency.com" required>
             </div>
-        
-            <div class="form-group">
-                <label>Service Category</label>
-                <select name="category">
-                    <option value="Architectural Cinema">Architectural Cinema</option>
-                    <option value="Historic Preservation Audit">Historic Preservation Audit</option>
-                    <option value="Tactile Narrative">Tactile Narrative / Commercial</option>
-                    <option value="Institutional Branding">Institutional Branding</option>
-                </select>
-            </div>
-        
-            <div class="form-group">
-                <label>Estimated Project Scale</label>
-                <select name="budget">
-                    <option value="5k-10k">Standard Portfolio ($5k - $10k)</option>
-                    <option value="10k-25k">Premium Production ($10k - $25k)</option>
-                    <option value="25k+">Institutional / Long-term Strategy ($25k+)</option>
-                </select>
-            </div>
-        
             <div class="form-group full-width">
-                <label>Historical or Structural Significance</label>
-                <textarea name="significance" rows="4" placeholder="Briefly describe the design intent..."></textarea>
+                <label>Historical Significance</label>
+                <textarea name="significance" rows="4" placeholder="Describe the structural intent..."></textarea>
             </div>
-        
-            <div class="form-group full-width">
-                <label>Project Timeline & Goals</label>
-                <textarea name="goals" rows="2" placeholder="Primary objective..."></textarea>
-            </div>
-        
-            <button type="submit" class="submit-btn" id="my-form-button">Submit for Audit</button>
+            <button type="submit" class="submit-btn">Submit Audit</button>
         </form>
     </main>
 
-    <script src="nav.js"></script>
     <script>
-        var form = document.getElementById("my-form");
-        async function handleSubmit(event) {
-          event.preventDefault();
-          var status = document.getElementById("my-form-status");
-          var data = new FormData(event.target);
-          status.innerHTML = "PROCESSSING AUDIT...";
-          status.style.color = "#d4af37";
-          
-          fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          }).then(response => {
-            if (response.ok) {
-              status.innerHTML = "INQUIRY RECEIVED. WE WILL CONTACT YOU SOON.";
-              status.style.color = "#fff";
-              form.reset();
-            } else {
-              status.innerHTML = "Oops! Problem submitting form";
-              status.style.color = "red";
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+            if(menu.style.display === 'flex') {
+                menu.style.position = 'absolute';
+                menu.style.top = '80px';
+                menu.style.left = '0';
+                menu.style.width = '100%';
+                menu.style.background = '#000';
+                menu.style.flexDirection = 'column';
+                menu.style.padding = '20px';
             }
-          });
         }
-        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
