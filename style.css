@@ -367,66 +367,116 @@ nav {
     .sub-title { font-size: 0.55rem; }
 }
 
-
-@media (max-width: 768px) {
-    /* 1. HIDE THE ROW OF LINKS */
-    .nav-links {
-        display: none; /* This stops 'Agency Selected Works' from bunching up */
-    }
-
-    /* 2. SHOW THE HAMBURGER */
-    .hamburger {
-        display: block !important;
-        cursor: pointer;
-    }
-
-    /* 3. LOGO SCALING */
-    .main-title { font-size: 1rem; }
-    .sub-title { font-size: 0.55rem; }
+/* --- NAVIGATION & DROPDOWN --- */
+.nav-links { 
+    display: flex; 
+    align-items: center; 
+    height: 100%; 
+    gap: 35px; 
 }
 
+.nav-links a {
+    text-decoration: none;
+    color: #eee;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    transition: 0.3s;
+}
 
-/* --- UNIVERSAL MOBILE NAV LOGIC --- */
+/* Hide Hamburger on Desktop */
+.hamburger {
+    display: none;
+}
+
+.dropdown {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dropbtn { cursor: pointer; height: 100%; display: flex; align-items: center; }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    background: #0a0a0a;
+    min-width: 220px;
+    border: 1px solid #222;
+    z-index: 10000;
+}
+
+.dropdown:hover .dropdown-content { 
+    display: block !important; 
+}
+
+/* ... keep your cta-btn and aperture animations here ... */
+
+/* --- CONSOLIDATED MOBILE NAVIGATION (The Fix) --- */
 @media screen and (max-width: 900px) {
-    /* 1. HIDE THE LINKS IMMEDIATELY */
-    .nav-links {
-        display: none !important; /* Forces the desktop menu to vanish */
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background: #000;
-        flex-direction: column;
-        padding: 40px 0;
-        border-bottom: 1px solid #111;
-        z-index: 999;
+    nav {
+        padding: 0 20px; /* Tighter padding for mobile screens */
     }
 
-    /* 2. SHOW THE LINKS ONLY WHEN ACTIVE */
+    /* 1. FORCE HIDE DESKTOP LINKS */
+    .nav-links {
+        display: none !important; 
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
+        padding: 50px 0;
+        gap: 30px;
+        border-bottom: 1px solid #222;
+        backdrop-filter: blur(15px);
+    }
+
+    /* 2. SHOW LINKS WHEN HAMBURGER IS ACTIVE */
     .nav-links.active {
         display: flex !important;
     }
 
-    /* 3. SHOW THE HAMBURGER */
+    /* 3. SHOW AND STYLE HAMBURGER */
     .hamburger {
         display: flex !important;
         flex-direction: column;
-        justify-content: center;
-        gap: 5px;
-        width: 30px;
-        height: 30px;
+        gap: 6px;
         cursor: pointer;
+        z-index: 10002;
     }
 
     .hamburger span {
-        display: block;
-        width: 100%;
+        width: 25px;
         height: 2px;
-        background-color: #fff;
-        transition: 0.3s;
+        background: #fff;
+        transition: 0.4s;
     }
 
-    /* 4. LOGO SCALE FOR PHONE */
-    .logo-text { transform: scale(0.85); transform-origin: left; }
+    /* Hamburger Animation to 'X' */
+    .hamburger.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-active span:nth-child(2) { opacity: 0; }
+    .hamburger.is-active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* 4. LOGO SCALING */
+    .main-title { font-size: 1rem; letter-spacing: 2px; }
+    .sub-title { font-size: 0.5rem; letter-spacing: 3px; }
+    .compass-box { width: 32px; height: 32px; margin-right: 10px; }
+    .needle { height: 22px; }
+
+    /* Fix Dropdown for Mobile */
+    .dropdown { width: 100%; justify-content: center; }
+    .dropdown-content {
+        position: relative;
+        top: 0;
+        width: 100%;
+        border: none;
+        background: #111;
+    }
 }
 
