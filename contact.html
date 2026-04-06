@@ -141,22 +141,29 @@
         /* MOBILE FIXES FOR CONTACT PAGE */
         @media (max-width: 768px) {
             .contact-container {
-                padding: 120px 5% 50px; /* Reduced side padding for more form space */
+                padding: 120px 20px 50px; /* Uniform side padding */
                 align-items: center;
-                justify-content: flex-start;
             }
         
             .nz-form {
-                display: flex; /* Switch from Grid to Flex for easier centering */
+                display: flex !important; /* Forces single column */
                 flex-direction: column;
-                width: 90%; /* Keeps it from hitting the edges of the phone */
+                width: 100%;
+                max-width: 100%;
                 margin: 0 auto;
-                gap: 20px;
             }
         
             .form-group {
                 width: 100%;
+                margin-bottom: 20px;
             }
+        
+            /* Force inputs to be full width and centered */
+            input, select, textarea {
+                width: 100% !important;
+                box-sizing: border-box;
+            }
+        
         
             .form-header h1 {
                 font-size: 1.8rem; /* Shrink title so it doesn't wrap weirdly */
