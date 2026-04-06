@@ -6,35 +6,38 @@
     <title>Initiate Inquiry | Northzero Productions</title>
     <link rel="stylesheet" href="style.css?v=1.7">
     <style>
-        /* THE SWIVEL ANIMATION */
-        .logo-container:hover .needle {
-            transform: rotate(45deg);
+        /* THE COMPASS ANIMATION - REVERSED ROTATION */
+        .logo-container:hover .needle-arm {
+            transform: rotate(-45deg); /* Spins opposite direction */
         }
         
-        .needle {
+        .needle-arm {
             transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
             transform-origin: center;
-        }
-        /* FORM-SPECIFIC DESIGN */
-        /* --- UPDATED ALIGNMENT RULES --- */
-        .contact-container {
-            padding: 100px 10%;
-            background: #000;
-            min-height: 100vh; /* Ensures the black background fills the whole screen */
             display: flex;
             flex-direction: column;
-            align-items: center;    /* Horizontal centering */
-            justify-content: center; /* Vertical centering */
+            align-items: center;
+            justify-content: center;
+        }
+    
+        /* THE CONTACT CONTAINER - FIXED POSITIONING */
+        .contact-container {
+            padding: 160px 10% 100px; /* Increased top padding to prevent cut-off */
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Changed to start so titles aren't pushed too high */
             box-sizing: border-box;
         }
-        
+    
         .form-header {
             text-align: center;
             margin-bottom: 50px;
-            max-width: 700px;
             width: 100%;
         }
-        
+            
         .nz-form {
             width: 100%;
             max-width: 800px;
@@ -138,10 +141,12 @@
         
         <a href="index.html" class="logo-container" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
             
-            <div style="position: relative; width: 40px; height: 40px; border: 1.5px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                <div class="needle" style="position: relative; width: 0; height: 0; display: flex; flex-direction: column; align-items: center;">
-                    <div style="width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 16px solid #0047ab; margin-bottom: 1px;"></div>
-                    <div style="width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 16px solid #d4af37;"></div>
+            <div style="position: relative; width: 38px; height: 38px; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                
+                <div class="needle-arm" style="width: 10px; height: 30px;">
+                    <div style="width: 2px; height: 12px; background: #0047ab; margin-bottom: 1px;"></div>
+                    <div style="width: 4px; height: 4px; background: #fff; border-radius: 50%; margin: -2px 0;"></div>
+                    <div style="width: 2px; height: 12px; background: #d4af37; margin-top: 1px;"></div>
                 </div>
             </div>
             
@@ -151,12 +156,11 @@
         </a>
         
         <div style="display: flex; gap: 35px;">
-            <a href="index.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-weight: 500;">Home</a>
-            <a href="work.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-weight: 500;">Work</a>
-            <a href="all-services.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; font-weight: 500;">Services</a>
+            <a href="index.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Home</a>
+            <a href="work.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Work</a>
+            <a href="all-services.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem;">Services</a>
         </div>
     </nav>
-    
     <main>
         <p id="my-form-status" style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 20px; min-height: 20px;"></p>
     
