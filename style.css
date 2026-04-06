@@ -522,3 +522,46 @@ nav {
         font-size: 0.65rem !important;
     }
 }
+
+
+/* --- HERO SLIDER MOBILE FIX --- */
+@media screen and (max-width: 768px) {
+    .slide-content {
+        width: 100% !important;
+        padding: 0 20px !important; /* Safety margins on the sides */
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .slide-content h1 {
+        font-size: 1.8rem !important; /* Scale down from the desktop size */
+        letter-spacing: 4px !important; /* Tighten up the "Agency" look */
+        line-height: 1.2 !important;
+        white-space: normal !important; /* CRITICAL: Allows words to wrap to the next line */
+        width: 100% !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Fix the "Glitch" or Shadow effect if you use data-text */
+    .slide-content h1::after, 
+    .slide-content h1::before {
+        letter-spacing: 4px !important;
+        font-size: 1.8rem !important;
+    }
+
+    .slide-content p {
+        font-size: 0.8rem !important;
+        letter-spacing: 2px !important;
+        line-height: 1.5 !important;
+        max-width: 280px; /* Keeps the paragraph narrow and elegant */
+        margin: 0 auto 25px;
+    }
+
+    .slide-content .cta-btn {
+        padding: 12px 25px !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 3px !important;
+    }
+}
