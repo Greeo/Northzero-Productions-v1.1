@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northzero Productions | Cinematic Design & Narrative</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    
+    <title>Northzero Productions | Architectural Cinema</title>
+    <link rel="stylesheet" href="style.css?v=1.5">
     <style>
         /* CRITICAL ALIGNMENT LOCK */
         html, body { background: #000; margin: 0; padding: 0; overflow-x: hidden; color: #fff; }
@@ -52,81 +50,47 @@
 
     <nav></nav>
 
-    <div class="slider-container">
-        <div class="slide slide-1 active">
-            <div class="slide-content">
-                <h1 data-text="Architectural Cinema">Architectural Cinema</h1>
-                <p>Capturing the Structural Integrity of the Hudson Valley</p>
-                <a href="work.html" class="cta-btn">View the Collection</a>
+    <main>
+        <section class="hero-slider">
+            <div class="hero-overlay"></div>
+            <div class="slide active" style="background-image: url('hero1.jpg');"></div>
+            <div class="slide" style="background-image: url('hero2.jpg');"></div>
+            
+            <div class="hero-content">
+                <p style="color: #d4af37; letter-spacing: 10px; text-transform: uppercase; font-size: 0.8rem;">Architectural Cinema</p>
+                <h1 style="font-size: clamp(3rem, 10vw, 5rem); letter-spacing: 20px; text-transform: uppercase; margin: 0;">Northzero</h1>
             </div>
-        </div>
-        <div class="slide slide-2">
-            <div class="slide-content">
-                <h1 data-text="Tactile Narrative">Tactile Narrative</h1>
-                <p>Cinematography that defines the physical experience</p>
-                <a href="work.html" class="cta-btn">Explore the Design</a>
-            </div>
-        </div>
-        <div class="slide slide-3">
-            <div class="slide-content">
-                <h1 data-text="Institutional Brand">Institutional Brand</h1>
-                <p>Translating Complex Visions into Cinematic Trust</p>
-                <a href="work.html" class="cta-btn">Our Strategy</a>
-            </div>
-        </div>
-        <div class="slide slide-4">
-            <div class="slide-content">
-                <h1 data-text="Cinema. Story. Impact">Cinema. Story. Impact</h1>
-                <p>We Refine the Essence of your Brand into Cinematic Experience</p>
-                <a href="work.html" class="cta-btn">Our Strategy</a>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <section class="authority-section">
-        <div class="authority-content">
-            <h2>Historic Preservation Roots</h2>
-            <p>
-                At Northzero, we bridge the gap between structural design and cinematic narrative. From historic Westchester estates to modern luxury builds, we produce films that define prestige.
-                As an alternate member of the Village of Ossining Historic Preservation Commission, Omar A. Greene brings a deep respect for architectural integrity to every frame.
-            </p>
-        </div>
-    </section>
+        <section class="experience-wrapper">
+            <p style="color: #d4af37; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem;">Strategic Roots</p>
+            <h2 style="font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase; margin: 20px 0;">Historic Preservation <br>& Structural Narrative</h2>
+            <p style="color: #666; max-width: 600px; line-height: 1.8;">Leveraging our roots in the Historic Preservation Commission to document the permanence and soul of New York's most significant estates.</p>
 
-    <section id="services" class="section bg-dark">
-        <h2 class="section-title">Our Expertise</h2>
-        <div class="services-grid">
-            <a href="all-services.html#pre-production" class="service-card">
-                <h3>Hero Listing Films</h3>
-                <p>Bespoke narratives for luxury real estate. We sell the dream of the design, not just the square footage.</p>
-            </a>
-            <a href="all-services.html#storytelling" class="service-card">
-                <h3>Exterior Design Spotlight</h3>
-                <p>High-altitude drone cinematography and ground-level texture for pool and landscape architecture.</p>
-            </a>
-            <a href="all-services.html#storytelling" class="service-card">
-                <h3>Brand Identity Spots</h3>
-                <p>Rhythmic, design-forward commercials that position your business at the top of its niche.</p>
-            </a>
-        </div>
-    </section>
+            <div class="bento-container">
+                <div class="bento-box large" style="background-image: url('work1.jpg');"></div>
+                <div class="bento-box" style="background-image: url('work2.jpg');"></div>
+                <div class="bento-box" style="background-image: url('work3.jpg');"></div>
+            </div>
+        </section>
+    </main>
 
-    <footer>
-        &copy; 2026 Northzero Productions LLC | New York
+    <footer style="padding: 100px; text-align: center; border-top: 1px solid #111; color: #333; text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem;">
+        &copy; 2026 Northzero Productions LLC
     </footer>
 
-    <script src="./nav.js"></script>
+    <script src="nav.js"></script>
+
     <script>
         const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-
-        function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+        let i = 0;
+        if(slides.length > 0) {
+            setInterval(() => {
+                slides[i].classList.remove('active');
+                i = (i + 1) % slides.length;
+                slides[i].classList.add('active');
+            }, 5000);
         }
-
-        setInterval(nextSlide, 5000); 
     </script>
 </body>
 </html>
