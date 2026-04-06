@@ -6,10 +6,10 @@
     <title>Initiate Inquiry | Northzero Productions</title>
     <link rel="stylesheet" href="style.css?v=1.7">
     <style>
-       /* 1. THE STACKED LOGO TEXT */
+        /* 1. THE STACKED LOGO TEXT (Shared with Nav) */
         .brand-text {
             display: flex;
-            flex-direction: column; /* Stacks the words */
+            flex-direction: column;
             line-height: 1;
             justify-content: center;
         }
@@ -18,7 +18,7 @@
             color: #fff;
             letter-spacing: 5px;
             text-transform: uppercase;
-            font-size: 1.1rem; /* Slightly Bigger */
+            font-size: 1.1rem;
             font-weight: 900;
         }
         
@@ -26,68 +26,47 @@
             color: #d4af37;
             letter-spacing: 3px;
             text-transform: uppercase;
-            font-size: 0.7rem; /* Smaller */
+            font-size: 0.7rem;
             font-weight: 400;
             margin-top: 2px;
         }
-    
-        .cta-button {
-            border: 1px solid #d4af37;
-            padding: 8px 15px;
-            color: #d4af37 !important;
-        }
-        
-        /* --- THE SPACER (IMPORTANT) --- */
+
+        /* 2. THE SPACER & CONTAINER */
         .header-spacer {
-            height: 150px;
+            height: 120px; /* Adjusted for cleaner look */
             width: 100%;
         }
     
-         .contact-container {
+        .contact-container {
             background: #000;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-bottom: 100px;
             box-sizing: border-box;
         }
             
         .nz-form {
-            width: 100%;
+            width: 90%;
             max-width: 800px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin: 0 auto; /* Extra insurance for centering */
+            margin: 0 auto;
         }
-        
-        /* Ensure the status message is also centered */
-        #my-form-status {
-            text-align: center;
-            width: 100%;
-            max-width: 800px;
-        }
+
+        .form-header { text-align: center; margin-bottom: 40px; }
 
         .form-header h1 {
             font-size: 2.5rem;
             text-transform: uppercase;
             letter-spacing: 10px;
             color: #fff;
-            margin-bottom: 20px;
+            margin-top: 10px;
         }
 
-        .form-header p {
-            color: var(--nz-gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.75rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
+        .form-group { display: flex; flex-direction: column; }
         .full-width { grid-column: span 2; }
 
         label {
@@ -105,123 +84,48 @@
             color: #fff;
             font-family: inherit;
             transition: 0.3s;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--nz-gold);
-            outline: none;
-            background: #0d0d0d;
-        }
-
-        .submit-btn {
-            grid-column: span 2;
-            background: transparent;
-            border: 1px solid var(--nz-gold);
-            color: var(--nz-gold);
-            padding: 20px;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            cursor: pointer;
-            transition: 0.5s;
-            margin-top: 20px;
-        }
-
-        .submit-btn:hover {
-            background: var(--nz-gold);
-            color: #000;
-        }
-
+        /* 3. MOBILE NUCLEAR FIX (Centering & Hamburger) */
         @media screen and (max-width: 768px) {
-            .contact-container {
-                padding: 120px 20px 60px !important; /* Safety buffer for the top */
+            .header-spacer { height: 100px; }
+            
+            .nz-form {
                 display: flex !important;
                 flex-direction: column !important;
-                align-items: center !important;
-                width: 100% !important;
-                box-sizing: border-box;
+                gap: 20px;
             }
-        
-            .nz-form {
-                display: block !important; /* Kills the 2-column grid */
-                width: 100% !important;
-                max-width: 100% !important;
-                margin: 0 auto !important;
-            }
-        
-            .form-group {
-                width: 100% !important;
-                margin-bottom: 25px;
-            }
-        
-            .full-width {
-                width: 100% !important;
-            }
-        
-            input, select, textarea {
-                width: 100% !important;
-                font-size: 16px !important; /* Prevents iOS from zooming in when typing */
-                box-sizing: border-box;
-            }
-        
-            .form-header h1 {
-                font-size: 1.8rem !important;
-                letter-spacing: 5px !important;
-            }
-        }
 
-     
+            .form-header h1 {
+                font-size: 1.6rem;
+                letter-spacing: 5px;
+            }
+
+            /* Force the nav links to hide so the hamburger can work */
+            .nav-links { display: none; } 
+            
+            .brand-northzero { font-size: 1rem; }
+            .brand-productions { font-size: 0.6rem; }
+        }
     </style>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZREPMHSWK">
-    </script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-7ZREPMHSWK');
-    </script>
 </head>
 <body>
     
-    <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: #000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; box-sizing: border-box;">
-        
-        <a href="index.html" class="logo-container" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
-            <div style="position: relative; width: 42px; height: 42px; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <div class="needle-arm" style="width: 10px; height: 30px;">
-                    <div style="width: 2px; height: 12px; background: #0047ab; margin-bottom: 1px;"></div>
-                    <div style="width: 4px; height: 4px; background: #fff; border-radius: 50%; margin: -2px 0;"></div>
-                    <div style="width: 2px; height: 12px; background: #d4af37; margin-top: 1px;"></div>
-                </div>
-            </div>
-            
-            <div class="brand-text">
-                <span class="brand-northzero">Northzero</span>
-                <span class="brand-productions">Productions</span>
-            </div>
-        </a>
-        
-        <div style="display: flex; gap: 30px;">
-            <a href="index.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;">Home</a>
-            <a href="work.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;">Work</a>
-            <a href="all-services.html" style="color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem;">Services</a>
-        </div>
-    </nav>
+    <nav id="main-nav"></nav>
     
     <main class="contact-container">
         <div class="header-spacer"></div>
     
         <div class="form-header">
-            <p style="color: #d4af37; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem;">Project Intake</p>
-            <h1 style="color: #fff; font-size: 2.5rem; text-transform: uppercase; letter-spacing: 10px; margin-top: 10px;">Initiate Inquiry</h1>
+            <p>Project Intake</p>
+            <h1>Initiate Inquiry</h1>
         </div>
-    <div class="header-spacer"></div>
-      
-    <main>
+
         <p id="my-form-status" style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 20px; min-height: 20px;"></p>
     
         <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
-            
             <div class="form-group">
                 <label>Legal Name / Principal</label>
                 <input type="text" name="name" placeholder="Omar Greene" required>
@@ -253,53 +157,41 @@
         
             <div class="form-group full-width">
                 <label>Historical or Structural Significance</label>
-                <textarea name="significance" rows="4" placeholder="Briefly describe the design intent or historical importance..."></textarea>
+                <textarea name="significance" rows="4" placeholder="Briefly describe the design intent..."></textarea>
             </div>
         
             <div class="form-group full-width">
                 <label>Project Timeline & Goals</label>
-                <textarea name="goals" rows="2" placeholder="What is the primary objective of this cinematic record?"></textarea>
+                <textarea name="goals" rows="2" placeholder="Primary objective..."></textarea>
             </div>
         
             <button type="submit" class="submit-btn" id="my-form-button">Submit for Audit</button>
         </form>
     </main>
+
     <script src="nav.js"></script>
     <script>
         var form = document.getElementById("my-form");
-        
         async function handleSubmit(event) {
           event.preventDefault();
           var status = document.getElementById("my-form-status");
           var data = new FormData(event.target);
-          
           status.innerHTML = "PROCESSSING AUDIT...";
-          status.style.color = "var(--nz-gold)";
-    
+          status.style.color = "#d4af37";
+          
           fetch(event.target.action, {
             method: form.method,
             body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
           }).then(response => {
             if (response.ok) {
               status.innerHTML = "INQUIRY RECEIVED. WE WILL CONTACT YOU SOON.";
               status.style.color = "#fff";
               form.reset();
             } else {
-              response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                } else {
-                  status.innerHTML = "Oops! There was a problem submitting your form";
-                }
-                status.style.color = "red";
-              })
+              status.innerHTML = "Oops! Problem submitting form";
+              status.style.color = "red";
             }
-          }).catch(error => {
-            status.innerHTML = "Oops! There was a problem submitting your form";
-            status.style.color = "red";
           });
         }
         form.addEventListener("submit", handleSubmit);
