@@ -3,165 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | Northzero Productions</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <style>
-        /* PAGE-SPECIFIC HUB STYLES */
-        html { scroll-behavior: smooth; }
-
-        .page-header {
-            height: 45vh;
-            background: linear-gradient(rgba(0,0,0,0.8), #0a0a0a), 
-                        url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1950&q=80') center/cover;
-            display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
-        }
-
-        .page-header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 10px; color: #fff; }
-        .page-header p { color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; margin-top: 10px; }
-
-        /* Sticky Filter Bar */
-        /* .service-nav {
-            background: #111; padding: 15px 0; position: sticky; top: 80px; z-index: 900;
-            border-bottom: 1px solid #222; text-align: center; backdrop-filter: blur(10px);
-        }
-        .service-nav a { color: #888; text-decoration: none; margin: 0 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .service-nav a:hover { color: var(--nz-gold); } */
-
-        /* Section Layouts */
-        .service-block { padding: 120px 50px; border-bottom: 1px solid #111; max-width: 1200px; margin: 0 auto; scroll-margin-top: 140px; }
-        
-        .block-header { margin-bottom: 60px; }
-        .block-header span { color: var(--nz-gold); text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem; display: block; margin-bottom: 15px; }
-        .block-header h2 { font-size: 2.2rem; text-transform: uppercase; letter-spacing: 5px; color: #fff; }
-
-        .capability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        
-        .cap-card { background: #0d0d0d; padding: 40px; border: 1px solid #1a1a1a; transition: 0.4s; }
-        .cap-card:hover { border-color: var(--nz-gold); transform: translateY(-5px); }
-        .cap-card h3 { color: #fff; text-transform: uppercase; font-size: 1rem; margin-bottom: 20px; letter-spacing: 2px; }
-        .cap-card ul { list-style: none; padding: 0; }
-        .cap-card li { color: #888; font-size: 0.9rem; margin-bottom: 12px; padding-left: 20px; position: relative; }
-        .cap-card li::before { content: "—"; position: absolute; left: 0; color: var(--nz-gold); }
-
-        /* Bottom CTA */
-        .service-footer { padding: 100px 50px; text-align: center; background: #080808; }
-        .service-footer h2 { font-size: 2rem; text-transform: uppercase; letter-spacing: 8px; margin-bottom: 30px; }
-
-        footer { padding: 60px; text-align: center; color: #444; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem; border-top: 1px solid #111; }
-
-        @media (max-width: 768px) {
-            .service-nav { display: none; } /* Simpler for mobile */
-            .service-block { padding: 80px 20px; }
-        }
-    </style>
+    <title>Production Pillars | Northzero Productions</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
 </head>
 <body>
 
-    <nav></nav>
-    <main style="margin-top: 80px;">
+    <nav></nav>   
+
+    <main>
         <header class="page-header">
-            <h1>Our Capabilities</h1>
-            <p>From Concept Architecture to Network Delivery</p>
+            <h1>Production Pillars</h1>
+            <p>Architectural Strategy & Visual Excellence</p>
         </header>
     
-        <div class="service-nav">
-            <a href="#strategy">Strategy</a>
-            <a href="#production">Production</a>
-            <a href="#post">Post-Suite</a>
-            <a href="#specialized">Specialized</a>
+        <div class="container">
+            
+            <div class="service-category">
+                <div class="category-header">
+                    <h2>Architectural & Estate</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Hero Listing Cinema</h3>
+                        <p>High-fidelity narratives for luxury estates. We focus on the "bones" and craftsmanship to justify premium market valuation.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Design Documentaries</h3>
+                        <p>Showcasing the evolution of a build. Perfect for architects and interior designers documenting structural milestones.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Preservation Consulting</h3>
+                        <p>Visual audits and archival filming for historic properties, leveraging our roots in the Historic Preservation Commission.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="service-category">
+                <div class="category-header">
+                    <h2>Tactile Narrative</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Product Cinematography</h3>
+                        <p>Macro-photography and specialized lighting that reveals the texture and physical soul of premium products.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Brand Storytelling</h3>
+                        <p>Deep-dive narratives that connect your brand's heritage with the modern consumer through cinematic visuals.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Lifestyle Integration</h3>
+                        <p>Contextual films that show your product in its natural architectural element, emphasizing luxury and utility.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="service-category">
+                <div class="category-header">
+                    <h2>Aerial & Specialized</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Precision Drone Ops</h3>
+                        <p>Advanced aerial cinematography for landscape architecture, pool design, and large-scale site assessments.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Post-Production Suite</h3>
+                        <p>High-end color grading and sound design tailored to the specific aesthetic of architectural and design firms.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Strategic Retainers</h3>
+                        <p>Exclusive content-partnership packages for agencies requiring ongoing, elite visual assets.</p>
+                    </div>
+                </div>
+            </div>
+    
         </div>
     
-        <section id="strategy" class="service-block">
-            <div class="block-header">
-                <span>Phase 01</span>
-                <h2>Strategic Architecture</h2>
-            </div>
-            <div class="capability-grid">
-                <div class="cap-card">
-                    <h3>Pre-Visualization</h3>
-                    <ul>
-                        <li>Concept Engineering</li>
-                        <li>Technical Scriptwriting</li>
-                        <li>Visual Language Mapping</li>
-                        <li>Structural Storyboarding</li>
-                    </ul>
-                </div>
-                <div class="cap-card">
-                    <h3>Logistics</h3>
-                    <ul>
-                        <li>Precision Scouting</li>
-                        <li>Historic Landmark Permitting</li>
-                        <li>Talent Orchestration</li>
-                        <li>Equipment Tier Selection</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    
-        <section id="production" class="service-block">
-            <div class="block-header">
-                <span>Phase 02</span>
-                <h2>Field Operations</h2>
-            </div>
-            <div class="capability-grid">
-                <div class="cap-card">
-                    <h3>Cinematography</h3>
-                    <ul>
-                        <li>IATSE 52 Lighting Standards</li>
-                        <li>Natural Light Optimization</li>
-                        <li>Gimbal-Stabilized Flow</li>
-                        <li>Texture-First Detail Shots</li>
-                    </ul>
-                </div>
-                <div class="cap-card">
-                    <h3>Aerial Intelligence</h3>
-                    <ul>
-                        <li>FAA Part 107 Operations</li>
-                        <li>Landscape Geometry Mapping</li>
-                        <li>High-Altitude Stills</li>
-                        <li>Architectural Fly-throughs</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    
-        <section id="post" class="service-block">
-            <div class="block-header">
-                <span>Phase 03</span>
-                <h2>The Post-Suite</h2>
-            </div>
-            <div class="capability-grid">
-                <div class="cap-card">
-                    <h3>Refinement</h3>
-                    <ul>
-                        <li>Cinematic Color Correction</li>
-                        <li>Architectural Sky Replacement</li>
-                        <li>Digital Noise Reduction</li>
-                        <li>4K Network Mastering</li>
-                    </ul>
-                </div>
-                <div class="cap-card">
-                    <h3>Aural Design</h3>
-                    <ul>
-                        <li>Bespoke Soundscapes</li>
-                        <li>Professional Voiceover</li>
-                        <li>Foley & Texture Audio</li>
-                        <li>Licensed Elite Soundtracks</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    
-        <section class="service-footer">
-            <h2>Built for Prestige.</h2>
-            <a href="contact.html" class="cta-btn">Initiate a Project</a>
+        <section class="cta-section">
+            <h2>Ready to define your narrative?</h2>
+            <a href="contact.html" class="cta-btn">Initiate Inquiry</a>
         </section>
     
         <footer>
             &copy; 2026 Northzero Productions LLC | New York
         </footer>
-    </main>
+    </main>     
 
     <script src="nav.js"></script>
 </body>
