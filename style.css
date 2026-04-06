@@ -497,3 +497,28 @@ nav {
         word-wrap: break-word;
     }
 }
+
+/* --- HERO MOBILE RESPONSIVENESS --- */
+@media screen and (max-width: 600px) {
+    .hero-content h1 {
+        font-size: 1.8rem !important; /* Shrinks the giant title */
+        letter-spacing: 4px !important; /* Reduces the horizontal push */
+        width: 100% !important;
+        padding: 0 10px;
+        line-height: 1.2;
+        text-align: center;
+        white-space: normal; /* Allows the text to wrap instead of staying in one long line */
+    }
+
+    .hero-content p {
+        font-size: 0.7rem !important;
+        letter-spacing: 3px !important;
+        margin-bottom: 20px;
+    }
+
+    /* If you have a CTA button in the hero */
+    .hero-btn {
+        padding: 12px 25px !important;
+        font-size: 0.65rem !important;
+    }
+}
