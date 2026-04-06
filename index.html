@@ -165,6 +165,28 @@
             }
             .bento-item { height: 300px; }
         }
+
+        @media screen and (max-width: 900px) {
+            /* FORCES THE DESKTOP LINKS TO HIDE */
+            .nav-links, 
+            .nav-links-container, 
+            #nav-links-container { 
+                display: none !important; 
+            }
+        
+            /* SHOWS THE LINKS ONLY WHEN THE 'ACTIVE' CLASS IS ADDED BY JS */
+            .nav-links.active, 
+            #nav-links-container.active { 
+                display: flex !important; 
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #000;
+                flex-direction: column;
+                padding: 40px 0;
+            }
+        }
     </style>
 </head>
 <body>
