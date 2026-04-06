@@ -115,109 +115,90 @@
 
     <nav></nav>
 
-    <main class="contact-container">
-        <div class="form-header">
-            <p>Project Intake</p>
-            <h1>Initiate Inquiry</h1>
+    <p id="my-form-status" style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 20px; min-height: 20px;"></p>
+
+    <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
+        
+        <div class="form-group">
+            <label>Legal Name / Principal</label>
+            <input type="text" name="name" placeholder="Omar Greene" required>
         </div>
-
-        <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
-            <div class="form-group">
-                <label>Legal Name / Principal</label>
-                <input type="text" placeholder="Omar Greene" required>
-            </div>
-
-            <div class="form-group">
-                <label>Professional Email</label>
-                <input type="email" placeholder="name@agency.com" required>
-            </div>
-
-            <div class="form-group">
-                <label>Service Category</label>
-                <select>
-                    <option>Architectural Cinema</option>
-                    <option>Historic Preservation Audit</option>
-                    <option>Tactile Narrative / Commercial</option>
-                    <option>Institutional Branding</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Estimated Project Scale</label>
-                <select>
-                    <option>Standard Portfolio ($5k - $10k)</option>
-                    <option>Premium Production ($10k - $25k)</option>
-                    <option>Institutional / Long-term Strategy ($25k+)</option>
-                </select>
-            </div>
-
-            <div class="form-group full-width">
-                <label>Historical or Structural Significance</label>
-                <textarea rows="4" placeholder="Briefly describe the design intent or historical importance of the site..."></textarea>
-            </div>
-
-            <div class="form-group full-width">
-                <label>Project Timeline & Goals</label>
-                <textarea rows="2" placeholder="What is the primary objective of this cinematic record?"></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit for Audit</button>
-        </form>
-    </main>
-
-    <footer style="padding: 60px; text-align: center; color: #333; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;">
-        &copy; 2026 Northzero Productions LLC | New York
-    </footer>
-
-    <script src="nav.js"></script>
+    
+        <div class="form-group">
+            <label>Professional Email</label>
+            <input type="email" name="email" placeholder="name@agency.com" required>
+        </div>
+    
+        <div class="form-group">
+            <label>Service Category</label>
+            <select name="category">
+                <option value="Architectural Cinema">Architectural Cinema</option>
+                <option value="Historic Preservation Audit">Historic Preservation Audit</option>
+                <option value="Tactile Narrative">Tactile Narrative / Commercial</option>
+                <option value="Institutional Branding">Institutional Branding</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label>Estimated Project Scale</label>
+            <select name="budget">
+                <option value="5k-10k">Standard Portfolio ($5k - $10k)</option>
+                <option value="10k-25k">Premium Production ($10k - $25k)</option>
+                <option value="25k+">Institutional / Long-term Strategy ($25k+)</option>
+            </select>
+        </div>
+    
+        <div class="form-group full-width">
+            <label>Historical or Structural Significance</label>
+            <textarea name="significance" rows="4" placeholder="Briefly describe the design intent or historical importance..."></textarea>
+        </div>
+    
+        <div class="form-group full-width">
+            <label>Project Timeline & Goals</label>
+            <textarea name="goals" rows="2" placeholder="What is the primary objective of this cinematic record?"></textarea>
+        </div>
+    
+        <button type="submit" class="submit-btn" id="my-form-button">Submit for Audit</button>
+    </form>
+    
     <script>
         var form = document.getElementById("my-form");
         
         async function handleSubmit(event) {
-            event.preventDefault();
-            var status = document.getElementById("my-form-status");
-            var data = new FormData(event.target);
-            
-            status.innerHTML = "Sending...";
-            
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    status.style.color = "var(--accent-color)";
-                    status.innerHTML = "Thanks! We will contact you soon.";
-                    form.reset();
+          event.preventDefault();
+          var status = document.getElementById("my-form-status");
+          var data = new FormData(event.target);
+          
+          status.innerHTML = "PROCESSSING AUDIT...";
+          status.style.color = "var(--nz-gold)";
+    
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "INQUIRY RECEIVED. WE WILL CONTACT YOU SOON.";
+              status.style.color = "#fff";
+              form.reset();
+            } else {
+              response.json().then(data => {
+                if (Object.hasOwn(data, 'errors')) {
+                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
                 } else {
-                    response.json().then(data => {
-                        status.style.color = "red";
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "Oops! There was a problem submitting your form";
-                        }
-                    })
+                  status.innerHTML = "Oops! There was a problem submitting your form";
                 }
-            }).catch(error => {
                 status.style.color = "red";
-                status.innerHTML = "Oops! There was a problem submitting your form";
-            });
+              })
+            }
+          }).catch(error => {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+            status.style.color = "red";
+          });
         }
-        
         form.addEventListener("submit", handleSubmit);
-
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('active');
-            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
-        }
-
-        const logo = document.getElementById('mainLogo');
-        if(logo) {
-            logo.addEventListener('mousedown', () => logo.style.transform = 'scale(0.96)');
-            logo.addEventListener('mouseup', () => logo.style.transform = 'scale(1)');
-        }
     </script>
 </body>
 </html>
