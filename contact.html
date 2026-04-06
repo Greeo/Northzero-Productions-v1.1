@@ -7,19 +7,39 @@
     <link rel="stylesheet" href="style.css?v=1.7">
     <style>
         /* FORM-SPECIFIC DESIGN */
+        /* --- UPDATED ALIGNMENT RULES --- */
         .contact-container {
-            padding: 150px 10%;
+            padding: 100px 10%;
             background: #000;
-            min-height: 100vh;
+            min-height: 100vh; /* Ensures the black background fills the whole screen */
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center;    /* Horizontal centering */
+            justify-content: center; /* Vertical centering */
+            box-sizing: border-box;
         }
-
+        
         .form-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             max-width: 700px;
+            width: 100%;
+        }
+        
+        .nz-form {
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 0 auto; /* Extra insurance for centering */
+        }
+        
+        /* Ensure the status message is also centered */
+        #my-form-status {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
         }
 
         .form-header h1 {
@@ -35,14 +55,6 @@
             text-transform: uppercase;
             letter-spacing: 3px;
             font-size: 0.75rem;
-        }
-
-        .nz-form {
-            width: 100%;
-            max-width: 800px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
         }
 
         .form-group {
