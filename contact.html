@@ -131,48 +131,48 @@
             color: #000;
         }
 
-        /* Mobile Fix */
-        @media (max-width: 768px) {
-            .nz-form { grid-template-columns: 1fr; }
-            .full-width { grid-column: span 1; }
-            .submit-btn { grid-column: span 1; }
-        }
-
-        /* MOBILE FIXES FOR CONTACT PAGE */
-        @media (max-width: 768px) {
-            .contact-container {
-                padding: 120px 20px 50px; /* Uniform side padding */
-                align-items: center;
-            }
-        
-            .nz-form {
-                display: flex !important; /* Forces single column */
+      /* --- UNIVERSAL MOBILE NAV LOGIC --- */
+        @media screen and (max-width: 900px) {
+            /* 1. HIDE THE LINKS IMMEDIATELY */
+            .nav-links {
+                display: none !important; /* Forces the desktop menu to vanish */
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #000;
                 flex-direction: column;
+                padding: 40px 0;
+                border-bottom: 1px solid #111;
+                z-index: 999;
+            }
+        
+            /* 2. SHOW THE LINKS ONLY WHEN ACTIVE */
+            .nav-links.active {
+                display: flex !important;
+            }
+        
+            /* 3. SHOW THE HAMBURGER */
+            .hamburger {
+                display: flex !important;
+                flex-direction: column;
+                justify-content: center;
+                gap: 5px;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+        
+            .hamburger span {
+                display: block;
                 width: 100%;
-                max-width: 100%;
-                margin: 0 auto;
+                height: 2px;
+                background-color: #fff;
+                transition: 0.3s;
             }
         
-            .form-group {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        
-            /* Force inputs to be full width and centered */
-            input, select, textarea {
-                width: 100% !important;
-                box-sizing: border-box;
-            }
-        
-        
-            .form-header h1 {
-                font-size: 1.8rem; /* Shrink title so it doesn't wrap weirdly */
-                letter-spacing: 5px;
-            }
-        
-            .header-spacer {
-                height: 100px; /* Less space needed on mobile */
-            }
+            /* 4. LOGO SCALE FOR PHONE */
+            .logo-text { transform: scale(0.85); transform-origin: left; }
         }
     </style>
     <!-- Google tag (gtag.js) -->
