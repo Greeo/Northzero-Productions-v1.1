@@ -6,7 +6,7 @@
     <title>Northzero Productions | Cinematic Design & Narrative</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=1.7">
+    <link rel="stylesheet" href="style.css?v=1.8">
     
     <style>
         /* --- 1. CORE BRAND VARIABLES --- */
@@ -31,9 +31,9 @@
         /* --- 2. NAVIGATION (STABILIZED) --- */
         nav.nz-nav {
             position: fixed !important; top: 0; left: 0; width: 100%;
-            height: 80px; background: rgba(0,0,0,0.95);
+            height: 80px; background: rgba(0,0,0,0.98);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; z-index: 10000;
+            padding: 0 5%; z-index: 9999 !important; /* Above slides, below mobile menu */
             border-bottom: 1px solid #111;
             backdrop-filter: blur(10px);
         }
@@ -51,25 +51,46 @@
         .logo-link:hover .needle { transform: rotate(45deg); }
 
         .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 4px; color: #fff; }
-        .sub-title { font-size: 0.65rem; color: var(--nz-gold); letter-spacing: 3px; text-transform: uppercase; }
+        .main-title { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; color: #fff; }
+        .sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 3px; text-transform: uppercase; }
 
-        .nav-links { display: flex; align-items: center; gap: 30px; }
+        /* Desktop Nav Links */
+        .nav-links { display: flex; align-items: center; gap: 25px; }
         .nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
 
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-        .hamburger span { width: 25px; height: 2px; background: #fff; }
+        /* Hamburger Icon */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 10001; }
+        .hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
 
-        /* --- 3. HERO SLIDER & GLITCH --- */
-        .slider-container { position: relative; height: 100vh; width: 100%; overflow: hidden; background: #000; }
+        /* --- 3. HERO SLIDER (THE VISIBILITY FIX) --- */
+        .slider-container { 
+            position: relative; 
+            height: 100vh; 
+            width: 100%; 
+            overflow: hidden; 
+            background: #000; 
+            z-index: 1; /* Lower than nav */
+        }
+        
         .slide { 
             position: absolute; width: 100%; height: 100%; opacity: 0; 
             transition: opacity 1.5s ease-in-out; 
             display: flex; align-items: center; justify-content: center; text-align: center; 
+            z-index: 2;
         }
-        .slide.active { opacity: 1; }
         
+        .slide.active { 
+            opacity: 1; 
+            z-index: 5; /* Active slide comes to front */
+        }
+        
+        /* Slide Backgrounds */
+        .slide-1 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920') center/cover; }
+        .slide-2 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=1920') center/cover; }
+        .slide-3 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920') center/cover; }
+
         .slide-content { padding: 0 20px; width: 100%; max-width: 1100px; z-index: 10; }
+        
         .slide-content h1 {
             font-size: clamp(1.8rem, 8vw, 3.5rem);
             text-transform: uppercase;
@@ -79,10 +100,9 @@
             position: relative;
         }
 
-        /* Glitch Effect Settings */
         .slide-content h1::before, .slide-content h1::after {
             content: attr(data-text); position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%; opacity: 0.7;
+            top: 0; left: 0; width: 100%; height: 100%; opacity: 0.6;
         }
         .slide-content h1::after { color: var(--nz-blue); left: 2px; animation: glitch 4s infinite linear alternate-reverse; }
         .slide-content h1::before { color: var(--nz-gold); left: -2px; animation: glitch 6s infinite linear alternate-reverse; }
@@ -117,16 +137,27 @@
         .bento-text { position: absolute; bottom: 20px; left: 20px; }
         .bento-text h3 { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-        /* --- 5. MOBILE OVERRIDES (THE REPAIR) --- */
+        /* --- 5. MOBILE OVERRIDES (THE NUCLEAR FIX) --- */
         @media screen and (max-width: 900px) {
-            .nav-links { display: none !important; } /* Hidden until toggle */
+            /* Kills the desktop nav row including the 'Start Project' button */
+            .nav-links { display: none !important; } 
+            
             .hamburger { display: flex !important; }
             
+            /* Stacking Hero Titles */
             .slide-content h1 { 
-                letter-spacing: 5px; 
-                line-height: 1.2;
-                white-space: normal; /* Forces text to wrap correctly */
+                font-size: 2rem !important;
+                letter-spacing: 4px !important; 
+                line-height: 1.2 !important;
+                white-space: normal !important; 
+                width: 100% !important;
             }
+            .slide-content p {
+                font-size: 0.8rem !important;
+                max-width: 300px;
+                margin: 0 auto 20px;
+            }
+
             .bento-grid-fixed { 
                 display: flex; 
                 flex-direction: column; 
