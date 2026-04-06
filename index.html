@@ -26,85 +26,61 @@
             pointer-events: none; /* Let clicks pass through to slider if needed */
         }
 
-        /* HERO SLIDER RECOVERY */
+       /* --- HERO SLIDER & TEXT FIX --- */
         .hero-slider {
             height: 100vh;
             width: 100%;
             position: relative;
+            overflow: hidden;
+            background: #000; /* No white leak */
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background: #050505;
         }
-
+        
         .slide {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1.5s ease-in-out; /* Smoother cinematic transition */
+            z-index: 1;
         }
-
+        
         .slide.active { opacity: 1; }
-
+        
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.4); /* Darkens the image so text pops */
             z-index: 2;
         }
-
-        /* SECTION ALIGNMENT */
-        section {
-            width: 100%;
-            position: relative;
-            background: #000;
-            box-sizing: border-box;
+        
+        .main-title-container {
+            z-index: 10;
+            text-align: center;
         }
-
-        .content-block {
-            padding: 120px 10%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .authority-tag {
-            color: #d4af37; /* Gold */
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-size: 0.7rem;
-            margin-bottom: 20px;
-        }
-
-        /* --- BENTO GRID REFINEMENT --- */
+        
+        /* --- THE BENTO GEOMETRY (2 Columns, 2 Rows) --- */
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-auto-rows: 350px; /* Slightly taller for more impact */
-            gap: 30px;
-            margin-top: 60px;
-            width: 100%;
+            grid-template-columns: 2fr 1fr; /* 2 parts large, 1 part small */
+            grid-template-rows: 1fr 1fr;    /* 2 equal rows to stack the small boxes */
+            gap: 20px;
+            height: 700px; /* Forces the total height of the grid */
+            margin-top: 50px;
         }
         
-        .bento-item { 
-            background: #0a0a0a; /* Deep charcoal/black */
-            border: 1px solid #1a1a1a; /* Subtle border */
-            position: relative; 
-            overflow: hidden; 
-            transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .bento-item {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            position: relative;
+            overflow: hidden;
         }
         
-        .bento-item:hover {
-            border-color: #d4af37; /* Gold glow on hover */
-            transform: translateY(-5px);
-        }
-        
-        /* Forces the "Large" box to span 2 columns and 2 rows */
-        .bento-item.large { 
-            grid-column: span 2; 
-            grid-row: span 2; 
+        .bento-item.large {
+            grid-row: span 2; /* Occupies both rows on the left */
         }
         
         /* Mobile Fix: Stack the boxes on small screens */
@@ -126,7 +102,34 @@
 
     <nav></nav>
 
+
     <main>
+        <section class="hero-slider">
+            <div class="hero-overlay"></div>
+            
+            <div class="slide active" style="background-image: url('hero-architecture.jpg');"></div>
+            <div class="slide" style="background-image: url('hero-tactile.jpg');"></div>
+            <div class="slide" style="background-image: url('hero-authority.jpg');"></div>
+    
+            <div class="main-title-container">
+                <span class="authority-tag" style="color: #d4af37; letter-spacing: 8px;">Architectural Cinema</span>
+                <h1 class="main-title">Northzero</h1>
+            </div>
+        </section>
+    
+        <section class="experience-section" style="padding: 120px 10%; background: #000;">
+            <div class="authority-tag">Strategic Roots</div>
+            <h2 style="font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase;">Historic Preservation <br>& Structural Narrative</h2>
+            
+            <div class="bento-grid">
+                <div class="bento-item large" style="background-image: url('work1.jpg'); background-size: cover;"></div>
+                
+                <div class="bento-item" style="background-image: url('work2.jpg'); background-size: cover;"></div>
+                
+                <div class="bento-item" style="background-image: url('work3.jpg'); background-size: cover;"></div>
+            </div>
+        </section>
+    
         <section class="hero-slider">
             <div class="hero-overlay"></div>
             
