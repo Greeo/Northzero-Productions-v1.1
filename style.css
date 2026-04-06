@@ -344,6 +344,29 @@ nav {
     font-size: 1.5rem;
 }
 
+ .nav-links.active {
+        display: flex; /* Shows links when hamburger is clicked */
+    }
+
+    .hamburger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+    }
+
+    .hamburger span {
+        width: 25px;
+        height: 2px;
+        background: #fff;
+        transition: 0.3s;
+    }
+
+    /* COMPASS & LOGO SCALING */
+    .main-title { font-size: 0.9rem; }
+    .sub-title { font-size: 0.55rem; }
+}
+
 
 @media (max-width: 768px) {
     /* 1. HIDE THE ROW OF LINKS */
@@ -361,3 +384,5 @@ nav {
     .main-title { font-size: 1rem; }
     .sub-title { font-size: 0.55rem; }
 }
+
+
