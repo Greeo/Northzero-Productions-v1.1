@@ -70,6 +70,65 @@
             20.5% { clip: rect(80px, 9999px, 82px, 0); opacity: 1; transform: translateX(-5px); }
         }
 
+        /* --- BENTO SHOWCASE: THE VALUE MULTIPLIER --- */
+        .bento-showcase {
+            padding: 120px 5%;
+            background: #000;
+            border-top: 1px solid #111;
+        }
+        
+        .bento-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .bento-header p {
+            color: var(--nz-gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 0.7rem;
+        }
+        
+        .bento-grid-fixed {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr; /* The Power Split */
+            grid-template-rows: 350px 350px;
+            gap: 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .bento-item {
+            background: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            transition: 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        
+        .bento-item:hover {
+            border-color: var(--nz-gold);
+            transform: translateY(-5px);
+        }
+        
+        .bento-item.large { grid-row: span 2; }
+        
+        /* Overlay for text within bento */
+        .bento-text {
+            position: absolute;
+            bottom: 30px; left: 30px;
+            z-index: 5;
+        }
+        
+        .bento-text h3 { 
+            font-size: 0.8rem; 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            color: #fff; 
+        }
+
         /* 3. SLIDER - FIXED POSITIONING */
         .slider-container { position: relative; height: 100vh; width: 100%; overflow: hidden; background: #000; }
         .slide { 
@@ -139,6 +198,33 @@
                 </div>
             </div>
         </div>
+
+        <!--- /* The Bento boxies Design */ --->
+        <section class="bento-showcase">
+            <div class="bento-header">
+                <p>Selected Portfolios</p>
+            </div>
+        
+            <div class="bento-grid-fixed">
+                <div class="bento-item large" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200');">
+                    <div class="bento-text">
+                        <h3>Architectural Cinema: Regan Estates</h3>
+                    </div>
+                </div>
+        
+                <div class="bento-item" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1513584684374-8bdb7489feef?q=80&w=800');">
+                    <div class="bento-text">
+                        <h3>Tactile Narrative: Croc</h3>
+                    </div>
+                </div>
+        
+                <div class="bento-item" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=800');">
+                    <div class="bento-text">
+                        <h3>Archival Strategy</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="authority-section">
             <div class="authority-content">
