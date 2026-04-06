@@ -114,52 +114,53 @@
 <body>
 
     <nav></nav>
-
-    <p id="my-form-status" style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 20px; min-height: 20px;"></p>
-
-    <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
+    <main>
+        <p id="my-form-status" style="text-align: center; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 20px; min-height: 20px;"></p>
+    
+        <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
+            
+            <div class="form-group">
+                <label>Legal Name / Principal</label>
+                <input type="text" name="name" placeholder="Omar Greene" required>
+            </div>
         
-        <div class="form-group">
-            <label>Legal Name / Principal</label>
-            <input type="text" name="name" placeholder="Omar Greene" required>
-        </div>
-    
-        <div class="form-group">
-            <label>Professional Email</label>
-            <input type="email" name="email" placeholder="name@agency.com" required>
-        </div>
-    
-        <div class="form-group">
-            <label>Service Category</label>
-            <select name="category">
-                <option value="Architectural Cinema">Architectural Cinema</option>
-                <option value="Historic Preservation Audit">Historic Preservation Audit</option>
-                <option value="Tactile Narrative">Tactile Narrative / Commercial</option>
-                <option value="Institutional Branding">Institutional Branding</option>
-            </select>
-        </div>
-    
-        <div class="form-group">
-            <label>Estimated Project Scale</label>
-            <select name="budget">
-                <option value="5k-10k">Standard Portfolio ($5k - $10k)</option>
-                <option value="10k-25k">Premium Production ($10k - $25k)</option>
-                <option value="25k+">Institutional / Long-term Strategy ($25k+)</option>
-            </select>
-        </div>
-    
-        <div class="form-group full-width">
-            <label>Historical or Structural Significance</label>
-            <textarea name="significance" rows="4" placeholder="Briefly describe the design intent or historical importance..."></textarea>
-        </div>
-    
-        <div class="form-group full-width">
-            <label>Project Timeline & Goals</label>
-            <textarea name="goals" rows="2" placeholder="What is the primary objective of this cinematic record?"></textarea>
-        </div>
-    
-        <button type="submit" class="submit-btn" id="my-form-button">Submit for Audit</button>
-    </form>
+            <div class="form-group">
+                <label>Professional Email</label>
+                <input type="email" name="email" placeholder="name@agency.com" required>
+            </div>
+        
+            <div class="form-group">
+                <label>Service Category</label>
+                <select name="category">
+                    <option value="Architectural Cinema">Architectural Cinema</option>
+                    <option value="Historic Preservation Audit">Historic Preservation Audit</option>
+                    <option value="Tactile Narrative">Tactile Narrative / Commercial</option>
+                    <option value="Institutional Branding">Institutional Branding</option>
+                </select>
+            </div>
+        
+            <div class="form-group">
+                <label>Estimated Project Scale</label>
+                <select name="budget">
+                    <option value="5k-10k">Standard Portfolio ($5k - $10k)</option>
+                    <option value="10k-25k">Premium Production ($10k - $25k)</option>
+                    <option value="25k+">Institutional / Long-term Strategy ($25k+)</option>
+                </select>
+            </div>
+        
+            <div class="form-group full-width">
+                <label>Historical or Structural Significance</label>
+                <textarea name="significance" rows="4" placeholder="Briefly describe the design intent or historical importance..."></textarea>
+            </div>
+        
+            <div class="form-group full-width">
+                <label>Project Timeline & Goals</label>
+                <textarea name="goals" rows="2" placeholder="What is the primary objective of this cinematic record?"></textarea>
+            </div>
+        
+            <button type="submit" class="submit-btn" id="my-form-button">Submit for Audit</button>
+        </form>
+    </main>
     
     <script>
         var form = document.getElementById("my-form");
