@@ -413,36 +413,52 @@ nav {
     display: block !important; 
 }
 
-/* ... keep your cta-btn and aperture animations here ... */
+/* --- 1. DESKTOP NAVIGATION (FORCING FLEX) --- */
+.nav-links { 
+    display: flex !important; 
+    align-items: center; 
+    height: 100%; 
+    gap: 35px; 
+}
 
-/* --- CONSOLIDATED MOBILE NAVIGATION (The Fix) --- */
+/* HIDE HAMBURGER ON DESKTOP AT ALL COSTS */
+.hamburger {
+    display: none !important;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #eee;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    transition: 0.3s;
+}
+
+/* --- 2. THE MOBILE OVERRIDE (FORCING THE SWITCH) --- */
 @media screen and (max-width: 900px) {
-    nav {
-        padding: 0 20px; /* Tighter padding for mobile screens */
-    }
-
-    /* 1. FORCE HIDE DESKTOP LINKS */
+    
+    /* KILL THE DESKTOP LINKS ON PHONE */
     .nav-links {
         display: none !important; 
         position: fixed;
         top: 80px;
         left: 0;
         width: 100%;
-        height: auto;
-        background: rgba(10, 10, 10, 0.98);
-        flex-direction: column;
-        padding: 50px 0;
-        gap: 30px;
-        border-bottom: 1px solid #222;
-        backdrop-filter: blur(15px);
+        height: 100vh;
+        background: #000;
+        flex-direction: column !important;
+        padding: 60px 0;
+        gap: 40px;
+        z-index: 9998;
     }
 
-    /* 2. SHOW LINKS WHEN HAMBURGER IS ACTIVE */
+    /* SHOW LINKS ONLY WHEN MENU IS OPENED */
     .nav-links.active {
         display: flex !important;
     }
 
-    /* 3. SHOW AND STYLE HAMBURGER */
+    /* SHOW THE HAMBURGER ON PHONE */
     .hamburger {
         display: flex !important;
         flex-direction: column;
@@ -455,28 +471,29 @@ nav {
         width: 25px;
         height: 2px;
         background: #fff;
-        transition: 0.4s;
     }
 
-    /* Hamburger Animation to 'X' */
-    .hamburger.is-active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.is-active span:nth-child(2) { opacity: 0; }
-    .hamburger.is-active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-    /* 4. LOGO SCALING */
-    .main-title { font-size: 1rem; letter-spacing: 2px; }
-    .sub-title { font-size: 0.5rem; letter-spacing: 3px; }
-    .compass-box { width: 32px; height: 32px; margin-right: 10px; }
-    .needle { height: 22px; }
-
-    /* Fix Dropdown for Mobile */
-    .dropdown { width: 100%; justify-content: center; }
-    .dropdown-content {
-        position: relative;
-        top: 0;
-        width: 100%;
-        border: none;
-        background: #111;
-    }
+    /* SCALE THE LOGO SO IT DOESN'T HIT THE HAMBURGER */
+    .main-title { font-size: 0.9rem !important; }
+    .sub-title { font-size: 0.5rem !important; }
+    .compass-box { width: 34px !important; height: 34px !important; }
 }
 
+/* --- 3. THE CONTACT FORM CENTERING FIX --- */
+@media screen and (max-width: 768px) {
+    .nz-form {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+    
+    .form-group { width: 100% !important; }
+    
+    /* Ensures the "Initiate Inquiry" title doesn't break the page width */
+    .form-header h1 {
+        font-size: 1.5rem !important;
+        letter-spacing: 4px !important;
+        word-wrap: break-word;
+    }
+}
