@@ -100,6 +100,16 @@
             .submit-btn { grid-column: span 1; }
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZREPMHSWK">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-7ZREPMHSWK');
+    </script>
 </head>
 <body>
 
@@ -111,7 +121,7 @@
             <h1>Initiate Inquiry</h1>
         </div>
 
-        <form action="#" class="nz-form">
+        <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
             <div class="form-group">
                 <label>Legal Name / Principal</label>
                 <input type="text" placeholder="Omar Greene" required>
@@ -160,6 +170,55 @@
     </footer>
 
     <script src="nav.js"></script>
+    <script>
+        var form = document.getElementById("my-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("my-form-status");
+            var data = new FormData(event.target);
+            
+            status.innerHTML = "Sending...";
+            
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.style.color = "var(--accent-color)";
+                    status.innerHTML = "Thanks! We will contact you soon.";
+                    form.reset();
+                } else {
+                    response.json().then(data => {
+                        status.style.color = "red";
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "Oops! There was a problem submitting your form";
+                        }
+                    })
+                }
+            }).catch(error => {
+                status.style.color = "red";
+                status.innerHTML = "Oops! There was a problem submitting your form";
+            });
+        }
+        
+        form.addEventListener("submit", handleSubmit);
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        const logo = document.getElementById('mainLogo');
+        if(logo) {
+            logo.addEventListener('mousedown', () => logo.style.transform = 'scale(0.96)');
+            logo.addEventListener('mouseup', () => logo.style.transform = 'scale(1)');
+        }
+    </script>
 </body>
 </html>
 
