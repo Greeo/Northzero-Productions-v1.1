@@ -4,177 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Northzero Productions | Architectural Cinema</title>
-    <link rel="stylesheet" href="style.css?v=1.4">
+    <link rel="stylesheet" href="style.css?v=1.5">
     <style>
-        /* THE 'NO-LEAK' LOCK */
-        html, body {
-            background-color: #000 !important;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            overflow-x: hidden;
-            font-family: sans-serif; /* Fallback */
-        }
-
-        /* LOGO SIZE FIX */
-        .main-title {
-            font-size: clamp(2rem, 8vw, 4.5rem);
-            text-transform: uppercase;
-            letter-spacing: 15px;
-            z-index: 10;
-            position: relative;
-            pointer-events: none; /* Let clicks pass through to slider if needed */
-        }
-
-       /* --- HERO SLIDER & TEXT FIX --- */
+        /* CRITICAL ALIGNMENT LOCK */
+        html, body { background: #000; margin: 0; padding: 0; overflow-x: hidden; color: #fff; }
+        
+        /* HERO SECTION */
         .hero-slider {
             height: 100vh;
             width: 100%;
             position: relative;
-            overflow: hidden;
-            background: #000; /* No white leak */
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #050505;
+            overflow: hidden;
         }
-        
         .slide {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out; /* Smoother cinematic transition */
+            transition: opacity 1.5s ease-in-out;
             z-index: 1;
         }
-        
         .slide.active { opacity: 1; }
-        
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4); /* Darkens the image so text pops */
-            z-index: 2;
-        }
-        
-        .main-title-container {
-            z-index: 10;
-            text-align: center;
-        }
-        
-        /* --- THE BENTO GEOMETRY (2 Columns, 2 Rows) --- */
-        .bento-grid {
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2; }
+        .hero-content { z-index: 10; text-align: center; }
+
+        /* BENTO GEOMETRY */
+        .experience-wrapper { padding: 120px 8%; background: #000; }
+        .bento-container {
             display: grid;
-            grid-template-columns: 2fr 1fr; /* 2 parts large, 1 part small */
-            grid-template-rows: 1fr 1fr;    /* 2 equal rows to stack the small boxes */
-            gap: 20px;
-            height: 700px; /* Forces the total height of the grid */
-            margin-top: 50px;
+            grid-template-columns: 1.5fr 1fr; /* The Power Split */
+            grid-template-rows: 350px 350px; /* Two stacked rows */
+            gap: 25px;
+            margin-top: 60px;
         }
-        
-        .bento-item {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .bento-item.large {
-            grid-row: span 2; /* Occupies both rows on the left */
-        }
-        
-        /* Mobile Fix: Stack the boxes on small screens */
-        @media (max-width: 900px) {
-            .bento-grid {
-                grid-template-columns: 1fr;
-                grid-auto-rows: 400px;
-            }
-            .bento-item.large {
-                grid-column: span 1;
-                grid-row: span 1;
-            }
-        }
-        .bento-item { background: #111; border: 1px solid #222; position: relative; overflow: hidden; }
-        .bento-item.large { grid-column: span 2; grid-row: span 2; }
+        .bento-box { background: #0a0a0a; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; }
+        .bento-box.large { grid-row: span 2; } /* Left anchor */
     </style>
 </head>
 <body>
 
     <nav></nav>
 
-
     <main>
         <section class="hero-slider">
             <div class="hero-overlay"></div>
-            
-            <div class="slide active" style="background-image: url('hero-architecture.jpg');"></div>
-            <div class="slide" style="background-image: url('hero-tactile.jpg');"></div>
-            <div class="slide" style="background-image: url('hero-authority.jpg');"></div>
-    
-            <div class="main-title-container">
-                <span class="authority-tag" style="color: #d4af37; letter-spacing: 8px;">Architectural Cinema</span>
-                <h1 class="main-title">Northzero</h1>
-            </div>
-        </section>
-    
-        <section class="experience-section" style="padding: 120px 10%; background: #000;">
-            <div class="authority-tag">Strategic Roots</div>
-            <h2 style="font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase;">Historic Preservation <br>& Structural Narrative</h2>
-            
-            <div class="bento-grid">
-                <div class="bento-item large" style="background-image: url('work1.jpg'); background-size: cover;"></div>
-                
-                <div class="bento-item" style="background-image: url('work2.jpg'); background-size: cover;"></div>
-                
-                <div class="bento-item" style="background-image: url('work3.jpg'); background-size: cover;"></div>
-            </div>
-        </section>
-    
-        <section class="hero-slider">
-            <div class="hero-overlay"></div>
-            
             <div class="slide active" style="background-image: url('hero1.jpg');"></div>
             <div class="slide" style="background-image: url('hero2.jpg');"></div>
             
-            <div style="z-index: 5; text-align: center;">
-                <span class="authority-tag">Architectural Cinema</span>
-                <h1 class="main-title">Northzero</h1>
+            <div class="hero-content">
+                <p style="color: #d4af37; letter-spacing: 10px; text-transform: uppercase; font-size: 0.8rem;">Architectural Cinema</p>
+                <h1 style="font-size: clamp(3rem, 10vw, 5rem); letter-spacing: 20px; text-transform: uppercase; margin: 0;">Northzero</h1>
             </div>
         </section>
 
-        <section class="content-block">
-            <div class="authority-tag">Strategic Roots</div>
-            <h2 style="font-size: 2rem; letter-spacing: 5px; text-transform: uppercase;">Historic Preservation <br>& Structural Narrative</h2>
-            <p style="color: #888; line-height: 1.8; max-width: 600px; margin-top: 20px;">
-                Leveraging my position on the Historic Preservation Commission to document the permanence and soul of New York's most significant estates.
-            </p>
+        <section class="experience-wrapper">
+            <p style="color: #d4af37; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem;">Strategic Roots</p>
+            <h2 style="font-size: 2.2rem; letter-spacing: 5px; text-transform: uppercase; margin: 20px 0;">Historic Preservation <br>& Structural Narrative</h2>
+            <p style="color: #666; max-width: 600px; line-height: 1.8;">Leveraging our roots in the Historic Preservation Commission to document the permanence and soul of New York's most significant estates.</p>
 
-            <div class="bento-grid">
-                <div class="bento-item large" style="background-image: url('regan-thumb.jpg'); background-size: cover;">
-                    <div class="bento-overlay"></div> </div>
-            
-                <div class="bento-item" style="background-image: url('croc-thumb.jpg'); background-size: cover;"></div>
-            
-                <div class="bento-item" style="background-image: url('braising-thumb.jpg'); background-size: cover;"></div>
+            <div class="bento-container">
+                <div class="bento-box large" style="background-image: url('work1.jpg');"></div>
+                <div class="bento-box" style="background-image: url('work2.jpg');"></div>
+                <div class="bento-box" style="background-image: url('work3.jpg');"></div>
             </div>
         </section>
-
     </main>
 
-    <footer style="padding: 80px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 4px; font-size: 0.7rem;">
-        &copy; 2026 Northzero Productions LLC | New York
+    <footer style="padding: 100px; text-align: center; border-top: 1px solid #111; color: #333; text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem;">
+        &copy; 2026 Northzero Productions LLC
     </footer>
 
     <script src="nav.js"></script>
-    
+
     <script>
-        let slides = document.querySelectorAll('.slide');
-        let current = 0;
-        setInterval(() => {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
-        }, 5000);
+        const slides = document.querySelectorAll('.slide');
+        let i = 0;
+        if(slides.length > 0) {
+            setInterval(() => {
+                slides[i].classList.remove('active');
+                i = (i + 1) % slides.length;
+                slides[i].classList.add('active');
+            }, 5000);
+        }
     </script>
 </body>
 </html>
