@@ -81,7 +81,7 @@ a.cta-btn {
     font-weight: 600 !important;
     transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
     background: transparent !important;
-    margin: 10px !important; /* Space between buttons */
+    margin: 20px !important; /* Space between buttons */
 }
 
 .cta-btn:hover {
