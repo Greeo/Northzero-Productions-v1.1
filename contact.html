@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Initiate Inquiry | Northzero Productions</title>
-    
+    <link rel="stylesheet" href="style.css?v=1.9">
     <style>
         :root { --nz-gold: #d4af37; --nz-blue: #0047ab; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; overflow-x: hidden; }
 
-        /* --- STABILIZED NAV --- */
-        nav {
+        /* --- STABILIZED NAV (NZ-ID SYNC) --- */
+        nav#nz-global-nav {
             position: fixed; top: 0; left: 0; width: 100%; height: 80px;
             z-index: 9999; background: #000; padding: 0 5%;
             display: flex; justify-content: space-between; align-items: center;
@@ -19,29 +19,26 @@
         }
 
         .logo-link { display: flex; align-items: center; text-decoration: none; gap: 12px; }
-        
         .compass-box {
             width: 38px; height: 38px; border: 1px solid #333; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
         }
-
         .needle {
             width: 2px; height: 26px;
             background: linear-gradient(to bottom, var(--nz-blue) 50%, var(--nz-gold) 50%);
             transition: transform 0.6s ease;
         }
-
         .logo-link:hover .needle { transform: rotate(45deg); }
 
         .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
         .main-title { font-size: 1.1rem; font-weight: 900; letter-spacing: 3px; color: #fff; }
         .sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; }
 
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
+        .nz-nav-links { display: flex; gap: 25px; align-items: center; }
+        .nz-nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
         
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-        .hamburger span { width: 22px; height: 2px; background: #fff; }
+        .nz-hamburger-icon { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .nz-hamburger-icon span { width: 22px; height: 2px; background: #fff; }
 
         /* --- FORM CONTAINER --- */
         .contact-container {
@@ -65,30 +62,41 @@
         label { color: #666; text-transform: uppercase; letter-spacing: 2px; font-size: 0.6rem; }
         input, select, textarea {
             background: #0a0a0a; border: 1px solid #222; padding: 15px;
-            color: #fff; font-size: 1rem; width: 100%;
+            color: #fff; font-size: 1rem; width: 100%; font-family: inherit;
         }
 
         .submit-btn {
             grid-column: span 2; background: transparent; border: 1px solid var(--nz-gold);
             color: var(--nz-gold); padding: 20px; text-transform: uppercase;
-            letter-spacing: 5px; cursor: pointer; transition: 0.4s;
+            letter-spacing: 5px; cursor: pointer; transition: 0.4s; margin-top: 10px;
         }
 
         .submit-btn:hover { background: var(--nz-gold); color: #000; }
 
+        #form-status {
+            text-align: center; margin-top: 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+        }
+
         /* --- MOBILE REPAIRS --- */
-        @media (max-width: 850px) {
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
+        @media (max-width: 900px) {
+            .nz-nav-links { display: none; }
+            .nz-hamburger-icon { display: flex; }
             .nz-form { display: flex; flex-direction: column; }
             .form-header h1 { font-size: 1.5rem; letter-spacing: 4px; }
-            .main-title { font-size: 0.9rem; }
+            
+            /* Menu Open State */
+            .nz-nav-links.active-menu {
+                display: flex !important;
+                position: fixed; top: 80px; left: 0; width: 100%;
+                background: #000; flex-direction: column; padding: 40px 0;
+                border-bottom: 1px solid #111; text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <nav>
+    <nav id="nz-global-nav">
         <a href="index.html" class="logo-link">
             <div class="compass-box"><div class="needle"></div></div>
             <div class="logo-text">
@@ -96,14 +104,15 @@
                 <span class="sub-title">PRODUCTIONS</span>
             </div>
         </a>
-        <div class="hamburger" onclick="toggleMenu()">
+        <div class="nz-hamburger-icon" id="nz-hamburger-trigger">
             <span></span><span></span><span></span>
         </div>
-        <div class="nav-links" id="mobileMenu">
+        <div class="nz-nav-links" id="nz-links-hook">
             <a href="index.html">Agency</a>
             <a href="work.html">Works</a>
             <a href="all-services.html">Services</a>
             <a href="about.html">Lens</a>
+            <a href="contact.html" style="border: 1px solid var(--nz-gold); padding: 8px 15px; color: var(--nz-gold);">Start Project</a>
         </div>
     </nav>
 
@@ -113,7 +122,7 @@
             <h1>Initiate Inquiry</h1>
         </div>
 
-        <form id="my-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
+        <form id="nz-contact-form" action="https://formspree.io/f/xykedrkb" method="POST" class="nz-form">
             <div class="form-group">
                 <label>Principal Name</label>
                 <input type="text" name="name" placeholder="Omar Greene" required>
@@ -124,27 +133,49 @@
             </div>
             <div class="form-group full-width">
                 <label>Historical Significance</label>
-                <textarea name="significance" rows="4" placeholder="Describe the structural intent..."></textarea>
+                <textarea name="significance" rows="4" placeholder="Describe the structural intent or legacy..."></textarea>
             </div>
-            <button type="submit" class="submit-btn">Submit Audit</button>
+            <button type="submit" class="submit-btn" id="submit-btn">Submit Audit</button>
+            <p id="form-status"></p>
         </form>
     </main>
     
     <script src="./nav.js"></script>
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
-            if(menu.style.display === 'flex') {
-                menu.style.position = 'absolute';
-                menu.style.top = '80px';
-                menu.style.left = '0';
-                menu.style.width = '100%';
-                menu.style.background = '#000';
-                menu.style.flexDirection = 'column';
-                menu.style.padding = '20px';
+        // Formspree AJAX Submission
+        const form = document.getElementById("nz-contact-form");
+        const status = document.getElementById("form-status");
+        const btn = document.getElementById("submit-btn");
+
+        async function handleSubmit(event) {
+          event.preventDefault();
+          btn.disabled = true;
+          status.innerHTML = "Processing Audit...";
+          status.style.color = "var(--nz-gold)";
+          
+          const data = new FormData(event.target);
+          fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          }).then(response => {
+            if (response.ok) {
+              status.innerHTML = "Inquiry Received. We will contact you soon.";
+              status.style.color = "#fff";
+              form.reset();
+              btn.disabled = false;
+            } else {
+              status.innerHTML = "Submission Error. Please try direct email.";
+              status.style.color = "red";
+              btn.disabled = false;
             }
+          }).catch(error => {
+            status.innerHTML = "Connection Error.";
+            status.style.color = "red";
+            btn.disabled = false;
+          });
         }
+        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
