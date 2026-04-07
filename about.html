@@ -58,7 +58,7 @@
 </head>
 <body>
 
-    <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; background: #000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; box-sizing: border-box;">
+    <nav id="nz-global-nav">
         <a href="index.html" class="logo-link">
             <div class="compass-box"><div class="needle"></div></div>
             <div class="logo-text">
@@ -67,11 +67,11 @@
             </div>
         </a>
     
-        <div class="hamburger" id="hamburger-menu">
+        <div class="nz-hamburger-icon" id="nz-hamburger-trigger">
             <span></span><span></span><span></span>
         </div>
     
-        <div class="nav-links" id="nav-links-container">
+        <div class="nz-nav-links" id="nz-links-hook">
             <a href="index.html">Agency</a>
             <a href="work.html">Selected Works</a>
             <div class="dropdown">
@@ -86,14 +86,15 @@
             <a href="contact.html" style="border: 1px solid #d4af37; padding: 8px 15px; color: #d4af37; text-decoration: none; font-size: 0.7rem;">Start a Project</a>
         </div>
     </nav> 
-    <main style="margin-top: 80px;">
+
+    <main id="main-content">
         <section class="hero">
             <div class="video-background">
                 <div id="yt-player"></div>
             </div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <h1>The Lens</h1>
+                <h1 data-text="The Lens">The Lens</h1>
                 <p>Architectural Integrity & Visual Narrative</p>
             </div>
         </section>
@@ -130,7 +131,7 @@
         <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
             <p style="color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">Ready to Document the Legacy?</p>
             <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Let's Discuss the Scope</h2>
-            <div style="display: flex; justify-content: center; gap: 20px;">
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
                 <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
             </div>
