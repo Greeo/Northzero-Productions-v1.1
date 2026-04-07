@@ -84,12 +84,37 @@ body {
 
 /* Dropdown Logic */
 .dropdown { position: relative; height: 80px; display: flex; align-items: center; }
+
+/* --- DROPDOWN Logic TIGHTEN & GAP FIX --- */
 .dropdown-content {
-    display: none; position: absolute; top: 80px; left: 0;
-    background: #000; min-width: 200px; border: 1px solid #111;
+    display: none;
+    position: absolute;
+    top: 100%; /* Snaps to the bottom of the nav bar */
+    left: 0;
+    background: #000;
+    min-width: 240px;
+    border: 1px solid #1a1a1a;
+    padding: 0 !important; /* Removes the "Gap" from the container */
+    z-index: 10000;
 }
-.dropdown:hover .dropdown-content { display: block !important; }
-.dropdown-content a { padding: 15px 20px !important; display: block !important; border-bottom: 1px solid #050505; }
+
+.dropdown-content a {
+    padding: 15px 20px !important;
+    display: block !important;
+    border-bottom: 1px solid #111;
+    color: #888 !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 2px !important;
+    height: auto !important; /* CRITICAL: Stops the "80px height" inherited gap */
+    line-height: 1.2 !important;
+    margin: 0 !important;
+}
+
+.dropdown-content a:hover {
+    background: #080808 !important;
+    color: var(--nz-gold) !important;
+}
+
 
 /* --- MOBILE HAMBURGER (The Desktop Middle Fix) --- */
 #nz-hamburger-trigger {
