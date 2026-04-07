@@ -52,13 +52,20 @@ body {
 .main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 3px; color: #fff; }
 .sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; }
 
-/* --- DESKTOP NAVIGATION --- */
-#nz-links-hook { display: flex; align-items: center; gap: 30px; }
-#nz-links-hook a {
-    color: #fff !important; text-decoration: none !important;
-    text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; transition: 0.3s;
+/* --- THE GOLD PROJECT BOX --- */
+#nz-links-hook a.cta-gold, 
+.nz-nav-links a[href="contact.html"] {
+    border: 1px solid var(--nz-gold) !important;
+    padding: 10px 20px !important;
+    color: var(--nz-gold) !important;
+    margin-left: 15px;
+    transition: 0.4s;
 }
-#nz-links-hook a:hover { color: var(--nz-gold); }
+
+#nz-links-hook a.cta-gold:hover {
+    background: var(--nz-gold) !important;
+    color: #000 !important;
+}
 
 /* Dropdown Logic */
 .dropdown { position: relative; height: 80px; display: flex; align-items: center; }
