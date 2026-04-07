@@ -167,6 +167,58 @@ main, .contact-container, .hero, .page-header {
     margin-top: 80px !important; /* Standardizes the "Start Point" for every page */
 }
 
+/* --- THE LENS: RESOURCE BREAK STYLES --- */
+.resource-break {
+    background: #050505 !important;
+    padding: 150px 50px !important;
+    border-top: 1px solid #111 !important;
+    display: flex !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.resource-container {
+    max-width: 800px !important;
+}
+
+.resource-line {
+    width: 60px; height: 1px;
+    background: var(--nz-gold);
+    margin: 0 auto 40px;
+}
+
+.resource-container h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 12px !important;
+    margin-bottom: 30px !important;
+    color: #fff !important;
+}
+
+.resource-container p {
+    color: #666 !important;
+    font-size: 1.1rem !important;
+    line-height: 2 !important;
+    margin-bottom: 50px !important;
+}
+
+/* Specific Download Button Style */
+.download-btn {
+    display: inline-block;
+    padding: 20px 50px;
+    border: 1px solid #333;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    transition: 0.4s;
+}
+
+.download-btn:hover {
+    border-color: var(--nz-gold);
+    color: var(--nz-gold);
+}
+
 /* --- THE GHOST MENU KILLER (Desktop) --- */
 @media screen and (min-width: 901px) {
     /* Hide EVERY possible old menu/hamburger ID or class */
