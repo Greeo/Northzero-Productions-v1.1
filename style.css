@@ -279,3 +279,11 @@ main, .contact-container, .hero, .page-header {
         display: flex !important;
     }
 }
+
+@media screen and (max-width: 900px) {
+    #nz-links-hook.active-menu {
+        display: flex !important; /* This is the "Reveal" command */
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
