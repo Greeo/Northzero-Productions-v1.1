@@ -136,3 +136,23 @@ body {
 main, .contact-container, .hero, .page-header {
     margin-top: 80px !important; /* Standardizes the "Start Point" for every page */
 }
+
+/* --- THE GHOST MENU KILLER (Desktop) --- */
+@media screen and (min-width: 901px) {
+    /* Hide EVERY possible old menu/hamburger ID or class */
+    .hamburger, #hamburger-menu, .nz-hamburger-icon, 
+    #mobileMenu, .mobile-nav, #nav-links-container.active {
+        display: none !important;
+    }
+    
+    /* Force the new links to be a clean row */
+    #nz-links-hook {
+        display: flex !important;
+        position: relative !important;
+        top: auto !important;
+        background: transparent !important;
+        padding: 0 !important;
+        width: auto !important;
+        height: auto !important;
+    }
+}
