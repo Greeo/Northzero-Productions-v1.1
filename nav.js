@@ -1,22 +1,38 @@
-/* NORTHZERO DYNAMIC NAVIGATION 
-   This script handles the mobile toggle for the hard-coded HTML.
+/* NORTHZERO NAVIGATION ENGINE v2.0
+   Synchronized with NZ-ID Global Architecture
 */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. SELECT THE ELEMENTS FROM OUR NEW HTML
     const trigger = document.getElementById('nz-hamburger-trigger');
     const menuHook = document.getElementById('nz-links-hook');
+    const body = document.body;
 
-    // 2. ONLY RUN IF THEY EXIST ON THE PAGE
     if (trigger && menuHook) {
         trigger.addEventListener('click', () => {
-            // This adds/removes the 'active-menu' class we styled in CSS
-            menuHook.classList.toggle('active-menu');
+            // 1. Toggle the menu visibility
+            const isOpen = menuHook.classList.toggle('active-menu');
             
-            // This animates the hamburger if you have the 'is-active' styles
+            // 2. Toggle the hamburger "X" animation
             trigger.classList.toggle('is-active');
             
-            console.log("Northzero Menu Toggled"); // For testing in your browser console
+            // 3. Prevent background scrolling when menu is open
+            if (isOpen) {
+                body.style.overflow = 'hidden';
+            } else {
+                body.style.overflow = 'auto';
+            }
+
+            console.log("NZ-Menu: " + (isOpen ? "Open" : "Closed"));
+        });
+
+        // 4. Close menu if a link is clicked (Fixes "Anchor Link" issues)
+        const navLinks = menuHook.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuHook.classList.remove('active-menu');
+                trigger.classList.remove('is-active');
+                body.style.overflow = 'auto';
+            });
         });
     }
 });
