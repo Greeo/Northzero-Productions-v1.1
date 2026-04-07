@@ -1,79 +1,14 @@
-/* --- 1. THE UNIVERSAL NAV BAR --- */
-#nz-global-nav {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 80px !important;
-    background: #000 !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 5% !important;
-    z-index: 10000 !important;
-    border-bottom: 1px solid #111 !important;
-    box-sizing: border-box !important;
-}
+/* ============================================================
+   NORTHZERO PRODUCTIONS | MASTER STYLES v2.0 (2026)
+   Consolidated & Conflict-Free
+   ============================================================ */
 
-/* --- 2. THE LINKS (DESKTOP) --- */
-#nz-links-hook {
-    display: flex !important;
-    gap: 25px !important;
-    align-items: center !important;
-}
-
-#nz-links-hook a {
-    color: #fff !important;
-    text-decoration: none !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    font-size: 0.7rem !important;
-}
-
-/* --- 3. THE HAMBURGER (MOBILE ONLY) --- */
-#nz-hamburger-trigger {
-    display: none; /* Hidden on Desktop */
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-}
-
-#nz-hamburger-trigger span {
-    width: 25px;
-    height: 2px;
-    background: #fff;
-    display: block;
-}
-
-/* --- 4. THE MOBILE OVERRIDE --- */
-@media screen and (max-width: 900px) {
-    #nz-links-hook {
-        display: none !important; /* This Kills the bunched-up text */
-    }
-
-    #nz-hamburger-trigger {
-        display: flex !important; /* This Shows the Hamburger */
-    }
-
-    /* THE OPEN STATE (When clicked) */
-    #nz-links-hook.active-menu {
-        display: flex !important;
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: #000;
-        flex-direction: column;
-        padding: 40px 0;
-    }
-}
-
-
-/* --- MASTER BRAND VARIABLES --- */
+/* --- 1. CORE VARIABLES & RESET --- */
 :root {
     --nz-blue: #0047ab;
     --nz-gold: #d4af37;
-    --nz-black: #0a0a0a;
+    --nz-black: #000000;
+    --nz-soft-black: #0a0a0a;
     --nz-white: #ffffff;
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -88,103 +23,25 @@ body {
     overflow-x: hidden;
 }
 
-
-
-/* --- 1. THE NEW GLOBAL NAV LOCK --- */
-    #nz-global-nav {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100% !important;
-        height: 80px !important;
-        background: #000 !important;
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 0 5% !important;
-        z-index: 10000 !important;
-        border-bottom: 1px solid #111 !important;
-        box-sizing: border-box !important;
-    }
-
-    /* --- 2. HIDING THE DESKTOP LINKS ON MOBILE --- */
-    .nz-nav-links {
-        display: flex !important;
-        gap: 25px !important;
-        align-items: center !important;
-    }
-
-    .nz-nav-links a {
-        color: #fff !important;
-        text-decoration: none !important;
-        text-transform: uppercase !important;
-        letter-spacing: 2px !important;
-        font-size: 0.7rem !important;
-    }
-
-    /* THE HAMBURGER */
-    .nz-hamburger-icon {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-    }
-
-    .nz-hamburger-icon span {
-        width: 25px;
-        height: 2px;
-        background: #fff;
-    }
-
-    /* --- 3. THE MOBILE "OVERRIDE" --- */
-    @media screen and (max-width: 900px) {
-        /* This is the KILL SWITCH for the extra box */
-        .nz-nav-links {
-            display: none !important; 
-        }
-
-        .nz-hamburger-icon {
-            display: flex !important;
-        }
-
-        /* The Menu when opened on mobile */
-        .nz-nav-links.active-menu {
-            display: flex !important;
-            position: fixed;
-            top: 80px;
-            left: 0;
-            width: 100%;
-            height: auto;
-            background: #000;
-            flex-direction: column;
-            padding: 40px 0;
-            border-bottom: 1px solid #111;
-        }
-    }
-
-
-/* --- THE ANCHOR BEAM (Nav) --- */
-nav {
-    display: -webkit-flex;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 50px;
-    background: rgba(10, 10, 10, 0.98);
-    position: fixed;
-    width: 100%;
-    height: 80px; /* Fixed height locks the dropdown anchor */
-    top: 0;
-    left: 0;
-    z-index: 9999;
-    border-bottom: 1px solid #222;
-    -webkit-backdrop-filter: blur(15px); /* Critical for Safari */
+/* --- 2. THE GLOBAL NAV BAR (Unified Architecture) --- */
+#nz-global-nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 80px !important;
+    background: rgba(0, 0, 0, 0.98) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 5% !important;
+    z-index: 10000 !important;
+    border-bottom: 1px solid #111 !important;
     backdrop-filter: blur(15px);
 }
 
-/* --- LOGO ARCHITECTURE --- */
+/* Logo Spacing */
 .logo-link {
-    display: -webkit-inline-flex;
     display: inline-flex;
     align-items: center;
     text-decoration: none;
@@ -197,7 +54,6 @@ nav {
     border-radius: 50%;
     margin-right: 15px;
     display: flex; align-items: center; justify-content: center;
-    transition: 0.4s;
 }
 
 .needle {
@@ -209,553 +65,107 @@ nav {
 
 .logo-link:hover .needle { transform: rotate(0deg); }
 
-.main-title { font-size: 1.4rem; font-weight: 900; letter-spacing: 2px; color: #fff; display: block; line-height: 1.1; }
-.sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; display: block; }
+.main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 3px; color: #fff; line-height: 1.1; }
+.sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; }
 
-/* --- NAVIGATION & DROPDOWN --- */
-.nav-links { display: flex; align-items: center; height: 100%; gap: 35px; }
+/* --- 3. NAV LINKS & DROPDOWNS --- */
+#nz-links-hook {
+    display: flex !important;
+    gap: 30px !important;
+    align-items: center !important;
+}
 
-.nav-links a {
-    text-decoration: none;
-    color: #eee;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.7rem;
+#nz-links-hook a {
+    color: #fff !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    font-size: 0.7rem !important;
     transition: 0.3s;
 }
 
+#nz-links-hook a:hover { color: var(--nz-gold); }
 
-.dropdown {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.dropbtn { cursor: pointer; height: 100%; display: flex; align-items: center; }
-
+/* Services Dropdown */
+.dropdown { position: relative; height: 80px; display: flex; align-items: center; }
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 80px; /* Snaps to bottom of nav */
-    left: 0;
+    top: 80px; left: 0;
     background: #0a0a0a;
     min-width: 220px;
     border: 1px solid #222;
-    z-index: 10000;
 }
 
-/* Hover Trigger - Forced for Safari */
-.dropdown:hover .dropdown-content { 
-    display: block !important; 
-    visibility: visible !important;
-    opacity: 1 !important;
+.dropdown:hover .dropdown-content { display: block !important; }
+.dropdown-content a { padding: 15px 20px !important; border-bottom: 1px solid #111; display: block !important; }
+
+/* --- 4. HAMBURGER (Mobile Trigger) --- */
+#nz-hamburger-trigger {
+    display: none; /* Hidden on Desktop */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
 }
 
-.dropdown-content a {
-    padding: 15px 20px !important;
-    display: block !important;
-    border-bottom: 1px solid #111;
-    color: #888 !important;
+#nz-hamburger-trigger span {
+    width: 25px; height: 2px;
+    background: #fff; transition: 0.3s;
 }
 
-.dropdown-content a:hover { background: #111 !important; color: var(--nz-gold) !important; }
-
-/* The Safari Mouse Bridge */
-.dropdown::after {
-    content: '';
-    position: absolute;
-    bottom: -15px; left: 0; width: 100%; height: 20px;
-}
-
-
-/* --- THE NORTHZERO CTA BUTTON --- */
+/* --- 5. THE NORTHZERO BUTTONS --- */
 .cta-btn {
     display: inline-block;
     padding: 15px 35px;
-    margin-top: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle Border */
-    color: #fff;
+    border: 1px solid var(--nz-gold);
+    color: var(--nz-gold);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 4px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: 0.5s;
     background: transparent;
-    position: relative;
-    z-index: 20;
 }
 
-.cta-btn:hover {
-    background: #fff;
-    color: #000;
-    border-color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+.cta-btn:hover { background: var(--nz-gold); color: #000; transform: translateY(-3px); }
+
+/* --- 6. MOBILE RESPONSIVE ENGINE --- */
+@media screen and (max-width: 900px) {
+    #nz-links-hook {
+        display: none !important; /* Hides desktop links */
+        position: fixed;
+        top: 80px; left: 0; width: 100%;
+        background: #000;
+        flex-direction: column !important;
+        padding: 40px 0;
+        gap: 30px;
+        border-bottom: 1px solid #111;
+    }
+
+    #nz-links-hook.active-menu { display: flex !important; } /* Script Trigger */
+
+    #nz-hamburger-trigger { display: flex !important; }
+
+    /* Shrink Logo for small screens */
+    .main-title { font-size: 1rem !important; }
+    .sub-title { font-size: 0.5rem !important; }
+    .compass-box { width: 34px !important; height: 34px !important; }
+    
+    /* Hero Text Stacking */
+    .hero-content h1, .slide-content h1 {
+        font-size: 1.8rem !important;
+        letter-spacing: 4px !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+    }
 }
 
-/* Optional: Add a Gold variant for specific emphasis */
-.cta-btn.gold-btn {
-    border-color: var(--nz-gold);
-    color: var(--nz-gold);
-}
-
-.cta-btn.gold-btn:hover {
-    background: var(--nz-gold);
-    color: #000;
-}
-
-
-
-/* --- THE APERTURE RESET GLITCH --- */
+/* --- 7. ANIMATIONS (Aperture Glitch) --- */
 @keyframes apertureScan {
     0% { text-shadow: 2px 0 var(--nz-blue), -2px 0 var(--nz-gold); transform: scale(1); }
     20% { text-shadow: -3px 0 var(--nz-blue), 3px 0 var(--nz-gold); transform: skewX(2deg); }
-    40% { text-shadow: 2px 0 var(--nz-blue), -2px 0 var(--nz-gold); transform: skewX(-2deg); }
-    60% { text-shadow: -1px 0 var(--nz-blue), 1px 0 var(--nz-gold); transform: scale(1.01); }
     100% { text-shadow: 0 0 transparent; transform: scale(1); }
 }
 
-/* Apply this to your H1s and the Logo for a "Boss" effect on hover */
-.main-title:hover, .hero-content h1:hover {
-    animation: apertureScan 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    cursor: crosshair; /* Changes the cursor to a technical reticle */
-}
-
-
-
-/* --- THE LENS: CLEAN RESOURCE BREAK --- */
-.resource-break {
-    background: #050505;
-    background: radial-gradient(circle at center, #0a0a0a 0%, #050505 100%);
-    padding: 150px 50px;
-    border-top: 1px solid #111;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-.resource-container {
-    max-width: 800px;
-    position: relative;
-}
-
-.resource-line {
-    width: 60px;
-    height: 1px;
-    background: var(--nz-gold);
-    margin: 0 auto 40px;
-}
-
-.resource-tag {
-    color: var(--nz-gold);
-    text-transform: uppercase;
-    letter-spacing: 6px;
-    font-size: 0.7rem;
-    margin-bottom: 25px;
-    opacity: 0.8;
-}
-
-.resource-container h2 {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    text-transform: uppercase;
-    letter-spacing: 12px;
-    margin-bottom: 30px;
-    line-height: 1.1;
-    color: #fff;
-    font-weight: 900;
-}
-
-.resource-container p {
-    color: #666; /* Subdued for premium look */
-    font-size: 1.1rem;
-    line-height: 2;
-    margin-bottom: 50px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.download-btn {
-    display: inline-block;
-    padding: 20px 50px;
-    border: 1px solid #333;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 0.75rem;
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.download-btn:hover {
-    border-color: var(--nz-gold);
-    color: var(--nz-gold);
-    background: rgba(212, 175, 55, 0.05); /* Very subtle gold tint */
-    transform: translateY(-3px);
-}
-
-
-/* --- PRODUCTION PILLARS STYLES --- */
-.page-header {
-    height: 55vh;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.85), #0a0a0a), 
-                url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    flex-direction: column; 
-    text-align: center; 
-    padding-top: 80px;
-    border-bottom: 1px solid #111;
-}
-
-.page-header h1 { 
-    font-size: clamp(2rem, 6vw, 3.5rem); 
-    text-transform: uppercase; 
-    letter-spacing: 12px; 
-    margin-bottom: 15px; 
-    color: #fff; 
-}
-
-.page-header p { 
-    font-size: 0.9rem; 
-    color: var(--nz-gold); 
-    letter-spacing: 5px; 
-    text-transform: uppercase; 
-}
-
-.container { max-width: 1200px; margin: 0 auto; padding: 100px 25px; }
-
-.category-header { display: flex; align-items: center; margin-bottom: 60px; }
-.category-header h2 { 
-    font-size: 1.5rem; 
-    text-transform: uppercase; 
-    letter-spacing: 6px; 
-    margin-right: 25px; 
-    font-weight: 300; 
-    color: #fff; 
-}
-.line { flex-grow: 1; height: 1px; background: #222; }
-
-.cards-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-    gap: 30px; 
-    margin-bottom: 120px; 
-}
-
-.card { 
-    background: #0d0d0d; 
-    padding: 50px 40px; 
-    border: 1px solid #1a1a1a; 
-    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
-}
-
-.card:hover { 
-    transform: translateY(-10px); 
-    border-color: var(--nz-gold); 
-    background: #111;
-}
-
-.card h3 { 
-    color: #fff; 
-    margin-bottom: 20px; 
-    font-size: 1rem; 
-    text-transform: uppercase; 
-    letter-spacing: 3px; 
-}
-
-.card p { 
-    color: #777; 
-    font-size: 0.95rem; 
-    font-weight: 300; 
-    line-height: 1.9; 
-}
-
-.cta-section { 
-    text-align: center; 
-    padding: 150px 25px; 
-    background: #080808; 
-    border-top: 1px solid #111; 
-}
-
-.cta-section h2 {
-    margin-bottom: 45px; 
-    letter-spacing: 8px; 
-    font-weight: 300; 
-    text-transform: uppercase; 
-    color: #fff;
-    font-size: 1.5rem;
-}
-
- .nav-links.active {
-        display: flex; /* Shows links when hamburger is clicked */
-    }
-
-    .hamburger {
-        display: flex !important;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-    }
-
-    .hamburger span {
-        width: 25px;
-        height: 2px;
-        background: #fff;
-        transition: 0.3s;
-    }
-
-    /* COMPASS & LOGO SCALING */
-    .main-title { font-size: 0.9rem; }
-    .sub-title { font-size: 0.55rem; }
-}
-
-/* --- NAVIGATION & DROPDOWN --- */
-.nav-links { 
-    display: flex; 
-    align-items: center; 
-    height: 100%; 
-    gap: 35px; 
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #eee;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.7rem;
-    transition: 0.3s;
-}
-
-/* Hide Hamburger on Desktop */
-.hamburger {
-    display: none;
-}
-
-.dropdown {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.dropbtn { cursor: pointer; height: 100%; display: flex; align-items: center; }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 80px;
-    left: 0;
-    background: #0a0a0a;
-    min-width: 220px;
-    border: 1px solid #222;
-    z-index: 10000;
-}
-
-.dropdown:hover .dropdown-content { 
-    display: block !important; 
-}
-
-/* --- 1. DESKTOP NAVIGATION (FORCING FLEX) --- */
-.nav-links { 
-    display: flex !important; 
-    align-items: center; 
-    height: 100%; 
-    gap: 35px; 
-}
-
-/* HIDE HAMBURGER ON DESKTOP AT ALL COSTS */
-.hamburger {
-    display: none !important;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #eee;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.7rem;
-    transition: 0.3s;
-}
-
-/* --- 2. THE MOBILE OVERRIDE (FORCING THE SWITCH) --- */
-@media screen and (max-width: 900px) {
-    
-    /* KILL THE DESKTOP LINKS ON PHONE */
-    .nav-links {
-        display: none !important; 
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: #000;
-        flex-direction: column !important;
-        padding: 60px 0;
-        gap: 40px;
-        z-index: 9998;
-    }
-
-    /* SHOW LINKS ONLY WHEN MENU IS OPENED */
-    .nav-links.active {
-        display: flex !important;
-    }
-
-    /* SHOW THE HAMBURGER ON PHONE */
-    .hamburger {
-        display: flex !important;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-        z-index: 10002;
-    }
-
-    .hamburger span {
-        width: 25px;
-        height: 2px;
-        background: #fff;
-    }
-
-    /* SCALE THE LOGO SO IT DOESN'T HIT THE HAMBURGER */
-    .main-title { font-size: 0.9rem !important; }
-    .sub-title { font-size: 0.5rem !important; }
-    .compass-box { width: 34px !important; height: 34px !important; }
-}
-
-/* --- 3. THE CONTACT FORM CENTERING FIX --- */
-@media screen and (max-width: 768px) {
-    .nz-form {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-    
-    .form-group { width: 100% !important; }
-    
-    /* Ensures the "Initiate Inquiry" title doesn't break the page width */
-    .form-header h1 {
-        font-size: 1.5rem !important;
-        letter-spacing: 4px !important;
-        word-wrap: break-word;
-    }
-}
-
-/* --- HERO MOBILE RESPONSIVENESS --- */
-@media screen and (max-width: 600px) {
-    .hero-content h1 {
-        font-size: 1.8rem !important; /* Shrinks the giant title */
-        letter-spacing: 4px !important; /* Reduces the horizontal push */
-        width: 100% !important;
-        padding: 0 10px;
-        line-height: 1.2;
-        text-align: center;
-        white-space: normal; /* Allows the text to wrap instead of staying in one long line */
-    }
-
-    .hero-content p {
-        font-size: 0.7rem !important;
-        letter-spacing: 3px !important;
-        margin-bottom: 20px;
-    }
-
-    /* If you have a CTA button in the hero */
-    .hero-btn {
-        padding: 12px 25px !important;
-        font-size: 0.65rem !important;
-    }
-}
-
-
-/* --- HERO SLIDER MOBILE FIX --- */
-@media screen and (max-width: 768px) {
-    .slide-content {
-        width: 100% !important;
-        padding: 0 20px !important; /* Safety margins on the sides */
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .slide-content h1 {
-        font-size: 1.8rem !important; /* Scale down from the desktop size */
-        letter-spacing: 4px !important; /* Tighten up the "Agency" look */
-        line-height: 1.2 !important;
-        white-space: normal !important; /* CRITICAL: Allows words to wrap to the next line */
-        width: 100% !important;
-        margin-bottom: 15px !important;
-    }
-
-    /* Fix the "Glitch" or Shadow effect if you use data-text */
-    .slide-content h1::after, 
-    .slide-content h1::before {
-        letter-spacing: 4px !important;
-        font-size: 1.8rem !important;
-    }
-
-    .slide-content p {
-        font-size: 0.8rem !important;
-        letter-spacing: 2px !important;
-        line-height: 1.5 !important;
-        max-width: 280px; /* Keeps the paragraph narrow and elegant */
-        margin: 0 auto 25px;
-    }
-
-    .slide-content .cta-btn {
-        padding: 12px 25px !important;
-        font-size: 0.65rem !important;
-        letter-spacing: 3px !important;
-    }
-}
-
-
-/* --- GLOBAL NORTHZERO NAV FIX --- */
-
-/* 1. Desktop View: Hide the Hamburger */
-#nz-hamburger-trigger {
-    display: none !important;
-}
-
-/* 2. Mobile View: The Big Switch (900px and under) */
-@media screen and (max-width: 900px) {
-    
-    /* Force the desktop row to vanish */
-    #nz-links-hook {
-        display: none !important; 
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: #000;
-        flex-direction: column;
-        padding: 40px 0;
-        text-align: center;
-        border-bottom: 1px solid #111;
-        z-index: 9999;
-    }
-
-    /* Force the Hamburger to appear */
-    #nz-hamburger-trigger {
-        display: flex !important;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-        padding: 10px;
-    }
-
-    #nz-hamburger-trigger span {
-        width: 25px;
-        height: 2px;
-        background: #fff;
-        display: block;
-    }
-
-    /* THE OPEN STATE: When you click, this makes the menu show up */
-    #nz-links-hook.active-menu {
-        display: flex !important;
-    }
-}
+.main-title:hover { animation: apertureScan 0.4s both; cursor: crosshair; }
