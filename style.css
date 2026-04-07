@@ -67,6 +67,36 @@ body {
 .main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 3px; color: #fff; }
 .sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; }
 
+/* --- UNIVERSAL CTA BUTTONS (Audit & Email) --- */
+.cta-btn, 
+a.cta-btn {
+    display: inline-block !important;
+    padding: 15px 35px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    text-transform: uppercase !important;
+    letter-spacing: 4px !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    background: transparent !important;
+    margin: 10px !important; /* Space between buttons */
+}
+
+.cta-btn:hover {
+    background: #fff !important;
+    color: #000 !important;
+    border-color: #fff !important;
+    transform: translateY(-3px) !important;
+}
+
+/* Gold Variant for "Initiate Full Audit" */
+.cta-btn.gold-btn {
+    border-color: var(--nz-gold) !important;
+    color: var(--nz-gold) !important;
+}
+
 /* --- THE GOLD PROJECT BOX --- */
 #nz-links-hook a.cta-gold, 
 .nz-nav-links a[href="contact.html"] {
