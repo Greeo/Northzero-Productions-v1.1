@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Works | Northzero Productions</title>
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <link rel="stylesheet" href="style.css?v=1.9">
     
     <style>
         /* PAGE-SPECIFIC PORTFOLIO STYLES */
-        .portfolio-header { padding: 180px 50px 60px; text-align: center; }
+        .portfolio-header { padding: 180px 5% 60px; text-align: center; }
         .portfolio-header h1 { 
-            font-size: 3.5rem; text-transform: uppercase; letter-spacing: 15px; 
-            margin-bottom: 20px; color: #fff;
+            font-size: clamp(2rem, 8vw, 3.5rem); 
+            text-transform: uppercase; 
+            letter-spacing: 15px; 
+            margin-bottom: 20px; 
+            color: #fff;
+            white-space: normal;
         }
 
         /* Filter System */
-        .filter-container { text-align: center; margin-bottom: 60px; }
+        .filter-container { text-align: center; margin-bottom: 60px; padding: 0 20px; }
         .filter-btn { 
             background: none; border: none; color: #555; text-transform: uppercase; 
-            letter-spacing: 3px; font-size: 0.7rem; margin: 0 20px; cursor: pointer; transition: 0.3s;
+            letter-spacing: 3px; font-size: 0.7rem; margin: 10px 15px; cursor: pointer; transition: 0.3s;
         }
-        .filter-btn.active, .filter-btn:hover { color: var(--nz-gold); }
+        .filter-btn.active, .filter-btn:hover { color: #d4af37; }
 
         /* --- THE BENTO GRID --- */
         .work-grid {
@@ -28,7 +32,7 @@
             grid-template-columns: repeat(6, 1fr);
             grid-auto-rows: 20vw;
             gap: 15px;
-            padding: 0 30px 100px;
+            padding: 0 5% 100px;
             max-width: 1600px;
             margin: 0 auto;
         }
@@ -38,9 +42,10 @@
             background: #111;
             overflow: hidden;
             cursor: pointer;
+            border: 1px solid #1a1a1a;
         }
 
-        /* Layout Variances for Luxury Feel */
+        /* Layout Variances */
         .work-item.featured { grid-column: span 4; grid-row: span 2; }
         .work-item.tall { grid-column: span 2; grid-row: span 2; }
         .work-item.wide { grid-column: span 3; grid-row: span 1; }
@@ -48,184 +53,48 @@
 
         .work-item img {
             width: 100%; height: 100%; object-fit: cover;
-            filter: grayscale(0.5) brightness(0.6);
+            filter: grayscale(0.6) brightness(0.7);
             transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
         .work-item:hover img {
             filter: grayscale(0) brightness(1);
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
 
         .work-info {
             position: absolute; bottom: 30px; left: 30px;
             opacity: 0; transform: translateY(20px);
             transition: 0.4s ease;
+            z-index: 5;
         }
 
         .work-item:hover .work-info { opacity: 1; transform: translateY(0); }
-        .work-info h3 { text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; color: #fff; margin-bottom: 5px; }
-        .work-info p { font-size: 0.65rem; color: var(--nz-gold); text-transform: uppercase; letter-spacing: 2px; }
+        .work-info h3 { text-transform: uppercase; letter-spacing: 3px; font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+        .work-info p { font-size: 0.65rem; color: #d4af37; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- THE LIGHTBOX (MODAL) --- */
+        /* --- THE LIGHTBOX --- */
         .lightbox {
-            display: none; position: fixed; z-index: 10000;
+            display: none; position: fixed; z-index: 20000;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.98); align-items: center; justify-content: center;
         }
         .lightbox-content {
             position: relative; width: 90%; max-width: 1200px;
-            aspect-ratio: 16 / 9; border: 1px solid #222;
+            aspect-ratio: 16 / 9; border: 1px solid #222; background: #000;
         }
         .close-lightbox {
             position: absolute; top: -50px; right: 0;
-            color: var(--nz-gold); font-size: 2.5rem; cursor: pointer;
+            color: #d4af37; font-size: 2.5rem; cursor: pointer;
             transition: 0.3s; line-height: 1;
         }
-        .close-lightbox:hover { color: #fff; transform: rotate(90deg); }
-
-        footer { padding: 100px 50px; text-align: center; color: #333; letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; border-top: 1px solid #111; }
 
         @media (max-width: 1024px) {
             .work-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 30vw; }
         }
         @media (max-width: 768px) {
-            .work-grid { grid-template-columns: 1fr; grid-auto-rows: 56.25vw; padding: 0 15px 80px; }
-            .work-item.featured, .work-item.tall, .work-item.wide { grid-column: span 1; grid-row: span 1; }
-            .portfolio-header h1 { font-size: 2.2rem; letter-spacing: 8px; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav style="position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; background: #000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #111; box-sizing: border-box;">
-        <a href="index.html" class="logo-link">
-            <div class="compass-box"><div class="needle"></div></div>
-            <div class="logo-text">
-                <span class="main-title">NORTHZERO</span>
-                <span class="sub-title">PRODUCTIONS</span>
-            </div>
-        </a>
-    
-        <div class="hamburger" id="hamburger-menu">
-            <span></span><span></span><span></span>
-        </div>
-    
-        <div class="nav-links" id="nav-links-container">
-            <a href="index.html">Agency</a>
-            <a href="work.html">Selected Works</a>
-            <div class="dropdown">
-                <a href="all-services.html" class="dropbtn">Services</a>
-                <div class="dropdown-content">
-                    <a href="authority.html">Authority Suite</a>
-                    <a href="architectural.html">Architectural Cinema</a>
-                    <a href="tactile.html">Tactile Narratives</a>
-                </div>
-            </div>
-            <a href="about.html">The Lens</a>
-            <a href="contact.html" style="border: 1px solid #d4af37; padding: 8px 15px; color: #d4af37; text-decoration: none; font-size: 0.7rem;">Start a Project</a>
-        </div>
-    </nav>
-    <main style="margin-top: 80px;">
-        <section class="portfolio-header">
-            <h1>Selected Works</h1>
-        </section>
-    
-        <div class="filter-container">
-            <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
-            <button class="filter-btn" onclick="filterGallery('estate', this)">Estate</button>
-            <button class="filter-btn" onclick="filterGallery('tactile', this)">Tactile</button>
-            <button class="filter-btn" onclick="filterGallery('institutional', this)">Institutional</button>
-        </div>
-    
-        <div class="work-grid" id="workGrid">
-            </div>
-    
-        <div id="videoLightbox" class="lightbox" onclick="closeVideo(event)">
-            <div class="lightbox-content">
-                <span class="close-lightbox">&times;</span>
-                <div id="videoPlayerFrame" style="width:100%; height:100%;"></div>
-            </div>
-        </div>
-
-        <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
-            <p style="color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">Ready to Document the Legacy?</p>
-            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Let's Discuss the Scope</h2>
-            <div style="display: flex; justify-content: center; gap: 20px;">
-                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
-                <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
-            </div>
-        </section>
-    
-        <footer>
-            &copy; 2026 Northzero Productions LLC | New York
-        </footer>
-    </main>
-
-    <script src="./nav.js"></script>
-
-    <script>
-        const projects = [
-            { id: 'AVN2N2hopGk', title: 'The Modern Estate', category: 'estate', type: 'Architectural Cinema', layout: 'featured' },
-            { id: 'FEfAZ5CTP84', title: 'Artificially Yours', category: 'tactile', type: 'Tactile Narrative', layout: 'tall' },
-            { id: 'ONyk8VokO2k', title: 'Design & Texture', category: 'tactile', type: 'Macro Study', layout: 'standard' },
-            { id: 'UV3Lvew15fs', title: 'Visual Rhythm', category: 'tactile', type: 'Production Design', layout: 'standard' },
-            { id: 'U_s0PDP123c', title: 'Global Tech', category: 'institutional', type: 'Institutional Strategy', layout: 'wide' }
-        ];
-
-        function renderGallery(filter = 'all') {
-            const grid = document.getElementById('workGrid');
-            grid.innerHTML = '';
-            
-            const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
-            
-            filtered.forEach(p => {
-                grid.innerHTML += `
-                    <div class="work-item ${p.layout}" onclick="openVideo('${p.id}')">
-                        <img src="https://img.youtube.com/vi/${p.id}/maxresdefault.jpg" alt="${p.title}">
-                        <div class="work-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.type}</p>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function filterGallery(cat, btn) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderGallery(cat);
-        }
-
-        function openVideo(videoID) {
-            const lightbox = document.getElementById('videoLightbox');
-            const player = document.getElementById('videoPlayerFrame');
-            
-            player.innerHTML = `
-                <iframe 
-                    width="100%" height="100%" 
-                    src="https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1" 
-                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
-                </iframe>`;
-            
-            lightbox.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeVideo(e) {
-            if (e.target.id === 'videoLightbox' || e.target.className === 'close-lightbox') {
-                document.getElementById('videoPlayerFrame').innerHTML = '';
-                document.getElementById('videoLightbox').style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Initial render
-        renderGallery();
-    </script>
-</body>
-</html>
+            .work-grid { display: flex; flex-direction: column; padding: 0 20px 80px; }
+            .work
 
 
 
