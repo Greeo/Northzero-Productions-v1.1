@@ -23,7 +23,7 @@
     
     #nz-links-hook.active-menu { display: flex !important; } /* Script Trigger */
 }
-
+/* --- GLOBAL RESPONSIVE OVERRIDE --- */
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
