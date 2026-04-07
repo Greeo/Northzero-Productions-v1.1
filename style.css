@@ -252,3 +252,30 @@ main, .contact-container, .hero, .page-header {
         margin-bottom: 0 !important; /* Resets paragraph bottom to control via button */
     }
 }
+
+/* --- THE MOBILE REVEAL --- */
+@media screen and (max-width: 900px) {
+    /* Hide the desktop links by default */
+    #nz-links-hook {
+        display: none !important;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        padding: 40px 0;
+        border-bottom: 1px solid #111;
+        z-index: 9999;
+    }
+
+    /* SHOW the menu when the JS adds the 'active-menu' class */
+    #nz-links-hook.active-menu {
+        display: flex !important;
+    }
+
+    /* Force the Hamburger to be visible on mobile */
+    #nz-hamburger-trigger {
+        display: flex !important;
+    }
+}
