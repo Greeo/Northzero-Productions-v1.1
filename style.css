@@ -17,6 +17,81 @@ body {
     overflow-x: hidden;
 }
 
+
+
+/* --- 1. THE NEW GLOBAL NAV LOCK --- */
+    #nz-global-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 80px !important;
+        background: #000 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 5% !important;
+        z-index: 10000 !important;
+        border-bottom: 1px solid #111 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* --- 2. HIDING THE DESKTOP LINKS ON MOBILE --- */
+    .nz-nav-links {
+        display: flex !important;
+        gap: 25px !important;
+        align-items: center !important;
+    }
+
+    .nz-nav-links a {
+        color: #fff !important;
+        text-decoration: none !important;
+        text-transform: uppercase !important;
+        letter-spacing: 2px !important;
+        font-size: 0.7rem !important;
+    }
+
+    /* THE HAMBURGER */
+    .nz-hamburger-icon {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .nz-hamburger-icon span {
+        width: 25px;
+        height: 2px;
+        background: #fff;
+    }
+
+    /* --- 3. THE MOBILE "OVERRIDE" --- */
+    @media screen and (max-width: 900px) {
+        /* This is the KILL SWITCH for the extra box */
+        .nz-nav-links {
+            display: none !important; 
+        }
+
+        .nz-hamburger-icon {
+            display: flex !important;
+        }
+
+        /* The Menu when opened on mobile */
+        .nz-nav-links.active-menu {
+            display: flex !important;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            background: #000;
+            flex-direction: column;
+            padding: 40px 0;
+            border-bottom: 1px solid #111;
+        }
+    }
+
+
 /* --- THE ANCHOR BEAM (Nav) --- */
 nav {
     display: -webkit-flex;
