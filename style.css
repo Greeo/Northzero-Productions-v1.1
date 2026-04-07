@@ -186,3 +186,16 @@ main, .contact-container, .hero, .page-header {
         height: auto !important;
     }
 }
+
+/* --- HERO SLIDER SPACING FIX --- */
+@media screen and (min-width: 901px) {
+    .slide-content .cta-btn, 
+    .hero-content .cta-btn {
+        margin-top: 40px !important; /* Pushes button down from paragraph */
+    }
+    
+    .slide-content p, 
+    .hero-content p {
+        margin-bottom: 0 !important; /* Resets paragraph bottom to control via button */
+    }
+}
