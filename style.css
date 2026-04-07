@@ -711,3 +711,51 @@ nav {
         letter-spacing: 3px !important;
     }
 }
+
+
+/* --- GLOBAL NORTHZERO NAV FIX --- */
+
+/* 1. Desktop View: Hide the Hamburger */
+#nz-hamburger-trigger {
+    display: none !important;
+}
+
+/* 2. Mobile View: The Big Switch (900px and under) */
+@media screen and (max-width: 900px) {
+    
+    /* Force the desktop row to vanish */
+    #nz-links-hook {
+        display: none !important; 
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #000;
+        flex-direction: column;
+        padding: 40px 0;
+        text-align: center;
+        border-bottom: 1px solid #111;
+        z-index: 9999;
+    }
+
+    /* Force the Hamburger to appear */
+    #nz-hamburger-trigger {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        padding: 10px;
+    }
+
+    #nz-hamburger-trigger span {
+        width: 25px;
+        height: 2px;
+        background: #fff;
+        display: block;
+    }
+
+    /* THE OPEN STATE: When you click, this makes the menu show up */
+    #nz-links-hook.active-menu {
+        display: flex !important;
+    }
+}
