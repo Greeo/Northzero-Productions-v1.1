@@ -1,14 +1,11 @@
 /* ============================================================
-   NORTHZERO PRODUCTIONS | MASTER STYLES v2.0 (2026)
-   Consolidated & Conflict-Free
+   NORTHZERO MASTER STYLES v3.0 | 2026
    ============================================================ */
 
-/* --- 1. CORE VARIABLES & RESET --- */
 :root {
     --nz-blue: #0047ab;
     --nz-gold: #d4af37;
     --nz-black: #000000;
-    --nz-soft-black: #0a0a0a;
     --nz-white: #ffffff;
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -16,21 +13,20 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body { 
-    background-color: var(--nz-black); 
+    background-color: var(--nz-black) !important; 
     color: var(--nz-white); 
     font-family: var(--font-main); 
-    line-height: 1.6; 
     overflow-x: hidden;
 }
 
-/* --- 2. THE GLOBAL NAV BAR (Unified Architecture) --- */
+/* --- THE GLOBAL NAV LOCK (Stops the "Jumping" and "Middle Drops") --- */
 #nz-global-nav {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100% !important;
     height: 80px !important;
-    background: rgba(0, 0, 0, 0.98) !important;
+    background: rgba(0, 0, 0, 0.95) !important;
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
@@ -40,132 +36,61 @@ body {
     backdrop-filter: blur(15px);
 }
 
-/* Logo Spacing */
-.logo-link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    z-index: 10001;
-}
-
+/* Logo & Brand Architecture */
+.logo-link { display: flex; align-items: center; text-decoration: none; gap: 15px; }
 .compass-box {
-    width: 42px; height: 42px;
-    border: 2px solid #333;
-    border-radius: 50%;
-    margin-right: 15px;
+    width: 40px; height: 40px; border: 2px solid #333; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
 }
-
 .needle {
-    width: 3px; height: 30px;
+    width: 2px; height: 28px;
     background: linear-gradient(var(--nz-blue) 50%, var(--nz-gold) 50%);
-    transform: rotate(-45deg);
-    transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.6s ease;
 }
+.logo-link:hover .needle { transform: rotate(45deg); }
+.logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+.main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 3px; color: #fff; }
+.sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; }
 
-.logo-link:hover .needle { transform: rotate(0deg); }
-
-.main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 3px; color: #fff; line-height: 1.1; }
-.sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; }
-
-/* --- 3. NAV LINKS & DROPDOWNS --- */
-#nz-links-hook {
-    display: flex !important;
-    gap: 30px !important;
-    align-items: center !important;
-}
-
+/* --- DESKTOP NAVIGATION --- */
+#nz-links-hook { display: flex; align-items: center; gap: 30px; }
 #nz-links-hook a {
-    color: #fff !important;
-    text-decoration: none !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-    font-size: 0.7rem !important;
-    transition: 0.3s;
+    color: #fff !important; text-decoration: none !important;
+    text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; transition: 0.3s;
 }
-
 #nz-links-hook a:hover { color: var(--nz-gold); }
 
-/* Services Dropdown */
+/* Dropdown Logic */
 .dropdown { position: relative; height: 80px; display: flex; align-items: center; }
 .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 80px; left: 0;
-    background: #0a0a0a;
-    min-width: 220px;
-    border: 1px solid #222;
+    display: none; position: absolute; top: 80px; left: 0;
+    background: #000; min-width: 200px; border: 1px solid #111;
 }
-
 .dropdown:hover .dropdown-content { display: block !important; }
-.dropdown-content a { padding: 15px 20px !important; border-bottom: 1px solid #111; display: block !important; }
+.dropdown-content a { padding: 15px 20px !important; display: block !important; border-bottom: 1px solid #050505; }
 
-/* --- 4. HAMBURGER (Mobile Trigger) --- */
+/* --- MOBILE HAMBURGER (The Desktop Middle Fix) --- */
 #nz-hamburger-trigger {
-    display: none; /* Hidden on Desktop */
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+    display: none; /* FORCED OFF ON DESKTOP */
+    flex-direction: column; gap: 5px; cursor: pointer;
 }
+#nz-hamburger-trigger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
 
-#nz-hamburger-trigger span {
-    width: 25px; height: 2px;
-    background: #fff; transition: 0.3s;
-}
-
-/* --- 5. THE NORTHZERO BUTTONS --- */
-.cta-btn {
-    display: inline-block;
-    padding: 15px 35px;
-    border: 1px solid var(--nz-gold);
-    color: var(--nz-gold);
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    transition: 0.5s;
-    background: transparent;
-}
-
-.cta-btn:hover { background: var(--nz-gold); color: #000; transform: translateY(-3px); }
-
-/* --- 6. MOBILE RESPONSIVE ENGINE --- */
+/* --- GLOBAL RESPONSIVE OVERRIDE --- */
 @media screen and (max-width: 900px) {
+    #nz-hamburger-trigger { display: flex !important; }
+    
     #nz-links-hook {
-        display: none !important; /* Hides desktop links */
-        position: fixed;
-        top: 80px; left: 0; width: 100%;
-        background: #000;
-        flex-direction: column !important;
-        padding: 40px 0;
-        gap: 30px;
+        display: none !important; /* Kills bunched links on mobile */
+        position: fixed; top: 80px; left: 0; width: 100%;
+        background: #000; flex-direction: column; padding: 40px 0; gap: 30px;
         border-bottom: 1px solid #111;
     }
-
-    #nz-links-hook.active-menu { display: flex !important; } /* Script Trigger */
-
-    #nz-hamburger-trigger { display: flex !important; }
-
-    /* Shrink Logo for small screens */
-    .main-title { font-size: 1rem !important; }
-    .sub-title { font-size: 0.5rem !important; }
-    .compass-box { width: 34px !important; height: 34px !important; }
     
-    /* Hero Text Stacking */
-    .hero-content h1, .slide-content h1 {
-        font-size: 1.8rem !important;
-        letter-spacing: 4px !important;
-        white-space: normal !important;
-        line-height: 1.2 !important;
-    }
+    #nz-links-hook.active-menu { display: flex !important; } /* Script Trigger */
 }
 
-/* --- 7. ANIMATIONS (Aperture Glitch) --- */
-@keyframes apertureScan {
-    0% { text-shadow: 2px 0 var(--nz-blue), -2px 0 var(--nz-gold); transform: scale(1); }
-    20% { text-shadow: -3px 0 var(--nz-blue), 3px 0 var(--nz-gold); transform: skewX(2deg); }
-    100% { text-shadow: 0 0 transparent; transform: scale(1); }
+/* --- PAGE CONTENT SPACING --- */
+main, .contact-container, .hero, .page-header {
+    margin-top: 80px !important; /* Standardizes the "Start Point" for every page */
 }
-
-.main-title:hover { animation: apertureScan 0.4s both; cursor: crosshair; }
