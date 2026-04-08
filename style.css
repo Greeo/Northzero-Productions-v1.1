@@ -1,283 +1,331 @@
 /* ============================================================
-   NORTHZERO MASTER STYLES v3.0 | 2026
+   NORTHZERO MASTER STYLES v4.0 | 2026
+   Target markup: .nz-nav / #hamburger-menu / #nav-links-container
    ============================================================ */
 
+/* --- 1. BRAND VARIABLES --- */
 :root {
-    --nz-blue: #0047ab;
-    --nz-gold: #d4af37;
-    --nz-black: #000000;
-    --nz-white: #ffffff;
-    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --nz-blue:    #0047ab;
+    --nz-gold:    #d4af37;
+    --nz-black:   #000000;
+    --nz-white:   #ffffff;
+    --font-main:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --nav-height: 80px;
 }
 
-/* --- GLOBAL RESPONSIVE OVERRIDE --- */
-@media screen and (max-width: 900px) {
-    #nz-hamburger-trigger { display: flex !important; }
-    
-    #nz-links-hook {
-        display: none !important; /* Kills bunched links on mobile */
-        position: fixed; top: 80px; left: 0; width: 100%;
-        background: #000; flex-direction: column; padding: 40px 0; gap: 30px;
-        border-bottom: 1px solid #111;
-    }
-    
-    #nz-links-hook.active-menu { display: flex !important; } /* Script Trigger */
-}
-/* --- GLOBAL RESPONSIVE OVERRIDE --- */
+/* --- 2. RESET --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* --- 3. BASE --- */
+html { scroll-behavior: smooth; }
 
-body { 
-    background-color: var(--nz-black) !important; 
-    color: var(--nz-white); 
-    font-family: var(--font-main); 
+body {
+    background-color: var(--nz-black);
+    color: var(--nz-white);
+    font-family: var(--font-main);
     overflow-x: hidden;
 }
 
-/* --- THE GLOBAL NAV LOCK (Stops the "Jumping" and "Middle Drops") --- */
-#nz-global-nav {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 80px !important;
-    background: rgba(0, 0, 0, 0.95) !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    padding: 0 5% !important;
-    z-index: 10000 !important;
-    border-bottom: 1px solid #111 !important;
+/* --- 4. NAVIGATION --- */
+nav.nz-nav {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    z-index: 10000;
+    border-bottom: 1px solid #111;
     backdrop-filter: blur(15px);
 }
 
-/* Logo & Brand Architecture */
-.logo-link { display: flex; align-items: center; text-decoration: none; gap: 15px; }
-.compass-box {
-    width: 40px; height: 40px; border: 2px solid #333; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+/* Logo */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 15px;
 }
+
+.compass-box {
+    width: 40px; height: 40px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
 .needle {
     width: 2px; height: 28px;
-    background: linear-gradient(var(--nz-blue) 50%, var(--nz-gold) 50%);
-    transition: 0.6s ease;
+    background: linear-gradient(to bottom, var(--nz-blue) 50%, var(--nz-gold) 50%);
+    transition: transform 0.6s ease;
 }
+
 .logo-link:hover .needle { transform: rotate(45deg); }
+
 .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-.main-title { font-size: 1.2rem; font-weight: 900; letter-spacing: 3px; color: #fff; }
-.sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 4px; text-transform: uppercase; }
+.main-title { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; color: var(--nz-white); }
+.sub-title  { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 3px; text-transform: uppercase; }
 
-/* --- UNIVERSAL CTA BUTTONS (Audit & Email) --- */
-.cta-btn, 
-a.cta-btn {
-    display: inline-block !important;
-    padding: 15px 35px !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    color: #fff !important;
-    text-decoration: none !important;
-    text-transform: uppercase !important;
-    letter-spacing: 4px !important;
-    font-size: 0.75rem !important;
-    font-weight: 600 !important;
-    transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
-    background: transparent !important;
-    margin: 10px !important; /* Space between buttons */
-    margin-top: 1.5rem !important;
+/* Desktop nav links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 
-.cta-btn:hover {
-    background: #fff !important;
-    color: #000 !important;
-    border-color: #fff !important;
-    transform: translateY(-3px) !important;
+.nav-links a {
+    color: var(--nz-white);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    transition: color 0.3s;
 }
 
-/* Gold Variant for "Initiate Full Audit" */
-.cta-btn.gold-btn {
-    border-color: var(--nz-gold) !important;
-    color: var(--nz-gold) !important;
+.nav-links a:hover { color: var(--nz-gold); }
+
+/* Hamburger — hidden on desktop */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    z-index: 10001;
 }
 
-/* --- THE GOLD PROJECT BOX --- */
-#nz-links-hook a.cta-gold, 
-.nz-nav-links a[href="contact.html"] {
-    border: 1px solid var(--nz-gold) !important;
-    padding: 10px 20px !important;
-    color: var(--nz-gold) !important;
-    margin-left: 15px;
-    transition: 0.4s;
+.hamburger span {
+    width: 25px; height: 2px;
+    background: var(--nz-white);
+    transition: 0.3s;
+    display: block;
 }
 
-#nz-links-hook a.cta-gold:hover {
-    background: var(--nz-gold) !important;
-    color: #000 !important;
+/* Dropdown */
+.dropdown {
+    position: relative;
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
 }
 
-/* Dropdown Logic */
-.dropdown { position: relative; height: 80px; display: flex; align-items: center; }
-
-/* --- DROPDOWN Logic TIGHTEN & GAP FIX --- */
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 100%; /* Snaps to the bottom of the nav bar */
+    top: 100%;
     left: 0;
     background: #000;
     min-width: 240px;
     border: 1px solid #1a1a1a;
-    padding: 0 !important; /* Removes the "Gap" from the container */
+    padding: 0;
     z-index: 10000;
 }
 
 .dropdown-content a {
-    padding: 15px 20px !important;
-    display: block !important;
+    padding: 15px 20px;
+    display: block;
     border-bottom: 1px solid #111;
-    color: #888 !important;
-    font-size: 0.65rem !important;
-    letter-spacing: 2px !important;
-    height: auto !important; /* CRITICAL: Stops the "80px height" inherited gap */
-    line-height: 1.2 !important;
-    margin: 0 !important;
+    color: #888;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 1.2;
+    transition: 0.3s;
 }
 
-.dropdown-content a:hover {
-    background: #080808 !important;
-    color: var(--nz-gold) !important;
+.dropdown-content a:last-child { border-bottom: none; }
+.dropdown-content a:hover { background: #080808; color: var(--nz-gold); }
+.dropdown:hover .dropdown-content { display: block; }
+
+/* --- 5. PAGE CONTENT SPACING
+         Uses padding-top on <main> rather than margin-top so full-bleed
+         sections (hero, sliders) aren't accidentally pushed. Pages that
+         need the offset on a child element (hero, page-header) override
+         locally with their own padding-top.                             --- */
+main { padding-top: var(--nav-height); }
+
+/* --- 6. CTA BUTTONS --- */
+.cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 1px solid var(--nz-gold);
+    color: var(--nz-gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: transparent;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    font-family: var(--font-main);
 }
 
-
-/* --- MOBILE HAMBURGER (The Desktop Middle Fix) --- */
-#nz-hamburger-trigger {
-    display: none; /* FORCED OFF ON DESKTOP */
-    flex-direction: column; gap: 5px; cursor: pointer;
-}
-#nz-hamburger-trigger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
-
-
-/* --- DESKTOP NAVIGATION --- */
-#nz-links-hook { display: flex; align-items: center; gap: 30px; }
-#nz-links-hook a {
-    color: #fff !important; text-decoration: none !important;
-    text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; transition: 0.3s;
-}
-#nz-links-hook a:hover { color: var(--nz-gold); }
-
-/* --- PAGE CONTENT SPACING --- */
-main, .contact-container, .hero, .page-header {
-    margin-top: 80px !important; /* Standardizes the "Start Point" for every page */
+.cta-btn:hover {
+    background: var(--nz-gold);
+    color: var(--nz-black);
+    transform: translateY(-3px);
 }
 
-/* --- THE LENS: RESOURCE BREAK STYLES --- */
+/* Muted secondary variant — e.g. "Direct Email" */
+.cta-btn.secondary {
+    border-color: #333;
+    color: #888;
+}
+
+.cta-btn.secondary:hover {
+    background: #333;
+    color: var(--nz-white);
+    transform: translateY(-3px);
+}
+
+/* White variant — e.g. hero slide buttons */
+.cta-btn.white {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: var(--nz-white);
+}
+
+.cta-btn.white:hover {
+    background: var(--nz-white);
+    color: var(--nz-black);
+}
+
+/* --- 7. CTA SECTION (shared across all pages) --- */
+.cta-section {
+    padding: 100px 5%;
+    background: #050505;
+    text-align: center;
+    border-top: 1px solid #111;
+}
+
+.cta-section p {
+    color: var(--nz-gold);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-bottom: 20px;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: var(--nz-white);
+}
+
+.cta-section .btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* --- 8. RESOURCE BREAK (about.html) --- */
 .resource-break {
-    background: #050505 !important;
-    padding: 150px 50px !important;
-    border-top: 1px solid #111 !important;
-    display: flex !important;
-    justify-content: center !important;
-    text-align: center !important;
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
 }
 
 .resource-container {
-    max-width: 800px !important;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 40px;
+    text-align: center;
 }
 
 .resource-line {
-    width: 60px; height: 1px;
+    width: 1px; height: 60px;
     background: var(--nz-gold);
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
+}
+
+.resource-tag {
+    color: var(--nz-gold);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-bottom: 20px;
 }
 
 .resource-container h2 {
-    font-size: clamp(2rem, 5vw, 3.5rem) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 12px !important;
-    margin-bottom: 30px !important;
-    color: #fff !important;
-}
-
-.resource-container p {
-    color: #666 !important;
-    font-size: 1.1rem !important;
-    line-height: 2 !important;
-    margin-bottom: 50px !important;
-}
-
-/* Specific Download Button Style */
-.download-btn {
-    display: inline-block;
-    padding: 20px 50px;
-    border: 1px solid #333;
-    color: #fff;
-    text-decoration: none;
+    font-size: clamp(1.8rem, 5vw, 3rem);
     text-transform: uppercase;
+    letter-spacing: 10px;
+    color: var(--nz-white);
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.resource-container > p {
+    color: #777;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* --- 9. FOOTER --- */
+footer {
+    padding: 60px;
+    text-align: center;
+    border-top: 1px solid #111;
+    color: #444;
     letter-spacing: 4px;
-    transition: 0.4s;
+    text-transform: uppercase;
+    font-size: 0.65rem;
 }
 
-.download-btn:hover {
-    border-color: var(--nz-gold);
-    color: var(--nz-gold);
-}
-
-/* --- THE GHOST MENU KILLER (Desktop) --- */
-@media screen and (min-width: 901px) {
-    /* Hide EVERY possible old menu/hamburger ID or class */
-    .hamburger, #hamburger-menu, .nz-hamburger-icon, 
-    #mobileMenu, .mobile-nav, #nav-links-container.active {
-        display: none !important;
-    }
-    
-    /* Force the new links to be a clean row */
-    #nz-links-hook {
-        display: flex !important;
-        position: relative !important;
-        top: auto !important;
-        background: transparent !important;
-        padding: 0 !important;
-        width: auto !important;
-        height: auto !important;
-    }
-}
-
-/* --- HERO SLIDER SPACING FIX --- */
-@media screen and (min-width: 901px) {
-    .slide-content .cta-btn, 
-    .hero-content .cta-btn {
-        margin-top: 40px !important; /* Pushes button down from paragraph */
-    }
-    
-    .slide-content p, 
-    .hero-content p {
-        margin-bottom: 0 !important; /* Resets paragraph bottom to control via button */
-    }
-}
-
-/* --- THE MOBILE REVEAL --- */
+/* --- 10. MOBILE (single authoritative block) --- */
 @media screen and (max-width: 900px) {
-    /* Hide the desktop links by default */
-    #nz-links-hook {
-        display: none !important;
+
+    /* Show hamburger, hide desktop links */
+    .hamburger   { display: flex !important; }
+    .nav-links   { display: none !important; }
+
+    /* Mobile menu open state — toggled by JS adding .active */
+    .nav-links.active {
+        display: flex !important;
         position: fixed;
-        top: 80px;
+        top: var(--nav-height);
         left: 0;
         width: 100%;
-        background: #000;
+        background: var(--nz-black);
         flex-direction: column;
+        align-items: center;
         padding: 40px 0;
+        gap: 25px;
         border-bottom: 1px solid #111;
         z-index: 9999;
     }
 
-    /* SHOW the menu when the JS adds the 'active-menu' class */
-    #nz-links-hook.active-menu {
-        display: flex !important;
+    /* Dropdown becomes static in mobile menu */
+    .dropdown          { height: auto; }
+    .dropdown-content  { position: static; border: none; min-width: unset; }
+    .dropdown:hover .dropdown-content { display: none; } /* disable hover on mobile */
+
+    /* Slide hero typography */
+    .slide-content h1 {
+        font-size: 2rem !important;
+        letter-spacing: 4px !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
     }
 
-    /* Force the Hamburger to be visible on mobile */
-    #nz-hamburger-trigger {
-        display: flex !important;
-    }
+    .slide-content p  { font-size: 0.8rem !important; }
+
+    /* CTA section stacking */
+    .cta-section .btn-group { flex-direction: column; align-items: center; }
 }
+
 
 
