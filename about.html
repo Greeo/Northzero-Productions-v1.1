@@ -4,161 +4,268 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Lens | Northzero Productions</title>
+
     <link rel="stylesheet" href="style.css?v=2.2">
-    
+
     <style>
-        /* PAGE-SPECIFIC STYLES ONLY */
+        /* --- BRAND VARIABLES (fallback if not defined in style.css) --- */
+        :root {
+            --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
+            --bg-black: #000;
+        }
+
+        /* --- HERO --- */
         .hero {
             height: 75vh; position: relative; overflow: hidden;
             display: flex; align-items: center; justify-content: center; text-align: center;
-            margin-top: 80px; 
+            margin-top: 80px;
         }
 
         .video-background {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
-            pointer-events: none; overflow: hidden;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2; pointer-events: none; overflow: hidden;
         }
 
         #yt-player {
-            position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw;
-            min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%);
+            position: absolute; top: 50%; left: 50%;
+            width: 100vw; height: 56.25vw;
+            min-height: 100vh; min-width: 177.77vh;
+            transform: translate(-50%, -50%);
         }
 
-        .hero-overlay { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(10, 10, 10, 0.6); z-index: -1; 
+        /* Pause background video for users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .video-background { display: none; }
+            .hero { background: #0a0a0a; }
+        }
+
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10,10,10,0.6); z-index: -1;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem; text-transform: uppercase; letter-spacing: 15px; color: #fff;
-            font-weight: 900; margin-bottom: 10px;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            text-transform: uppercase; letter-spacing: 15px;
+            color: #fff; font-weight: 900; margin-bottom: 10px;
         }
-        .hero-content p { 
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 5px; 
-            color: var(--nz-gold); 
+        .hero-content p {
+            font-size: 0.9rem; text-transform: uppercase;
+            letter-spacing: 5px; color: var(--nz-gold);
         }
 
+        /* --- MANIFESTO --- */
         .manifesto { padding: 120px 50px; max-width: 1000px; margin: 0 auto; text-align: center; }
         .manifesto h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 40px; color: var(--nz-gold); font-weight: 400; }
-        .manifesto p { font-size: 1.3rem; color: #ddd; margin-bottom: 40px; font-weight: 300; line-height: 2; }
+        .manifesto p  { font-size: 1.3rem; color: #ddd; margin-bottom: 40px; font-weight: 300; line-height: 2; }
 
-        .pillar-row { 
-            background: #0d0d0d; padding: 100px 50px; border-top: 1px solid #1a1a1a; 
+        /* --- PILLAR ROW --- */
+        .pillar-row {
+            background: #0d0d0d; padding: 100px 50px; border-top: 1px solid #1a1a1a;
             display: flex; align-items: center; justify-content: center; gap: 80px; flex-wrap: wrap;
         }
-        .pillar-text { max-width: 550px; }
-        .pillar-text h3 { color: #fff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 25px; font-size: 1.4rem; }
-        .pillar-text p { font-size: 1rem; color: #999; line-height: 2.2; margin-bottom: 20px; }
-        
-        .pillar-img-wrapper { width: 350px; height: 480px; border: 1px solid var(--nz-gold); overflow: hidden; padding: 10px; }
+        .pillar-text           { max-width: 550px; }
+        .pillar-text h3        { color: #fff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 25px; font-size: 1.4rem; }
+        .pillar-text p         { font-size: 1rem; color: #999; line-height: 2.2; margin-bottom: 20px; }
+        .pillar-img-wrapper    { width: 350px; height: 480px; border: 1px solid var(--nz-gold); overflow: hidden; padding: 10px; }
         .pillar-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
+        /* --- RESOURCE BREAK ---
+             Defined here since no matching rules were found in style.css.
+             Move to style.css if you want it shared across pages.        */
+        .resource-break { background: #000; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+        .resource-container { max-width: 800px; margin: 0 auto; padding: 100px 40px; text-align: center; }
+        .resource-line { width: 1px; height: 60px; background: var(--nz-gold); margin: 0 auto 30px; }
+        .resource-tag  { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px; }
+        .resource-container h2 { font-size: 2rem; letter-spacing: 8px; text-transform: uppercase; color: #fff; margin-bottom: 25px; line-height: 1.4; }
+        .resource-container > p { color: #777; line-height: 1.8; font-size: 0.95rem; margin-bottom: 40px; }
+
+        /* --- CTA --- */
+        .cta-section { padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111; }
+        .cta-section p  { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px; }
+        .cta-section h2 { font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px; color: #fff; }
+        .cta-section .btn-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+
+        .cta-btn { display: inline-block; padding: 15px 30px; border: 1px solid var(--nz-gold); color: var(--nz-gold); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s; }
+        .cta-btn:hover { background: var(--nz-gold); color: #000; }
+        .cta-btn.secondary { border-color: #333; color: #888; }
+        .cta-btn.secondary:hover { background: #333; color: #fff; }
+
+        /* --- FOOTER --- */
         footer { padding: 80px 50px; text-align: center; color: #444; letter-spacing: 3px; text-transform: uppercase; font-size: 0.65rem; border-top: 1px solid #111; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero-content h1   { letter-spacing: 6px; }
+            .manifesto         { padding: 80px 25px; }
+            .pillar-row        { padding: 60px 25px; gap: 40px; }
+            .pillar-img-wrapper { width: 100%; height: 280px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav id="nz-global-nav">
-        <a href="index.html" class="logo-link">
-            <div class="compass-box"><div class="needle"></div></div>
+    <!--
+        Nav markup matches index.html, work.html, and all-services.html exactly.
+        nav.js targets: #hamburger-menu and #nav-links-container.
+    -->
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
             <div class="logo-text">
                 <span class="main-title">NORTHZERO</span>
                 <span class="sub-title">PRODUCTIONS</span>
             </div>
         </a>
-    
-        <div class="nz-hamburger-icon" id="nz-hamburger-trigger">
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
             <span></span><span></span><span></span>
-        </div>
-    
-        <div class="nz-nav-links" id="nz-links-hook">
-            <a href="index.html">Agency</a>
-            <a href="work.html">Works</a>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
             <div class="dropdown">
-                <a href="all-services.html" class="dropbtn">Services</a>
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
                 <div class="dropdown-content">
                     <a href="authority.html">Authority Suite</a>
                     <a href="architectural.html">Architectural Cinema</a>
                     <a href="tactile.html">Tactile Narratives</a>
                 </div>
             </div>
-            <a href="about.html">Lens</a>
-            <a href="contact.html" style="border: 1px solid #d4af37; padding: 10px 20px; color: #d4af37 !important;">Start Project</a>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
         </div>
     </nav>
+
     <main id="main-content">
-        <section class="hero">
-            <div class="video-background">
+        <section class="hero" aria-label="Northzero Productions showreel">
+            <div class="video-background" aria-hidden="true">
                 <div id="yt-player"></div>
             </div>
-            <div class="hero-overlay"></div>
+            <div class="hero-overlay" aria-hidden="true"></div>
             <div class="hero-content">
-                <h1 data-text="The Lens">The Lens</h1>
-                <p>Architectural Integrity & Visual Narrative</p>
+                <!-- data-text removed: no glitch CSS defined on this page -->
+                <h1>The Lens</h1>
+                <p>Architectural Integrity &amp; Visual Narrative</p>
             </div>
         </section>
-    
-        <section class="manifesto">
+
+        <section class="manifesto" aria-label="Our philosophy">
             <h2>Our Philosophy</h2>
             <p>
-                At Northzero Productions, we believe that every structure has a heartbeat. We reveal the structural narrative, translating architectural intent into cinematic permanence.
+                At Northzero Productions, we believe that every structure has a heartbeat.
+                We reveal the structural narrative, translating architectural intent into cinematic permanence.
             </p>
         </section>
-    
-        <section class="pillar-row">
+
+        <section class="pillar-row" aria-label="The Preservationist's Lens">
             <div class="pillar-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Architectural Detail">
+                <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+                    alt="Close-up of architectural detail on a glass skyscraper"
+                    loading="lazy"
+                >
             </div>
             <div class="pillar-text">
                 <h3>The Preservationist's Lens</h3>
                 <p>
-                    Founded by Omar A. Greene—an alternate member of the Village of Ossining Historic Preservation Commission—Northzero is grounded in a deep respect for structural history.
+                    Founded by Omar A. Greene — an alternate member of the Village of Ossining
+                    Historic Preservation Commission — Northzero is grounded in a deep respect
+                    for structural history.
                 </p>
             </div>
         </section>
 
         <section class="resource-break">
             <div class="resource-container">
-                <div class="resource-line"></div>
+                <div class="resource-line" aria-hidden="true"></div>
                 <p class="resource-tag">Industry Resource</p>
-                <h2>The Indie Filmmaker's <br>Fast Track</h2>
+                <h2>The Indie Filmmaker's Fast Track</h2>
                 <p>A blueprint for cinematic permanence. My personal guide to navigating high-stakes production, technical compliance, and visual strategy.</p>
-                <a href="THE_INDIE_FILMMAKERS_FAST_TRACK.pdf" class="cta-btn" download>Access the Blueprint</a>
+                <!-- Explicit download filename for a cleaner user-facing file name -->
+                <a href="THE_INDIE_FILMMAKERS_FAST_TRACK.pdf" class="cta-btn" download="NorthzeroFastTrack.pdf">Access the Blueprint</a>
             </div>
         </section>
 
-        <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
-            <p style="color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">Ready to Document the Legacy?</p>
-            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Let's Discuss the Scope</h2>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
-                <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
+        <section class="cta-section" aria-label="Start a project">
+            <p>Ready to Document the Legacy?</p>
+            <h2>Let's Discuss the Scope</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Start Project</a>
+                <!-- Email assembled at runtime to deter scrapers -->
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
-    
+
         <footer>
             &copy; 2026 Northzero Productions LLC | New York
         </footer>
     </main>
-    
-    <script src="nav.js?v=1.1"></script> 
+
+    <script src="nav.js?v=1.1"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+        // --- Hamburger (consistent with all other pages) ---
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks  = document.getElementById('nav-links-container');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // --- YouTube Background Video ---
+        // Respects prefers-reduced-motion: CSS hides the container,
+        // and we skip initialising the player entirely to avoid unnecessary loading.
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
         let player;
         function onYouTubeIframeAPIReady() {
+            if (prefersReduced) return; // skip for reduced-motion users
+
             player = new YT.Player('yt-player', {
-                videoId: 'AVN2N2hopGk', 
+                videoId: 'AVN2N2hopGk',
                 playerVars: {
-                    'autoplay': 1, 'controls': 0, 'showinfo': 0, 'rel': 0,
-                    'loop': 1, 'playlist': 'AVN2N2hopGk', 'mute': 1,
-                    'modestbranding': 1, 'iv_load_policy': 3, 'disablekb': 1
+                    autoplay:        1,
+                    controls:        0,
+                    showinfo:        0,
+                    rel:             0,
+                    loop:            1,
+                    playlist:        'AVN2N2hopGk',
+                    mute:            1,
+                    modestbranding:  1,
+                    iv_load_policy:  3,
+                    disablekb:       1
                 },
-                events: { 'onReady': (event) => event.target.playVideo() }
+                events: {
+                    onReady: e => e.target.playVideo()
+                }
             });
         }
+
+        // --- Email obfuscation ---
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
     </script>
 </body>
 </html>
+
 
 
 
