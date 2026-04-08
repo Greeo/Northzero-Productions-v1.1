@@ -1,25 +1,47 @@
-/* NORTHZERO NAV ENGINE - VERIFIED 2026 */
-console.log("Nav.js is loaded and running");
+/* ============================================================
+   NORTHZERO NAV ENGINE v2.0 | 2026
+   Targets: #hamburger-menu / #nav-links-container / .active
+   ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const trigger = document.getElementById('nz-hamburger-trigger');
-    const menuHook = document.getElementById('nz-links-hook');
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks  = document.getElementById('nav-links-container');
 
-    if (!trigger || !menuHook) {
-        console.error("NZ-Error: Navigation IDs not found on this page.");
-        return;
-    }
+    // Guard: both elements must exist before attaching handlers
+    if (!hamburger || !navLinks) return;
 
-    trigger.onclick = function(e) {
-        e.preventDefault();
-        console.log("Hamburger Clicked");
-        
-        // Toggle the classes
-        menuHook.classList.toggle('active-menu');
-        trigger.classList.toggle('is-active');
-        
-        // Optional: Log the current state
-        const isOpen = menuHook.classList.contains('active-menu');
-        console.log("Menu Status: " + (isOpen ? "OPEN" : "CLOSED"));
-    };
+    // --- Toggle mobile menu ---
+    hamburger.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // --- Close menu when any nav link is clicked (mobile UX) ---
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // --- Close menu on Escape key ---
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.focus(); // return focus to trigger
+        }
+    });
+
+    // --- Close menu if user clicks outside nav ---
+    document.addEventListener('click', e => {
+        if (
+            navLinks.classList.contains('active') &&
+            !navLinks.contains(e.target) &&
+            !hamburger.contains(e.target)
+        ) {
+            navLinks.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
+    });
 });
