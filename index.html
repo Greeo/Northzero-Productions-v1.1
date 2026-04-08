@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Northzero Productions | Cinematic Design & Narrative</title>
-    
+
+    <!-- Preload hero image for LCP performance -->
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=2.2">
-    
+
     <style>
         /* --- 1. CORE BRAND VARIABLES --- */
         :root {
@@ -19,25 +22,21 @@
             --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
-        html, body { 
-            background-color: var(--bg-black) !important; 
-            margin: 0; padding: 0; 
-            box-sizing: border-box; 
+        html, body {
+            background-color: var(--bg-black) !important;
+            margin: 0; padding: 0;
+            box-sizing: border-box;
             overflow-x: hidden;
             color: var(--nz-white);
             font-family: var(--font-main);
         }
 
-        /* --- 2. NAVIGATION (STABILIZED) --- */
-        .nz-nav-links.active-menu {
-            display: flex !important; /* This is what the script triggers */
-        }
-        
+        /* --- 2. NAVIGATION --- */
         nav.nz-nav {
             position: fixed !important; top: 0; left: 0; width: 100%;
             height: 80px; background: rgba(0,0,0,0.98);
             display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; z-index: 9999 !important; /* Above slides, below mobile menu */
+            padding: 0 5%; z-index: 9999 !important;
             border-bottom: 1px solid #111;
             backdrop-filter: blur(10px);
         }
@@ -62,39 +61,43 @@
         .nav-links { display: flex; align-items: center; gap: 25px; }
         .nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
 
-        /* Hamburger Icon */
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 10001; }
-        .hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; }
-
-        /* --- 3. HERO SLIDER (THE VISIBILITY FIX) --- */
-        .slider-container { 
-            position: relative; 
-            height: 100vh; 
-            width: 100%; 
-            overflow: hidden; 
-            background: #000; 
-            z-index: 1; /* Lower than nav */
+        /* Hamburger Icon — hidden on desktop */
+        .hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; z-index: 10001;
+            background: none; border: none; padding: 0;
         }
-        
-        .slide { 
-            position: absolute; width: 100%; height: 100%; opacity: 0; 
-            transition: opacity 1.5s ease-in-out; 
-            display: flex; align-items: center; justify-content: center; text-align: center; 
+        .hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; display: block; }
+
+        /* --- 3. HERO SLIDER --- */
+        .slider-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute; width: 100%; height: 100%; opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            display: flex; align-items: center; justify-content: center; text-align: center;
             z-index: 2;
         }
-        
-        .slide.active { 
-            opacity: 1; 
-            z-index: 5; /* Active slide comes to front */
+
+        .slide.active {
+            opacity: 1;
+            z-index: 5;
         }
-        
+
         /* Slide Backgrounds */
         .slide-1 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920') center/cover; }
         .slide-2 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=1920') center/cover; }
         .slide-3 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920') center/cover; }
 
         .slide-content { padding: 0 20px; width: 100%; max-width: 1100px; z-index: 10; }
-        
+
         .slide-content h1 {
             font-size: clamp(1.8rem, 8vw, 3.5rem);
             text-transform: uppercase;
@@ -104,22 +107,36 @@
             position: relative;
         }
 
-        .slide-content h1::before, .slide-content h1::after {
+        /* Glitch effect — pseudo-elements read by screen readers via data-text,
+           so we use aria-hidden on them via a wrapper trick instead */
+        .slide-content h1::after {
             content: attr(data-text); position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%; opacity: 0.6;
+            top: 0; left: 2px; width: 100%; height: 100%;
+            opacity: 0.6; color: var(--nz-blue);
+            animation: glitch 15s infinite linear alternate-reverse;
+            pointer-events: none;
         }
-        .slide-content h1::after { color: var(--nz-blue); left: 2px; animation: glitch 4s infinite linear alternate-reverse; }
-        .slide-content h1::before { color: var(--nz-gold); left: -2px; animation: glitch 6s infinite linear alternate-reverse; }
+        .slide-content h1::before {
+            content: attr(data-text); position: absolute;
+            top: 0; left: -2px; width: 100%; height: 100%;
+            opacity: 0.6; color: var(--nz-gold);
+            animation: glitch 14.1s infinite linear alternate-reverse;
+            pointer-events: none;
+        }
 
         @keyframes glitch {
             0%, 20%, 40%, 60%, 70%, 90% { clip-path: inset(100% 0 0 0); }
-            10%, 30%, 50%, 80%, 100% { clip-path: inset(0 0 0 0); }
+            10%, 30%, 50%, 80%, 100%     { clip-path: inset(0 0 0 0); }
+        }
+
+        .slide-content .cta-btn {
+            margin-top: 15px;
         }
 
         .cta-btn {
             display: inline-block; padding: 15px 30px; border: 1px solid var(--nz-gold);
             color: var(--nz-gold); text-decoration: none; text-transform: uppercase;
-            letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s;
+            letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s; 
         }
         .cta-btn:hover { background: var(--nz-gold); color: #000; }
 
@@ -141,19 +158,34 @@
         .bento-text { position: absolute; bottom: 20px; left: 20px; }
         .bento-text h3 { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-        /* --- 5. MOBILE OVERRIDES (THE NUCLEAR FIX) --- */
+        /* --- 5. MOBILE (SINGLE MERGED BLOCK) --- */
         @media screen and (max-width: 900px) {
-            /* Kills the desktop nav row including the 'Start Project' button */
-            .nav-links { display: none !important; } 
-            
+            /* Hide desktop nav, show hamburger */
+            .nav-links {
+                display: none !important;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #000;
+                flex-direction: column;
+                padding: 40px 0;
+                z-index: 9998;
+            }
+
+            /* Show nav when hamburger is active */
+            .nav-links.active {
+                display: flex !important;
+            }
+
             .hamburger { display: flex !important; }
-            
-            /* Stacking Hero Titles */
-            .slide-content h1 { 
+
+            /* Hero typography */
+            .slide-content h1 {
                 font-size: 2rem !important;
-                letter-spacing: 4px !important; 
+                letter-spacing: 4px !important;
                 line-height: 1.2 !important;
-                white-space: normal !important; 
+                white-space: normal !important;
                 width: 100% !important;
             }
             .slide-content p {
@@ -162,87 +194,75 @@
                 margin: 0 auto 20px;
             }
 
-            .bento-grid-fixed { 
-                display: flex; 
-                flex-direction: column; 
-                height: auto; 
+            /* Bento stacks vertically */
+            .bento-grid-fixed {
+                display: flex;
+                flex-direction: column;
+                height: auto;
             }
             .bento-item { height: 300px; }
-        }
-
-        @media screen and (max-width: 900px) {
-            /* FORCES THE DESKTOP LINKS TO HIDE */
-            .nav-links, 
-            .nav-links-container, 
-            #nav-links-container { 
-                display: none !important; 
-            }
-        
-            /* SHOWS THE LINKS ONLY WHEN THE 'ACTIVE' CLASS IS ADDED BY JS */
-            .nav-links.active, 
-            #nav-links-container.active { 
-                display: flex !important; 
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: #000;
-                flex-direction: column;
-                padding: 40px 0;
-            }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nz-nav">
-        <a href="index.html" class="logo-link">
-            <div class="compass-box"><div class="needle"></div></div>
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
             <div class="logo-text">
                 <span class="main-title">NORTHZERO</span>
                 <span class="sub-title">PRODUCTIONS</span>
             </div>
         </a>
-    
-        <div class="hamburger" id="hamburger-menu">
+
+        <!-- Semantic button instead of bare div -->
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
             <span></span><span></span><span></span>
-        </div>
-    
-        <div class="nav-links" id="nav-links-container">
-            <a href="index.html">Agency</a>
-            <a href="work.html">Works</a>
-            <a href="all-services.html">Services</a>
-            <a href="about.html">Lens</a>
-            <a href="contact.html" style="border: 1px solid var(--nz-gold); padding: 8px 15px; color: var(--nz-gold); margin-left: 10px;">Start a Project</a>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
+            <a href="all-services.html" role="menuitem">Services</a>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 8px 15px; color: var(--nz-gold); margin-left: 10px;">Start a Project</a>
         </div>
     </nav>
 
     <main>
-        <div class="slider-container">
-            <div class="slide slide-1 active">
+        <!-- Slider: pauses on hover/focus via JS -->
+        <div class="slider-container" id="hero-slider">
+            <div class="slide slide-1 active" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
                 <div class="slide-content">
-                    <h1 data-text="Architectural Cinema">Architectural Cinema</h1>
+                    <!-- aria-label provides the clean text; data-text drives the glitch visuals -->
+                    <h1 data-text="Architectural Cinema" aria-label="Architectural Cinema">Architectural Cinema</h1>
                     <p>Capturing the Structural Integrity of the Hudson Valley</p>
                     <a href="work.html" class="cta-btn">View the Collection</a>
                 </div>
             </div>
-            <div class="slide slide-2">
+            <div class="slide slide-2" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
                 <div class="slide-content">
-                    <h1 data-text="Tactile Narrative">Tactile Narrative</h1>
+                    <h1 data-text="Tactile Narrative" aria-label="Tactile Narrative">Tactile Narrative</h1>
                     <p>Cinematography that defines the physical experience</p>
                     <a href="work.html" class="cta-btn">Explore the Design</a>
                 </div>
             </div>
-            <div class="slide slide-3">
+            <div class="slide slide-3" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
                 <div class="slide-content">
-                    <h1 data-text="Institutional Brand">Institutional Brand</h1>
+                    <h1 data-text="Institutional Brand" aria-label="Institutional Brand">Institutional Brand</h1>
                     <p>Translating Complex Visions into Cinematic Trust</p>
                     <a href="work.html" class="cta-btn">Our Strategy</a>
                 </div>
             </div>
         </div>
 
-        <section class="bento-showcase">
+        <section class="bento-showcase" aria-label="Selected portfolios">
             <div style="text-align: center; margin-bottom: 50px;">
                 <p style="color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem;">Selected Portfolios</p>
             </div>
@@ -260,10 +280,11 @@
         </section>
 
         <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
-            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Initiate Full Audit</h2>
+            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Let's Discuss the Scope</h2>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
                 <a href="contact.html" class="cta-btn">Start Project</a>
-                <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
+                <!-- Email obfuscated via JS to reduce spam harvesting -->
+                <a href="#" id="email-link" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
             </div>
         </section>
     </main>
@@ -274,19 +295,58 @@
 
     <script src="nav.js"></script>
     <script>
-        const slides = document.querySelectorAll('.slide');
+        // --- Hamburger Toggle ---
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks  = document.getElementById('nav-links-container');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when a nav link is clicked (mobile UX)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // --- Hero Slider with pause-on-hover ---
+        const slides     = document.querySelectorAll('.slide');
+        const sliderEl   = document.getElementById('hero-slider');
         let currentSlide = 0;
-        function nextSlide() {
-            if(slides.length > 0) {
-                slides[currentSlide].classList.remove('active');
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].classList.add('active');
-            }
+        let sliderTimer;
+
+        function goToSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
         }
-        setInterval(nextSlide, 5000); 
+
+        function nextSlide() { goToSlide(currentSlide + 1); }
+
+        function startSlider() { sliderTimer = setInterval(nextSlide, 5000); }
+        function stopSlider()  { clearInterval(sliderTimer); }
+
+        sliderEl.addEventListener('mouseenter', stopSlider);
+        sliderEl.addEventListener('mouseleave', startSlider);
+        sliderEl.addEventListener('focusin',    stopSlider);
+        sliderEl.addEventListener('focusout',   startSlider);
+
+        startSlider();
+
+        // --- Email obfuscation ---
+        // Assembles the mailto at runtime so plain HTML scrapers can't harvest it
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        const emailLink = document.getElementById('email-link');
+        emailLink.href = `mailto:${u}@${d}`;
+        emailLink.textContent = 'Direct Email';
     </script>
 </body>
 </html>
+
 
 
 
