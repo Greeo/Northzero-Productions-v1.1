@@ -4,35 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Architectural Cinema | Northzero Productions</title>
+
     <link rel="stylesheet" href="style.css?v=2.2">
+
     <style>
-        /* PAGE-SPECIFIC ARCHITECTURAL STYLES */
+        /* --- BRAND VARIABLES (fallback) --- */
+        :root {
+            --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
+            --nav-height: 80px;
+        }
+
+        /* --- HERO ---
+             Left-aligned split layout on desktop.
+             No padding-top needed — style.css handles nav clearance on <main>.
+             Mobile: retains background image with a full overlay instead of
+             stripping it to a flat colour.                                   --- */
         .arch-hero {
             height: 90vh;
             display: flex;
             align-items: center;
             padding: 0 10%;
-            background: linear-gradient(to right, #0a0a0a 40%, transparent), 
-                        url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
+            background:
+                linear-gradient(to right, #0a0a0a 40%, transparent),
+                url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1600&q=80')
+                center/cover;
         }
 
-        .arch-hero-content { max-width: 700px; padding-top: 80px; }
-        
-        .arch-hero-content h1 { 
-            font-size: clamp(2rem, 8vw, 4rem); 
-            text-transform: uppercase; 
-            letter-spacing: 15px; 
-            line-height: 1.1; 
-            margin-bottom: 20px; 
+        .arch-hero-content { max-width: 700px; }
+
+        .arch-hero-content h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            line-height: 1.1;
+            margin-bottom: 20px;
             color: #fff;
-            white-space: normal; /* Mobile stack fix */
+            white-space: normal;
         }
-        
-        .arch-hero-content p { color: #d4af37; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; }
 
-        /* The Authority Hook Section */
+        .arch-hero-content .eyebrow {
+            color: var(--nz-gold);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- PRESERVATIONIST BLOCK ---
+             Renamed from .auth-text / .auth-visual to .arch-text / .arch-visual
+             to avoid class collision with authority.html if ever merged into
+             style.css.                                                        --- */
         .authority-block {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -41,19 +63,32 @@
             border-top: 1px solid #111;
         }
 
-        .auth-text { padding: 80px; display: flex; flex-direction: column; justify-content: center; }
-        .auth-text h2 { font-size: 1.8rem; letter-spacing: 8px; text-transform: uppercase; margin-bottom: 30px; color: #d4af37; }
-        .auth-text p { color: #888; font-size: 1.1rem; line-height: 2; margin-bottom: 20px; }
-
-        .auth-visual {
-            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80');
-            background-size: cover;
-            background-position: center;
-            min-height: 500px;
-            border-left: 1px solid #d4af37;
+        .arch-text {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        /* Feature Grid */
+        .arch-text h2 {
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: var(--nz-gold);
+        }
+
+        .arch-text p { color: #888; font-size: 1.1rem; line-height: 2; margin-bottom: 20px; }
+
+        .arch-visual {
+            background:
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80')
+                center/cover;
+            min-height: 500px;
+            border-left: 1px solid var(--nz-gold);
+        }
+
+        /* --- FEATURE CARDS --- */
         .service-features {
             padding: 100px 5%;
             display: grid;
@@ -70,71 +105,98 @@
             transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .feature-card:hover { border-color: #d4af37; transform: translateY(-5px); }
+        .feature-card:hover { border-color: var(--nz-gold); transform: translateY(-5px); }
         .feature-card h3 { color: #fff; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; font-size: 1rem; }
-        .feature-card p { color: #666; font-size: 0.9rem; line-height: 1.8; }
+        .feature-card p  { color: #666; font-size: 0.9rem; line-height: 1.8; }
 
+        /* --- MOBILE --- */
         @media (max-width: 900px) {
-            .authority-block { grid-template-columns: 1fr; }
-            .auth-visual { height: 400px; border-left: none; border-top: 1px solid #d4af37; }
-            .auth-text { padding: 60px 30px; }
-            .arch-hero { padding: 0 5%; background: #0a0a0a; text-align: center; justify-content: center; }
-            .arch-hero-content h1 { letter-spacing: 6px; }
+            /* Preserve the background image — darken with overlay instead of removing */
+            .arch-hero {
+                padding: 0 5%;
+                text-align: center;
+                justify-content: center;
+                background:
+                    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                    url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1200&q=80')
+                    center/cover;
+            }
+
+            .arch-hero-content h1  { letter-spacing: 6px; }
+            .authority-block       { grid-template-columns: 1fr; }
+            .arch-visual           { height: 400px; min-height: unset; border-left: none; border-top: 1px solid var(--nz-gold); }
+            .arch-text             { padding: 60px 30px; }
         }
     </style>
 </head>
 <body>
 
-    <nav id="nz-global-nav">
-        <a href="index.html" class="logo-link">
-            <div class="compass-box"><div class="needle"></div></div>
+    <!--
+        Nav markup matches all cleaned pages.
+        nav.js targets: #hamburger-menu and #nav-links-container.
+    -->
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
             <div class="logo-text">
                 <span class="main-title">NORTHZERO</span>
                 <span class="sub-title">PRODUCTIONS</span>
             </div>
         </a>
-    
-        <div class="nz-hamburger-icon" id="nz-hamburger-trigger">
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
             <span></span><span></span><span></span>
-        </div>
-    
-        <div class="nz-nav-links" id="nz-links-hook">
-            <a href="index.html">Agency</a>
-            <a href="work.html">Works</a>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
             <div class="dropdown">
-                <a href="all-services.html" class="dropbtn">Services</a>
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
                 <div class="dropdown-content">
                     <a href="authority.html">Authority Suite</a>
                     <a href="architectural.html">Architectural Cinema</a>
                     <a href="tactile.html">Tactile Narratives</a>
                 </div>
             </div>
-            <a href="about.html">Lens</a>
-            <a href="contact.html" style="border: 1px solid #d4af37; padding: 10px 20px; color: #d4af37 !important;">Start Project</a>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
         </div>
     </nav>
+
     <main>
-        <section class="arch-hero">
+        <section class="arch-hero" aria-label="Architectural Cinema">
             <div class="arch-hero-content">
-                <p>High-End Real Estate & Preservation</p>
-                <h1 data-text="Architectural Cinema">Architectural Cinema</h1>
+                <!-- data-text removed — no glitch CSS on this page -->
+                <p class="eyebrow">High-End Real Estate &amp; Preservation</p>
+                <h1>Architectural Cinema</h1>
             </div>
         </section>
 
-        <section class="authority-block">
-            <div class="auth-text">
+        <section class="authority-block" aria-label="The Preservationist Perspective">
+            <div class="arch-text">
                 <h2>The Preservationist Perspective</h2>
                 <p>
-                    As an alternate member of the Village of Ossining Historic Preservation Commission, Omar A. Greene views structures through a lens of permanence and historical value.
+                    As an alternate member of the Village of Ossining Historic Preservation
+                    Commission, Omar A. Greene views structures through a lens of permanence
+                    and historical value.
                 </p>
                 <p>
-                    We don't just film properties; we document the structural narrative, the intent of the architect, and the soul of the estate.
+                    We don't just film properties; we document the structural narrative,
+                    the intent of the architect, and the soul of the estate.
                 </p>
             </div>
-            <div class="auth-visual"></div>
+            <!-- aria-hidden — purely decorative background image panel -->
+            <div class="arch-visual" aria-hidden="true" role="presentation"></div>
         </section>
 
-        <section class="service-features">
+        <section class="service-features" aria-label="Service offerings">
             <div class="feature-card">
                 <h3>Estate Documentation</h3>
                 <p>Cinematic walkthroughs designed for ultra-luxury listings, focusing on flow, light, and materiality.</p>
@@ -149,20 +211,43 @@
             </div>
         </section>
 
-        <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
-            <p style="color: #d4af37; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">Ready to Document the Legacy?</p>
-            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px; color: #fff;">Let's Discuss the Scope</h2>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
-                <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
+        <section class="cta-section" aria-label="Start a project">
+            <p>Ready to Document the Legacy?</p>
+            <h2>Let's Discuss the Scope</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Start Project</a>
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 80px 50px; text-align: center; border-top: 1px solid #111; color: #444; text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem;">
-        &copy; 2026 Northzero Productions LLC | Architectural Excellence
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
     <script src="nav.js?v=1.1"></script>
+    <script>
+        // --- Hamburger (consistent with all other pages) ---
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks  = document.getElementById('nav-links-container');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // --- Email obfuscation ---
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
+    </script>
 </body>
 </html>
+
