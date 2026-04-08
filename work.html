@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Works | Northzero Productions</title>
+
     <link rel="stylesheet" href="style.css?v=2.2">
-    
+
     <style>
         /* PAGE-SPECIFIC PORTFOLIO STYLES */
         .portfolio-header { padding: 180px 5% 60px; text-align: center; }
-        .portfolio-header h1 { 
-            font-size: clamp(2rem, 8vw, 3.5rem); 
-            text-transform: uppercase; 
-            letter-spacing: 15px; 
-            margin-bottom: 20px; 
+        .portfolio-header h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            margin-bottom: 20px;
             color: #fff;
             white-space: normal;
         }
 
         /* Filter System */
         .filter-container { text-align: center; margin-bottom: 60px; padding: 0 20px; }
-        .filter-btn { 
-            background: none; border: none; color: #555; text-transform: uppercase; 
-            letter-spacing: 3px; font-size: 0.7rem; margin: 10px 15px; cursor: pointer; transition: 0.3s;
+        .filter-btn {
+            background: none; border: none; color: #555; text-transform: uppercase;
+            letter-spacing: 3px; font-size: 0.7rem; margin: 10px 15px;
+            cursor: pointer; transition: 0.3s;
         }
         .filter-btn.active, .filter-btn:hover { color: #d4af37; }
 
-        /* --- THE BENTO GRID --- */
+        /* --- BENTO GRID --- */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -45,11 +47,10 @@
             border: 1px solid #1a1a1a;
         }
 
-        /* Layout Variances */
-        .work-item.featured { grid-column: span 4; grid-row: span 2; }
-        .work-item.tall { grid-column: span 2; grid-row: span 2; }
-        .work-item.wide { grid-column: span 3; grid-row: span 1; }
-        .work-item.standard { grid-column: span 2; grid-row: span 1; }
+        .work-item.featured  { grid-column: span 4; grid-row: span 2; }
+        .work-item.tall      { grid-column: span 2; grid-row: span 2; }
+        .work-item.wide      { grid-column: span 3; grid-row: span 1; }
+        .work-item.standard  { grid-column: span 2; grid-row: span 1; }
 
         .work-item img {
             width: 100%; height: 100%; object-fit: cover;
@@ -71,14 +72,17 @@
 
         .work-item:hover .work-info { opacity: 1; transform: translateY(0); }
         .work-info h3 { text-transform: uppercase; letter-spacing: 3px; font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
-        .work-info p { font-size: 0.65rem; color: #d4af37; text-transform: uppercase; letter-spacing: 2px; }
+        .work-info p  { font-size: 0.65rem; color: #d4af37; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- THE LIGHTBOX --- */
+        /* --- LIGHTBOX --- */
         .lightbox {
             display: none; position: fixed; z-index: 20000;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.98); align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.98);
+            align-items: center; justify-content: center;
         }
+        .lightbox.is-open { display: flex; }
+
         .lightbox-content {
             position: relative; width: 90%; max-width: 1200px;
             aspect-ratio: 16 / 9; border: 1px solid #222; background: #000;
@@ -87,68 +91,94 @@
             position: absolute; top: -50px; right: 0;
             color: #d4af37; font-size: 2.5rem; cursor: pointer;
             transition: 0.3s; line-height: 1;
+            background: none; border: none; padding: 0;
         }
 
+        #videoPlayerFrame iframe {
+            width: 100%; height: 100%;
+            border: none; /* replaces deprecated frameborder="0" */
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
             .work-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 30vw; }
         }
         @media (max-width: 768px) {
             .work-grid { display: flex; flex-direction: column; padding: 0 20px 80px; }
-            .work-item { height: 300px; margin-bottom: 10px; }
+            .work-item  { height: 300px; margin-bottom: 10px; }
             .portfolio-header { padding-top: 140px; }
-            .work-info { opacity: 1; transform: none; bottom: 20px; left: 20px; }
+            .work-info  { opacity: 1; transform: none; bottom: 20px; left: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <nav id="nz-global-nav">
-        <a href="index.html" class="logo-link">
-            <div class="compass-box"><div class="needle"></div></div>
+    <!--
+        NOTE: This nav markup now matches index.html exactly.
+        nav.js targets: #hamburger-menu and #nav-links-container.
+        Keep all pages in sync with this structure.
+    -->
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
             <div class="logo-text">
                 <span class="main-title">NORTHZERO</span>
                 <span class="sub-title">PRODUCTIONS</span>
             </div>
         </a>
-    
-        <div class="nz-hamburger-icon" id="nz-hamburger-trigger">
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
             <span></span><span></span><span></span>
-        </div>
-    
-        <div class="nz-nav-links" id="nz-links-hook">
-            <a href="index.html">Agency</a>
-            <a href="work.html">Works</a>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
             <div class="dropdown">
-                <a href="all-services.html" class="dropbtn">Services</a>
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
                 <div class="dropdown-content">
                     <a href="authority.html">Authority Suite</a>
                     <a href="architectural.html">Architectural Cinema</a>
                     <a href="tactile.html">Tactile Narratives</a>
                 </div>
             </div>
-            <a href="about.html">Lens</a>
-            <a href="contact.html" style="border: 1px solid #d4af37; padding: 10px 20px; color: #d4af37 !important;">Start Project</a>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid #d4af37; padding: 10px 20px; color: #d4af37 !important;">Start Project</a>
         </div>
     </nav>
 
     <main>
         <section class="portfolio-header">
-            <h1 data-text="Selected Works">Selected Works</h1>
+            <h1>Selected Works</h1>
         </section>
-    
-        <div class="filter-container">
-            <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
-            <button class="filter-btn" onclick="filterGallery('estate', this)">Estate</button>
-            <button class="filter-btn" onclick="filterGallery('tactile', this)">Tactile</button>
-            <button class="filter-btn" onclick="filterGallery('institutional', this)">Institutional</button>
+
+        <!-- Filter buttons use data-filter; no inline JS -->
+        <div class="filter-container" role="group" aria-label="Filter works by category">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="estate">Estate</button>
+            <button class="filter-btn" data-filter="tactile">Tactile</button>
+            <button class="filter-btn" data-filter="institutional">Institutional</button>
         </div>
-    
-        <div class="work-grid" id="workGrid"></div>
-    
-        <div id="videoLightbox" class="lightbox" onclick="closeVideo(event)">
+
+        <div class="work-grid" id="workGrid" aria-label="Portfolio grid"></div>
+
+        <!-- Lightbox: accessible dialog -->
+        <div
+            id="videoLightbox"
+            class="lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Video player"
+        >
             <div class="lightbox-content">
-                <span class="close-lightbox" onclick="document.getElementById('videoLightbox').style.display='none'">&times;</span>
-                <div id="videoPlayerFrame" style="width:100%; height:100%;"></div>
+                <button class="close-lightbox" id="closeLightbox" aria-label="Close video">&times;</button>
+                <div id="videoPlayerFrame"></div>
             </div>
         </div>
 
@@ -156,11 +186,12 @@
             <p style="color: #d4af37; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">Ready to Document the Legacy?</p>
             <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px; color: #fff;">Let's Discuss the Scope</h2>
             <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
-                <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
+                <a href="contact.html" class="cta-btn">Start Project</a>
+                <!-- Email assembled at runtime to deter scrapers -->
+                <a href="#" id="email-link" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
             </div>
         </section>
-    
+
         <footer style="padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 4px; text-transform: uppercase; font-size: 0.65rem;">
             &copy; 2026 Northzero Productions LLC | New York
         </footer>
@@ -169,64 +200,139 @@
     <script src="nav.js?v=1.1"></script>
 
     <script>
-        const projects = [
-            { id: 'AVN2N2hopGk', title: 'The Modern Estate', category: 'estate', type: 'Architectural Cinema', layout: 'featured' },
-            { id: 'FEfAZ5CTP84', title: 'Artificially Yours', category: 'tactile', type: 'Tactile Narrative', layout: 'tall' },
-            { id: 'ONyk8VokO2k', title: 'Design & Texture', category: 'tactile', type: 'Macro Study', layout: 'standard' },
-            { id: 'UV3Lvew15fs', title: 'Visual Rhythm', category: 'tactile', type: 'Production Design', layout: 'standard' },
-            { id: 'U_s0PDP123c', title: 'Global Tech', category: 'institutional', type: 'Institutional Strategy', layout: 'wide' }
-        ]; // Ensure this line is perfect.
+        // --- Hamburger (matches index.html) ---
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks  = document.getElementById('nav-links-container');
 
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // --- Project Data ---
+        const projects = [
+            { id: 'AVN2N2hopGk', title: 'The Modern Estate',  category: 'estate',       type: 'Architectural Cinema',  layout: 'featured'  },
+            { id: 'FEfAZ5CTP84', title: 'Artificially Yours', category: 'tactile',      type: 'Tactile Narrative',     layout: 'tall'      },
+            { id: 'ONyk8VokO2k', title: 'Design & Texture',   category: 'tactile',      type: 'Macro Study',           layout: 'standard'  },
+            { id: 'UV3Lvew15fs', title: 'Visual Rhythm',      category: 'tactile',      type: 'Production Design',     layout: 'standard'  },
+            { id: 'U_s0PDP123c', title: 'Global Tech',        category: 'institutional', type: 'Institutional Strategy', layout: 'wide'     }
+        ];
+
+        // --- Gallery Renderer (uses createElement to avoid innerHTML XSS risk) ---
         function renderGallery(filter = 'all') {
-            const grid = document.getElementById('workGrid');
-            if (!grid) return;
-            grid.innerHTML = '';
-            
+            const grid     = document.getElementById('workGrid');
             const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
-            
+
+            grid.innerHTML = '';
+
             filtered.forEach(p => {
-                grid.innerHTML += `
-                    <div class="work-item ${p.layout}" onclick="openVideo('${p.id}')">
-                        <img src="https://img.youtube.com/vi/${p.id}/maxresdefault.jpg" alt="${p.title}">
-                        <div class="work-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.type}</p>
-                        </div>
-                    </div>
-                `;
+                const item = document.createElement('div');
+                item.className = `work-item ${p.layout}`;
+                item.setAttribute('role', 'button');
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('aria-label', `Open video: ${p.title}`);
+
+                const img = document.createElement('img');
+                img.src     = `https://img.youtube.com/vi/${p.id}/maxresdefault.jpg`;
+                img.alt     = p.title;
+                img.loading = 'lazy';
+
+                const info = document.createElement('div');
+                info.className = 'work-info';
+
+                const h3 = document.createElement('h3');
+                h3.textContent = p.title;
+
+                const pTag = document.createElement('p');
+                pTag.textContent = p.type;
+
+                info.appendChild(h3);
+                info.appendChild(pTag);
+                item.appendChild(img);
+                item.appendChild(info);
+
+                // Support both click and keyboard (Enter/Space)
+                item.addEventListener('click', () => openVideo(p.id, p.title));
+                item.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openVideo(p.id, p.title);
+                    }
+                });
+
+                grid.appendChild(item);
             });
         }
 
-        function filterGallery(cat, btn) {
+        // --- Filter Buttons (event delegation, no inline onclick) ---
+        document.querySelector('.filter-container').addEventListener('click', e => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            renderGallery(cat);
-        }
+            renderGallery(btn.dataset.filter);
+        });
 
-        function openVideo(videoID) {
-            const lightbox = document.getElementById('videoLightbox');
-            const player = document.getElementById('videoPlayerFrame');
-            
-            player.innerHTML = `
-                <iframe 
-                    width="100%" height="100%" 
-                    src="https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1" 
-                    frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
-                </iframe>`;
-            
-            lightbox.style.display = 'flex';
+        // --- Lightbox ---
+        const lightbox      = document.getElementById('videoLightbox');
+        const playerFrame   = document.getElementById('videoPlayerFrame');
+        const closeBtn      = document.getElementById('closeLightbox');
+        let   lastFocused   = null; // for returning focus on close
+
+        function openVideo(videoID, title) {
+            lastFocused = document.activeElement;
+
+            const iframe = document.createElement('iframe');
+            iframe.src              = `https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1`;
+            iframe.allow            = 'autoplay; fullscreen';
+            iframe.allowFullscreen  = true;
+            iframe.title            = title || 'Video player';
+            // border handled by CSS (#videoPlayerFrame iframe { border: none })
+
+            playerFrame.innerHTML = '';
+            playerFrame.appendChild(iframe);
+
+            lightbox.classList.add('is-open');
             document.body.style.overflow = 'hidden';
+            closeBtn.focus(); // move focus into dialog
         }
 
-        function closeVideo(e) {
-            if (e.target.id === 'videoLightbox' || e.target.className === 'close-lightbox') {
-                document.getElementById('videoPlayerFrame').innerHTML = '';
-                document.getElementById('videoLightbox').style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
+        function closeVideo() {
+            playerFrame.innerHTML = '';
+            lightbox.classList.remove('is-open');
+            document.body.style.overflow = '';
+            if (lastFocused) lastFocused.focus(); // return focus to trigger element
         }
 
+        // Close via button
+        closeBtn.addEventListener('click', closeVideo);
+
+        // Close via backdrop click
+        lightbox.addEventListener('click', e => {
+            if (e.target === lightbox) closeVideo();
+        });
+
+        // Close via Escape key
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeVideo();
+        });
+
+        // --- Email obfuscation ---
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        const emailLink = document.getElementById('email-link');
+        emailLink.href = `mailto:${u}@${d}`;
+
+        // --- Init ---
         renderGallery();
     </script>
 </body>
 </html>
+
