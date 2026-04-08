@@ -4,31 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Authority Suite | Northzero Productions</title>
+
     <link rel="stylesheet" href="style.css?v=2.2">
+
     <style>
-        /* AUTHORITY SPECIFIC DESIGN */
+        /* --- BRAND VARIABLES (fallback) --- */
+        :root {
+            --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
+            --nav-height: 80px;
+        }
+
+        /* --- HERO ---
+             No padding-top here — style.css sets padding-top on <main>,
+             so the hero naturally clears the fixed nav.               --- */
         .auth-hero {
             height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80')
+                        center/cover;
             text-align: center;
-            padding-top: 80px;
         }
 
         .auth-hero h1 {
             font-size: clamp(2rem, 8vw, 4rem);
             text-transform: uppercase;
-            letter-spacing: 15px; /* Slightly tighter for mobile stability */
+            letter-spacing: 15px;
             margin-bottom: 20px;
             color: #fff;
             white-space: normal;
         }
 
+        .auth-hero .eyebrow {
+            letter-spacing: 8px;
+            color: var(--nz-gold);
+            margin-bottom: 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        /* --- INTRO --- */
         .auth-intro {
             padding: 120px 10%;
             max-width: 1100px;
@@ -37,7 +55,7 @@
         }
 
         .auth-intro h2 {
-            color: #d4af37;
+            color: var(--nz-gold);
             text-transform: uppercase;
             letter-spacing: 8px;
             font-size: 1rem;
@@ -51,7 +69,7 @@
             color: #ccc;
         }
 
-        /* Technical Service Grid */
+        /* --- SERVICE GRID --- */
         .tech-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -65,14 +83,14 @@
             transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        .tech-cell:nth-child(odd) { border-right: 1px solid #222; }
-        .tech-cell:hover { background: #080808; border-color: #d4af37; }
+        .tech-cell:nth-child(odd)  { border-right: 1px solid #222; }
+        .tech-cell:hover           { background: #080808; border-color: var(--nz-gold); }
 
         .tech-cell h3 {
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: #d4af37;
+            color: var(--nz-gold);
             margin-bottom: 20px;
         }
 
@@ -84,83 +102,110 @@
             color: #fff;
         }
 
-        .tech-cell p {
-            color: #777;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
+        .tech-cell p { color: #777; line-height: 1.8; font-size: 0.95rem; }
 
-        /* Blue-Check / Credentials Bar */
+        /* --- CREDENTIALS BAR --- */
         .credentials-bar {
             background: #0a0a0a;
             padding: 80px 5%;
             display: flex;
             justify-content: center;
             gap: 100px;
-            border-top: 1px solid #0047ab;
+            border-top: 1px solid var(--nz-blue);
+            flex-wrap: wrap;
         }
 
         .cred-item { text-align: center; }
-        .cred-item span { display: block; font-size: 1.5rem; letter-spacing: 2px; color: #fff; margin-bottom: 5px; }
-        .cred-item label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; color: #0047ab; font-weight: 900; }
 
+        /* Changed from <label> to <p class="cred-label"> — label is invalid outside a form */
+        .cred-item .cred-value {
+            display: block;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .cred-item .cred-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--nz-blue);
+            font-weight: 900;
+        }
+
+        /* --- MOBILE --- */
         @media (max-width: 900px) {
-            .tech-grid { grid-template-columns: 1fr; }
+            .tech-grid              { grid-template-columns: 1fr; }
             .tech-cell:nth-child(odd) { border-right: none; }
-            .tech-cell { padding: 60px 10%; }
-            .credentials-bar { flex-direction: column; gap: 50px; }
-            .auth-hero h1 { letter-spacing: 8px; }
-            .auth-intro p { font-size: 1.1rem; }
+            .tech-cell              { padding: 60px 10%; }
+            .credentials-bar        { gap: 50px; }
+            .auth-hero h1           { letter-spacing: 8px; }
+            .auth-intro             { padding: 80px 6%; }
+            .auth-intro p           { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav id="nz-global-nav">
-        <a href="index.html" class="logo-link">
-            <div class="compass-box"><div class="needle"></div></div>
+    <!--
+        Nav markup matches all cleaned pages.
+        nav.js targets: #hamburger-menu and #nav-links-container.
+    -->
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
             <div class="logo-text">
                 <span class="main-title">NORTHZERO</span>
                 <span class="sub-title">PRODUCTIONS</span>
             </div>
         </a>
-    
-        <div class="nz-hamburger-icon" id="nz-hamburger-trigger">
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
             <span></span><span></span><span></span>
-        </div>
-    
-        <div class="nz-nav-links" id="nz-links-hook">
-            <a href="index.html">Agency</a>
-            <a href="work.html">Works</a>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
             <div class="dropdown">
-                <a href="all-services.html" class="dropbtn">Services</a>
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
                 <div class="dropdown-content">
                     <a href="authority.html">Authority Suite</a>
                     <a href="architectural.html">Architectural Cinema</a>
                     <a href="tactile.html">Tactile Narratives</a>
                 </div>
             </div>
-            <a href="about.html">Lens</a>
-            <a href="contact.html" style="border: 1px solid #d4af37; padding: 10px 20px; color: #d4af37 !important;">Start Project</a>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
         </div>
     </nav>
 
     <main>
-        <header class="auth-hero">
+        <header class="auth-hero" aria-label="The Authority Suite">
             <div class="hero-content">
-                <p style="letter-spacing: 8px; color: #d4af37; margin-bottom: 15px; font-size: 0.75rem;">STRATEGIC VISUAL ASSETS</p>
-                <h1 data-text="The Authority Suite">The Authority Suite</h1>
+                <!-- data-text removed — no glitch CSS on this page -->
+                <p class="eyebrow">Strategic Visual Assets</p>
+                <h1>The Authority Suite</h1>
             </div>
         </header>
 
-        <section class="auth-intro">
-            <h2>Visual Compliance & Strategy</h2>
+        <section class="auth-intro" aria-label="Visual compliance and strategy">
+            <h2>Visual Compliance &amp; Strategy</h2>
             <p>
-                Northzero provides high-stakes visual documentation for the preservation, development, and municipal sectors. We bridge the gap between architectural intent and regulatory approval.
+                Northzero provides high-stakes visual documentation for the preservation,
+                development, and municipal sectors. We bridge the gap between architectural
+                intent and regulatory approval.
             </p>
         </section>
 
-        <section class="tech-grid">
+        <section class="tech-grid" aria-label="Service pillars">
             <div class="tech-cell">
                 <h3>Pillar 01</h3>
                 <h4>Historic Documentation</h4>
@@ -179,39 +224,63 @@
             <div class="tech-cell">
                 <h3>Pillar 04</h3>
                 <h4>Brand Permanence</h4>
-                <p>Strategic content creation for legacy firms. We document the evolution of your firm’s portfolio, ensuring your structural contributions are archived for future generations.</p>
+                <p>Strategic content creation for legacy firms. We document the evolution of your firm's portfolio, ensuring your structural contributions are archived for future generations.</p>
             </div>
         </section>
 
-        <section class="credentials-bar">
+        <!-- <label> replaced with semantic <p> — label is invalid outside a form context -->
+        <section class="credentials-bar" aria-label="Credentials">
             <div class="cred-item">
-                <label>Liaison</label>
-                <span>Ossining HPC Member</span>
+                <p class="cred-label">Liaison</p>
+                <span class="cred-value">Ossining HPC Member</span>
             </div>
             <div class="cred-item">
-                <label>Jurisdiction</label>
-                <span>NY / Tri-State Area</span>
+                <p class="cred-label">Jurisdiction</p>
+                <span class="cred-value">NY / Tri-State Area</span>
             </div>
             <div class="cred-item">
-                <label>Standard</label>
-                <span>HABS/HAER Influence</span>
+                <p class="cred-label">Standard</p>
+                <span class="cred-value">HABS/HAER Influence</span>
             </div>
         </section>
 
-        <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
-            <p style="color: #d4af37; letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px;">Ready to Document the Legacy?</p>
-            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px; color: #fff;">Let's Discuss the Scope</h2>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
-                <a href="mailto:omar@northzeroproductions.com" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
+        <section class="cta-section" aria-label="Start a project">
+            <p>Ready to Document the Legacy?</p>
+            <h2>Let's Discuss the Scope</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Start Project</a>
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 80px 50px; text-align: center; border-top: 1px solid #111; color: #333; text-transform: uppercase; letter-spacing: 4px; font-size: 0.65rem;">
-        &copy; 2026 Northzero Productions LLC | Regulatory Excellence
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
     <script src="nav.js?v=1.1"></script>
+    <script>
+        // --- Hamburger (consistent with all other pages) ---
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks  = document.getElementById('nav-links-container');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // --- Email obfuscation ---
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
+    </script>
 </body>
 </html>
+
