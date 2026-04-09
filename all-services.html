@@ -3,32 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Production Pillars | Northzero Productions</title>
+    <title>Production Services | Luxury Brand Film & Architectural Cinema · Northzero Productions</title>
+
+    <meta name="description" content="Luxury brand film, product cinematography, architectural estate cinema, and preservation documentation. Northzero Productions serves Ossining, Westchester County, and the Hudson Valley.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/all-services.html">
+    <meta property="og:title"        content="Production Services | Luxury Brand Film & Architectural Cinema · Northzero Productions">
+    <meta property="og:description"  content="Luxury brand film, product cinematography, and architectural cinema serving Ossining, Westchester County, and the Hudson Valley.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — Production Services">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Production Services | Northzero Productions · Hudson Valley, NY">
+    <meta name="twitter:description" content="Luxury brand film, product cinematography, and architectural cinema serving Westchester and the Hudson Valley.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
 
     <link rel="stylesheet" href="style.css?v=2.2">
 
     <style>
-        /* --- BRAND VARIABLES (fallback if not defined in style.css) --- */
         :root {
             --nz-gold: #d4af37;
             --nz-blue: #0047ab;
-            --bg-black: #000;
+            --nav-height: 80px;
         }
 
         /* --- PAGE HEADER --- */
         .page-header {
-            height: 50vh;
-            /* background: #0a0a0a; */
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), #000), 
-                        url('https://plus.unsplash.com/premium_photo-1682146749338-f380c93c8dec??q=80&w=1920') no-repeat center center/cover; 
-            display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding-top: 80px;
+            height: 45vh;
+            background: #0a0a0a;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             text-align: center;
             border-bottom: 1px solid #1a1a1a;
-            padding-top: 80px;
         }
 
         .page-header h1 {
@@ -63,41 +75,16 @@
         .pillar-card h3 { color: #fff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-size: 1rem; }
         .pillar-card p  { color: #777; line-height: 1.8; font-size: 0.9rem; }
 
-        /* --- CTA (full-bleed, sibling of .pillars-container) --- */
-        .cta-section {
-            padding: 100px 5%;
-            background: #050505;
-            text-align: center;
-            border-top: 1px solid #111;
-        }
-        .cta-section p  { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px; }
-        .cta-section h2 { font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px; color: #fff; }
-        .cta-section .btn-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-
-        .cta-btn {
-            display: inline-block; padding: 15px 30px;
-            border: 1px solid var(--nz-gold); color: var(--nz-gold);
-            text-decoration: none; text-transform: uppercase;
-            letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s;
-        }
-        .cta-btn:hover { background: var(--nz-gold); color: #000; }
-        .cta-btn.secondary { border-color: #333; color: #888; }
-        .cta-btn.secondary:hover { background: #333; color: #fff; }
-
         /* --- MOBILE --- */
         @media screen and (max-width: 768px) {
-            .page-header h1    { letter-spacing: 6px; }
-            .pillar-grid       { display: flex; flex-direction: column; }
+            .page-header h1 { letter-spacing: 6px; }
+            .pillar-grid    { display: flex; flex-direction: column; }
             .pillars-container { padding: 60px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!--
-        Nav markup matches index.html and work.html exactly.
-        nav.js targets: #hamburger-menu and #nav-links-container.
-    -->
     <nav class="nz-nav" role="navigation" aria-label="Main navigation">
         <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
             <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
@@ -129,6 +116,7 @@
                 </div>
             </div>
             <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
             <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
         </div>
     </nav>
@@ -139,7 +127,6 @@
             <p>Architectural Strategy &amp; Visual Excellence</p>
         </header>
 
-        <!-- Pillars content — constrained width -->
         <div class="pillars-container">
             <div class="category-block">
                 <div class="category-label">
@@ -184,40 +171,25 @@
             </div>
         </div>
 
-        <!-- CTA — full-bleed sibling, outside .pillars-container -->
+        <!-- CTA — full-bleed, outside .pillars-container -->
         <section class="cta-section" aria-label="Start a project">
             <p>Ready to Document the Legacy?</p>
             <h2>Let's Discuss the Scope</h2>
             <div class="btn-group">
-                <a href="contact.html" class="cta-btn">Start Project</a>
-                <!-- Email assembled at runtime to deter scrapers -->
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
                 <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
 
-        <footer style="padding: 60px; text-align: center; border-top: 1px solid #111; color: #444; letter-spacing: 4px; text-transform: uppercase; font-size: 0.65rem;">
+        <footer>
             &copy; 2026 Northzero Productions LLC | New York
         </footer>
     </main>
 
-    <script src="nav.js?v=1.1"></script>
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
     <script>
-        // --- Hamburger toggle (consistent with index.html and work.html) ---
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks  = document.getElementById('nav-links-container');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-
         // --- Email obfuscation ---
         const u = 'omar';
         const d = 'northzeroproductions.com';
