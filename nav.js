@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger-menu');
     const navLinks  = document.getElementById('nav-links-container');
 
-    // Guard: both elements must exist before attaching handlers
     if (!hamburger || !navLinks) return;
 
     // --- Toggle mobile menu ---
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.setAttribute('aria-expanded', isOpen);
     });
 
-    // --- Close menu when any nav link is clicked (mobile UX) ---
+    // --- Close menu when any nav link is clicked ---
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -29,11 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape' && navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
             hamburger.setAttribute('aria-expanded', 'false');
-            hamburger.focus(); // return focus to trigger
+            hamburger.focus();
         }
     });
 
-    // --- Close menu if user clicks outside nav ---
+    // --- Close menu on outside click ---
     document.addEventListener('click', e => {
         if (
             navLinks.classList.contains('active') &&
