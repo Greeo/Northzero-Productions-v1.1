@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Indie Filmmaker's Fast Track | Northzero Productions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold:  #d4af37;
+    --blue:  #0047ab;
+    --black: #000;
+    --off:   #0a0a0a;
+    --dark:  #111;
+    --mid:   #333;
+    --muted: #666;
+    --light: #999;
+    --white: #fff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans:  'Inter', 'Helvetica Neue', sans-serif;
+  }
+
+  html { background: #1a1a1a; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--white);
+    background: #1a1a1a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page {
+    width: 794px;
+    margin: 40px auto;
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+  }
+
+  /* ══════════════════════════════════════
+     PAGE 1 — COVER
+  ══════════════════════════════════════ */
+  .cover {
+    height: 1123px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-bottom: 1px solid var(--mid);
+  }
+
+  /* Large background text */
+  .cover-bg-text {
+    position: absolute;
+    bottom: -20px;
+    left: -10px;
+    font-family: var(--serif);
+    font-size: 220px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: -10px;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Gold rule at top */
+  .cover-rule-top {
+    height: 4px;
+    background: linear-gradient(to right, var(--gold), transparent);
+  }
+
+  .cover-header {
+    padding: 40px 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-logo {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+
+  .cover-logo span {
+    color: var(--gold);
+    display: block;
+    font-size: 7px;
+    letter-spacing: 4px;
+    margin-top: 2px;
+  }
+
+  .cover-issue {
+    font-size: 8px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .cover-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 60px 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-eyebrow {
+    font-size: 9px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .cover-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .cover-title {
+    font-family: var(--serif);
+    font-size: 82px;
+    font-weight: 900;
+    line-height: 0.92;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .cover-subtitle {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--light);
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+  }
+
+  .cover-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 30px;
+  }
+
+  .cover-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 420px;
+    letter-spacing: 0.3px;
+  }
+
+  .cover-footer {
+    padding: 0 60px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-author {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--light);
+    line-height: 1.8;
+  }
+
+  .cover-author strong {
+    color: var(--white);
+    font-weight: 600;
+    display: block;
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .cover-pillars {
+    display: flex;
+    gap: 30px;
+  }
+
+  .cover-pillar {
+    text-align: center;
+  }
+
+  .cover-pillar .num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+
+  .cover-pillar .label {
+    font-size: 7px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* ══════════════════════════════════════
+     PAGE 2 — SECTION 01
+  ══════════════════════════════════════ */
+  .interior {
+    min-height: 1123px;
+    padding: 0;
+    border-bottom: 1px solid var(--mid);
+    position: relative;
+  }
+
+  /* Running header on interior pages */
+  .running-header {
+    height: 50px;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+  }
+
+  .running-header .rh-left {
+    font-size: 7px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .running-header .rh-right {
+    font-size: 7px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* Section label + number */
+  .section-hero {
+    padding: 60px 60px 0;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .section-number {
+    font-family: var(--serif);
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 0.85;
+    letter-spacing: -4px;
+    user-select: none;
+  }
+
+  .section-head { padding-top: 8px; }
+
+  .section-tag {
+    font-size: 8px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-subtitle {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--light);
+    letter-spacing: 0.5px;
+  }
+
+  /* Body content area */
+  .section-body { padding: 40px 60px 60px; }
+
+  /* Two-column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+
+  .lead-p {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 400;
+    color: #ccc;
+    line-height: 1.75;
+    margin-bottom: 25px;
+    grid-column: 1 / -1;
+  }
+
+  p {
+    font-size: 12px;
+    color: var(--light);
+    line-height: 1.9;
+    margin-bottom: 18px;
+    letter-spacing: 0.2px;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    border-left: 3px solid var(--gold);
+    padding: 4px 0 4px 24px;
+    margin: 30px 0;
+    grid-column: 1 / -1;
+  }
+
+  .pull-quote p {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.6;
+    margin: 0;
+    letter-spacing: 0.3px;
+  }
+
+  /* Callout box */
+  .callout {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-left: 3px solid var(--gold);
+    padding: 28px 30px;
+    margin: 25px 0;
+  }
+
+  .callout-label {
+    font-size: 7px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .callout p {
+    font-size: 12px;
+    color: #bbb;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Numbered list */
+  .num-list { list-style: none; margin: 20px 0; }
+
+  .num-list li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+    align-items: start;
+  }
+
+  .num-list li .n {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.4;
+  }
+
+  .num-list li .t {
+    font-size: 11px;
+    color: var(--light);
+    line-height: 1.8;
+  }
+
+  .num-list li .t strong {
+    color: var(--white);
+    font-weight: 600;
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  /* Horizontal rule */
+  .hr {
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin: 35px 0;
+    grid-column: 1 / -1;
+  }
+
+  /* Pillars */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #1a1a1a;
+    margin: 30px 0;
+    grid-column: 1 / -1;
+  }
+
+  .pillar-cell {
+    background: var(--black);
+    padding: 30px 25px;
+  }
+
+  .pillar-cell .p-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 900;
+    color: rgba(212,175,55,0.2);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .pillar-cell .p-title {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .pillar-cell .p-sub {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .pillar-cell p {
+    font-size: 10.5px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* Stat strip */
+  .stat-strip {
+    background: #050505;
+    border-top: 1px solid #1a1a1a;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    padding: 0;
+    margin: 30px 0;
+    grid-column: 1 / -1;
+  }
+
+  .stat-cell {
+    flex: 1;
+    padding: 28px 30px;
+    border-right: 1px solid #1a1a1a;
+    text-align: center;
+  }
+
+  .stat-cell:last-child { border-right: none; }
+
+  .stat-cell .s-val {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-cell .s-val em { color: var(--gold); font-style: normal; }
+
+  .stat-cell .s-label {
+    font-size: 7px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+  }
+
+  /* ══════════════════════════════════════
+     BACK COVER
+  ══════════════════════════════════════ */
+  .back-cover {
+    height: 1123px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .back-cover-rule { height: 4px; background: linear-gradient(to right, var(--gold), transparent); }
+
+  .back-cover-bg {
+    position: absolute;
+    bottom: -60px; right: -40px;
+    font-family: var(--serif);
+    font-size: 300px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.025);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+    letter-spacing: -15px;
+  }
+
+  .back-cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 80px 60px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .bc-eyebrow {
+    font-size: 9px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .bc-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .bc-title {
+    font-family: var(--serif);
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 30px;
+    max-width: 520px;
+  }
+
+  .bc-title em { color: var(--gold); font-style: italic; }
+
+  .bc-body {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 2;
+    max-width: 480px;
+    margin-bottom: 50px;
+  }
+
+  .bc-cta {
+    display: inline-block;
+    padding: 18px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+    width: fit-content;
+  }
+
+  .bc-cta:hover { background: var(--gold); color: #000; }
+
+  .bc-footer {
+    padding: 0 80px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 2;
+  }
+
+  .bc-logo {
+    font-family: var(--sans);
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+
+  .bc-logo span {
+    color: var(--gold);
+    display: block;
+    font-size: 7px;
+    letter-spacing: 4px;
+    margin-top: 3px;
+  }
+
+  .bc-legal {
+    font-size: 7px;
+    letter-spacing: 2px;
+    color: #333;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    html { background: #000; }
+    .page { margin: 0; box-shadow: none; width: 100%; }
+    .cover, .interior, .back-cover { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══ PAGE 1: COVER ══ -->
+  <div class="cover">
+    <div class="cover-rule-top"></div>
+
+    <div class="cover-header">
+      <div class="cover-logo">
+        NORTHZERO
+        <span>PRODUCTIONS</span>
+      </div>
+      <div class="cover-issue">New York · 2026 Edition</div>
+    </div>
+
+    <div class="cover-main">
+      <div class="cover-eyebrow">Industry Blueprint</div>
+
+      <div class="cover-title">
+        The Indie<br>
+        Filmmaker's<br>
+        <em>Fast Track</em>
+      </div>
+      <div class="cover-subtitle">A Blueprint for Cinematic Permanence &amp; High-Stakes Production</div>
+
+      <div class="cover-divider"></div>
+
+      <p class="cover-desc">
+        A practical framework for independent filmmakers ready to transition from
+        day-rate chasing to high-value partnerships — built on the Northzero method
+        of structural narrative, institutional authority, and pricing confidence.
+      </p>
+    </div>
+
+    <div class="cover-bg-text">NZ</div>
+
+    <div class="cover-footer">
+      <div class="cover-author">
+        Authored by
+        <strong>Omar A. Greene</strong>
+        Founder, Northzero Productions<br>
+        Alternate Member, Ossining HPC
+      </div>
+      <div class="cover-pillars">
+        <div class="cover-pillar">
+          <span class="num">I</span>
+          <span class="label">Clarity</span>
+        </div>
+        <div class="cover-pillar">
+          <span class="num">II</span>
+          <span class="label">Credibility</span>
+        </div>
+        <div class="cover-pillar">
+          <span class="num">III</span>
+          <span class="label">Conversation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 2: SECTION 01 + 02 ══ -->
+  <div class="interior">
+    <div class="running-header">
+      <span class="rh-left">The Indie Filmmaker's Fast Track</span>
+      <span class="rh-right">Northzero Productions</span>
+    </div>
+
+    <div class="section-hero">
+      <div class="section-number">01</div>
+      <div class="section-head">
+        <span class="section-tag">The Core Shift</span>
+        <div class="section-title">From Artist<br>to <em>Solution</em></div>
+        <div class="section-subtitle">Why high-ticket clients don't buy passion — they buy certainty</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="two-col">
+        <p class="lead-p">
+          Most filmmakers lead with their gear or their passion. High-ticket clients — architects,
+          estate managers, and institutional brands — don't buy passion. They buy certainty.
+        </p>
+
+        <div>
+          <p>
+            The fundamental problem facing most independent filmmakers is what we call the
+            Race to the Bottom: a market dynamic in which clients compare only day rates,
+            and the filmmaker with the lowest number wins. It is a race that destroys margins,
+            commoditises craft, and ultimately filters out the very people most capable of
+            producing significant work.
+          </p>
+          <p>
+            The exit from that race is not better gear, a stronger reel, or a lower price.
+            It is a repositioning — from vendor to specialist. From the person who films things
+            to the person who understands what a structure means and how to make that meaning
+            permanent.
+          </p>
+        </div>
+
+        <div>
+          <div class="callout">
+            <span class="callout-label">The Northzero Principle</span>
+            <p>
+              Position yourself as a structural narrator who understands technical compliance
+              as much as visual aesthetics — and the conversation shifts from "How much do
+              you charge?" to "When can you start?"
+            </p>
+          </div>
+          <p>
+            This transition — from chasing to attracting — is the single most consequential
+            move an independent filmmaker can make. It requires not a change of equipment,
+            but a change of frame. You are not a camera operator with a rate card. You are
+            a specialist with a method.
+          </p>
+        </div>
+
+        <div class="pull-quote">
+          <p>"Price is not a starting point. It is a result of confidence and structure."</p>
+        </div>
+
+        <div class="hr"></div>
+
+        <!-- Section 02 starts here on same page -->
+        <div style="grid-column: 1 / -1; margin-top: 10px;">
+          <span class="section-tag" style="display:block; margin-bottom: 8px;">Section 02</span>
+          <div class="section-title" style="font-family: var(--serif); font-size: 32px; font-weight: 700; color: var(--white); margin-bottom: 20px; line-height: 1.1;">The Three Pillars of the Fast Track</div>
+        </div>
+
+        <div class="pillar-grid">
+          <div class="pillar-cell">
+            <div class="p-num">I</div>
+            <span class="p-title">Clarity</span>
+            <div class="p-sub">The Architectural Soul</div>
+            <p>
+              Before the camera rolls, define the Bones of the project. Identify the historical
+              or design significance of a site using the Ossining Method. Understand the
+              Outcome — justifying a $10M valuation — not just the Output.
+            </p>
+          </div>
+          <div class="pillar-cell">
+            <div class="p-num">II</div>
+            <span class="p-title">Credibility</span>
+            <div class="p-sub">The Authority Suite</div>
+            <p>
+              Your portfolio must look authoritative, not merely good. Deploy high-contrast,
+              monochromatic, or tactile cinematography to imply luxury and heritage. Leverage
+              civic involvement to bypass the typical gatekeepers.
+            </p>
+          </div>
+          <div class="pillar-cell">
+            <div class="p-num">III</div>
+            <span class="p-title">Conversation</span>
+            <div class="p-sub">High-Stakes Production</div>
+            <p>
+              Navigate high-end estates and historical sites without disrupting the Soul of
+              the location. Execute the 3-part framework: Discovery, Structural Audit,
+              and Cinematic Delivery.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 3: SECTIONS 03 + 04 ══ -->
+  <div class="interior">
+    <div class="running-header">
+      <span class="rh-left">The Indie Filmmaker's Fast Track</span>
+      <span class="rh-right">Northzero Productions</span>
+    </div>
+
+    <div class="section-hero">
+      <div class="section-number">03</div>
+      <div class="section-head">
+        <span class="section-tag">Pricing Strategy</span>
+        <div class="section-title">Pricing for<br><em>Permanence</em></div>
+        <div class="section-subtitle">Why undercharging is a confidence problem, not a market problem</div>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="two-col">
+
+        <p class="lead-p">
+          Price is not a starting point. It is a result of confidence and structure. Most indie
+          filmmakers undercharge because they lack a proprietary process — not because
+          the market won't pay.
+        </p>
+
+        <div>
+          <p>
+            The Confidence Gap is the distance between what a filmmaker believes their work
+            is worth and what they are willing to charge for it. It is not a function of quality.
+            Filmmakers producing genuinely exceptional work routinely undercharge while
+            producers with weaker portfolios but stronger positioning command multiples of
+            their rate.
+          </p>
+          <p>
+            The gap closes when you have a process — a named methodology, a defined
+            deliverable structure, a clear outcome for the client. When you can articulate
+            what you do in terms of client outcomes rather than production outputs, the
+            conversation about price transforms entirely.
+          </p>
+        </div>
+
+        <div>
+          <p>
+            The Northzero Standard is simple: we don't bill by the hour. We bill by the impact
+            of the narrative. A film that justifies a $10M estate valuation, secures a historic
+            tax credit, or wins a community board approval has a quantifiable value to the
+            client. Your fee should be proportional to that value — not to the hours you spent
+            on set.
+          </p>
+          <div class="callout">
+            <span class="callout-label">The Northzero Standard</span>
+            <p>
+              We don't bill by the hour. We bill by the impact of the narrative. When a client
+              understands what your work achieves for them, the price becomes a function
+              of their outcome — not your time.
+            </p>
+          </div>
+        </div>
+
+        <div class="stat-strip">
+          <div class="stat-cell">
+            <span class="s-val">$<em>1.5K</em></span>
+            <span class="s-label">Typical freelance project</span>
+          </div>
+          <div class="stat-cell">
+            <span class="s-val">→</span>
+            <span class="s-label">The Fast Track shift</span>
+          </div>
+          <div class="stat-cell">
+            <span class="s-val">$<em>15K</em></span>
+            <span class="s-label">Structured partnership</span>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <!-- Section 04 -->
+        <div style="grid-column: 1 / -1; margin-top: 10px;">
+          <span class="section-tag" style="display:block; margin-bottom: 8px;">Section 04</span>
+          <div class="section-title" style="font-family: var(--serif); font-size: 32px; font-weight: 700; color: var(--white); margin-bottom: 20px; line-height: 1.1;">Your Next Move</div>
+        </div>
+
+        <div>
+          <p>
+            The difference between a freelancer and a producer is the ability to follow a
+            blueprint. A freelancer responds to briefs. A producer shapes them. The Fast
+            Track is the transition between those two positions.
+          </p>
+          <p>
+            The Strategy Call is a focused conversation about your current production
+            bottlenecks — where your positioning breaks down, where your pricing fails,
+            and where your process can be formalised into something repeatable and
+            scaleable.
+          </p>
+        </div>
+
+        <div>
+          <ul class="num-list">
+            <li>
+              <span class="n">1</span>
+              <span class="t">
+                <strong>Audit Your Positioning</strong>
+                Review how you currently describe your work to clients. Does it lead with
+                outputs or outcomes? Does it communicate specialisation or availability?
+              </span>
+            </li>
+            <li>
+              <span class="n">2</span>
+              <span class="t">
+                <strong>Define Your Method</strong>
+                Name your process. The Northzero method — Discovery, Structural Audit,
+                Cinematic Delivery — is not complex, but it is named, and naming it changes
+                how clients receive it.
+              </span>
+            </li>
+            <li>
+              <span class="n">3</span>
+              <span class="t">
+                <strong>Initiate the Inquiry</strong>
+                Move from $1,500 projects to $15,000 partnerships by starting the
+                conversation differently. The Project Intake portal is the first step.
+              </span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ PAGE 4: BACK COVER ══ -->
+  <div class="back-cover">
+    <div class="back-cover-rule"></div>
+    <div class="back-cover-bg">NZ</div>
+
+    <div class="back-cover-body">
+      <div class="bc-eyebrow">Ready to Document the Legacy?</div>
+
+      <div class="bc-title">
+        Initiate a<br>
+        Cinematic <em>Audit</em><br>
+        of Your Project
+      </div>
+
+      <p class="bc-body">
+        The Northzero process is built for projects of structural and historical significance.
+        If you are ready to move the conversation from day rates to lasting impact —
+        from freelancer to producer — the Project Intake portal is where it begins.
+      </p>
+
+      <a href="https://northzeroproductions.com/contact.html" class="bc-cta">
+        Initiate Inquiry
+      </a>
+    </div>
+
+    <div class="bc-footer">
+      <div class="bc-logo">
+        NORTHZERO
+        <span>PRODUCTIONS LLC · NEW YORK</span>
+      </div>
+      <div class="bc-legal">
+        &copy; 2026 Northzero Productions LLC<br>
+        All rights reserved · northzeroproductions.com
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
