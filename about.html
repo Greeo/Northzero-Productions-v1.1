@@ -3,27 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Lens | Northzero Productions</title>
+    <title>The Lens | HPC Cinematographer & Visual Strategist · Northzero Productions, Ossining NY</title>
+
+    <meta name="description" content="Omar A. Greene — founder of Northzero Productions and alternate member of the Ossining Historic Preservation Commission. Luxury cinematography and visual strategy rooted in Westchester County and the Hudson Valley.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/about.html">
+    <meta property="og:title"        content="The Lens | HPC Cinematographer & Visual Strategist · Ossining, NY">
+    <meta property="og:description"  content="Omar A. Greene — luxury cinematographer, HPC member, and founder of Northzero Productions. Based in Ossining, serving Westchester and the Hudson Valley.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — The Lens">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="The Lens | HPC Cinematographer · Ossining, NY">
+    <meta name="twitter:description" content="Omar A. Greene — luxury cinematographer, HPC member, Ossining NY. Northzero Productions.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Omar A. Greene",
+      "jobTitle": "Founder & Director of Photography",
+      "url": "https://northzeroproductions.com/about.html",
+      "worksFor": { "@id": "https://northzeroproductions.com/#business" },
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Village of Ossining Historic Preservation Commission"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ossining",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "knowsAbout": [
+        "Luxury Product Cinematography",
+        "Architectural Cinema",
+        "Historic Preservation Documentation",
+        "Brand Visual Strategy",
+        "HPC Compliance"
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="style.css?v=2.2">
 
     <style>
-        /* --- BRAND VARIABLES (fallback if not defined in style.css) --- */
         :root {
             --nz-gold: #d4af37;
             --nz-blue: #0047ab;
-            --bg-black: #000;
+            --nav-height: 80px;
         }
 
         /* --- HERO --- */
         .hero {
-            height: 75vh; position: relative; overflow: hidden;
-            display: flex; align-items: center; justify-content: center; text-align: center;
-            margin-top: 80px;
+            height: 75vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .video-background {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
             z-index: -2; pointer-events: none; overflow: hidden;
         }
 
@@ -34,14 +83,14 @@
             transform: translate(-50%, -50%);
         }
 
-        /* Pause background video for users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
             .video-background { display: none; }
             .hero { background: #0a0a0a; }
         }
 
         .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(10,10,10,0.6); z-index: -1;
         }
 
@@ -71,29 +120,13 @@
         .pillar-img-wrapper    { width: 350px; height: 480px; border: 1px solid var(--nz-gold); overflow: hidden; padding: 10px; }
         .pillar-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- RESOURCE BREAK ---
-             Defined here since no matching rules were found in style.css.
-             Move to style.css if you want it shared across pages.        */
+        /* --- RESOURCE BREAK --- */
         .resource-break { background: #000; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
         .resource-container { max-width: 800px; margin: 0 auto; padding: 100px 40px; text-align: center; }
         .resource-line { width: 1px; height: 60px; background: var(--nz-gold); margin: 0 auto 30px; }
-        .resource-tag  { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px; }
-        .resource-container h2 { font-size: 2rem; letter-spacing: 8px; text-transform: uppercase; color: #fff; margin-bottom: 25px; line-height: 1.4; }
-        .resource-container > p { color: #777; line-height: 1.8; font-size: 0.95rem; margin-bottom: 40px; }
-
-        /* --- CTA --- */
-        .cta-section { padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111; }
-        .cta-section p  { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px; }
-        .cta-section h2 { font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px; color: #fff; }
-        .cta-section .btn-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-
-        .cta-btn { display: inline-block; padding: 15px 30px; border: 1px solid var(--nz-gold); color: var(--nz-gold); text-decoration: none; text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s; }
-        .cta-btn:hover { background: var(--nz-gold); color: #000; }
-        .cta-btn.secondary { border-color: #333; color: #888; }
-        .cta-btn.secondary:hover { background: #333; color: #fff; }
-
-        /* --- FOOTER --- */
-        footer { padding: 80px 50px; text-align: center; color: #444; letter-spacing: 3px; text-transform: uppercase; font-size: 0.65rem; border-top: 1px solid #111; }
+        .resource-tag  { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px; display: block; }
+        .resource-container h2 { font-size: clamp(1.8rem, 5vw, 3rem); text-transform: uppercase; letter-spacing: 8px; color: #fff; margin-bottom: 25px; line-height: 1.4; }
+        .resource-container > p { color: #777; font-size: 0.95rem; line-height: 1.8; margin-bottom: 40px; }
 
         /* --- MOBILE --- */
         @media (max-width: 768px) {
@@ -106,10 +139,6 @@
 </head>
 <body>
 
-    <!--
-        Nav markup matches index.html, work.html, and all-services.html exactly.
-        nav.js targets: #hamburger-menu and #nav-links-container.
-    -->
     <nav class="nz-nav" role="navigation" aria-label="Main navigation">
         <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
             <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
@@ -141,6 +170,7 @@
                 </div>
             </div>
             <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
             <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
         </div>
     </nav>
@@ -152,7 +182,6 @@
             </div>
             <div class="hero-overlay" aria-hidden="true"></div>
             <div class="hero-content">
-                <!-- data-text removed: no glitch CSS defined on this page -->
                 <h1>The Lens</h1>
                 <p>Architectural Integrity &amp; Visual Narrative</p>
             </div>
@@ -190,7 +219,6 @@
                 <p class="resource-tag">Industry Resource</p>
                 <h2>The Indie Filmmaker's Fast Track</h2>
                 <p>A blueprint for cinematic permanence. My personal guide to navigating high-stakes production, technical compliance, and visual strategy.</p>
-                <!-- Explicit download filename for a cleaner user-facing file name -->
                 <a href="THE_INDIE_FILMMAKERS_FAST_TRACK.pdf" class="cta-btn" download="NorthzeroFastTrack.pdf">Access the Blueprint</a>
             </div>
         </section>
@@ -199,58 +227,41 @@
             <p>Ready to Document the Legacy?</p>
             <h2>Let's Discuss the Scope</h2>
             <div class="btn-group">
-                <a href="contact.html" class="cta-btn">Start Project</a>
-                <!-- Email assembled at runtime to deter scrapers -->
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
                 <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
-
-        <footer>
-            &copy; 2026 Northzero Productions LLC | New York
-        </footer>
     </main>
 
-    <script src="nav.js?v=1.1"></script>
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
+    </footer>
+
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // --- Hamburger (consistent with all other pages) ---
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks  = document.getElementById('nav-links-container');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-
         // --- YouTube Background Video ---
-        // Respects prefers-reduced-motion: CSS hides the container,
-        // and we skip initialising the player entirely to avoid unnecessary loading.
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         let player;
         function onYouTubeIframeAPIReady() {
-            if (prefersReduced) return; // skip for reduced-motion users
+            if (prefersReduced) return;
 
             player = new YT.Player('yt-player', {
                 videoId: 'AVN2N2hopGk',
                 playerVars: {
-                    autoplay:        1,
-                    controls:        0,
-                    showinfo:        0,
-                    rel:             0,
-                    loop:            1,
-                    playlist:        'AVN2N2hopGk',
-                    mute:            1,
-                    modestbranding:  1,
-                    iv_load_policy:  3,
-                    disablekb:       1
+                    autoplay:       1,
+                    controls:       0,
+                    showinfo:       0,
+                    rel:            0,
+                    loop:           1,
+                    playlist:       'AVN2N2hopGk',
+                    mute:           1,
+                    modestbranding: 1,
+                    iv_load_policy: 3,
+                    disablekb:      1
                 },
                 events: {
                     onReady: e => e.target.playVideo()
@@ -265,6 +276,7 @@
     </script>
 </body>
 </html>
+
 
 
 
