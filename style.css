@@ -1,6 +1,7 @@
 /* ============================================================
-   NORTHZERO MASTER STYLES v5.0 | 2026
+   NORTHZERO MASTER STYLES v5.1 | 2026
    Target markup: .nz-nav / #hamburger-menu / #nav-links-container
+   v5.1: Mobile dropdown .open class support added
    ============================================================ */
 
 /* --- 1. BRAND VARIABLES --- */
@@ -27,6 +28,11 @@ body {
 }
 
 /* --- 4. NAVIGATION --- */
+
+/* iOS Safari fix: elements must have cursor:pointer to receive
+   click events when used as tap targets outside of <a>/<button> */
+nav.nz-nav, .dropdown, .dropdown-content a { cursor: pointer; }
+
 nav.nz-nav {
     position: fixed;
     top: 0; left: 0;
@@ -125,7 +131,7 @@ nav.nz-nav {
 
 .hamburger span { width: 25px; height: 2px; background: var(--nz-white); transition: 0.3s; display: block; }
 
-/* Dropdown */
+/* --- DROPDOWN (desktop: hover, mobile: .open class) --- */
 .dropdown { position: relative; height: var(--nav-height); display: flex; align-items: center; }
 
 .dropdown-content {
@@ -154,7 +160,12 @@ nav.nz-nav {
 
 .dropdown-content a:last-child  { border-bottom: none; }
 .dropdown-content a:hover       { background: #080808; color: var(--nz-gold); }
+
+/* Desktop hover trigger */
 .dropdown:hover .dropdown-content { display: block; }
+
+/* Mobile tap trigger — JS adds .open to .dropdown-content */
+.dropdown-content.open { display: block; }
 
 /* --- 5. PAGE CONTENT SPACING --- */
 main { padding-top: var(--nav-height); }
@@ -367,12 +378,49 @@ footer {
         padding: 40px 0; gap: 25px;
         border-bottom: 1px solid #111;
         z-index: 9999;
+        overflow-y: auto;
+        max-height: calc(100vh - var(--nav-height));
     }
 
-    /* Dropdown static in mobile */
-    .dropdown                         { height: auto; }
-    .dropdown-content                 { position: static; border: none; min-width: unset; }
+    /* Dropdown: static positioning in mobile menu */
+    .dropdown {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Hide hover trigger on mobile — JS .open handles it */
     .dropdown:hover .dropdown-content { display: none; }
+
+    /* Mobile dropdown open state — toggled by JS */
+    .dropdown-content.open {
+        display: flex !important;
+        position: static;
+        flex-direction: column;
+        border: none;
+        min-width: unset;
+        width: 100%;
+        background: #0a0a0a;
+        border-top: 1px solid #111;
+        border-bottom: 1px solid #111;
+        margin-top: 10px;
+    }
+
+    .dropdown-content.open a {
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+    }
+
+    /* Visual cue that Services is expandable */
+    .dropbtn::after {
+        content: ' ↓';
+        color: var(--nz-gold);
+        font-size: 0.6rem;
+    }
 
     /* Slide hero */
     .slide-content h1 {
@@ -396,6 +444,3 @@ footer {
     .hpc-strip-inner { flex-direction: column; padding: 80px 5%; gap: 50px; }
     .hpc-badge-card  { width: 100%; }
 }
-
-
-
