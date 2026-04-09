@@ -3,23 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Northzero Productions | Cinematic Design & Narrative</title>
+    <title>Northzero Productions | Luxury Cinematography & Brand Narrative · Hudson Valley, NY</title>
 
-    <!-- Preload hero image for LCP performance -->
+    <meta name="description" content="Northzero Productions — luxury product cinematography and architectural cinema studio serving Westchester County, Hudson Valley, and the Tri-State Area. Founded by an Ossining HPC member.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/">
+    <meta property="og:title"        content="Northzero Productions | Luxury Cinematography & Brand Narrative · Hudson Valley, NY">
+    <meta property="og:description"  content="Luxury product cinematography and architectural cinema studio serving Westchester County, Hudson Valley, and the Tri-State Area.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — Luxury Cinematography Hudson Valley">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Northzero Productions | Luxury Cinematography · Hudson Valley, NY">
+    <meta name="twitter:description" content="Luxury product cinematography and architectural cinema studio serving Westchester County, Hudson Valley, and the Tri-State Area.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
     <link rel="preload" as="image" href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css?v=2.2">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://northzeroproductions.com/#business",
+      "name": "Northzero Productions LLC",
+      "url": "https://northzeroproductions.com",
+      "logo": "https://northzeroproductions.com/og-image.jpg",
+      "image": "https://northzeroproductions.com/og-image.jpg",
+      "description": "Luxury product cinematography, architectural cinema, and institutional visual strategy studio serving Westchester County, the Hudson Valley, and the Tri-State Area.",
+      "founder": {
+        "@type": "Person",
+        "name": "Omar A. Greene",
+        "jobTitle": "Founder & Director",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "Village of Ossining Historic Preservation Commission"
+        }
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ossining",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "City",   "name": "Ossining" },
+        { "@type": "County", "name": "Westchester County" },
+        { "@type": "Place",  "name": "Hudson Valley" },
+        { "@type": "State",  "name": "New York" }
+      ],
+      "serviceType": [
+        "Luxury Product Cinematography",
+        "Architectural Cinema",
+        "Brand Storytelling",
+        "Historic Preservation Documentation",
+        "Institutional Visual Strategy"
+      ]
+    }
+    </script>
+
     <style>
-        /* --- 1. CORE BRAND VARIABLES --- */
         :root {
-            --bg-black: #000;
-            --bg-soft: #050505;
-            --nz-gold: #d4af37;
-            --nz-blue: #0047ab;
-            --nz-white: #ffffff;
-            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --bg-black:   #000;
+            --bg-soft:    #050505;
+            --nz-gold:    #d4af37;
+            --nz-blue:    #0047ab;
+            --nz-white:   #ffffff;
+            --font-main:  'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --nav-height: 80px;
         }
 
         html, body {
@@ -31,45 +86,7 @@
             font-family: var(--font-main);
         }
 
-        /* --- 2. NAVIGATION --- */
-        nav.nz-nav {
-            position: fixed !important; top: 0; left: 0; width: 100%;
-            height: 80px; background: rgba(0,0,0,0.98);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 5%; z-index: 9999 !important;
-            border-bottom: 1px solid #111;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo-link { display: flex; align-items: center; text-decoration: none; gap: 15px; }
-        .compass-box {
-            width: 40px; height: 40px; border: 1px solid #333; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .needle {
-            width: 2px; height: 28px;
-            background: linear-gradient(to bottom, var(--nz-blue) 50%, var(--nz-gold) 50%);
-            transition: 0.6s ease;
-        }
-        .logo-link:hover .needle { transform: rotate(45deg); }
-
-        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .main-title { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; color: #fff; }
-        .sub-title { font-size: 0.6rem; color: var(--nz-gold); letter-spacing: 3px; text-transform: uppercase; }
-
-        /* Desktop Nav Links */
-        .nav-links { display: flex; align-items: center; gap: 25px; }
-        .nav-links a { color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.7rem; }
-
-        /* Hamburger Icon — hidden on desktop */
-        .hamburger {
-            display: none; flex-direction: column; gap: 5px;
-            cursor: pointer; z-index: 10001;
-            background: none; border: none; padding: 0;
-        }
-        .hamburger span { width: 25px; height: 2px; background: #fff; transition: 0.3s; display: block; }
-
-        /* --- 3. HERO SLIDER --- */
+        /* --- HERO SLIDER --- */
         .slider-container {
             position: relative;
             height: 100vh;
@@ -82,16 +99,12 @@
         .slide {
             position: absolute; width: 100%; height: 100%; opacity: 0;
             transition: opacity 1.5s ease-in-out;
-            display: flex; align-items: center; justify-content: center; text-align: center;
-            z-index: 2;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; z-index: 2;
         }
 
-        .slide.active {
-            opacity: 1;
-            z-index: 5;
-        }
+        .slide.active { opacity: 1; z-index: 5; }
 
-        /* Slide Backgrounds */
         .slide-1 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920') center/cover; }
         .slide-2 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=1920') center/cover; }
         .slide-3 { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1920') center/cover; }
@@ -107,8 +120,6 @@
             position: relative;
         }
 
-        /* Glitch effect — pseudo-elements read by screen readers via data-text,
-           so we use aria-hidden on them via a wrapper trick instead */
         .slide-content h1::after {
             content: attr(data-text); position: absolute;
             top: 0; left: 2px; width: 100%; height: 100%;
@@ -120,7 +131,7 @@
             content: attr(data-text); position: absolute;
             top: 0; left: -2px; width: 100%; height: 100%;
             opacity: 0.6; color: var(--nz-gold);
-            animation: glitch 14.1s infinite linear alternate-reverse;
+            animation: glitch 14.5s infinite linear alternate-reverse;
             pointer-events: none;
         }
 
@@ -129,78 +140,173 @@
             10%, 30%, 50%, 80%, 100%     { clip-path: inset(0 0 0 0); }
         }
 
-        .slide-content .cta-btn {
-            margin-top: 15px;
-        }
-
         .cta-btn {
-            display: inline-block; padding: 15px 30px; border: 1px solid var(--nz-gold);
-            color: var(--nz-gold); text-decoration: none; text-transform: uppercase;
-            letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s; 
+            display: inline-block; padding: 15px 30px;
+            border: 1px solid var(--nz-gold); color: var(--nz-gold);
+            text-decoration: none; text-transform: uppercase;
+            letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s;
         }
         .cta-btn:hover { background: var(--nz-gold); color: #000; }
 
-        /* --- 4. BENTO GRID --- */
+        /* --- BENTO GRID --- */
         .bento-showcase { padding: 100px 5%; background: var(--bg-black); }
+
         .bento-grid-fixed {
-            display: grid; grid-template-columns: 1.6fr 1fr;
-            grid-template-rows: 350px 350px; gap: 20px;
-            max-width: 1400px; margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.6fr 1fr;
+            grid-template-rows: 350px 350px;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
+
         .bento-item {
             background: #0a0a0a; border: 1px solid #1a1a1a;
             position: relative; overflow: hidden;
             background-size: cover; background-position: center;
             transition: 0.5s;
         }
-        .bento-item:hover { border-color: var(--nz-gold); transform: translateY(-5px); }
-        .bento-item.large { grid-row: span 2; }
-        .bento-text { position: absolute; bottom: 20px; left: 20px; }
-        .bento-text h3 { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
 
-        /* --- 5. MOBILE (SINGLE MERGED BLOCK) --- */
+        .bento-item:hover  { border-color: var(--nz-gold); transform: translateY(-5px); }
+        .bento-item.large  { grid-row: span 2; }
+        .bento-text        { position: absolute; bottom: 20px; left: 20px; }
+        .bento-text h3     { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+
+        /* --- LEAD MAGNET STRIP --- */
+        .lead-magnet-strip {
+            padding: 120px 5%;
+            background: #050505;
+            border-top: 1px solid #111;
+            border-bottom: 1px solid #111;
+        }
+
+        .lm-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .lm-copy          { flex: 1; min-width: 280px; max-width: 560px; }
+        .lm-copy .lm-label {
+            color: var(--nz-gold); letter-spacing: 6px; text-transform: uppercase;
+            font-size: 0.65rem; margin-bottom: 20px; display: block;
+        }
+        .lm-copy h2 {
+            font-size: clamp(1.6rem, 4vw, 2.4rem); text-transform: uppercase;
+            letter-spacing: 8px; color: #fff; margin-bottom: 20px; line-height: 1.2;
+        }
+        .lm-copy p { color: #666; font-size: 0.95rem; line-height: 2; margin-bottom: 30px; }
+
+        .lm-form   { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
+        .lm-fields { display: flex; gap: 0; }
+
+        .lm-fields input {
+            flex: 1; background: #0a0a0a; border: 1px solid #222; border-right: none;
+            padding: 14px 16px; color: #fff; font-size: 0.85rem; font-family: inherit;
+            outline: none; transition: border-color 0.3s; min-width: 0;
+        }
+        .lm-fields input:focus       { border-color: var(--nz-gold); }
+        .lm-fields input::placeholder { color: #444; }
+
+        .lm-fields button {
+            background: var(--nz-gold); border: 1px solid var(--nz-gold); color: #000;
+            padding: 14px 22px; text-transform: uppercase; letter-spacing: 3px;
+            font-size: 0.65rem; font-family: inherit; font-weight: 700;
+            cursor: pointer; transition: 0.3s; white-space: nowrap; flex-shrink: 0;
+        }
+        .lm-fields button:hover    { background: #000; color: var(--nz-gold); }
+        .lm-fields button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        #lm-status  { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--nz-gold); min-height: 1em; }
+        .lm-more    { font-size: 0.6rem; color: #333; letter-spacing: 1px; line-height: 1.8; }
+        .lm-more a  { color: #555; text-decoration: none; border-bottom: 1px solid #333; transition: color 0.3s; }
+        .lm-more a:hover { color: var(--nz-gold); }
+
+        .lm-card {
+            flex-shrink: 0; width: 260px; border: 1px solid #1a1a1a;
+            padding: 40px 35px; background: #0a0a0a; position: relative;
+        }
+        .lm-card::before {
+            content: ''; position: absolute; top: 0; left: 0;
+            width: 3px; height: 100%; background: var(--nz-gold);
+        }
+        .lm-card .lm-card-tag {
+            font-size: 0.55rem; letter-spacing: 4px; text-transform: uppercase;
+            color: var(--nz-gold); margin-bottom: 18px; display: block;
+        }
+        .lm-card h3 {
+            font-size: 0.95rem; letter-spacing: 2px; text-transform: uppercase;
+            color: #fff; line-height: 1.4; margin-bottom: 22px;
+        }
+        .lm-card ul  { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .lm-card ul li {
+            font-size: 0.7rem; color: #555; letter-spacing: 1px;
+            padding-left: 14px; position: relative; line-height: 1.5;
+        }
+        .lm-card ul li::before { content: '—'; position: absolute; left: 0; color: var(--nz-gold); }
+
+        /* --- HPC STRIP --- */
+        .hpc-strip { background: #000; border-top: 1px solid #111; border-bottom: 1px solid #111; }
+
+        .hpc-strip-inner {
+            max-width: 1300px; margin: 0 auto; padding: 100px 5%;
+            display: flex; align-items: center; gap: 80px; flex-wrap: wrap;
+        }
+
+        .hpc-copy           { flex: 1; min-width: 280px; max-width: 560px; }
+        .hpc-label {
+            color: var(--nz-blue); letter-spacing: 6px; text-transform: uppercase;
+            font-size: 0.65rem; margin-bottom: 20px; display: block;
+        }
+        .hpc-copy h2 {
+            font-size: clamp(1.6rem, 4vw, 2.2rem); text-transform: uppercase;
+            letter-spacing: 8px; color: #fff; margin-bottom: 25px; line-height: 1.2;
+        }
+        .hpc-copy p { color: #666; font-size: 0.95rem; line-height: 2; }
+
+        .hpc-badge-card {
+            flex-shrink: 0; width: 260px; border: 1px solid var(--nz-blue);
+            padding: 3px; background: #000; position: relative;
+        }
+        .hpc-badge-card::before {
+            content: ''; position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            border: 1px solid var(--nz-blue); opacity: 0.3; pointer-events: none;
+        }
+        .hpc-badge-inner {
+            border: 1px solid #0a1a3a; padding: 40px 30px;
+            display: flex; flex-direction: column; align-items: center;
+            text-align: center; gap: 8px; background: #020810;
+        }
+        .hpc-badge-abbr   { font-size: 2.5rem; letter-spacing: 8px; color: var(--nz-blue); font-weight: 900; margin-bottom: 4px; }
+        .hpc-badge-title  { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: #fff; line-height: 1.6; }
+        .hpc-badge-sub    { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: #334; }
+        .hpc-badge-divider { width: 30px; height: 1px; background: var(--nz-blue); opacity: 0.4; margin: 8px 0; }
+        .hpc-badge-role   { font-size: 0.55rem; letter-spacing: 3px; text-transform: uppercase; color: var(--nz-blue); }
+        .hpc-badge-name   { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: #fff; font-weight: 700; }
+        .hpc-badge-studio { font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; color: #333; }
+
+        /* --- MOBILE --- */
         @media screen and (max-width: 900px) {
-            /* Hide desktop nav, show hamburger */
-            .nav-links {
-                display: none !important;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: #000;
-                flex-direction: column;
-                padding: 40px 0;
-                z-index: 9998;
-            }
-
-            /* Show nav when hamburger is active */
-            .nav-links.active {
-                display: flex !important;
-            }
-
-            .hamburger { display: flex !important; }
-
-            /* Hero typography */
             .slide-content h1 {
-                font-size: 2rem !important;
-                letter-spacing: 4px !important;
-                line-height: 1.2 !important;
-                white-space: normal !important;
-                width: 100% !important;
+                font-size: 2rem !important; letter-spacing: 4px !important;
+                line-height: 1.2 !important; white-space: normal !important;
             }
-            .slide-content p {
-                font-size: 0.8rem !important;
-                max-width: 300px;
-                margin: 0 auto 20px;
-            }
-
-            /* Bento stacks vertically */
-            .bento-grid-fixed {
-                display: flex;
-                flex-direction: column;
-                height: auto;
-            }
-            .bento-item { height: 300px; }
+            .slide-content p { font-size: 0.8rem !important; }
+            .bento-grid-fixed { display: flex; flex-direction: column; height: auto; }
+            .bento-item       { height: 300px; }
+            .lead-magnet-strip { padding: 80px 5%; }
+            .lm-inner          { flex-direction: column; }
+            .lm-card           { width: 100%; }
+            .lm-fields         { flex-direction: column; }
+            .lm-fields input   { border-right: 1px solid #222; }
+            .lm-fields button  { padding: 14px; }
+            .hpc-strip-inner   { flex-direction: column; padding: 80px 5%; gap: 50px; }
+            .hpc-badge-card    { width: 100%; }
         }
     </style>
 </head>
@@ -215,7 +321,11 @@
             </div>
         </a>
 
-        <!-- Semantic button instead of bare div -->
+        <div class="nz-credential-badge" aria-label="Omar A. Greene — Ossining Historic Preservation Commission">
+            <span class="badge-dot" aria-hidden="true"></span>
+            <span class="badge-text">HPC Member · Ossining, NY</span>
+        </div>
+
         <button
             class="hamburger"
             id="hamburger-menu"
@@ -229,18 +339,25 @@
         <div class="nav-links" id="nav-links-container" role="menubar">
             <a href="index.html" role="menuitem">Agency</a>
             <a href="work.html" role="menuitem">Works</a>
-            <a href="all-services.html" role="menuitem">Services</a>
+            <div class="dropdown">
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
+                <div class="dropdown-content">
+                    <a href="authority.html">Authority Suite</a>
+                    <a href="architectural.html">Architectural Cinema</a>
+                    <a href="tactile.html">Tactile Narratives</a>
+                </div>
+            </div>
             <a href="about.html" role="menuitem">Lens</a>
-            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 8px 15px; color: var(--nz-gold); margin-left: 10px;">Start a Project</a>
+            <a href="journal.html" role="menuitem">Journal</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 8px 15px; color: var(--nz-gold);">Start a Project</a>
         </div>
     </nav>
 
     <main>
-        <!-- Slider: pauses on hover/focus via JS -->
+        <!-- Hero Slider -->
         <div class="slider-container" id="hero-slider">
             <div class="slide slide-1 active" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
                 <div class="slide-content">
-                    <!-- aria-label provides the clean text; data-text drives the glitch visuals -->
                     <h1 data-text="Architectural Cinema" aria-label="Architectural Cinema">Architectural Cinema</h1>
                     <p>Capturing the Structural Integrity of the Hudson Valley</p>
                     <a href="work.html" class="cta-btn">View the Collection</a>
@@ -262,6 +379,7 @@
             </div>
         </div>
 
+        <!-- Bento Grid -->
         <section class="bento-showcase" aria-label="Selected portfolios">
             <div style="text-align: center; margin-bottom: 50px;">
                 <p style="color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem;">Selected Portfolios</p>
@@ -279,54 +397,115 @@
             </div>
         </section>
 
-        <section style="padding: 100px 5%; background: #050505; text-align: center; border-top: 1px solid #111;">
-            <h2 style="font-size: 2rem; letter-spacing: 10px; text-transform: uppercase; margin-bottom: 40px;">Let's Discuss the Scope</h2>
-            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+        <!-- Lead Magnet Strip -->
+        <section class="lead-magnet-strip" aria-label="Free industry resource">
+            <div class="lm-inner">
+                <div class="lm-copy">
+                    <span class="lm-label">Free Industry Resource</span>
+                    <h2>The Indie Filmmaker's Fast Track</h2>
+                    <p>
+                        A personal blueprint for cinematic permanence. High-stakes production,
+                        technical compliance, and visual strategy — from someone working inside
+                        the institutional frameworks that govern it.
+                    </p>
+                    <form id="lm-form" class="lm-form" novalidate aria-label="Download the blueprint">
+                        <div class="lm-fields">
+                            <input
+                                type="email"
+                                id="lm-email"
+                                name="email"
+                                placeholder="Your email address"
+                                autocomplete="email"
+                                aria-label="Email address"
+                                required
+                            >
+                            <button type="submit" id="lm-submit">Get the Blueprint</button>
+                        </div>
+                        <p id="lm-status" role="status" aria-live="polite"></p>
+                        <p class="lm-more">
+                            Want the full experience?
+                            <a href="fast-track.html">View the dedicated page &rarr;</a>
+                        </p>
+                    </form>
+                </div>
+
+                <div class="lm-card" aria-hidden="true">
+                    <span class="lm-card-tag">What's Inside</span>
+                    <h3>The Indie Filmmaker's Fast Track</h3>
+                    <ul>
+                        <li>HPC &amp; landmark compliance</li>
+                        <li>Institutional-grade deliverables</li>
+                        <li>Visual strategy frameworks</li>
+                        <li>High-value client positioning</li>
+                        <li>Production authority building</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- HPC Credential Strip -->
+        <section class="hpc-strip" aria-label="Institutional credentials">
+            <div class="hpc-strip-inner">
+                <div class="hpc-copy">
+                    <span class="hpc-label">Institutional Credential</span>
+                    <h2>Grounded in Preservation Law</h2>
+                    <p>
+                        Northzero Productions is founded by Omar A. Greene — an alternate member
+                        of the Village of Ossining Historic Preservation Commission. This institutional
+                        position informs every production we undertake: from landmark documentation
+                        to municipal visual strategy.
+                    </p>
+                    <a href="authority.html" class="cta-btn" style="margin-top: 30px; display: inline-block;">
+                        The Authority Suite &rarr;
+                    </a>
+                </div>
+
+                <div class="hpc-badge-card" aria-hidden="true">
+                    <div class="hpc-badge-inner">
+                        <span class="hpc-badge-abbr">HPC</span>
+                        <span class="hpc-badge-title">Historic Preservation<br>Commission</span>
+                        <span class="hpc-badge-sub">Village of Ossining, New York</span>
+                        <div class="hpc-badge-divider"></div>
+                        <span class="hpc-badge-role">Alternate Member</span>
+                        <span class="hpc-badge-name">Omar A. Greene</span>
+                        <span class="hpc-badge-studio">Northzero Productions</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="cta-section" aria-label="Start a project">
+            <h2>Initiate an Audit</h2>
+            <div class="btn-group">
                 <a href="contact.html" class="cta-btn">Start Project</a>
-                <!-- Email obfuscated via JS to reduce spam harvesting -->
-                <a href="#" id="email-link" class="cta-btn" style="border-color: #333; color: #888;">Direct Email</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
     </main>
 
-    <footer style="padding: 60px; text-align: center; border-top: 1px solid #111; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase; color: #444;">
+    <footer>
         &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
-    <script src="nav.js"></script>
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
+
     <script>
-        // --- Hamburger Toggle ---
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks  = document.getElementById('nav-links-container');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        // Close menu when a nav link is clicked (mobile UX)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-
-        // --- Hero Slider with pause-on-hover ---
+        // --- Hero Slider ---
         const slides     = document.querySelectorAll('.slide');
         const sliderEl   = document.getElementById('hero-slider');
         let currentSlide = 0;
         let sliderTimer;
 
-        function goToSlide(index) {
+        function goToSlide(idx) {
             slides[currentSlide].classList.remove('active');
-            currentSlide = (index + slides.length) % slides.length;
+            currentSlide = (idx + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
         }
 
-        function nextSlide() { goToSlide(currentSlide + 1); }
-
-        function startSlider() { sliderTimer = setInterval(nextSlide, 5000); }
+        function startSlider() { sliderTimer = setInterval(() => goToSlide(currentSlide + 1), 5000); }
         function stopSlider()  { clearInterval(sliderTimer); }
 
         sliderEl.addEventListener('mouseenter', stopSlider);
@@ -336,16 +515,84 @@
 
         startSlider();
 
+        // --- Lead Magnet Form (Mailchimp JSONP) ---
+        // TODO: Replace with your Mailchimp /post-json endpoint
+        const MC_ENDPOINT = 'YOUR_MAILCHIMP_ENDPOINT_HERE';
+
+        (function () {
+            const form   = document.getElementById('lm-form');
+            const status = document.getElementById('lm-status');
+            const btn    = document.getElementById('lm-submit');
+            if (!form) return;
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const email = document.getElementById('lm-email').value.trim();
+                if (!email) {
+                    status.textContent = 'Please enter your email.';
+                    status.style.color = '#e05555';
+                    return;
+                }
+
+                btn.disabled       = true;
+                status.textContent = 'Sending...';
+                status.style.color = 'var(--nz-gold)';
+
+                const callbackName = 'lm_mc_cb_' + Date.now();
+                const params       = new URLSearchParams({ EMAIL: email });
+                const url          = MC_ENDPOINT + '&' + params.toString() + '&c=' + callbackName;
+
+                const timeout = setTimeout(() => {
+                    cleanup();
+                    status.textContent = 'Request timed out. Please try again.';
+                    status.style.color = '#e05555';
+                    btn.disabled = false;
+                }, 8000);
+
+                function cleanup() {
+                    clearTimeout(timeout);
+                    delete window[callbackName];
+                    const s = document.getElementById('lm-mc-jsonp');
+                    if (s) s.remove();
+                }
+
+                window[callbackName] = function (data) {
+                    cleanup();
+                    btn.disabled = false;
+                    const alreadySubscribed = data.msg && data.msg.includes('already subscribed');
+                    if (data.result === 'success' || alreadySubscribed) {
+                        const link    = document.createElement('a');
+                        link.href     = 'THE_INDIE_FILMMAKERS_FAST_TRACK.pdf';
+                        link.download = 'NorthzeroFastTrack.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        status.textContent = alreadySubscribed
+                            ? 'You\'re already subscribed — download started.'
+                            : 'Download started — check your inbox too.';
+                        status.style.color = '#fff';
+                        form.reset();
+                    } else {
+                        status.textContent = 'Something went wrong. Please try again.';
+                        status.style.color = '#e05555';
+                    }
+                };
+
+                const script  = document.createElement('script');
+                script.id     = 'lm-mc-jsonp';
+                script.src    = url;
+                document.body.appendChild(script);
+            });
+        }());
+
         // --- Email obfuscation ---
-        // Assembles the mailto at runtime so plain HTML scrapers can't harvest it
         const u = 'omar';
         const d = 'northzeroproductions.com';
-        const emailLink = document.getElementById('email-link');
-        emailLink.href = `mailto:${u}@${d}`;
-        emailLink.textContent = 'Direct Email';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
     </script>
 </body>
 </html>
+
 
 
 
