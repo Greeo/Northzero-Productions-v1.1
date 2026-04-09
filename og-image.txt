@@ -1,0 +1,171 @@
+<!--
+    ============================================================
+    NORTHZERO PRODUCTIONS — OG & SEO META TAGS
+    Paste the relevant block into the <head> of each page,
+    after <meta name="viewport" ...> and before </head>.
+    ============================================================
+-->
+
+
+<!-- ===================== index.html ===================== -->
+<meta name="description" content="Northzero Productions — cinematic design and visual narrative studio based in New York. Architectural cinema, tactile storytelling, and institutional brand strategy.">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/index.html">
+<meta property="og:title"       content="Northzero Productions | Cinematic Design & Narrative">
+<meta property="og:description" content="Cinematic design and visual narrative studio based in New York. Architectural cinema, tactile storytelling, and institutional brand strategy.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — Cinematic Design & Narrative">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Northzero Productions | Cinematic Design & Narrative">
+<meta name="twitter:description" content="Cinematic design and visual narrative studio based in New York.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — Cinematic Design & Narrative">
+
+
+<!-- ===================== work.html ===================== -->
+<meta name="description" content="Selected works by Northzero Productions — architectural cinema, tactile narratives, and institutional visual strategy across the Hudson Valley and Tri-State Area.">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/work.html">
+<meta property="og:title"       content="Selected Works | Northzero Productions">
+<meta property="og:description" content="Architectural cinema, tactile narratives, and institutional visual strategy across the Hudson Valley and Tri-State Area.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — Selected Works">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Selected Works | Northzero Productions">
+<meta name="twitter:description" content="Architectural cinema, tactile narratives, and institutional visual strategy.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — Selected Works">
+
+
+<!-- ===================== all-services.html ===================== -->
+<meta name="description" content="Production pillars at Northzero Productions — architectural and estate cinema, tactile narrative, brand storytelling, and lifestyle integration for luxury clients.">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/all-services.html">
+<meta property="og:title"       content="Production Pillars | Northzero Productions">
+<meta property="og:description" content="Architectural and estate cinema, tactile narrative, brand storytelling, and lifestyle integration for luxury clients.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — Production Pillars">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Production Pillars | Northzero Productions">
+<meta name="twitter:description" content="Architectural and estate cinema, tactile narrative, and brand storytelling for luxury clients.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — Production Pillars">
+
+
+<!-- ===================== about.html ===================== -->
+<meta name="description" content="The Lens — the philosophy behind Northzero Productions. Founded by Omar A. Greene, alternate member of the Village of Ossining Historic Preservation Commission.">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/about.html">
+<meta property="og:title"       content="The Lens | Northzero Productions">
+<meta property="og:description" content="The philosophy behind Northzero Productions. Founded by Omar A. Greene, grounded in architectural integrity and historical preservation.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — The Lens">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="The Lens | Northzero Productions">
+<meta name="twitter:description" content="The philosophy behind Northzero Productions — architectural integrity and historical preservation.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — The Lens">
+
+
+<!-- ===================== contact.html ===================== -->
+<meta name="description" content="Initiate an inquiry with Northzero Productions — start your architectural cinema or visual narrative project in New York and the Tri-State Area.">
+<!-- Prevent search engines from indexing the contact form -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/contact.html">
+<meta property="og:title"       content="Initiate Inquiry | Northzero Productions">
+<meta property="og:description" content="Start your architectural cinema or visual narrative project with Northzero Productions.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — Initiate Inquiry">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Initiate Inquiry | Northzero Productions">
+<meta name="twitter:description" content="Start your architectural cinema or visual narrative project with Northzero Productions.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — Initiate Inquiry">
+
+
+<!-- ===================== authority.html ===================== -->
+<meta name="description" content="The Authority Suite — high-stakes visual documentation for historic preservation, municipal approvals, and investor briefings. Northzero Productions, New York.">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/authority.html">
+<meta property="og:title"       content="The Authority Suite | Northzero Productions">
+<meta property="og:description" content="High-stakes visual documentation for historic preservation, municipal approvals, and investor briefings.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — The Authority Suite">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="The Authority Suite | Northzero Productions">
+<meta name="twitter:description" content="High-stakes visual documentation for historic preservation, municipal approvals, and investor briefings.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — The Authority Suite">
+
+
+<!-- ===================== architectural.html ===================== -->
+<meta name="description" content="Architectural Cinema by Northzero Productions — cinematic estate documentation, historical narratives, and institutional visuals for luxury real estate and preservation.">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/architectural.html">
+<meta property="og:title"       content="Architectural Cinema | Northzero Productions">
+<meta property="og:description" content="Cinematic estate documentation, historical narratives, and institutional visuals for luxury real estate and preservation.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — Architectural Cinema">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Architectural Cinema | Northzero Productions">
+<meta name="twitter:description" content="Cinematic estate documentation, historical narratives, and institutional visuals for luxury real estate.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — Architectural Cinema">
+
+
+<!-- ===================== tactile.html ===================== -->
+<meta name="description" content="Tactile Narratives by Northzero Productions — macro cinematography and sensory storytelling for luxury product brands and premium goods.">
+
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://northzeroproductions.com/tactile.html">
+<meta property="og:title"       content="Tactile Narratives | Northzero Productions">
+<meta property="og:description" content="Macro cinematography and sensory storytelling for luxury product brands and premium goods.">
+<meta property="og:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"   content="Northzero Productions — Tactile Narratives">
+<meta property="og:site_name"   content="Northzero Productions">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Tactile Narratives | Northzero Productions">
+<meta name="twitter:description" content="Macro cinematography and sensory storytelling for luxury product brands and premium goods.">
+<meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+<meta name="twitter:image:alt"   content="Northzero Productions — Tactile Narratives">

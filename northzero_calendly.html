@@ -1,0 +1,159 @@
+<!--
+    ============================================================
+    CALENDLY BOOKING BUTTON — #9
+    Calendly URL: https://calendly.com/northzeroproductions-info/30min
+
+    Every .cta-section .btn-group across the site gets a third
+    button. Find each .btn-group and add the booking button
+    shown below. Page-specific notes follow.
+    ============================================================ -->
+
+
+<!-- ============================================================
+     UNIVERSAL BOOKING BUTTON
+     Add this as the SECOND button in every .btn-group,
+     between "Start Project" and "Direct Email".
+     ============================================================ -->
+
+<a
+    href="https://calendly.com/northzeroproductions-info/30min"
+    class="cta-btn booking"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Schedule a 20-minute consultation — opens in new tab"
+>
+    Schedule a Consultation
+</a>
+
+
+<!-- ============================================================
+     STYLE ADDITION — add to style.css
+     A distinct white-bordered variant so the three buttons
+     read as a clear hierarchy:
+       1. Gold  — Start Project    (primary action)
+       2. White — Schedule Call    (secondary action)
+       3. Grey  — Direct Email     (tertiary / escape hatch)
+     ============================================================ -->
+
+<style>
+.cta-btn.booking {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ccc;
+}
+
+.cta-btn.booking:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+</style>
+
+
+<!-- ============================================================
+     UPDATED .btn-group BLOCKS — one per page
+     Copy the full btn-group for the relevant page.
+     ============================================================ -->
+
+
+<!-- index.html — Final CTA section -->
+<div class="btn-group">
+    <a href="contact.html" class="cta-btn">Start Project</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+</div>
+
+
+<!-- work.html — CTA section -->
+<div class="btn-group">
+    <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+</div>
+
+
+<!-- all-services.html — CTA section -->
+<div class="btn-group">
+    <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+</div>
+
+
+<!-- about.html — CTA section -->
+<div class="btn-group">
+    <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+</div>
+
+
+<!-- authority.html — CTA section -->
+<div class="btn-group">
+    <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+</div>
+
+
+<!-- architectural.html — CTA section -->
+<div class="btn-group">
+    <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+</div>
+
+
+<!-- tactile.html — CTA section -->
+<div class="btn-group">
+    <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+</div>
+
+
+<!-- fast-track.html — no CTA section, but add to form confirmation
+     In the JS handleSubmit success branch, update status message: -->
+<script>
+// Replace the existing success status line in fast-track.html with:
+status.innerHTML = 'Download started — or <a href="https://calendly.com/northzeroproductions-info/30min" target="_blank" rel="noopener noreferrer" style="color:var(--nz-gold);text-decoration:none;border-bottom:1px solid var(--nz-gold);">schedule a call</a> to discuss your project.';
+</script>
+
+
+<!-- contact.html — add above the form as a soft alternative -->
+<div style="text-align:center; margin-bottom: 40px;">
+    <p style="color:#555; font-size:0.7rem; letter-spacing:3px; text-transform:uppercase; margin-bottom:15px;">
+        Prefer to talk first?
+    </p>
+    <a
+        href="https://calendly.com/northzeroproductions-info/30min"
+        class="cta-btn booking"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Schedule a 20-minute consultation — opens in new tab"
+    >
+        Schedule a 20-Min Consultation
+    </a>
+</div>
+
+
+<!-- journal article CTAs — apply to all three articles -->
+<!-- why-luxury-brands-need-film.html -->
+<div class="btn-group">
+    <a href="../contact.html" class="cta-btn">Start Project</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="../tactile.html" class="cta-btn secondary">Tactile Narratives →</a>
+</div>
+
+<!-- why-estate-listings-need-cinema.html -->
+<div class="btn-group">
+    <a href="../contact.html" class="cta-btn">Start Project</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="../architectural.html" class="cta-btn secondary">Architectural Cinema →</a>
+</div>
+
+<!-- what-hpc-approval-requires.html -->
+<div class="btn-group">
+    <a href="../contact.html" class="cta-btn">Start Project</a>
+    <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+    <a href="../authority.html" class="cta-btn secondary">The Authority Suite →</a>
+</div>
