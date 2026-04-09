@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lens | HPC Cinematographer & Visual Strategist · Northzero Productions, Ossining NY</title>
+
+    <meta name="description" content="Omar A. Greene — founder of Northzero Productions and alternate member of the Ossining Historic Preservation Commission. Luxury cinematography and visual strategy rooted in Westchester County and the Hudson Valley.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/about.html">
+    <meta property="og:title"        content="The Lens | HPC Cinematographer & Visual Strategist · Ossining, NY">
+    <meta property="og:description"  content="Omar A. Greene — luxury cinematographer, HPC member, and founder of Northzero Productions. Based in Ossining, serving Westchester and the Hudson Valley.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — The Lens">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="The Lens | HPC Cinematographer · Ossining, NY">
+    <meta name="twitter:description" content="Omar A. Greene — luxury cinematographer, HPC member, Ossining NY. Northzero Productions.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Omar A. Greene",
+      "jobTitle": "Founder & Director of Photography",
+      "url": "https://northzeroproductions.com/about.html",
+      "worksFor": { "@id": "https://northzeroproductions.com/#business" },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Parsons the New School for Design"
+      },
+      "memberOf": {
+        "@type": "Organization",
+        "name": "Village of Ossining Historic Preservation Commission"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New York City",
+        "addressRegion": "NY",
+        "addressCountry": "US"
+      },
+      "knowsAbout": [
+        "Luxury Product Cinematography",
+        "Architectural Cinema",
+        "Historic Preservation Documentation",
+        "Brand Visual Strategy",
+        "HPC Compliance",
+        "Motion Graphics",
+        "Lighting Design",
+        "Front-End Development",
+        "Integrated Design"
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css?v=2.2">
+
+    <style>
+        :root {
+            --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
+            --nav-height: 80px;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 75vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .video-background {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2; pointer-events: none; overflow: hidden;
+        }
+
+        #yt-player {
+            position: absolute; top: 50%; left: 50%;
+            width: 100vw; height: 56.25vw;
+            min-height: 100vh; min-width: 177.77vh;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .video-background { display: none; }
+            .hero { background: #0a0a0a; }
+        }
+
+        .hero-overlay {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(10,10,10,0.6); z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            text-transform: uppercase; letter-spacing: 15px;
+            color: #fff; font-weight: 900; margin-bottom: 10px;
+        }
+        .hero-content p {
+            font-size: 0.9rem; text-transform: uppercase;
+            letter-spacing: 5px; color: var(--nz-gold);
+        }
+
+        /* --- MANIFESTO --- */
+        .manifesto { padding: 120px 50px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .manifesto h2 { font-size: 1.8rem; text-transform: uppercase; letter-spacing: 10px; margin-bottom: 40px; color: var(--nz-gold); font-weight: 400; }
+        .manifesto p  { font-size: 1.3rem; color: #ddd; margin-bottom: 40px; font-weight: 300; line-height: 2; }
+
+        /* --- PILLAR ROW --- */
+        .pillar-row {
+            background: #0d0d0d; padding: 100px 50px; border-top: 1px solid #1a1a1a;
+            display: flex; align-items: center; justify-content: center; gap: 80px; flex-wrap: wrap;
+        }
+        .pillar-text           { max-width: 550px; }
+        .pillar-text h3        { color: #fff; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 25px; font-size: 1.4rem; }
+        .pillar-text p         { font-size: 1rem; color: #999; line-height: 2.2; margin-bottom: 20px; }
+        .pillar-img-wrapper    { width: 350px; height: 480px; border: 1px solid var(--nz-gold); overflow: hidden; padding: 10px; }
+        .pillar-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- CREDENTIALS STRIP --- */
+        .credentials-strip {
+            background: #000;
+            border-top: 1px solid #1a1a1a;
+            padding: 80px 5%;
+        }
+
+        .credentials-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+
+        .cred-block { border-left: 2px solid #1a1a1a; padding-left: 25px; }
+        .cred-block.gold { border-color: var(--nz-gold); }
+        .cred-block.blue { border-color: var(--nz-blue); }
+
+        .cred-block .cb-label {
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #444;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .cred-block.gold .cb-label { color: var(--nz-gold); }
+        .cred-block.blue .cb-label { color: var(--nz-blue); }
+
+        .cred-block .cb-value {
+            font-size: 0.9rem;
+            color: #fff;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        /* --- SKILLS STRIP --- */
+        .skills-strip {
+            background: #050505;
+            border-top: 1px solid #111;
+            padding: 80px 5%;
+        }
+
+        .skills-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .skills-label {
+            font-size: 0.65rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--nz-gold);
+            margin-bottom: 35px;
+            display: block;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 1px solid #1a1a1a;
+            padding: 10px 18px;
+            color: #666;
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover { border-color: var(--nz-gold); color: var(--nz-gold); }
+
+        /* --- RESOURCE BREAK --- */
+        .resource-break { background: #000; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; }
+        .resource-container { max-width: 800px; margin: 0 auto; padding: 100px 40px; text-align: center; }
+        .resource-line { width: 1px; height: 60px; background: var(--nz-gold); margin: 0 auto 30px; }
+        .resource-tag  { color: var(--nz-gold); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem; margin-bottom: 20px; display: block; }
+        .resource-container h2 { font-size: clamp(1.8rem, 5vw, 3rem); text-transform: uppercase; letter-spacing: 8px; color: #fff; margin-bottom: 25px; line-height: 1.4; }
+        .resource-container > p { color: #777; font-size: 0.95rem; line-height: 1.8; margin-bottom: 40px; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero-content h1    { letter-spacing: 6px; }
+            .manifesto          { padding: 80px 25px; }
+            .pillar-row         { padding: 60px 25px; gap: 40px; }
+            .pillar-img-wrapper { width: 100%; height: 280px; }
+            .credentials-strip  { padding: 60px 5%; }
+            .skills-strip       { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
+            <div class="logo-text">
+                <span class="main-title">NORTHZERO</span>
+                <span class="sub-title">PRODUCTIONS</span>
+            </div>
+        </a>
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
+            <div class="dropdown">
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
+                <div class="dropdown-content">
+                    <a href="authority.html">Authority Suite</a>
+                    <a href="architectural.html">Architectural Cinema</a>
+                    <a href="tactile.html">Tactile Narratives</a>
+                </div>
+            </div>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="hero" aria-label="Northzero Productions showreel">
+            <div class="video-background" aria-hidden="true">
+                <div id="yt-player"></div>
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+            <div class="hero-content">
+                <h1>The Lens</h1>
+                <p>Architectural Integrity &amp; Visual Narrative</p>
+            </div>
+        </section>
+
+        <section class="manifesto" aria-label="Our philosophy">
+            <h2>Our Philosophy</h2>
+            <p>
+                At Northzero Productions, we believe that every structure has a heartbeat.
+                Our work is rooted in over a decade of integrated design, cinematic production,
+                and a deep respect for the built environment — translating architectural intent
+                into visual permanence.
+            </p>
+            <p>
+                We don't separate design from film. The same eye that shapes a brand identity
+                frames a landmark estate. The same understanding of light that drives a motion
+                graphics sequence informs how we document a historic property for institutional review.
+            </p>
+        </section>
+
+        <section class="pillar-row" aria-label="The Preservationist's Lens">
+            <div class="pillar-img-wrapper">
+                <img
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+                    alt="Close-up of architectural detail on a glass skyscraper"
+                    loading="lazy"
+                >
+            </div>
+            <div class="pillar-text">
+                <h3>Omar A. Greene</h3>
+                <p>
+                    Founder of Northzero Productions and alternate member of the Village of Ossining
+                    Historic Preservation Commission. A Parsons the New School for Design alumnus,
+                    Omar brings over ten years of integrated design experience to every production —
+                    spanning front-end development, brand identity, motion graphics, lighting design,
+                    sound, and cinematography.
+                </p>
+                <p>
+                    His background is rare: a filmmaker who is equally at home writing production
+                    code, directing a luxury estate shoot, or presenting visual documentation before
+                    a municipal review board. That breadth is the foundation of Northzero's
+                    distinctive approach — technical rigour in service of cinematic permanence.
+                </p>
+                <p>
+                    Based in the New York City Metropolitan Area, serving Westchester County,
+                    the Hudson Valley, and the Tri-State region.
+                </p>
+            </div>
+        </section>
+
+        <!-- Credentials strip -->
+        <section class="credentials-strip" aria-label="Credentials and background">
+            <div class="credentials-inner">
+                <div class="cred-block gold">
+                    <span class="cb-label">Institutional Role</span>
+                    <span class="cb-value">Alternate Member<br>Ossining Historic<br>Preservation Commission</span>
+                </div>
+                <div class="cred-block">
+                    <span class="cb-label">Education</span>
+                    <span class="cb-value">Parsons the New School<br>for Design<br>New York</span>
+                </div>
+                <div class="cred-block">
+                    <span class="cb-label">Experience</span>
+                    <span class="cb-value">10+ Years<br>Integrated Design<br>&amp; Film Production</span>
+                </div>
+                <div class="cred-block blue">
+                    <span class="cb-label">Location</span>
+                    <span class="cb-value">New York City<br>Metropolitan Area<br>Tri-State Region</span>
+                </div>
+                <div class="cred-block">
+                    <span class="cb-label">Standard</span>
+                    <span class="cb-value">HABS / HAER<br>Documentation<br>Influence</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills strip -->
+        <section class="skills-strip" aria-label="Areas of expertise">
+            <div class="skills-inner">
+                <span class="skills-label">Areas of Expertise</span>
+                <div class="skills-grid">
+                    <span class="skill-tag">Architectural Cinema</span>
+                    <span class="skill-tag">Luxury Product Film</span>
+                    <span class="skill-tag">Motion Graphics</span>
+                    <span class="skill-tag">Lighting Design</span>
+                    <span class="skill-tag">Sound Design</span>
+                    <span class="skill-tag">DIT</span>
+                    <span class="skill-tag">Brand Identity</span>
+                    <span class="skill-tag">Front-End Development</span>
+                    <span class="skill-tag">Visual Strategy</span>
+                    <span class="skill-tag">Historic Preservation</span>
+                    <span class="skill-tag">Institutional Documentation</span>
+                    <span class="skill-tag">HPC Compliance</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="resource-break">
+            <div class="resource-container">
+                <div class="resource-line" aria-hidden="true"></div>
+                <p class="resource-tag">Industry Resource</p>
+                <h2>The Indie Filmmaker's Fast Track</h2>
+                <p>A blueprint for cinematic permanence. Omar's personal guide to navigating high-stakes production, technical compliance, and visual strategy.</p>
+                <a href="THE_INDIE_FILMMAKERS_FAST_TRACK.pdf" class="cta-btn" download="NorthzeroFastTrack.pdf">Access the Blueprint</a>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="Start a project">
+            <p>Ready to Document the Legacy?</p>
+            <h2>Let's Discuss the Scope</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
+    </footer>
+
+    <script src="nav.js?v=2.1"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        let player;
+        function onYouTubeIframeAPIReady() {
+            if (prefersReduced) return;
+            player = new YT.Player('yt-player', {
+                videoId: 'AVN2N2hopGk',
+                playerVars: {
+                    autoplay: 1, controls: 0, showinfo: 0, rel: 0,
+                    loop: 1, playlist: 'AVN2N2hopGk', mute: 1,
+                    modestbranding: 1, iv_load_policy: 3, disablekb: 1
+                },
+                events: { onReady: e => e.target.playVideo() }
+            });
+        }
+
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
+    </script>
+</body>
+</html>

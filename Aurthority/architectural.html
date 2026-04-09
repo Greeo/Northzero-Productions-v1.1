@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architectural Cinema | Luxury Estate & Real Estate Film · Westchester & Hudson Valley</title>
+
+    <meta name="description" content="Luxury estate cinematography and architectural film production for high-end real estate listings in Westchester County, the Hudson Valley, and Ossining, NY. Northzero Productions.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/architectural.html">
+    <meta property="og:title"        content="Architectural Cinema | Luxury Estate Film · Westchester & Hudson Valley">
+    <meta property="og:description"  content="Luxury estate cinematography for high-end real estate listings in Westchester County, Hudson Valley, and Ossining, NY.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — Architectural Cinema">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Architectural Cinema | Luxury Estate Film · Westchester, NY">
+    <meta name="twitter:description" content="Luxury estate cinematography for high-end real estate listings in Westchester County and the Hudson Valley.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Architectural Cinema",
+      "serviceType": "Luxury Real Estate Cinematography",
+      "description": "Cinematic estate documentation and architectural film production for ultra-luxury real estate listings across Westchester County, the Hudson Valley, and the Tri-State Area.",
+      "provider": { "@id": "https://northzeroproductions.com/#business" },
+      "areaServed": [
+        { "@type": "City",   "name": "Ossining" },
+        { "@type": "County", "name": "Westchester County" },
+        { "@type": "Place",  "name": "Hudson Valley" }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Luxury Real Estate Agents, Brokers, Architects, Property Developers"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css?v=2.2">
+
+    <style>
+        :root {
+            --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
+            --nav-height: 80px;
+        }
+
+        /* --- HERO --- */
+        .arch-hero {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            background:
+                linear-gradient(to right, #0a0a0a 40%, transparent),
+                url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1600&q=80')
+                center/cover;
+        }
+
+        .arch-hero-content { max-width: 700px; }
+
+        .arch-hero-content h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #fff;
+            white-space: normal;
+        }
+
+        .arch-hero-content .eyebrow {
+            color: var(--nz-gold);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* --- PRESERVATIONIST BLOCK --- */
+        .authority-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            background: #0a0a0a;
+            padding: 100px 0;
+            border-top: 1px solid #111;
+        }
+
+        .arch-text {
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .arch-text h2 {
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: var(--nz-gold);
+        }
+
+        .arch-text p { color: #888; font-size: 1.1rem; line-height: 2; margin-bottom: 20px; }
+
+        .arch-visual {
+            background:
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80')
+                center/cover;
+            min-height: 500px;
+            border-left: 1px solid var(--nz-gold);
+        }
+
+        /* --- FEATURE CARDS --- */
+        .service-features {
+            padding: 100px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            padding: 50px 40px;
+            border: 1px solid #1a1a1a;
+            background: #0d0d0d;
+            transition: 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .feature-card:hover { border-color: var(--nz-gold); transform: translateY(-5px); }
+        .feature-card h3 { color: #fff; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; font-size: 1rem; }
+        .feature-card p  { color: #666; font-size: 0.9rem; line-height: 1.8; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            .arch-hero {
+                padding: 0 5%;
+                text-align: center;
+                justify-content: center;
+                background:
+                    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+                    url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1200&q=80')
+                    center/cover;
+            }
+            .arch-hero-content h1 { letter-spacing: 6px; }
+            .authority-block      { grid-template-columns: 1fr; }
+            .arch-visual          { height: 400px; min-height: unset; border-left: none; border-top: 1px solid var(--nz-gold); }
+            .arch-text            { padding: 60px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
+            <div class="logo-text">
+                <span class="main-title">NORTHZERO</span>
+                <span class="sub-title">PRODUCTIONS</span>
+            </div>
+        </a>
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
+            <div class="dropdown">
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
+                <div class="dropdown-content">
+                    <a href="authority.html">Authority Suite</a>
+                    <a href="architectural.html">Architectural Cinema</a>
+                    <a href="tactile.html">Tactile Narratives</a>
+                </div>
+            </div>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="arch-hero" aria-label="Architectural Cinema">
+            <div class="arch-hero-content">
+                <p class="eyebrow">High-End Real Estate &amp; Preservation</p>
+                <h1>Architectural Cinema</h1>
+            </div>
+        </section>
+
+        <section class="authority-block" aria-label="The Preservationist Perspective">
+            <div class="arch-text">
+                <h2>The Preservationist Perspective</h2>
+                <p>
+                    As an alternate member of the Village of Ossining Historic Preservation
+                    Commission, Omar A. Greene views structures through a lens of permanence
+                    and historical value.
+                </p>
+                <p>
+                    We don't just film properties; we document the structural narrative,
+                    the intent of the architect, and the soul of the estate.
+                </p>
+            </div>
+            <div class="arch-visual" aria-hidden="true" role="presentation"></div>
+        </section>
+
+        <section class="service-features" aria-label="Service offerings">
+            <div class="feature-card">
+                <h3>Estate Documentation</h3>
+                <p>Cinematic walkthroughs designed for ultra-luxury listings, focusing on flow, light, and materiality.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Historical Narratives</h3>
+                <p>Specialized storytelling for pre-war and historic estates, highlighting original details and restoration work.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Institutional Visuals</h3>
+                <p>Comprehensive visual strategy for developers and architectural firms looking to showcase project completion.</p>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="Start a project">
+            <p>Ready to Document the Legacy?</p>
+            <h2>Let's Discuss the Scope</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
+    </footer>
+
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
+    <script>
+        // --- Email obfuscation ---
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Works | Luxury Product & Architectural Film · Northzero Productions</title>
+
+    <meta name="description" content="Selected productions by Northzero Productions — luxury product films, architectural estate cinema, and institutional visual strategy across Westchester County, the Hudson Valley, and New York.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/work.html">
+    <meta property="og:title"        content="Selected Works | Luxury Product & Architectural Film · Northzero Productions">
+    <meta property="og:description"  content="Luxury product films, architectural estate cinema, and institutional visual strategy across Westchester, the Hudson Valley, and New York.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — Selected Works">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Selected Works | Luxury Product & Architectural Film · Northzero Productions">
+    <meta name="twitter:description" content="Luxury product films and architectural estate cinema across Westchester and the Hudson Valley.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <link rel="stylesheet" href="style.css?v=2.2">
+
+    <style>
+        /* --- PAGE-SPECIFIC STYLES --- */
+        .portfolio-header { padding: 80px 5% 60px; text-align: center; }
+        .portfolio-header h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            margin-bottom: 20px;
+            color: #fff;
+            white-space: normal;
+        }
+
+        .filter-container { text-align: center; margin-bottom: 60px; padding: 0 20px; }
+        .filter-btn {
+            background: none; border: none; color: #555; text-transform: uppercase;
+            letter-spacing: 3px; font-size: 0.7rem; margin: 10px 15px;
+            cursor: pointer; transition: 0.3s;
+        }
+        .filter-btn.active, .filter-btn:hover { color: #d4af37; }
+
+        /* --- BENTO GRID --- */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 20vw;
+            gap: 15px;
+            padding: 0 5% 100px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .work-item {
+            position: relative; background: #111;
+            overflow: hidden; cursor: pointer;
+            border: 1px solid #1a1a1a;
+        }
+
+        .work-item.featured  { grid-column: span 4; grid-row: span 2; }
+        .work-item.tall      { grid-column: span 2; grid-row: span 2; }
+        .work-item.wide      { grid-column: span 3; grid-row: span 1; }
+        .work-item.standard  { grid-column: span 2; grid-row: span 1; }
+
+        .work-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(0.6) brightness(0.7);
+            transition: 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .work-item:hover img { filter: grayscale(0) brightness(1); transform: scale(1.05); }
+
+        .work-info {
+            position: absolute; bottom: 30px; left: 30px;
+            opacity: 0; transform: translateY(20px);
+            transition: 0.4s ease; z-index: 5;
+        }
+
+        .work-item:hover .work-info { opacity: 1; transform: translateY(0); }
+        .work-info h3 { text-transform: uppercase; letter-spacing: 3px; font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+        .work-info p  { font-size: 0.65rem; color: #d4af37; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- LIGHTBOX --- */
+        .lightbox {
+            display: none; position: fixed; z-index: 20000;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.98);
+            align-items: center; justify-content: center;
+        }
+        .lightbox.is-open { display: flex; }
+
+        .lightbox-content {
+            position: relative; width: 90%; max-width: 1200px;
+            aspect-ratio: 16 / 9; border: 1px solid #222; background: #000;
+        }
+
+        .close-lightbox {
+            position: absolute; top: -50px; right: 0;
+            color: #d4af37; font-size: 2.5rem; cursor: pointer;
+            transition: 0.3s; line-height: 1;
+            background: none; border: none; padding: 0;
+        }
+
+        #videoPlayerFrame iframe { width: 100%; height: 100%; border: none; }
+
+        /* --- TESTIMONIAL CAROUSEL --- */
+        .testimonial-section {
+            background: #050505;
+            border-top: 1px solid #111;
+            border-bottom: 1px solid #111;
+            padding: 100px 5%;
+            overflow: hidden;
+        }
+
+        .testimonial-header { text-align: center; margin-bottom: 60px; }
+
+        .testimonial-header .t-label {
+            color: var(--nz-gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-header h2 {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            color: #fff;
+        }
+
+        .t-carousel { position: relative; max-width: 900px; margin: 0 auto; }
+        .t-track    { position: relative; min-height: 260px; }
+
+        .t-slide {
+            position: absolute; top: 0; left: 0; width: 100%;
+            opacity: 0; transform: translateX(40px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        .t-slide.active { opacity: 1; transform: translateX(0); pointer-events: auto; position: relative; }
+        .t-slide.exit   { opacity: 0; transform: translateX(-40px); }
+
+        .t-quote            { border-left: 3px solid var(--nz-gold); padding: 10px 0 10px 40px; margin-bottom: 35px; }
+        .t-quote p          { font-size: clamp(1rem, 2.5vw, 1.3rem); color: #ccc; line-height: 1.9; font-weight: 300; font-style: italic; }
+
+        .t-attribution      { display: flex; align-items: center; gap: 20px; padding-left: 43px; }
+
+        .t-avatar {
+            width: 44px; height: 44px; border-radius: 50%; border: 1px solid #222;
+            background: #0a0a0a; display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; font-size: 0.7rem; letter-spacing: 1px;
+            color: var(--nz-gold); text-transform: uppercase;
+        }
+
+        .t-meta    { display: flex; flex-direction: column; gap: 3px; }
+        .t-name    { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #fff; }
+        .t-role    { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 3px; color: #555; }
+        .t-service { font-size: 0.55rem; text-transform: uppercase; letter-spacing: 2px; color: var(--nz-gold); margin-top: 2px; }
+
+        .t-controls { display: flex; align-items: center; justify-content: space-between; margin-top: 50px; padding-left: 43px; }
+        .t-dots     { display: flex; gap: 10px; }
+
+        .t-dot {
+            width: 20px; height: 2px; background: #222;
+            border: none; cursor: pointer;
+            transition: background 0.3s, width 0.3s; padding: 0;
+        }
+        .t-dot.active { background: var(--nz-gold); width: 36px; }
+
+        .t-arrows { display: flex; gap: 12px; }
+
+        .t-arrow {
+            width: 44px; height: 44px; background: none; border: 1px solid #222;
+            color: #555; font-size: 1rem; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+            font-family: inherit;
+        }
+        .t-arrow:hover { border-color: var(--nz-gold); color: var(--nz-gold); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .work-grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 30vw; }
+        }
+
+        @media (max-width: 768px) {
+            .work-grid        { display: flex; flex-direction: column; padding: 0 20px 80px; }
+            .work-item        { height: 300px; margin-bottom: 10px; }
+            .portfolio-header { padding-top: 20px; }
+            .work-info        { opacity: 1; transform: none; bottom: 20px; left: 20px; }
+            .t-quote          { padding-left: 20px; }
+            .t-attribution    { padding-left: 23px; }
+            .t-controls       { padding-left: 0; flex-direction: column; gap: 25px; align-items: flex-start; }
+            .t-track          { min-height: 320px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
+            <div class="logo-text">
+                <span class="main-title">NORTHZERO</span>
+                <span class="sub-title">PRODUCTIONS</span>
+            </div>
+        </a>
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
+            <div class="dropdown">
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
+                <div class="dropdown-content">
+                    <a href="authority.html">Authority Suite</a>
+                    <a href="architectural.html">Architectural Cinema</a>
+                    <a href="tactile.html">Tactile Narratives</a>
+                </div>
+            </div>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="portfolio-header">
+            <h1>Selected Works</h1>
+        </section>
+
+        <div class="filter-container" role="group" aria-label="Filter works by category">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="estate">Estate</button>
+            <button class="filter-btn" data-filter="tactile">Tactile</button>
+            <button class="filter-btn" data-filter="institutional">Institutional</button>
+        </div>
+
+        <div class="work-grid" id="workGrid" aria-label="Portfolio grid"></div>
+
+        <!-- Lightbox -->
+        <div
+            id="videoLightbox"
+            class="lightbox"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Video player"
+        >
+            <div class="lightbox-content">
+                <button class="close-lightbox" id="closeLightbox" aria-label="Close video">&times;</button>
+                <div id="videoPlayerFrame"></div>
+            </div>
+        </div>
+
+        <!-- Testimonial Carousel -->
+        <section class="testimonial-section" aria-label="Client testimonials">
+            <div class="testimonial-header">
+                <span class="t-label">Client Voices</span>
+                <h2>What Clients Say</h2>
+            </div>
+
+            <div class="t-carousel" id="t-carousel-work">
+                <div class="t-track" id="t-track-work" aria-live="polite" aria-atomic="true">
+
+                    <div class="t-slide active" role="group" aria-label="Testimonial 1 of 3">
+                        <div class="t-quote">
+                            <p>"The documentation Northzero produced for our landmark submission was unlike anything we'd seen from a production company. They understood the HPC process from the inside — the result was approved without revision."</p>
+                        </div>
+                        <div class="t-attribution">
+                            <div class="t-avatar" aria-hidden="true">JR</div>
+                            <div class="t-meta">
+                                <span class="t-name">J. Reynolds</span>
+                                <span class="t-role">Principal, Reynolds Heritage Developers</span>
+                                <span class="t-service">Authority Suite</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="t-slide" role="group" aria-label="Testimonial 2 of 3">
+                        <div class="t-quote">
+                            <p>"We listed the estate at $4.2M. The cinematic walkthrough Omar produced repositioned it entirely — the quality of enquiry changed overnight. It sold in 11 days."</p>
+                        </div>
+                        <div class="t-attribution">
+                            <div class="t-avatar" aria-hidden="true">MC</div>
+                            <div class="t-meta">
+                                <span class="t-name">M. Castellano</span>
+                                <span class="t-role">Senior Associate, Hudson Valley Realty Group</span>
+                                <span class="t-service">Architectural Cinema</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="t-slide" role="group" aria-label="Testimonial 3 of 3">
+                        <div class="t-quote">
+                            <p>"The tactile film Northzero produced for our leather goods launch became the centrepiece of our entire campaign. It conveyed craftsmanship in a way photography never could."</p>
+                        </div>
+                        <div class="t-attribution">
+                            <div class="t-avatar" aria-hidden="true">AS</div>
+                            <div class="t-meta">
+                                <span class="t-name">A. Sterling</span>
+                                <span class="t-role">Creative Director, Sterling Goods Co.</span>
+                                <span class="t-service">Tactile Narratives</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="t-controls">
+                    <div class="t-dots" id="t-dots-work" role="tablist" aria-label="Testimonial navigation"></div>
+                    <div class="t-arrows">
+                        <button class="t-arrow" id="t-prev-work" aria-label="Previous testimonial">&#8592;</button>
+                        <button class="t-arrow" id="t-next-work" aria-label="Next testimonial">&#8594;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section" aria-label="Start a project">
+            <p>Ready to Document the Legacy?</p>
+            <h2>Let's Discuss the Scope</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
+    </footer>
+
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
+
+    <script>
+        // --- Project Data ---
+        const projects = [
+            { id: 'AVN2N2hopGk', title: 'The Modern Estate',  category: 'estate',        type: 'Architectural Cinema',   layout: 'featured'  },
+            { id: 'FEfAZ5CTP84', title: 'Artificially Yours', category: 'tactile',       type: 'Tactile Narrative',      layout: 'tall'      },
+            { id: 'ONyk8VokO2k', title: 'Design & Texture',   category: 'tactile',       type: 'Macro Study',            layout: 'standard'  },
+            { id: 'UV3Lvew15fs', title: 'Visual Rhythm',      category: 'tactile',       type: 'Production Design',      layout: 'standard'  },
+            { id: 'U_s0PDP123c', title: 'Global Tech',        category: 'institutional', type: 'Institutional Strategy', layout: 'wide'      }
+        ];
+
+        // --- Gallery Renderer ---
+        function renderGallery(filter = 'all') {
+            const grid     = document.getElementById('workGrid');
+            const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
+            grid.innerHTML = '';
+
+            filtered.forEach(p => {
+                const item = document.createElement('div');
+                item.className = `work-item ${p.layout}`;
+                item.setAttribute('role', 'button');
+                item.setAttribute('tabindex', '0');
+                item.setAttribute('aria-label', `Open video: ${p.title}`);
+
+                const img     = document.createElement('img');
+                img.src       = `https://img.youtube.com/vi/${p.id}/maxresdefault.jpg`;
+                img.alt       = p.title;
+                img.loading   = 'lazy';
+
+                const info    = document.createElement('div');
+                info.className = 'work-info';
+
+                const h3      = document.createElement('h3');
+                h3.textContent = p.title;
+
+                const pTag    = document.createElement('p');
+                pTag.textContent = p.type;
+
+                info.appendChild(h3);
+                info.appendChild(pTag);
+                item.appendChild(img);
+                item.appendChild(info);
+
+                item.addEventListener('click', () => openVideo(p.id, p.title));
+                item.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openVideo(p.id, p.title);
+                    }
+                });
+
+                grid.appendChild(item);
+            });
+        }
+
+        // --- Filter ---
+        document.querySelector('.filter-container').addEventListener('click', e => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderGallery(btn.dataset.filter);
+        });
+
+        // --- Lightbox ---
+        const lightbox    = document.getElementById('videoLightbox');
+        const playerFrame = document.getElementById('videoPlayerFrame');
+        const closeBtn    = document.getElementById('closeLightbox');
+        let   lastFocused = null;
+
+        function openVideo(videoID, title) {
+            lastFocused = document.activeElement;
+            const iframe           = document.createElement('iframe');
+            iframe.src             = `https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1`;
+            iframe.allow           = 'autoplay; fullscreen';
+            iframe.allowFullscreen = true;
+            iframe.title           = title || 'Video player';
+            playerFrame.innerHTML  = '';
+            playerFrame.appendChild(iframe);
+            lightbox.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            closeBtn.focus();
+        }
+
+        function closeVideo() {
+            playerFrame.innerHTML = '';
+            lightbox.classList.remove('is-open');
+            document.body.style.overflow = '';
+            if (lastFocused) lastFocused.focus();
+        }
+
+        closeBtn.addEventListener('click', closeVideo);
+        lightbox.addEventListener('click', e => { if (e.target === lightbox) closeVideo(); });
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeVideo();
+        });
+
+        // --- Testimonial Carousel ---
+        (function () {
+            initCarousel('work');
+
+            function initCarousel(id) {
+                const track   = document.getElementById('t-track-' + id);
+                const dotsEl  = document.getElementById('t-dots-' + id);
+                const prevBtn = document.getElementById('t-prev-' + id);
+                const nextBtn = document.getElementById('t-next-' + id);
+                if (!track) return;
+
+                const slides = Array.from(track.querySelectorAll('.t-slide'));
+                let current  = 0;
+                let autoTimer;
+
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = 't-dot' + (i === 0 ? ' active' : '');
+                    dot.setAttribute('role', 'tab');
+                    dot.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+                    dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+                    dot.addEventListener('click', () => { stopAuto(); goTo(i); startAuto(); });
+                    dotsEl.appendChild(dot);
+                });
+
+                function getDots() { return Array.from(dotsEl.querySelectorAll('.t-dot')); }
+
+                function goTo(idx) {
+                    const dots = getDots();
+                    slides[current].classList.remove('active');
+                    slides[current].classList.add('exit');
+                    dots[current].classList.remove('active');
+                    dots[current].setAttribute('aria-selected', 'false');
+                    const exiting = slides[current];
+                    setTimeout(() => exiting.classList.remove('exit'), 620);
+                    current = (idx + slides.length) % slides.length;
+                    slides[current].classList.add('active');
+                    dots[current].classList.add('active');
+                    dots[current].setAttribute('aria-selected', 'true');
+                }
+
+                function next() { goTo(current + 1); }
+                function prev() { goTo(current - 1); }
+
+                nextBtn.addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+                prevBtn.addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+
+                function startAuto() { autoTimer = setInterval(next, 6000); }
+                function stopAuto()  { clearInterval(autoTimer); }
+
+                const section = track.closest('.testimonial-section');
+                section.addEventListener('mouseenter', stopAuto);
+                section.addEventListener('mouseleave', startAuto);
+                section.addEventListener('focusin',    stopAuto);
+                section.addEventListener('focusout',   startAuto);
+                section.addEventListener('keydown', e => {
+                    if (e.key === 'ArrowRight') { stopAuto(); next(); startAuto(); }
+                    if (e.key === 'ArrowLeft')  { stopAuto(); prev(); startAuto(); }
+                });
+
+                startAuto();
+            }
+        }());
+
+        // --- Email obfuscation ---
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
+
+        // --- Init gallery ---
+        renderGallery();
+    </script>
+</body>
+</html>
+
+

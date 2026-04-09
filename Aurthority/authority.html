@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Authority Suite | HPC Documentation & Preservation Cinematography · Westchester, NY</title>
+
+    <meta name="description" content="High-stakes visual documentation for HPC-regulated properties, investor briefings, and municipal approvals. Northzero Productions — Ossining Historic Preservation Commission member, serving Westchester County and the Hudson Valley.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/authority.html">
+    <meta property="og:title"        content="The Authority Suite | HPC Documentation · Westchester & Hudson Valley">
+    <meta property="og:description"  content="Visual documentation for HPC-regulated properties and landmark compliance. Serving Ossining, Westchester County, and the Hudson Valley.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — The Authority Suite">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="The Authority Suite | HPC Documentation · Westchester, NY">
+    <meta name="twitter:description" content="Visual documentation for HPC-regulated properties, landmark compliance, and investor briefings in Westchester and the Hudson Valley.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "The Authority Suite",
+      "serviceType": "Historic Preservation Video Documentation",
+      "description": "High-stakes cinematic documentation for HPC-regulated and landmark properties, investor briefings, and municipal visual strategy across Westchester County and the Hudson Valley.",
+      "provider": { "@id": "https://northzeroproductions.com/#business" },
+      "areaServed": [
+        { "@type": "City",   "name": "Ossining" },
+        { "@type": "County", "name": "Westchester County" },
+        { "@type": "Place",  "name": "Hudson Valley" }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Historic Preservation Commissions, Developers, Architects, Municipal Bodies"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css?v=2.2">
+
+    <style>
+        :root {
+            --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
+            --nav-height: 80px;
+        }
+
+        /* --- HERO --- */
+        .auth-hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1600&q=80')
+                        center/cover;
+            text-align: center;
+        }
+
+        .auth-hero h1 {
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            margin-bottom: 20px;
+            color: #fff;
+            white-space: normal;
+        }
+
+        .auth-hero .eyebrow {
+            letter-spacing: 8px;
+            color: var(--nz-gold);
+            margin-bottom: 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        /* --- INTRO --- */
+        .auth-intro {
+            padding: 120px 10%;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .auth-intro h2 {
+            color: var(--nz-gold);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .auth-intro p {
+            font-size: 1.4rem;
+            line-height: 2;
+            font-weight: 300;
+            color: #ccc;
+        }
+
+        /* --- SERVICE GRID --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-top: 1px solid #222;
+            background: #000;
+        }
+
+        .tech-cell {
+            padding: 80px;
+            border-bottom: 1px solid #222;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .tech-cell:nth-child(odd)  { border-right: 1px solid #222; }
+        .tech-cell:hover           { background: #080808; border-color: var(--nz-gold); }
+
+        .tech-cell h3 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--nz-gold);
+            margin-bottom: 20px;
+        }
+
+        .tech-cell h4 {
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        .tech-cell p { color: #777; line-height: 1.8; font-size: 0.95rem; }
+
+        /* --- ENHANCED CREDENTIALS BAR --- */
+        .credentials-bar {
+            background: #0a0a0a;
+            border-top: 1px solid var(--nz-blue);
+            padding: 80px 5%;
+            display: flex;
+            gap: 80px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .cred-primary { flex: 1; min-width: 280px; max-width: 560px; }
+
+        .cred-primary-label {
+            font-size: 0.6rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--nz-blue);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .cred-primary-title {
+            font-size: 1.4rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #fff;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .cred-primary-body {
+            color: #777;
+            font-size: 0.9rem;
+            line-height: 2;
+            margin-bottom: 25px;
+        }
+
+        .cred-tags      { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cred-tag {
+            font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+            border: 1px solid #1a1a2a; padding: 8px 14px; color: var(--nz-blue);
+        }
+
+        .cred-supporting {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cred-item  { text-align: left; }
+        .cred-value { display: block; font-size: 1.2rem; letter-spacing: 2px; color: #fff; margin-bottom: 5px; }
+        .cred-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 4px; color: var(--nz-blue); font-weight: 900; display: block; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            .tech-grid                { grid-template-columns: 1fr; }
+            .tech-cell:nth-child(odd) { border-right: none; }
+            .tech-cell                { padding: 60px 10%; }
+            .auth-hero h1             { letter-spacing: 8px; }
+            .auth-intro               { padding: 80px 6%; }
+            .auth-intro p             { font-size: 1.1rem; }
+            .credentials-bar          { flex-direction: column; gap: 50px; }
+            .cred-supporting          { flex-direction: row; flex-wrap: wrap; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
+            <div class="logo-text">
+                <span class="main-title">NORTHZERO</span>
+                <span class="sub-title">PRODUCTIONS</span>
+            </div>
+        </a>
+
+        <div class="nz-credential-badge" aria-label="Omar A. Greene — Ossining Historic Preservation Commission">
+            <span class="badge-dot" aria-hidden="true"></span>
+            <span class="badge-text">HPC Member · Ossining, NY</span>
+        </div>
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
+            <div class="dropdown">
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
+                <div class="dropdown-content">
+                    <a href="authority.html">Authority Suite</a>
+                    <a href="architectural.html">Architectural Cinema</a>
+                    <a href="tactile.html">Tactile Narratives</a>
+                </div>
+            </div>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
+        </div>
+    </nav>
+
+    <main>
+        <header class="auth-hero" aria-label="The Authority Suite">
+            <div class="hero-content">
+                <p class="eyebrow">Strategic Visual Assets</p>
+                <h1>The Authority Suite</h1>
+            </div>
+        </header>
+
+        <section class="auth-intro" aria-label="Visual compliance and strategy">
+            <h2>Visual Compliance &amp; Strategy</h2>
+            <p>
+                Northzero provides high-stakes visual documentation for the preservation,
+                development, and municipal sectors. We bridge the gap between architectural
+                intent and regulatory approval.
+            </p>
+        </section>
+
+        <section class="tech-grid" aria-label="Service pillars">
+            <div class="tech-cell">
+                <h3>Pillar 01</h3>
+                <h4>Historic Documentation</h4>
+                <p>Comprehensive visual recording for Landmark and HPC-regulated properties. We provide the cinematic proof of restoration integrity required for historical tax credits and municipal compliance.</p>
+            </div>
+            <div class="tech-cell">
+                <h3>Pillar 02</h3>
+                <h4>Investor Briefings</h4>
+                <p>Translating complex development blueprints into high-fidelity cinematic walkthroughs. We convert "plans" into "vision," allowing stakeholders to experience the finished asset before ground is broken.</p>
+            </div>
+            <div class="tech-cell">
+                <h3>Pillar 03</h3>
+                <h4>Municipal Visuals</h4>
+                <p>Crafting high-authority visual narratives for public hearings and community board approvals. We specialize in presenting project scale and community impact with absolute clarity.</p>
+            </div>
+            <div class="tech-cell">
+                <h3>Pillar 04</h3>
+                <h4>Brand Permanence</h4>
+                <p>Strategic content creation for legacy firms. We document the evolution of your firm's portfolio, ensuring your structural contributions are archived for future generations.</p>
+            </div>
+        </section>
+
+        <section class="credentials-bar" aria-label="Credentials">
+            <div class="cred-primary">
+                <span class="cred-primary-label">Founding Credential</span>
+                <h3 class="cred-primary-title">Historic Preservation Commission</h3>
+                <p class="cred-primary-body">
+                    Omar A. Greene serves as an alternate member of the Village of Ossining
+                    Historic Preservation Commission — one of the only production principals
+                    in the region with direct institutional standing in preservation governance.
+                    This credential underpins every Authority Suite engagement.
+                </p>
+                <div class="cred-tags">
+                    <span class="cred-tag">Ossining HPC</span>
+                    <span class="cred-tag">Alternate Member</span>
+                    <span class="cred-tag">Village of Ossining, NY</span>
+                </div>
+            </div>
+
+            <div class="cred-supporting">
+                <div class="cred-item">
+                    <p class="cred-label">Jurisdiction</p>
+                    <span class="cred-value">NY / Tri-State Area</span>
+                </div>
+                <div class="cred-item">
+                    <p class="cred-label">Standard</p>
+                    <span class="cred-value">HABS / HAER Influence</span>
+                </div>
+                <div class="cred-item">
+                    <p class="cred-label">Sector</p>
+                    <span class="cred-value">Preservation &amp; Development</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="Start a project">
+            <p>Ready to Document the Legacy?</p>
+            <h2>Let's Discuss the Scope</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+                <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
+    </footer>
+
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
+    <script>
+        // --- Email obfuscation ---
+        const u = 'omar';
+        const d = 'northzeroproductions.com';
+        document.getElementById('email-link').href = `mailto:${u}@${d}`;
+    </script>
+</body>
+</html>
+
+
