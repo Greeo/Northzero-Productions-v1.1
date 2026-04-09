@@ -3,21 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tactile Narratives | Northzero Productions</title>
+    <title>Tactile Narratives | Luxury Product Cinematography · New York & Hudson Valley</title>
+
+    <meta name="description" content="Macro cinematography and tactile brand film production for luxury product launches and premium goods. Northzero Productions — serving New York, Westchester County, and the Hudson Valley.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/tactile.html">
+    <meta property="og:title"        content="Tactile Narratives | Luxury Product Cinematography · New York">
+    <meta property="og:description"  content="Macro cinematography and tactile brand films for luxury product launches and premium goods in New York, Westchester, and the Hudson Valley.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — Tactile Narratives">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Tactile Narratives | Luxury Product Cinematography · NY">
+    <meta name="twitter:description" content="Macro cinematography and tactile brand films for luxury product launches in New York and the Hudson Valley.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Tactile Narratives",
+      "serviceType": "Luxury Product Cinematography",
+      "description": "Macro-photography and tactile brand film production for luxury product launches, premium goods, and brand storytelling campaigns across New York and the Hudson Valley.",
+      "provider": { "@id": "https://northzeroproductions.com/#business" },
+      "areaServed": [
+        { "@type": "State",  "name": "New York" },
+        { "@type": "County", "name": "Westchester County" },
+        { "@type": "Place",  "name": "Hudson Valley" }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Luxury Product Brands, Fashion Houses, Premium Goods Manufacturers, Creative Directors"
+      }
+    }
+    </script>
 
     <link rel="stylesheet" href="style.css?v=2.2">
 
     <style>
-        /* --- BRAND VARIABLES (fallback) --- */
         :root {
             --nz-gold: #d4af37;
             --nz-blue: #0047ab;
             --nav-height: 80px;
         }
 
-        /* --- HERO ---
-             Full-viewport video background.
-             Reduced-motion: video is paused via JS and poster image shown.  --- */
+        /* --- HERO --- */
         .tactile-hero {
             height: 100vh;
             display: flex;
@@ -36,7 +70,6 @@
             filter: contrast(1.2) brightness(0.8);
         }
 
-        /* Hide video entirely for reduced-motion — poster image remains visible */
         @media (prefers-reduced-motion: reduce) {
             .macro-vid { display: none; }
         }
@@ -55,6 +88,7 @@
             color: var(--nz-gold);
             margin-bottom: 20px;
             font-size: 0.75rem;
+            display: block;
         }
 
         .tactile-content h1 {
@@ -138,7 +172,6 @@
 
         .rhythm-item:hover img { filter: grayscale(0); transform: scale(1.05); }
 
-        /* Text card — h3 explicitly reset so .rhythm-gallery > h3 doesn't cascade in */
         .rhythm-item.text-card {
             padding: 40px;
             text-align: left;
@@ -158,20 +191,16 @@
 
         /* --- MOBILE --- */
         @media (max-width: 900px) {
-            .sensory-box    { border-right: none; border-bottom: 1px solid #111; padding: 60px 10%; }
-            .sensory-box p  { font-size: 1.1rem; }
+            .sensory-box        { border-right: none; border-bottom: 1px solid #111; padding: 60px 10%; }
+            .sensory-box p      { font-size: 1.1rem; }
             .tactile-content h1 { letter-spacing: 8px; }
-            .rhythm-grid    { grid-template-columns: 1fr; }
-            .rhythm-item    { aspect-ratio: 4 / 3; }
+            .rhythm-grid        { grid-template-columns: 1fr; }
+            .rhythm-item        { aspect-ratio: 4 / 3; }
         }
     </style>
 </head>
 <body>
 
-    <!--
-        Nav markup matches all cleaned pages.
-        nav.js targets: #hamburger-menu and #nav-links-container.
-    -->
     <nav class="nz-nav" role="navigation" aria-label="Main navigation">
         <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
             <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
@@ -203,18 +232,13 @@
                 </div>
             </div>
             <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
             <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
         </div>
     </nav>
 
     <main>
         <section class="tactile-hero" aria-label="Tactile Narratives">
-            <!--
-                poster attribute provides a static fallback image while the video
-                loads — and remains visible for reduced-motion users once JS
-                pauses the video. Replace poster src with a real still frame
-                when your-texture-video.mp4 is finalised.
-            -->
             <video
                 class="macro-vid"
                 autoplay muted loop playsinline
@@ -224,8 +248,7 @@
                 <source src="your-texture-video.mp4" type="video/mp4">
             </video>
             <div class="tactile-content">
-                <!-- data-text removed — no glitch CSS on this page -->
-                <p class="eyebrow">The Art of the Close-Up</p>
+                <span class="eyebrow">The Art of the Close-Up</span>
                 <h1>Tactile Narratives</h1>
             </div>
         </section>
@@ -265,11 +288,6 @@
                 <div class="rhythm-item text-card">
                     <h3>Cinematic Strategy</h3>
                     <p>Utilizing high-end optics to document the structural permanence of every estate and product.</p>
-                    <img
-                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80"
-                        alt="Macro shot of a precision watch face"
-                        loading="lazy"
-                    >
                 </div>
             </div>
         </section>
@@ -278,7 +296,8 @@
             <p>Ready to Document the Legacy?</p>
             <h2>Let's Discuss the Scope</h2>
             <div class="btn-group">
-                <a href="contact.html" class="cta-btn">Start Project</a>
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
                 <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
@@ -288,26 +307,10 @@
         &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
-    <script src="nav.js?v=1.1"></script>
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
     <script>
-        // --- Hamburger (consistent with all other pages) ---
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks  = document.getElementById('nav-links-container');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-
         // --- Reduced-motion: pause background video ---
-        // CSS hides it visually; JS pauses it to stop unnecessary decoding.
         const vid = document.querySelector('.macro-vid');
         if (vid && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             vid.pause();
@@ -320,4 +323,5 @@
     </script>
 </body>
 </html>
+
 
