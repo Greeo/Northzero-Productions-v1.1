@@ -3,31 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Architectural Cinema | Northzero Productions</title>
+    <title>Architectural Cinema | Luxury Estate & Real Estate Film · Westchester & Hudson Valley</title>
+
+    <meta name="description" content="Luxury estate cinematography and architectural film production for high-end real estate listings in Westchester County, the Hudson Valley, and Ossining, NY. Northzero Productions.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/architectural.html">
+    <meta property="og:title"        content="Architectural Cinema | Luxury Estate Film · Westchester & Hudson Valley">
+    <meta property="og:description"  content="Luxury estate cinematography for high-end real estate listings in Westchester County, Hudson Valley, and Ossining, NY.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"    content="Northzero Productions — Architectural Cinema">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Architectural Cinema | Luxury Estate Film · Westchester, NY">
+    <meta name="twitter:description" content="Luxury estate cinematography for high-end real estate listings in Westchester County and the Hudson Valley.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Architectural Cinema",
+      "serviceType": "Luxury Real Estate Cinematography",
+      "description": "Cinematic estate documentation and architectural film production for ultra-luxury real estate listings across Westchester County, the Hudson Valley, and the Tri-State Area.",
+      "provider": { "@id": "https://northzeroproductions.com/#business" },
+      "areaServed": [
+        { "@type": "City",   "name": "Ossining" },
+        { "@type": "County", "name": "Westchester County" },
+        { "@type": "Place",  "name": "Hudson Valley" }
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Luxury Real Estate Agents, Brokers, Architects, Property Developers"
+      }
+    }
+    </script>
 
     <link rel="stylesheet" href="style.css?v=2.2">
 
     <style>
-        /* --- BRAND VARIABLES (fallback) --- */
         :root {
             --nz-gold: #d4af37;
             --nz-blue: #0047ab;
             --nav-height: 80px;
         }
 
-        /* --- HERO ---
-             Left-aligned split layout on desktop.
-             No padding-top needed — style.css handles nav clearance on <main>.
-             Mobile: retains background image with a full overlay instead of
-             stripping it to a flat colour.                                   --- */
+        /* --- HERO --- */
         .arch-hero {
             height: 90vh;
             display: flex;
             align-items: center;
             padding: 0 10%;
-            background:      
-                 linear-gradient(to right, #0a0a0a 40%, transparent),url('https://plus.unsplash.com/premium_photo-1731960192390-22d05bd0dede?w=500&auto=format&fit=crop&q=80') 
-                /* url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1600&q=80') */
+            background:
+                linear-gradient(to right, #0a0a0a 40%, transparent),
+                url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1600&q=80')
                 center/cover;
         }
 
@@ -49,12 +81,10 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             margin-bottom: 15px;
+            display: block;
         }
 
-        /* --- PRESERVATIONIST BLOCK ---
-             Renamed from .auth-text / .auth-visual to .arch-text / .arch-visual
-             to avoid class collision with authority.html if ever merged into
-             style.css.                                                        --- */
+        /* --- PRESERVATIONIST BLOCK --- */
         .authority-block {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -111,7 +141,6 @@
 
         /* --- MOBILE --- */
         @media (max-width: 900px) {
-            /* Preserve the background image — darken with overlay instead of removing */
             .arch-hero {
                 padding: 0 5%;
                 text-align: center;
@@ -121,20 +150,15 @@
                     url('https://images.unsplash.com/photo-1600585154340-be6191daea10?auto=format&fit=crop&w=1200&q=80')
                     center/cover;
             }
-
-            .arch-hero-content h1  { letter-spacing: 6px; }
-            .authority-block       { grid-template-columns: 1fr; }
-            .arch-visual           { height: 400px; min-height: unset; border-left: none; border-top: 1px solid var(--nz-gold); }
-            .arch-text             { padding: 60px 30px; }
+            .arch-hero-content h1 { letter-spacing: 6px; }
+            .authority-block      { grid-template-columns: 1fr; }
+            .arch-visual          { height: 400px; min-height: unset; border-left: none; border-top: 1px solid var(--nz-gold); }
+            .arch-text            { padding: 60px 30px; }
         }
     </style>
 </head>
 <body>
 
-    <!--
-        Nav markup matches all cleaned pages.
-        nav.js targets: #hamburger-menu and #nav-links-container.
-    -->
     <nav class="nz-nav" role="navigation" aria-label="Main navigation">
         <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
             <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
@@ -166,6 +190,7 @@
                 </div>
             </div>
             <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
             <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
         </div>
     </nav>
@@ -173,7 +198,6 @@
     <main>
         <section class="arch-hero" aria-label="Architectural Cinema">
             <div class="arch-hero-content">
-                <!-- data-text removed — no glitch CSS on this page -->
                 <p class="eyebrow">High-End Real Estate &amp; Preservation</p>
                 <h1>Architectural Cinema</h1>
             </div>
@@ -192,7 +216,6 @@
                     the intent of the architect, and the soul of the estate.
                 </p>
             </div>
-            <!-- aria-hidden — purely decorative background image panel -->
             <div class="arch-visual" aria-hidden="true" role="presentation"></div>
         </section>
 
@@ -215,34 +238,20 @@
             <p>Ready to Document the Legacy?</p>
             <h2>Let's Discuss the Scope</h2>
             <div class="btn-group">
-                <a href="contact.html" class="cta-btn">Start Project</a>
+                <a href="contact.html" class="cta-btn">Initiate Full Audit</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
                 <a href="#" id="email-link" class="cta-btn secondary">Direct Email</a>
             </div>
         </section>
     </main>
 
     <footer>
-        &copy; 2026 Northzero Productions LLC | New York | Where We Strive For Architectural Excellence`
+        &copy; 2026 Northzero Productions LLC | New York
     </footer>
 
-    <script src="nav.js?v=1.1"></script>
+    <!-- nav.js handles all hamburger toggle logic — no inline nav JS needed -->
+    <script src="nav.js?v=2.0"></script>
     <script>
-        // --- Hamburger (consistent with all other pages) ---
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks  = document.getElementById('nav-links-container');
-
-        hamburger.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-
         // --- Email obfuscation ---
         const u = 'omar';
         const d = 'northzeroproductions.com';
@@ -250,4 +259,5 @@
     </script>
 </body>
 </html>
+
 
