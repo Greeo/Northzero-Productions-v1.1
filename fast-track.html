@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Indie Filmmaker's Fast Track | Free Blueprint · Northzero Productions</title>
+
+    <meta name="description" content="A free production blueprint from Omar A. Greene of Northzero Productions — navigating HPC compliance, institutional-grade deliverables, and visual strategy for independent filmmakers in New York.">
+
+    <meta property="og:type"         content="website">
+    <meta property="og:url"          content="https://northzeroproductions.com/fast-track.html">
+    <meta property="og:title"        content="The Indie Filmmaker's Fast Track | Free Blueprint · Northzero Productions">
+    <meta property="og:description"  content="Free production blueprint — HPC compliance, institutional deliverables, and visual strategy for independent filmmakers in New York.">
+    <meta property="og:image"        content="https://northzeroproductions.com/og-image.jpg">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name"    content="Northzero Productions">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="The Indie Filmmaker's Fast Track | Free Blueprint">
+    <meta name="twitter:description" content="Free production blueprint from Northzero Productions — HPC compliance and visual strategy for indie filmmakers.">
+    <meta name="twitter:image"       content="https://northzeroproductions.com/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DigitalDocument",
+      "name": "The Indie Filmmaker's Fast Track",
+      "description": "A practical blueprint for independent filmmakers covering HPC compliance, institutional-grade production deliverables, and visual strategy for high-value client engagements.",
+      "author": {
+        "@type": "Person",
+        "name": "Omar A. Greene"
+      },
+      "publisher": { "@id": "https://northzeroproductions.com/#business" },
+      "inLanguage": "en",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="style.css?v=2.2">
+
+    <style>
+        :root {
+            --nz-gold: #d4af37;
+            --nz-blue: #0047ab;
+            --nav-height: 80px;
+        }
+
+        .ft-hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+        }
+
+        .ft-copy {
+            padding: 80px 8% 80px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ft-copy .label {
+            color: var(--nz-gold); letter-spacing: 6px; text-transform: uppercase;
+            font-size: 0.65rem; margin-bottom: 25px; display: block;
+        }
+
+        .ft-copy h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem); text-transform: uppercase;
+            letter-spacing: 8px; line-height: 1.1; color: #fff; margin-bottom: 30px;
+        }
+
+        .ft-copy h1 span { color: var(--nz-gold); }
+
+        .ft-copy .intro {
+            font-size: 1.05rem; color: #888; line-height: 2;
+            margin-bottom: 40px; max-width: 480px;
+        }
+
+        .ft-contents { list-style: none; margin-bottom: 50px; }
+
+        .ft-contents li {
+            display: flex; align-items: flex-start; gap: 15px;
+            padding: 14px 0; border-bottom: 1px solid #1a1a1a;
+            font-size: 0.85rem; color: #aaa; letter-spacing: 1px; line-height: 1.6;
+        }
+
+        .ft-contents li::before { content: '—'; color: var(--nz-gold); flex-shrink: 0; }
+
+        .ft-form-panel {
+            background: #0a0a0a; border-left: 1px solid #1a1a1a;
+            display: flex; align-items: center; justify-content: center; padding: 80px 8%;
+        }
+
+        .ft-form-inner { width: 100%; max-width: 420px; }
+
+        .ft-form-inner h2 {
+            font-size: 1rem; text-transform: uppercase;
+            letter-spacing: 5px; color: #fff; margin-bottom: 8px;
+        }
+
+        .ft-form-inner .sub {
+            font-size: 0.7rem; color: #555; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 35px;
+        }
+
+        .ft-form { display: flex; flex-direction: column; gap: 18px; }
+        .ft-form .form-group { display: flex; flex-direction: column; gap: 7px; }
+
+        .ft-form label { color: #555; text-transform: uppercase; letter-spacing: 2px; font-size: 0.6rem; }
+
+        .ft-form input {
+            background: #111; border: 1px solid #222; padding: 14px 16px;
+            color: #fff; font-size: 0.95rem; font-family: inherit;
+            outline: none; transition: border-color 0.3s; width: 100%;
+        }
+
+        .ft-form input:focus { border-color: var(--nz-gold); }
+
+        .ft-submit {
+            margin-top: 8px; background: transparent;
+            border: 1px solid var(--nz-gold); color: var(--nz-gold);
+            padding: 18px; text-transform: uppercase; letter-spacing: 5px;
+            font-size: 0.75rem; font-family: inherit; cursor: pointer;
+            transition: 0.4s; width: 100%;
+        }
+
+        .ft-submit:hover    { background: var(--nz-gold); color: #000; }
+        .ft-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        #ft-status {
+            margin-top: 16px; font-size: 0.75rem; letter-spacing: 2px;
+            text-transform: uppercase; text-align: center; min-height: 1.2em;
+        }
+
+        .ft-privacy {
+            margin-top: 20px; font-size: 0.6rem; color: #333;
+            letter-spacing: 1px; text-align: center; line-height: 1.8;
+        }
+
+        /* Proof strip */
+        .proof-strip {
+            background: #000; border-top: 1px solid #111; border-bottom: 1px solid #111;
+            padding: 60px 5%; display: flex; justify-content: center;
+            gap: 80px; flex-wrap: wrap; text-align: center;
+        }
+
+        .proof-item .value { display: block; font-size: 2rem; letter-spacing: 4px; color: #fff; margin-bottom: 6px; }
+        .proof-item .descriptor { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 4px; color: var(--nz-gold); }
+
+        /* Author strip */
+        .author-strip { background: #050505; border-top: 1px solid #111; }
+
+        .author-inner {
+            max-width: 1000px; margin: 0 auto; padding: 100px 40px;
+            display: flex; align-items: flex-start; gap: 60px; flex-wrap: wrap;
+        }
+
+        .author-inner .author-text { flex: 1; min-width: 280px; }
+
+        .author-inner h3 {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 5px;
+            color: var(--nz-gold); margin-bottom: 20px;
+        }
+
+        .author-inner p { color: #777; font-size: 1rem; line-height: 2; margin-bottom: 16px; }
+        .author-inner p:last-of-type { margin-bottom: 0; }
+
+        .credential-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+
+        .credential-tag {
+            display: inline-block; border: 1px solid #1a1a1a;
+            padding: 10px 18px; font-size: 0.6rem;
+            letter-spacing: 3px; text-transform: uppercase; color: var(--nz-blue);
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .ft-hero       { grid-template-columns: 1fr; min-height: unset; }
+            .ft-copy       { padding: 60px 6%; }
+            .ft-form-panel { border-left: none; border-top: 1px solid #1a1a1a; padding: 60px 6%; }
+            .ft-form-inner { max-width: 100%; }
+            .proof-strip   { gap: 40px; }
+            .author-inner  { padding: 80px 6%; gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nz-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="logo-link" aria-label="Northzero Productions — home">
+            <div class="compass-box" aria-hidden="true"><div class="needle"></div></div>
+            <div class="logo-text">
+                <span class="main-title">NORTHZERO</span>
+                <span class="sub-title">PRODUCTIONS</span>
+            </div>
+        </a>
+
+        <button
+            class="hamburger"
+            id="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links-container"
+        >
+            <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-links" id="nav-links-container" role="menubar">
+            <a href="index.html" role="menuitem">Agency</a>
+            <a href="work.html" role="menuitem">Works</a>
+            <div class="dropdown">
+                <a href="all-services.html" class="dropbtn" role="menuitem">Services</a>
+                <div class="dropdown-content">
+                    <a href="authority.html">Authority Suite</a>
+                    <a href="architectural.html">Architectural Cinema</a>
+                    <a href="tactile.html">Tactile Narratives</a>
+                </div>
+            </div>
+            <a href="about.html" role="menuitem">Lens</a>
+            <a href="journal.html" role="menuitem">Journal</a>
+            <a href="contact.html" role="menuitem" style="border: 1px solid var(--nz-gold); padding: 10px 20px; color: var(--nz-gold) !important;">Start Project</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="ft-hero">
+            <div class="ft-copy">
+                <span class="label">Free Industry Resource</span>
+                <h1>The Indie Filmmaker's <span>Fast Track</span></h1>
+                <p class="intro">
+                    A personal blueprint for cinematic permanence — navigating high-stakes
+                    production, technical compliance, and visual strategy from someone working
+                    inside the institutional frameworks that govern it.
+                </p>
+                <ul class="ft-contents" aria-label="What's inside">
+                    <li>Navigating HPC and landmark compliance on production</li>
+                    <li>Building authority through visual documentation</li>
+                    <li>Technical standards for institutional-grade deliverables</li>
+                    <li>Visual strategy for preservation and development clients</li>
+                    <li>How to position a production company for high-value engagements</li>
+                </ul>
+            </div>
+
+            <div class="ft-form-panel">
+                <div class="ft-form-inner">
+                    <h2>Access the Blueprint</h2>
+                    <p class="sub">Instant download + delivery to your inbox</p>
+
+                    <form id="ft-form" class="ft-form" novalidate>
+                        <div class="form-group">
+                            <label for="ft-name">Your Name</label>
+                            <input type="text" id="ft-name" name="name" placeholder="Omar Greene" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ft-email">Email Address</label>
+                            <input type="email" id="ft-email" name="email" placeholder="name@agency.com" autocomplete="email" required>
+                        </div>
+                        <button type="submit" class="ft-submit" id="ft-submit">Send Me the Blueprint</button>
+                        <p id="ft-status" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <p class="ft-privacy">
+                        Your details are added to the Northzero mailing list.<br>
+                        No spam. Unsubscribe at any time.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="proof-strip" aria-label="Credentials">
+            <div class="proof-item">
+                <span class="value">HPC</span>
+                <p class="descriptor">Ossining Historic Preservation Commission</p>
+            </div>
+            <div class="proof-item">
+                <span class="value">10+</span>
+                <p class="descriptor">Years Integrated Design &amp; Film</p>
+            </div>
+            <div class="proof-item">
+                <span class="value">NY</span>
+                <p class="descriptor">Tri-State Area Operations</p>
+            </div>
+            <div class="proof-item">
+                <span class="value">HABS</span>
+                <p class="descriptor">HAER Documentation Standard</p>
+            </div>
+        </div>
+
+        <section class="author-strip" aria-label="About the author">
+            <div class="author-inner">
+                <div class="author-text">
+                    <h3>About the Author</h3>
+                    <p>
+                        Omar A. Greene is the founder of Northzero Productions and an alternate member
+                        of the Village of Ossining Historic Preservation Commission. A Parsons the New
+                        School for Design alumnus, Omar brings over ten years of integrated design and
+                        film production experience to every engagement — spanning front-end development,
+                        brand identity, motion graphics, lighting design, sound, DIT, and cinematography.
+                    </p>
+                    <p>
+                        His background is rare: a filmmaker equally at home writing production code,
+                        directing a luxury estate shoot, or presenting visual documentation before a
+                        municipal review board. That breadth is the foundation of the Fast Track framework.
+                    </p>
+                    <div class="credential-tags">
+                        <span class="credential-tag">Parsons — New School for Design</span>
+                        <span class="credential-tag">Ossining HPC — Alternate Member</span>
+                        <span class="credential-tag">10+ Years Experience</span>
+                        <span class="credential-tag">New York City</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-label="Start a project">
+            <p>Interested in working together?</p>
+            <h2>Let's Discuss the Brief</h2>
+            <div class="btn-group">
+                <a href="contact.html" class="cta-btn">Start Project</a>
+                <a href="https://calendly.com/northzeroproductions-info/30min" class="cta-btn booking" target="_blank" rel="noopener noreferrer" aria-label="Schedule a consultation — opens in new tab">Schedule a Consultation</a>
+                <a href="work.html" class="cta-btn secondary">View Works</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 Northzero Productions LLC | New York
+    </footer>
+
+    <script src="nav.js?v=2.1"></script>
+    <script>
+        // TODO: Replace with your Mailchimp /post-json endpoint
+        const MC_ENDPOINT = 'YOUR_MAILCHIMP_ENDPOINT_HERE';
+
+        const form   = document.getElementById('ft-form');
+        const status = document.getElementById('ft-status');
+        const btn    = document.getElementById('ft-submit');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name  = document.getElementById('ft-name').value.trim();
+            const email = document.getElementById('ft-email').value.trim();
+
+            if (!name || !email) {
+                status.textContent = 'Please fill in both fields.';
+                status.style.color = '#e05555';
+                return;
+            }
+
+            btn.disabled       = true;
+            status.textContent = 'Sending...';
+            status.style.color = 'var(--nz-gold)';
+
+            const callbackName = 'ft_mc_cb_' + Date.now();
+            const params       = new URLSearchParams({ EMAIL: email, FNAME: name });
+            const url          = MC_ENDPOINT + '&' + params.toString() + '&c=' + callbackName;
+
+            const timeout = setTimeout(() => {
+                cleanup();
+                status.textContent = 'Request timed out. Please try again.';
+                status.style.color = '#e05555';
+                btn.disabled = false;
+            }, 8000);
+
+            function cleanup() {
+                clearTimeout(timeout);
+                delete window[callbackName];
+                const s = document.getElementById('ft-mc-jsonp');
+                if (s) s.remove();
+            }
+
+            window[callbackName] = function (data) {
+                cleanup();
+                btn.disabled = false;
+                const alreadySubscribed = data.msg && data.msg.includes('already subscribed');
+
+                if (data.result === 'success' || alreadySubscribed) {
+                    const link    = document.createElement('a');
+                    link.href     = 'THE_INDIE_FILMMAKERS_FAST_TRACK.pdf';
+                    link.download = 'NorthzeroFastTrack.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    status.innerHTML = alreadySubscribed
+                        ? 'You\'re already subscribed — download started. Or <a href="https://calendly.com/northzeroproductions-info/30min" target="_blank" rel="noopener noreferrer" style="color:var(--nz-gold);text-decoration:none;border-bottom:1px solid var(--nz-gold);">schedule a call</a>.'
+                        : 'Download started — check your inbox too. Or <a href="https://calendly.com/northzeroproductions-info/30min" target="_blank" rel="noopener noreferrer" style="color:var(--nz-gold);text-decoration:none;border-bottom:1px solid var(--nz-gold);">schedule a call</a>.';
+                    status.style.color = '#fff';
+                    form.reset();
+                } else {
+                    status.textContent = 'Something went wrong. Please try again.';
+                    status.style.color = '#e05555';
+                }
+            };
+
+            const script  = document.createElement('script');
+            script.id     = 'ft-mc-jsonp';
+            script.src    = url;
+            document.body.appendChild(script);
+        });
+    </script>
+</body>
+</html>
