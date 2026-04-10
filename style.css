@@ -80,6 +80,8 @@ nav.nz-nav {
     border: 1px solid #1a1a1a;
     background: #050505;
     flex-shrink: 0;
+    /* Hide on anything narrower than desktop — badge crowds the nav */
+    max-width: 260px;
 }
 
 .badge-dot {
@@ -363,8 +365,15 @@ footer {
 /* --- 12. MOBILE (single authoritative block) --- */
 @media screen and (max-width: 900px) {
 
-    /* Hide badge and desktop links */
-    .nz-credential-badge { display: none; }
+    /* Hide badge — must be explicit to override flex display */
+    .nz-credential-badge { display: none !important; }
+
+    /* Ensure nav stays a clean two-item row: logo | hamburger */
+    nav.nz-nav {
+        padding: 0 4%;
+    }
+
+    .logo-link { flex-shrink: 0; }
     .hamburger  { display: flex !important; }
     .nav-links  { display: none !important; }
 
